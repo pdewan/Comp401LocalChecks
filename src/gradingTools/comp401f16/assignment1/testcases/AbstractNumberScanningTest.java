@@ -19,7 +19,7 @@ public abstract class AbstractNumberScanningTest extends OutputAndErrorCheckingT
     }    
   ;
   
-    protected String toRegex(String aString) {
+    public static String toRegex(String aString) {
  	   return MATCH_ANY + aString + MATCH_ANY;
     }
 	protected String correctOutputButErrorsMessage() {
@@ -219,12 +219,14 @@ public abstract class AbstractNumberScanningTest extends OutputAndErrorCheckingT
 //
 //	}
 	protected abstract String[] expectedOutputs() ;
-
+	protected String toOutputString (String aToken) {
+		return aToken;
+	}
 	protected String[] expectedTokenOutputs() {
 		String[] anAllTokens = allTokens();
 		tokens.clear();
 		for (int aTokenNumber = 0; aTokenNumber < anAllTokens.length; aTokenNumber++) {
-			tokens.add(toRegex(anAllTokens[aTokenNumber]));
+			tokens.add(toRegex(toOutputString(anAllTokens[aTokenNumber])));
 		}
 		return tokens.toArray(emptyStringArray);
 	}
