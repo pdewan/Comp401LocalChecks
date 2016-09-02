@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	MultipleNumberOutputTest.class,
 	MultipleWordOutputTest.class,
+	MultipleQuoteOutputTest.class,
 	   
 })
 public class Assignment2Suite {
