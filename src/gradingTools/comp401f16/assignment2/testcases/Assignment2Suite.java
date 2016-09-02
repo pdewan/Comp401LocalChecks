@@ -6,10 +6,11 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	MultipleNumberOutputTest.class,
+	MultipleWordOutputTest.class,
 	   
 })
 public class Assignment2Suite {
-	public static final String MAIN_CLASS_NAME = "main.Assignment1";
+	public static final String MAIN_CLASS_NAME = "main.Assignment2";
 	public static void main (String[] args) {
 		try {
 

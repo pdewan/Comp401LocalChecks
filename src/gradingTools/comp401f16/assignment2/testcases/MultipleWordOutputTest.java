@@ -12,15 +12,22 @@ import grader.basics.project.Project;
 import gradingTools.comp401f16.assignment1.testcases.AbstractNumberScanningTest;
 import gradingTools.comp401f16.assignment1.testcases.Assignment1Suite;
 import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
-@Explanation("Multiple Numbers Output")
-public class MultipleNumberOutputTest extends MultipleTokensOutputTest {
-	public static final String NUMBER_PREFIX = toRegex("umber");
+@Explanation("Multiple Words Output")
+public class MultipleWordOutputTest extends MultipleTokensOutputTest {
+	public static final String WORD_PREFIX = toRegex("ord");
+	protected String[][] tokenLines = {{"move", "copy", "paste"}, {"hello" , "goodbye", "say", "walk"}};
+	
+	@Override
+	protected String[][] tokenLines() {
+		// TODO Auto-generated method stub
+		return tokenLines;
+	}
 	
 	protected String mainClassName() {
 		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
 	protected String toOutputString (String aToken) {
-		return NUMBER_PREFIX + aToken;
+		return WORD_PREFIX + aToken;
 	}
     
 

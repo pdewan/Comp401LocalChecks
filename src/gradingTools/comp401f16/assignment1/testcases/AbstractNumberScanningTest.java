@@ -44,10 +44,13 @@ public abstract class AbstractNumberScanningTest extends OutputAndErrorCheckingT
 		return !anError.isEmpty() &&
 				!anError.contains ("No line found"); // we will penalize for no terminating . separately
 	}
+	protected String mainClassName() {
+		return Assignment1Suite.MAIN_CLASS_NAME;
+	}
 	@Test
     public void test() {
         try {
-            OutputErrorStatus retVal = test(Assignment1Suite.MAIN_CLASS_NAME, inputWithEndingSpace(), expectedOutputs());
+            OutputErrorStatus retVal = test(mainClassName(), inputWithEndingSpace(), expectedOutputs());
             
             if (retVal == OutputErrorStatus.CORRECT_OUTPUT_NO_ERRORS)
             	return;
