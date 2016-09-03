@@ -41,9 +41,12 @@ public abstract class AbstractNumberScanningTest extends OutputAndErrorCheckingT
 		return 0.0;
 	}
 	protected boolean hasError(String anError) {
-		return !anError.isEmpty() &&
-				!anError.contains ("No line found"); // we will penalize for no terminating . separately
+		return false;
 	}
+//	protected boolean hasError(String anError) {
+//		return !anError.isEmpty() &&
+//				!anError.contains ("No line found"); // we will penalize for no terminating . separately
+//	}
 	protected String mainClassName() {
 		return Assignment1Suite.MAIN_CLASS_NAME;
 	}

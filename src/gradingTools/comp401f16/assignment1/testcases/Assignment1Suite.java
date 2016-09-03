@@ -9,7 +9,8 @@ import org.junit.runners.Suite;
 	MultipleTokenSuite.class,
 	InvalidCharacterSuite.class,
 	VariableSpaceSuite.class,
-	TerminatesWithPeriodSuite.class,	   
+	TerminatesWithPeriodLineSuite.class,
+	TerminatesWithStartingPeriodSuite.class,	   
 })
 public class Assignment1Suite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment1";

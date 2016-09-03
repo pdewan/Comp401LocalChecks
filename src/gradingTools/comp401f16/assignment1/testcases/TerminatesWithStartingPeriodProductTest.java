@@ -16,7 +16,7 @@ import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 
 @Explanation("Terminated with Period Sum")
 @IsExtra(true)
-public class TerminatesWithPeriodProductTest extends TerminatesWithPeriodOutputTest {
+public class TerminatesWithStartingPeriodProductTest extends TerminatesWithStartingPeriodOutputTest {
 	
     
     @Override
@@ -29,7 +29,7 @@ public class TerminatesWithPeriodProductTest extends TerminatesWithPeriodOutputT
 		String aTest1Output = "The tokens are:22\n44\n66\n1i\n33\n55\n Sum: 231 \n Product: 1275523920";
 		String aTest2Output = "The tokens are:22 44 66 11 33 55";
 		
-		TerminatesWithPeriodProductTest aTestCase = new TerminatesWithPeriodProductTest();
+		TerminatesWithStartingPeriodProductTest aTestCase = new TerminatesWithStartingPeriodProductTest();
 		test(aTestCase, aTestOutput);
 		test (aTestCase, aTest1Output);
 		test (aTestCase, aTest2Output);

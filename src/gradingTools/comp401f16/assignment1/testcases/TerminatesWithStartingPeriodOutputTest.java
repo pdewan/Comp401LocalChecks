@@ -18,7 +18,7 @@ import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 //@Explanation("Invalid Character Tokens")
 @IsExtra(true)
 @MaxValue(10)
-public class TerminatesWithPeriodOutputTest extends MultipleTokensOutputTest {
+public class TerminatesWithStartingPeriodOutputTest extends MultipleTokensOutputTest {
 	@Override
 	protected String inputWithNoEndingSpace(){
 		return super.inputWithNoEndingSpace() + "45";
@@ -32,7 +32,7 @@ public class TerminatesWithPeriodOutputTest extends MultipleTokensOutputTest {
 		return !anError.isEmpty();
 	}
     protected double correctOutputButErrorsCredit() {
-		return 0.0; // should not have errors
+		return 0.5; // should not have errors
 	}
 //    public static void main (String[] args) {
 //		String aTestOutput = "The tokens are:2\n20\nSum: 22\n Product: 40\n 40\n 50\n Sum: 90 \n Product: 2000";
@@ -48,7 +48,7 @@ public class TerminatesWithPeriodOutputTest extends MultipleTokensOutputTest {
 		String aTest1Output = "The tokens are:22\n44\n66\n1i\n33\n55\n Sum: 231 \n Product: 1275523920";
 		String aTest2Output = "The tokens are:22 44 66 11 33 55";
 		
-		TerminatesWithPeriodOutputTest aTestCase = new TerminatesWithPeriodOutputTest();
+		TerminatesWithStartingPeriodOutputTest aTestCase = new TerminatesWithStartingPeriodOutputTest();
 		test(aTestCase, aTestOutput);
 		test (aTestCase, aTest1Output);
 		test (aTestCase, aTest2Output);
