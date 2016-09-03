@@ -26,7 +26,10 @@ public class TerminatesWithPeriodLineProductTest extends TerminatesWithStartingP
 		 String retVal = aSuperVal.replace(". ", ".");
 		 return retVal;
 	 }
-    
+	@Override
+	protected String possibleReasonsForErrors() {
+		return "continuing processing after period or parsing period";
+	}
    
     
 	

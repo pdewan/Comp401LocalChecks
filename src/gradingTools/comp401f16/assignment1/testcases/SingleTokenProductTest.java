@@ -8,5 +8,9 @@ public class SingleTokenProductTest extends SingleTokenOutputTest{
 		return expectedProductOutputs();
 		
 	}  
+	@Override
+	protected String possibleReasonsForIncorrectOutput() {
+		return "";
+	}
 }
 

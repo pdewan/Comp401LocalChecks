@@ -12,37 +12,38 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public abstract class AbstractNumberScanningTest extends OutputAndErrorCheckingTestCase {
-    public static String MATCH_ANY = "(.*)";
 
     protected String inputWithEndingSpace() {
     	return toSpacedInput(inputWithNoEndingSpace());
-    }    
-  ;
-  
-    public static String toRegex(String aString) {
- 	   return MATCH_ANY + aString + MATCH_ANY;
-    }
-	protected String correctOutputButErrorsMessage() {
-		return "Correct output but errors";
-	}
-	protected double correctOutputButErrorsCredit() {
-		return 0.5;
-	}
-	protected String incorrectOutputMessage() {
-		return "Incorrect output";
-	}
-	protected String noMainMessage() {
-		return "No main";
-	}
-	protected double incorrectOutputCredit() {
-		return 0.0;
-	}
-	protected double noMainCredit() {
-		return 0.0;
-	}
-	protected boolean hasError(String anError) {
+    }  ;
+    protected boolean hasError(String anError) {
 		return false;
 	}
+  
+//    public static String toRegex(String aString) {
+// 	   return MATCH_ANY + aString + MATCH_ANY;
+//    }
+//	protected String correctOutputButErrorsMessage() {
+//		return "Correct output but errors";
+//	}
+//	protected double correctOutputButErrorsCredit() {
+//		return 0.5;
+//	}
+//	protected String incorrectOutputMessage() {
+//		return "Incorrect output";
+//	}
+//	protected String noMainMessage() {
+//		return "No main";
+//	}
+//	protected double incorrectOutputCredit() {
+//		return 0.0;
+//	}
+//	protected double noMainCredit() {
+//		return 0.0;
+//	}
+//	protected boolean hasError(String anError) {
+//		return false;
+//	}
 //	protected boolean hasError(String anError) {
 //		return !anError.isEmpty() &&
 //				!anError.contains ("No line found"); // we will penalize for no terminating . separately

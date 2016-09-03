@@ -34,6 +34,10 @@ public class TerminatesWithStartingPeriodOutputTest extends MultipleTokensOutput
     protected double correctOutputButErrorsCredit() {
 		return 0.5; // should not have errors
 	}
+    @Override
+	protected String possibleReasonsForErrors() {
+		return "continuing processing after period or parsing period or not expecting a character after period";
+	}
 //    public static void main (String[] args) {
 //		String aTestOutput = "The tokens are:2\n20\nSum: 22\n Product: 40\n 40\n 50\n Sum: 90 \n Product: 2000";
 //		String aTest1Output = "The tokens are:11\n20\nSum: 22\n Product: 40\n 40\n 50\n Sum: 90 \n Product: 2000";

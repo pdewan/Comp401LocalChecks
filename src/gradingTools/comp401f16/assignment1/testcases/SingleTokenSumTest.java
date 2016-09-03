@@ -10,6 +10,10 @@ public class SingleTokenSumTest extends SingleTokenOutputTest{
 		return expectedSumOutputs();
 		
 	}
+	@Override
+	protected String possibleReasonsForIncorrectOutput() {
+		return "";
+	}
 
 }
 

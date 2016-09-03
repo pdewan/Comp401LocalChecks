@@ -12,8 +12,12 @@ public class SingleTokenOutputTest extends AbstractNumberScanningTest{
 	}
 	@Override
 	protected String[] expectedOutputs() {
-		return expectedTokenOutputs();
-		
+		return expectedTokenOutputs();		
 	}  
+	@Override
+	protected String possibleReasonsForIncorrectOutput() {
+		return "printing number (e.g. 20) instead of token (e.g. 020)";
+	}
+
 }
 
