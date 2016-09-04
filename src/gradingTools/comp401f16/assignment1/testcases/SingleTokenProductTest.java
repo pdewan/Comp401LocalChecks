@@ -4,7 +4,7 @@ import util.annotations.Explanation;
 public class SingleTokenProductTest extends SingleTokenOutputTest{
 	
 	@Override
-	protected String[] expectedOutputs() {
+	protected String[] getExpectedOutputs() {
 		return expectedProductOutputs();
 		
 	}  

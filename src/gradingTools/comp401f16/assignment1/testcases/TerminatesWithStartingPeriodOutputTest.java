@@ -25,7 +25,7 @@ public class TerminatesWithStartingPeriodOutputTest extends MultipleTokensOutput
 	}
     
     @Override
-    protected String[] expectedOutputs() {
+    protected String[] getExpectedOutputs() {
     	return expectedTokenOutputs();
     }
     protected boolean hasError(String anError) {

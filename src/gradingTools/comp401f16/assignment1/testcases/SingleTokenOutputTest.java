@@ -11,7 +11,7 @@ public class SingleTokenOutputTest extends AbstractNumberScanningTest{
 		return tokenLines;
 	}
 	@Override
-	protected String[] expectedOutputs() {
+	protected String[] getExpectedOutputs() {
 		return expectedTokenOutputs();		
 	}  
 	@Override

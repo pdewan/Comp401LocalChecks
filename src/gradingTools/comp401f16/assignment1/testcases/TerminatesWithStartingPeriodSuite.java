@@ -14,7 +14,7 @@ import util.annotations.MaxValue;
    TerminatesWithStartingPeriodProductTest.class,
    
 })
-@MaxValue(10)
+@MaxValue(5)
 @Explanation("Terminating period forms complete line")
 public class TerminatesWithStartingPeriodSuite {
 

@@ -34,7 +34,7 @@ public class InvalidCharacterOutputTest extends MultipleTokensOutputTest {
 	
     
     @Override
-    protected String[] expectedOutputs() {
+    protected String[] getExpectedOutputs() {
     	return expectedTokenOutputs();
     }
 //    public static void main (String[] args) {

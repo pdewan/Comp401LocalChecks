@@ -5,7 +5,7 @@ import util.annotations.Explanation;
 @Explanation("Multiple Tokens Product")
 public class MultipleTokenProductTest extends MultipleTokensOutputTest {
 	@Override
-	protected String[] expectedOutputs() {
+	protected String[] getExpectedOutputs() {
 		return expectedProductOutputs();		
 	} 
 

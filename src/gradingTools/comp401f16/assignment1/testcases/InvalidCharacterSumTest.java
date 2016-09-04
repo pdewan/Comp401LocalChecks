@@ -21,7 +21,7 @@ public class InvalidCharacterSumTest extends InvalidCharacterOutputTest {
     
     
     @Override
-    protected String[] expectedOutputs() {
+    protected String[] getExpectedOutputs() {
     	return expectedSumOutputs();
     }
     

@@ -19,7 +19,7 @@ public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
 		return tokenLines;
 	}
 	@Override
-	protected String[] expectedOutputs() {
+	protected String[] getExpectedOutputs() {
 		return expectedTokenOutputs();
 		
 	}  

@@ -20,7 +20,7 @@ public class TerminatesWithStartingPeriodSumTest extends TerminatesWithStartingP
 	
     
     @Override
-    protected String[] expectedOutputs() {
+    protected String[] getExpectedOutputs() {
     	return expectedSumOutputs();
     }
 //    public static void main (String[] args) {

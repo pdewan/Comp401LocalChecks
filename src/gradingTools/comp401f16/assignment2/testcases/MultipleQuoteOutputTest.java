@@ -23,7 +23,7 @@ public class MultipleQuoteOutputTest extends MultipleTokensOutputTest {
 		return tokenLines;
 	}
 	
-	protected String mainClassName() {
+	protected String getClassName() {
 		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
 	protected String toOutputString (String aToken) {

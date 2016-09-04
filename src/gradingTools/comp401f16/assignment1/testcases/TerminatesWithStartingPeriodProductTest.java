@@ -20,7 +20,7 @@ public class TerminatesWithStartingPeriodProductTest extends TerminatesWithStart
 	
     
     @Override
-    protected String[] expectedOutputs() {
+    protected String[] getExpectedOutputs() {
     	return expectedProductOutputs();
     }
 

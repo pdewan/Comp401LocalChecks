@@ -5,7 +5,7 @@ import util.annotations.Explanation;
 @Explanation("Multiple Tokens Sum")
 public class MultipleTokenSumTest extends MultipleTokensOutputTest {
 	@Override
-	protected String[] expectedOutputs() {
+	protected String[] getExpectedOutputs() {
 		return expectedSumOutputs();		
 	} 
 

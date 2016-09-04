@@ -21,7 +21,7 @@ public class VariableSpaceProductTest extends VariableSpaceOutputTest {
     
     
     @Override
-    protected String[] expectedOutputs() {
+    protected String[] getExpectedOutputs() {
     	return expectedSumOutputs();
     }
     

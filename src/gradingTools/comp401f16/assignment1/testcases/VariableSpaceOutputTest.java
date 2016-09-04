@@ -34,7 +34,7 @@ public class VariableSpaceOutputTest extends MultipleTokensOutputTest {
 	
     
     @Override
-    protected String[] expectedOutputs() {
+    protected String[] getExpectedOutputs() {
     	return expectedTokenOutputs();
     }
 
