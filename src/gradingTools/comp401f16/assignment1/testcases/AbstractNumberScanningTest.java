@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import grader.basics.execution.NotRunnableException;
+import grader.basics.junit.BasicJUnitUtils;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.NotGradableException;
 import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
@@ -111,8 +112,8 @@ public abstract class AbstractNumberScanningTest extends
 
 					false);
 
-		} catch (NotRunnableException e) {
-			throw new NotGradableException();
+		} catch (Throwable e) {
+			BasicJUnitUtils.assertTrue(e, 0);
 		}
 	}
 
@@ -156,18 +157,21 @@ public abstract class AbstractNumberScanningTest extends
 
 	@Test
 	public void test() {
-
-		inputWithEndingSpace = true;
-		super.test();
-		if (processSuccessfulOutputErrrorStatus()) {
-			return;
+		try {
+			inputWithEndingSpace = true;
+			super.test();
+			if (processSuccessfulOutputErrrorStatus()) {
+				return;
+			}
+			inputWithEndingSpace = false;
+			super.test();
+			if (processSuccessfulOutputErrrorStatus()) {
+				return;
+			}
+			processUnsuccessfulOutputErrrorStatus();
+		} catch (Throwable e) {
+			BasicJUnitUtils.assertTrue(e, 0);
 		}
-		inputWithEndingSpace = false;
-		super.test();
-		if (processSuccessfulOutputErrrorStatus()) {
-			return;
-		}
-		processUnsuccessfulOutputErrrorStatus();
 
 	}
 
