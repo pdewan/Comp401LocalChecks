@@ -26,6 +26,13 @@ public class ScanningIteratorTest extends ScanStringTest{
 //				+ NotesAndScore.PERCENTAGE_MARKER
 //				+ wrongInterfaceCredit(), false);
 //	}
+	protected void traceProcessReturnValue() {
+		System.out.println(
+				"Comparing actial return value: " + 
+						Arrays.toString((Object[]) getReturnValue()) +
+				" with expected return value: " + 
+						Arrays.toString((Object[]) getExpectedReturnValue()));
+	}
 	
 	protected boolean doTest() throws Throwable {
 		
