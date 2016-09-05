@@ -100,8 +100,8 @@ public abstract class AbstractNumberScanningTest extends
 			}
 
 			if (retVal == OutputErrorStatus.NO_OUTPUT) {
-				Assert.assertTrue(noMainMessage()
-						+ NotesAndScore.PERCENTAGE_MARKER + noMainCredit(),
+				Assert.assertTrue(noMethodMessage()
+						+ NotesAndScore.PERCENTAGE_MARKER + noMethodCredit(),
 
 				false);
 			}
@@ -117,62 +117,82 @@ public abstract class AbstractNumberScanningTest extends
 		}
 	}
 
-	protected boolean processSuccessfulOutputErrrorStatus() {
-		OutputErrorStatus retVal = getOutputErrorStatus();
+//	protected boolean processSuccessfulOutputErrrorStatus() {
+//		OutputErrorStatus retVal = getOutputErrorStatus();
+//
+//		if (retVal == OutputErrorStatus.CORRECT_OUTPUT_NO_ERRORS)
+//			return true;
+//		if (retVal == OutputErrorStatus.CORRECT_OUTPUT_ERRORS) {
+//			// String aMessage = correctOutputButErrorsMessage() +
+//			// NotesAndScore.PERECTAGE_CHARACTER +
+//			// + correctOutputButErrorsCredit();
+//			// Assert.assertTrue(
+//			// aMessage, false);
+//			// This results in character becoming an int if marker is a
+//			// character!
+//			Assert.assertTrue(correctOutputButErrorsMessage()
+//					+ NotesAndScore.PERCENTAGE_MARKER
+//					+ correctOutputButErrorsCredit(), false);
+//			return true; // will never be executed
+//		}
+//		return false;
+//	}
+//
+//	protected boolean processUnsuccessfulOutputErrrorStatus() {
+//		OutputErrorStatus retVal = getOutputErrorStatus();
+//
+//		if (retVal == OutputErrorStatus.NO_OUTPUT) {
+//			Assert.assertTrue(noMethodMessage() + NotesAndScore.PERCENTAGE_MARKER
+//					+ noMethodCredit(),
+//
+//			false);
+//		}
+//
+//		Assert.assertTrue(incorrectOutputMessage()
+//				+ NotesAndScore.PERCENTAGE_MARKER + incorrectOutputCredit(),
+//
+//		false);
+//		return true;
+//	}
 
-		if (retVal == OutputErrorStatus.CORRECT_OUTPUT_NO_ERRORS)
-			return true;
-		if (retVal == OutputErrorStatus.CORRECT_OUTPUT_ERRORS) {
-			// String aMessage = correctOutputButErrorsMessage() +
-			// NotesAndScore.PERECTAGE_CHARACTER +
-			// + correctOutputButErrorsCredit();
-			// Assert.assertTrue(
-			// aMessage, false);
-			// This results in character becoming an int if marker is a
-			// character!
-			Assert.assertTrue(correctOutputButErrorsMessage()
-					+ NotesAndScore.PERCENTAGE_MARKER
-					+ correctOutputButErrorsCredit(), false);
-			return true; // will never be executed
-		}
-		return false;
+//	@Test
+//	public void test() {
+//		try {
+//			inputWithEndingSpace = true;
+//			super.test();
+//			if (processSuccessfulOutputErrrorStatus()) {
+//				return;
+//			}
+//			inputWithEndingSpace = false;
+//			super.test();
+//			if (processSuccessfulOutputErrrorStatus()) {
+//				return;
+//			}
+//			processUnsuccessfulOutputErrrorStatus();
+//		} catch (Throwable e) {
+//			BasicJUnitUtils.assertTrue(e, 0);
+//		}
+//
+//	}
+	
+	protected boolean invokeInteractiveMethod() throws Throwable  {
+		return super.doTest();
 	}
 
-	protected boolean processUnsuccessfulOutputErrrorStatus() {
-		OutputErrorStatus retVal = getOutputErrorStatus();
-
-		if (retVal == OutputErrorStatus.NO_OUTPUT) {
-			Assert.assertTrue(noMainMessage() + NotesAndScore.PERCENTAGE_MARKER
-					+ noMainCredit(),
-
-			false);
-		}
-
-		Assert.assertTrue(incorrectOutputMessage()
-				+ NotesAndScore.PERCENTAGE_MARKER + incorrectOutputCredit(),
-
-		false);
-		return true;
-	}
-
-	@Test
-	public void test() {
-		try {
+	protected boolean doTest() throws Throwable {
 			inputWithEndingSpace = true;
-			super.test();
+			boolean superRetVal = invokeInteractiveMethod();
 			if (processSuccessfulOutputErrrorStatus()) {
-				return;
+				return true;
 			}
 			inputWithEndingSpace = false;
-			super.test();
+			superRetVal = invokeInteractiveMethod();
 			if (processSuccessfulOutputErrrorStatus()) {
-				return;
+				return true;
 			}
 			processUnsuccessfulOutputErrrorStatus();
-		} catch (Throwable e) {
-			BasicJUnitUtils.assertTrue(e, 0);
-		}
-
+			return true;
+		
 	}
 
 	protected static StringBuilder stringBuilder = new StringBuilder();

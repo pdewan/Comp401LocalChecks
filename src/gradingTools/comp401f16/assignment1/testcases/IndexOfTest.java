@@ -14,26 +14,26 @@ public class IndexOfTest extends MethodExecutionTest {
 		return new Object[] {"move 43 43 4 ", '3', 6} ;
 	}
 	
-	protected Object getTargetObject() {
-		return getTargetClass();
+	@Override
+	protected Object getExpectedReturnValue() {
+		return 6;
 	}
+
 	
-	
-	protected String getClassName() {
-//		if (tryScannerIterator) {
-//			return "ScanningIterator";
-//		}
-		return "main.Assignment1";
+	protected Object[] getTargetObjects() {
+		return getTargetClasses();
 	}
-	
+
+	@Override
+	protected String[] getClassNames(){
+		return new String[] {"ScanningIterator", "main.Assignment1"};
+	}
 	protected String getMethodName() {
 		return "indexOf";
 	}
-	
-	@Override
-	protected boolean doTest() throws Throwable {
-		return super.doTest();
+	protected boolean processInteractiveMethodExecutionResults() {
+		return true;
 	}
-	
+
 
 }
