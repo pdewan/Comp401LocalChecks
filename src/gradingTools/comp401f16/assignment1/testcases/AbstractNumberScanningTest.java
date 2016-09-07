@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public abstract class AbstractNumberScanningTest extends
 		OutputAndErrorCheckingTestCase {
-	boolean inputWithEndingSpace = false;
+	protected boolean inputWithEndingSpace = false;
 
 	@Override
 	protected String getInput() {
@@ -177,6 +177,10 @@ public abstract class AbstractNumberScanningTest extends
 	
 	protected boolean invokeInteractiveMethod() throws Throwable  {
 		return super.doTest();
+	}
+	// do nothing as doTest() does the needful
+	protected void processOutputErrorStatus() {
+		
 	}
 
 	protected boolean doTest() throws Throwable {

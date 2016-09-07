@@ -8,6 +8,9 @@ import org.junit.runners.Suite;
 	MultipleNumberOutputTest.class,
 	MultipleWordOutputTest.class,
 	MultipleQuoteOutputTest.class,
+	ScannerBeanTest.class,
+	MultipleSignOutputTest.class,
+	MissingQuoteOutputTest.class
 	   
 })
 public class Assignment2Suite {

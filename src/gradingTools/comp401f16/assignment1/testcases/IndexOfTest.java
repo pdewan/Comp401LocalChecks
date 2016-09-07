@@ -7,7 +7,6 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 
 public class IndexOfTest extends MethodExecutionTest {
 	
-	boolean tryScannerIterator;
 	
 	@Override
 	public Object[] getArgs() {
