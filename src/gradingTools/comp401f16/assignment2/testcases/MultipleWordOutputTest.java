@@ -20,7 +20,7 @@ public class MultipleWordOutputTest extends MultipleTokensOutputTest {
 	protected String[][] tokenLines = {{"move", "approach", "say"}, {"Arthur" , "Galahad", "Lancelot", "Robin"}};
 	
 	@Override
-	protected String[][] tokenLines() {
+	protected String[][] studentTokenLines() {
 		return tokenLines;
 	}
 	

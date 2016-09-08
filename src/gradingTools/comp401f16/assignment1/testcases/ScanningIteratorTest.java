@@ -50,7 +50,7 @@ public class ScanningIteratorTest extends ScanStringTest{
 			aTokens.add(anIterator.next());
 		}
 		
-		returnValue = aTokens.toArray();
+		setReturnValue(aTokens.toArray());
 		expectedReturnValue = tokenLines()[0];
 		processReturnValue();
 		return true;

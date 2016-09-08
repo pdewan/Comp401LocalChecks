@@ -14,7 +14,7 @@ public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
 	protected String[][] tokenLines = {{"22", "44", "66"}, {"11" , "33", "55", "1"}};
 	
 	@Override
-	protected String[][] tokenLines() {
+	protected String[][] studentTokenLines() {
 		// TODO Auto-generated method stub
 		return tokenLines;
 	}

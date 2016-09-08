@@ -6,7 +6,7 @@ import util.annotations.Explanation;
 public class SingleTokenOutputTest extends AbstractNumberScanningTest{
 	protected String[][] tokenLines = {{"0202"}};
 	@Override
-	protected String[][] tokenLines() {
+	protected String[][] studentTokenLines() {
 		// TODO Auto-generated method stub
 		return tokenLines;
 	}

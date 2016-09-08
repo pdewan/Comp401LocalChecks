@@ -22,7 +22,7 @@ public class MultipleQuoteOutputTest extends MultipleTokensOutputTest {
 				{"\"Blue?\"" , "\"Sea !!!!! Gull\"", "\"E u r o p e an\"", "\"  A mer i can  \""}};
 	
 	@Override
-	protected String[][] tokenLines() {
+	protected String[][] studentTokenLines() {
 		// TODO Auto-generated method stub
 		return tokenLines;
 	}

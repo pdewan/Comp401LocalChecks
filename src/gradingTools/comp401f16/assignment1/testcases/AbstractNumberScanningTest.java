@@ -3,6 +3,7 @@ package gradingTools.comp401f16.assignment1.testcases;
 import java.util.ArrayList;
 import java.util.List;
 
+import grader.basics.execution.GradingMode;
 import grader.basics.execution.NotRunnableException;
 import grader.basics.junit.BasicJUnitUtils;
 import grader.basics.junit.NotesAndScore;
@@ -15,7 +16,7 @@ import org.junit.Test;
 public abstract class AbstractNumberScanningTest extends
 		OutputAndErrorCheckingTestCase {
 	protected boolean inputWithEndingSpace = false;
-
+	
 	@Override
 	protected String getInput() {
 		if (inputWithEndingSpace)
@@ -220,8 +221,19 @@ public abstract class AbstractNumberScanningTest extends
 		return "";
 	}
 
-	protected abstract String[][] tokenLines();
-
+	protected  String[][] tokenLines() {
+		if(GradingMode.getGraderRun())  {
+			return graderTokenLines();
+			
+		} else {
+			return studentTokenLines();
+		}
+	}
+	protected String[][] graderTokenLines() {
+		return studentTokenLines();
+	};
+	protected abstract String[][] studentTokenLines();
+	
 	protected String inputWithNoEndingSpace() {
 		String[][] aTokenLines = tokenLines();
 		stringBuilder.setLength(0);
@@ -343,7 +355,15 @@ public abstract class AbstractNumberScanningTest extends
 	}
 
 	protected String[] allTokens() {
-		String[][] aTokenLines = tokenLines();
+		String[][] aTokenLines= tokenLines();
+//		if(Assignment1Suite.getGraderRun())  {
+//			aTokenLines = graderTokenLines();
+//	
+//		} else {
+//			aTokenLines = tokenLines();
+//		}
+			
+		
 		tokens.clear();
 		for (String[] aLine : aTokenLines) {
 			for (String aToken : aLine) {

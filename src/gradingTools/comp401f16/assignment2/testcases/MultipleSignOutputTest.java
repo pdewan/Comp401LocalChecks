@@ -22,7 +22,7 @@ public class MultipleSignOutputTest extends MultipleTokensOutputTest {
 	protected String[][] tokenLines = {{"+" , "-"  ,"+"}, {"+" , "-"}};
 	
 	@Override
-	protected String[][] tokenLines() {
+	protected String[][] studentTokenLines() {
 		return tokenLines;
 	}
 	
