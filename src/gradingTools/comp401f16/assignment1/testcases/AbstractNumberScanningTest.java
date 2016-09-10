@@ -63,10 +63,10 @@ public abstract class AbstractNumberScanningTest extends
 	// !anError.contains ("No line found"); // we will penalize for no
 	// terminating . separately
 	// }
-	@Override
-	protected String getClassName() {
-		return Assignment1Suite.MAIN_CLASS_NAME;
-	}
+//	@Override
+//	protected String getClassName() {
+//		return Assignment1Suite.MAIN_CLASS_NAME;
+//	}
 
 	public void testOld() {
 		try {
