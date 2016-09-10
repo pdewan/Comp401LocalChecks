@@ -14,8 +14,9 @@ import org.junit.runners.Suite;
 	TerminatesWithPeriodLineSuite.class,
 	TerminatesWithStartingPeriodSuite.class,
 	IndexOfTestSuite.class,
-	ScanStringTest.class,
-	ScanningIteratorTest.class
+	ScanStringTestSuite.class,
+	ScanningIteratorTest.class,
+	IndexOfNotTestSuite.class
 })
 public class Assignment1Suite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment1";
