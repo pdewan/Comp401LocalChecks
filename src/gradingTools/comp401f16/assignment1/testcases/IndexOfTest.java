@@ -4,20 +4,34 @@ import org.junit.Test;
 
 import gradingTools.shared.testcases.MethodExecutionTest;
 
-
+/**
+ * Grader version- looks for non-space character, starts at 0
+ * Student version- looks for non-space character, starts at character
+ * 
+ * @author Dr. Dewan, Semion
+ *
+ */
 public class IndexOfTest extends MethodExecutionTest {
 	
+	@Override
+	public Object[] getGraderArgs() {
+		return new Object[] {"2 nice zebras", 'z', 0};
+	}
 	
 	@Override
-	public Object[] getArgs() {
+	protected Object getGraderExpectedReturnValue() {
+		return 7;
+	}
+	
+	@Override
+	public Object[] getStudentArgs() {
 		return new Object[] {"move 43 43 4 ", '3', 6} ;
 	}
 	
 	@Override
-	protected Object getExpectedReturnValue() {
+	protected Object getStudentExpectedReturnValue() {
 		return 6;
 	}
-
 	
 	protected Object[] getTargetObjects() {
 		return getTargetClasses();

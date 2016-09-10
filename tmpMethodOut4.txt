@@ -1,0 +1,124 @@
+Tokens:
+22
+44
+66
+
+Comparing actial return value: null with expected return value: null
+Calling  interactive method:scanString with args [22 44 66] and input 22 44 66
+.
+
+Tokens:
+22
+44
+66
+Sum: 132
+Product: 63888
+Comparing actial return value: null with expected return value: null
+### gradingTools.comp401f16.assignment1.testcases.SingleTokenOutputTest: 1.0
+Calling main in:main.Assignment1
+Providing input:0202 
+. 
+
+Expecting output:[(.*)0202(.*)]
+String?
+Tokens:
+0202
+
+Execution exception caused by invocation exception caused by:
+### gradingTools.comp401f16.assignment1.testcases.SingleTokenSumTest: 1.0
+Calling main in:main.Assignment1
+Providing input:0202 
+. 
+
+Expecting output:[(.*)202(.*)]
+String?
+Tokens:
+0202
+
+Execution exception caused by invocation exception caused by:
+### gradingTools.comp401f16.assignment1.testcases.SingleTokenProductTest: 1.0
+Calling main in:main.Assignment1
+Providing input:0202 
+. 
+
+Expecting output:[(.*)202(.*)]
+String?
+Tokens:
+0202
+
+Execution exception caused by invocation exception caused by:
+### SingleTokenSuite:Can process a single token: 1.0
+### gradingTools.comp401f16.assignment1.testcases.VariableSpaceOutputTest: 1.0
+Calling main in:main.Assignment1
+Providing input:22    44 66     
+11 33    55  1 
+. 
+
+Expecting output:[(.*)22(.*), (.*)44(.*), (.*)66(.*), (.*)11(.*), (.*)33(.*), (.*)55(.*), (.*)1(.*)]
+String?
+Tokens:
+22
+ 
+Execution exception caused by invocation exception caused by:
+Calling main in:main.Assignment1
+Providing input:22    44 66    
+11 33    55  1
+.
+
+Expecting output:[(.*)22(.*), (.*)44(.*), (.*)66(.*), (.*)11(.*), (.*)33(.*), (.*)55(.*), (.*)1(.*)]
+String?
+Tokens:
+22
+ 
+Execution exception caused by invocation exception caused by:
+### gradingTools.comp401f16.assignment1.testcases.VariableSpaceOutputTest: 0.0
+### gradingTools.comp401f16.assignment1.testcases.VariableSpaceSumTest: 1.0
+Calling main in:main.Assignment1
+Providing input:22    44 66     
+11 33    55  1 
+. 
+
+Expecting output:[(.*)132(.*), (.*)100(.*)]
+String?
+Tokens:
+22
+ 
+Execution exception caused by invocation exception caused by:
+Calling main in:main.Assignment1
+Providing input:22    44 66    
+11 33    55  1
+.
+
+Expecting output:[(.*)132(.*), (.*)100(.*)]
+String?
+Tokens:
+22
+ 
+Execution exception caused by invocation exception caused by:
+### gradingTools.comp401f16.assignment1.testcases.VariableSpaceSumTest: 0.0
+### gradingTools.comp401f16.assignment1.testcases.VariableSpaceProductTest: 1.0
+Calling main in:main.Assignment1
+Providing input:22    44 66     
+11 33    55  1 
+. 
+
+Expecting output:[(.*)132(.*), (.*)100(.*)]
+String?
+Tokens:
+22
+ 
+Execution exception caused by invocation exception caused by:
+Calling main in:main.Assignment1
+Providing input:22    44 66    
+11 33    55  1
+.
+
+Expecting output:[(.*)132(.*), (.*)100(.*)]
+String?
+Tokens:
+22
+ 
+Execution exception caused by invocation exception caused by:
+### gradingTools.comp401f16.assignment1.testcases.VariableSpaceProductTest: 0.0
+### VariableSpaceSuite:Handles Variable Spaces: 0.0
+### Assignment1Suite: 0.5555555555555556

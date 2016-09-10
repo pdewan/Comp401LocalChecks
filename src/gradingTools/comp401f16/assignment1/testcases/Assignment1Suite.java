@@ -13,7 +13,7 @@ import org.junit.runners.Suite;
 	VariableSpaceSuite.class,
 	TerminatesWithPeriodLineSuite.class,
 	TerminatesWithStartingPeriodSuite.class,
-	IndexOfTest.class,
+	IndexOfTestSuite.class,
 	ScanStringTest.class,
 	ScanningIteratorTest.class
 })
