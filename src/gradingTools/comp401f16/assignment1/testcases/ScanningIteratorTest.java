@@ -7,11 +7,12 @@ import java.util.List;
 
 import org.junit.Assert;
 
+import util.annotations.IsExtra;
 import grader.basics.execution.BasicProjectExecution;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.BasicProjectIntrospection;
 import gradingTools.shared.testcases.MethodExecutionTest;
-
+@IsExtra(true)
 public class ScanningIteratorTest extends ScanStringTest{
 	@Override
 	protected String[] getClassNames() {
