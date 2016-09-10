@@ -14,8 +14,8 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 
 public class ScanningIteratorTest extends ScanStringTest{
 	@Override
-	protected String getClassName() {
-		return MATCH_ANY + "ScanningIterator" + MATCH_ANY;
+	protected String[] getClassNames() {
+		return new String[] {MATCH_ANY + "ScanningIterator" + MATCH_ANY};
 	}
 //	protected double wrongInterfaceCredit() {
 //		return 0.1;
@@ -33,6 +33,11 @@ public class ScanningIteratorTest extends ScanStringTest{
 				" with expected return value: " + 
 						Arrays.toString((Object[]) getExpectedReturnValue()));
 	}
+	@Override
+	protected Object getExpectedReturnValue() {
+		return tokenLines()[getLineIndex()];
+	}
+
 	
 	protected boolean doTest() throws Throwable {
 		
@@ -51,7 +56,6 @@ public class ScanningIteratorTest extends ScanStringTest{
 		}
 		
 		setReturnValue(aTokens.toArray());
-		expectedReturnValue = tokenLines()[0];
 		processReturnValue();
 		return true;
 		

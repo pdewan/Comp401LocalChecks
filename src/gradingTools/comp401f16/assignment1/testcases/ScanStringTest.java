@@ -23,9 +23,19 @@ public class ScanStringTest extends MultipleTokensOutputTest {
 		String aScannedString = anInputLines[0];
 		return new Object[] {aScannedString} ;
 	}
+//	@Override
+//	protected String getClassName() {
+//		return "main.Assignment1";
+//	}
 	@Override
-	protected String getClassName() {
-		return "main.Assignment1";
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment1Suite.MAIN_CLASS_NAME, 
+				toRegex("Assignment"),
+				"ScanningIterator",
+				toRegex("ScanningIterator"),
+				"ScannerBean",
+				toRegex("ScannerBean")};
 	}
 	protected Object getTargetObject() {
 		return getTargetClass();
