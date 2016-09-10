@@ -35,10 +35,11 @@ public class ScanStringTest extends MultipleTokensOutputTest {
 				"ScanningIterator",
 				toRegex("ScanningIterator"),
 				"ScannerBean",
-				toRegex("ScannerBean")};
+				toRegex("Bean")};
 	}
-	protected Object getTargetObject() {
-		return getTargetClass();
+	@Override
+	protected Object[] getTargetObjects() {
+		return getTargetClasses();
 	}
 	protected String getMethodName() {
 		return "scanString";
