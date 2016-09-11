@@ -7,13 +7,14 @@ import util.annotations.IsExtra;
 
 /**
  * Grader version- looks for first non-space character
+ * Student version- looks for first non-space character
  * 
  * @author Semion
  *
  */
 
 @IsExtra(true)
-public class IndexOfNotSpaceFirst extends MethodExecutionTest {
+public class IndexOfNotSpaceFirst extends IndexOfNotTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
@@ -25,20 +26,13 @@ public class IndexOfNotSpaceFirst extends MethodExecutionTest {
 		return 8;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"   One two go", ' ', 0} ;
 	}
-	protected String getMethodName() {
-		return "indexOfNot";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return 3;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
 }

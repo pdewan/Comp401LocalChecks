@@ -6,18 +6,19 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 import util.annotations.IsExtra;
 
 /**
- * Grader version- looks for non-space character in a string that is all spaces
+ * Grader version- looks for non-space character but does not find one after startIndex
+ * Student version- looks for non-space character but does not find one
  * 
  * @author Semion
  *
  */
 
 @IsExtra(true)
-public class IndexOfNotSpaceAllSpace extends MethodExecutionTest {
+public class IndexOfNotSpaceAllSpace extends IndexOfNotTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
-		return new Object[]{"           ", ' ', 0};
+		return new Object[]{"Start:           ", ' ', 6};
 	}
 	
 	@Override
@@ -25,20 +26,13 @@ public class IndexOfNotSpaceAllSpace extends MethodExecutionTest {
 		return -1;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"       ", ' ', 0} ;
 	}
-	protected String getMethodName() {
-		return "indexOfNot";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return -1;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
 }

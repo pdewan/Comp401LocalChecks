@@ -5,12 +5,13 @@ import org.junit.Test;
 import gradingTools.shared.testcases.MethodExecutionTest;
 
 /**
- * Grader version- looks for character not in string
+ * Grader version- looks for character that is not in the rest of the string
+ * Student version- looks for character that is not in the rest of the string
  * 
  * @author Semion
  *
  */
-public class IndexOfTestCharacterNotFound extends MethodExecutionTest {
+public class IndexOfTestCharacterNotFound extends IndexOfTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
@@ -22,20 +23,14 @@ public class IndexOfTestCharacterNotFound extends MethodExecutionTest {
 		return -1;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"One two go", 'n', 4} ;
 	}
-	protected String getMethodName() {
-		return "indexOf";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return -1;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
+	
 }

@@ -5,12 +5,13 @@ import org.junit.Test;
 import gradingTools.shared.testcases.MethodExecutionTest;
 
 /**
- * Grader version- Looks for non-space character that's at end of string
+ * Grader version- looks for non-space character that's at end of string
+ * Student version- looks for non-space character that's at end of string
  * 
  * @author Semion
  *
  */
-public class IndexOfTestNonSpaceAtEnd extends MethodExecutionTest {
+public class IndexOfTestNonSpaceAtEnd extends IndexOfTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
@@ -22,20 +23,14 @@ public class IndexOfTestNonSpaceAtEnd extends MethodExecutionTest {
 		return 9;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"Look, five: 5", '5', 0} ;
 	}
-	protected String getMethodName() {
-		return "indexOf";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return 12;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
+	
 }
