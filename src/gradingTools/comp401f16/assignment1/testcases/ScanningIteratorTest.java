@@ -8,12 +8,15 @@ import java.util.List;
 import org.junit.Assert;
 
 import util.annotations.IsExtra;
+import util.annotations.MaxValue;
 import grader.basics.execution.BasicProjectExecution;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.BasicProjectIntrospection;
 import gradingTools.shared.testcases.MethodExecutionTest;
 @IsExtra(true)
+@MaxValue(25)
 public class ScanningIteratorTest extends ScanStringTest{
+	Iterator<String> iterator;
 	@Override
 	protected String[] getClassNames() {
 		return new String[] {MATCH_ANY + "ScanningIterator" + MATCH_ANY};
@@ -39,7 +42,9 @@ public class ScanningIteratorTest extends ScanStringTest{
 		return tokenLines()[getLineIndex()];
 	}
 
-	
+	protected void doExtraStep() {
+		
+	}
 	protected boolean doTest() throws Throwable {
 		
 		Class aClass = getTargetClass();
@@ -49,11 +54,12 @@ public class ScanningIteratorTest extends ScanStringTest{
 		if (!Iterator.class.isAssignableFrom(aClass)) {
 			assertWrongInterface(aClass, Iterator.class);
 		}
-		Iterator<String> anIterator = (Iterator)
+		iterator = (Iterator)
 				BasicProjectIntrospection.createInstance(Iterator.class, getArgs());
 		List<String> aTokens = new ArrayList();
-		while (anIterator.hasNext()) {
-			aTokens.add(anIterator.next());
+		while (iterator.hasNext()) {
+			doExtraStep();
+			aTokens.add(iterator.next());
 		}
 		
 		setReturnValue(aTokens.toArray());
