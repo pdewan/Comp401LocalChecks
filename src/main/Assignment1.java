@@ -3,101 +3,175 @@ package main;
 import java.util.Scanner;
 
 public class Assignment1 {
-
-	static Scanner scanner;
 	
-	public static void main(String[] args){
-		scanner = new Scanner(System.in);
-		
-		boolean isContinuing = true;
-		
-		while(isContinuing){
-			
-			System.out.println("String?");
-			
-			isContinuing = processInput();
-		}
-		
+	public static void main(String[] args) {
+		processInput();
 		System.out.println("Goodbye!");
-		
 	}
 	
-	
-	
-	public static int indexOf(String s, char ch, int startIndex){
-		
-		for(int i = startIndex+1; i < s.length(); i++){
-			
-			if(s.charAt(i) == ' '){
-				return i;
-			}
-			
-			
+	/**
+	 * 
+	 */
+	private static void processInput(){
+
+		Scanner in = new Scanner(System.in);
+		System.out.println("String?");
+		String line = in.nextLine();
+		while (line.charAt(0) != '.'){
+			scanString(line);
+			line = in.nextLine();
 		}
-		
-		return -1;
-		
 	}
 	
-	
-	public static void scanString(String s){
+	/**
+	 * Produces output from each string
+	 */
+	private static void scanString(String s){
 		
-		int startIndex = 0;
-		int endIndex = 0;
-		int currNum = 0;
+		int product = 0;
+		boolean firstToken = true; // used for adjusting product starting value
 		int sum = 0;
-		int product = 1;
-		String toBeConverted = "";
-		boolean dontBreak = true;
 		
+		// Gather tokens
 		System.out.println("Tokens:");
+		int scanPosition = 0;
+		while (scanPosition < s.length()){
 		
-		
-		while(dontBreak){
-			
-			endIndex = indexOf(s, ' ', startIndex);
-			
-			if(endIndex == -1){
-				endIndex = s.length();
+			// Get the next token
+			int tokenStart = indexOfNot(s, ' ', scanPosition);
+			if (tokenStart == -1){
+				
+				// Rest of string was spaces
+				break;
 			}
 			
-			toBeConverted = s.substring(startIndex, endIndex);
-			
-			System.out.println(toBeConverted);
-			
-			currNum = Integer.parseInt(toBeConverted);
-			
-			sum = sum + currNum;
-			product = product * currNum;
-			
-			startIndex = endIndex + 1;
-					
-			if(endIndex == s.length()){
-				dontBreak  = false;
+			int tokenEnd = indexOf(s, ' ', tokenStart);
+			if (tokenEnd == -1){
+				
+				// Rest of string is digits
+				tokenEnd = s.length();
 			}
 			
-		}
+			String token = s.substring(tokenStart, tokenEnd);
+			
+			// Check if invalid
+			boolean valid = true;
+			for (int i = 0; i < token.length(); ++i){
+				if (!Character.isDigit(token.charAt(i))){
+					valid = false;
+					break;
+				}
+			}
+			if (!valid){
+				System.out.println("Invalid token: " + token);
+				scanPosition = tokenEnd;
+				continue;
+			}
+			
+			System.out.println(token);
+			
+			// Update counts. Product needs to be set to 1 if this is the first token
+			// so that things can be multiplied into it.
+			if (firstToken){
+				product = 1;
+				firstToken = false;
+			}
+			product *= Integer.parseInt(token);
+			sum += Integer.parseInt(token);
+			
+			// Don't forget to advance scanner position.
+			scanPosition = tokenEnd;
+		}//end gathering tokens
+		
+//		// To do it with error recovery, I would do the following (comment out the
+//		// previous while statement and uncomment this one):
+//		while (scanPosition < s.length()){
+//			
+//			// skip spaces
+//			if (s.charAt(scanPosition) == ' '){
+//				++scanPosition;
+//				continue;	// This goes to the start of the loop
+//			}
+//			
+//			// Print legal tokens
+//			else if (Character.isDigit(s.charAt(scanPosition))){
+//				
+//				int tokenStart = scanPosition;
+//				
+//				// Go to end of valid token
+//				while (scanPosition < s.length()
+//						&& Character.isDigit(s.charAt(scanPosition))){
+//					++scanPosition;
+//				}
+//				
+//				// Print token as before
+//				String token = s.substring(tokenStart, scanPosition);
+//				System.out.println(token);
+//				
+//				// Update counts. Product needs to be set to 1 if this is the first token
+//				// so that things can be multiplied into it.
+//				if (firstToken){
+//					product = 1;
+//					firstToken = false;
+//				}
+//				product *= Integer.parseInt(token);
+//				sum += Integer.parseInt(token);
+//			
+//				continue;
+//			}//end valid token handling
+//			
+//			// Print invalid tokens
+//			else {
+//				int tokenStart = scanPosition;
+//				
+//				// Go to end of invalid token
+//				while (scanPosition < s.length()
+//						&& !Character.isDigit(s.charAt(scanPosition))
+//						&& !(s.charAt(scanPosition) == ' ')){
+//					++scanPosition;
+//				}
+//				
+//				String token = s.substring(tokenStart, scanPosition);
+//				System.out.println("Invalid token: " + token);
+//				
+//				continue;
+//			}
+//		}//end scanning with error recovery
 		
 		System.out.println("Sum: " + sum);
 		System.out.println("Product: " + product);
-		
 	}
 	
-	
-	public static boolean processInput(){
-		
-		
-		String s = scanner.nextLine();
-		
-		if(s.charAt(0) == '.'){
-			return false;
+	/**
+	 * Returns index of first character equal to ch
+	 * @param s
+	 * @param ch
+	 * @param fromIndex
+	 * @return
+	 */
+	private static int indexOf(String s, char ch, int fromIndex){
+		for (int i=fromIndex; i < s.length(); ++i){
+			if (s.charAt(i)==ch){
+				return i;
+			}
 		}
-		
-		else{
-			scanString(s);
-		}
-		
-		return true;
+		return -1;
 	}
 	
+	/**
+	 * Returns index of first character not equal to ch
+	 * 
+	 * @param s
+	 * @param ch
+	 * @param fromIndex
+	 * @return
+	 */
+	private static int indexOfNot(String s, char ch, int fromIndex){
+		for (int i=fromIndex; i < s.length(); ++i){
+			if (s.charAt(i)!=ch){
+				return i;
+			}
+		}
+		return -1;
+	}
 }

@@ -5,6 +5,14 @@ import util.annotations.Explanation;
 @Explanation("Single Token")
 public class SingleTokenOutputTest extends AbstractNumberScanningTest{
 	protected String[][] tokenLines = {{"0202"}};
+	protected String[][] graderTokenLines = {{"0010010"}};
+	protected String[] getClassNames(){
+		return new String[] {Assignment1Suite.MAIN_CLASS_NAME, toRegex("Assignment")};
+	}
+	@Override
+	protected String[][] graderTokenLines() {
+		return graderTokenLines;
+	}
 	@Override
 	protected String[][] studentTokenLines() {
 		// TODO Auto-generated method stub

@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import util.annotations.Explanation;
+import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 
 @RunWith(Suite.class)
@@ -15,6 +16,7 @@ import util.annotations.MaxValue;
    
 })
 @MaxValue(5)
+@IsExtra(true)
 @Explanation("Handles Variable Spaces")
 public class VariableSpaceSuite {
 

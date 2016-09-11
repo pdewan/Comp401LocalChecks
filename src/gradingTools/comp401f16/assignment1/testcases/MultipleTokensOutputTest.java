@@ -13,6 +13,18 @@ import grader.basics.project.Project;
 public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
 	protected String[][] tokenLines = {{"22", "44", "66"}, {"11" , "33", "55", "1"}};
 	
+	// For grading: First line should have sum 25 and product 0
+	// Second line should have sum 106 and product 400
+	protected String[][] graderTokenLines = {{"10", "11", "0", "4"},{"2", "100", "1", "1", "2"}};
+	protected String[] getClassNames(){
+		return new String[] {Assignment1Suite.MAIN_CLASS_NAME, toRegex("Assignment")};
+	}
+	@Override
+	protected String[][] graderTokenLines() {
+		
+		return graderTokenLines;
+	}
+	
 	@Override
 	protected String[][] studentTokenLines() {
 		// TODO Auto-generated method stub
