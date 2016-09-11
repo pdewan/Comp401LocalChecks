@@ -5,12 +5,13 @@ import org.junit.Test;
 import gradingTools.shared.testcases.MethodExecutionTest;
 
 /**
- * Grader version- Looks for a space in same index that there is one
+ * Grader version- looks for a space in same index that there is one
+ * Student version- looks for a space in same index that there is one
  * 
  * @author Semion
  *
  */
-public class IndexOfTestSpaceSameIndex extends MethodExecutionTest {
+public class IndexOfTestSpaceSameIndex extends IndexOfTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
@@ -22,20 +23,13 @@ public class IndexOfTestSpaceSameIndex extends MethodExecutionTest {
 		return 5;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"Start in a space", ' ', 8} ;
 	}
-	protected String getMethodName() {
-		return "indexOf";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return 8;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
 }

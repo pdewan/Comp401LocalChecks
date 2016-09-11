@@ -7,13 +7,14 @@ import util.annotations.IsExtra;
 
 /**
  * Grader version- looks for non-'l' character, but starts at such a character
+ * Student version- looks for non-'q' character, but starts at such a character
  * 
  * @author Semion
  *
  */
 
 @IsExtra(true)
-public class IndexOfNotNonSpaceStartAt extends MethodExecutionTest {
+public class IndexOfNotNonSpaceStartAt extends IndexOfNotTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
@@ -25,20 +26,13 @@ public class IndexOfNotNonSpaceStartAt extends MethodExecutionTest {
 		return 8;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"That's not a q", 'q', 3} ;
 	}
-	protected String getMethodName() {
-		return "indexOfNot";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return 3;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
 }

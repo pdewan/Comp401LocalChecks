@@ -5,12 +5,13 @@ import org.junit.Test;
 import gradingTools.shared.testcases.MethodExecutionTest;
 
 /**
- * Grader version- Looks for first space in string
+ * Grader version- looks for first space in string
+ * Student version- looks for first space in string
  * 
  * @author Semion
  *
  */
-public class IndexOfTestFirstSpace extends MethodExecutionTest {
+public class IndexOfTestFirstSpace extends IndexOfTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
@@ -22,20 +23,14 @@ public class IndexOfTestFirstSpace extends MethodExecutionTest {
 		return 3;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"First space at 5", ' ', 0} ;
 	}
-	protected String getMethodName() {
-		return "indexOf";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return 5;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
+	
 }

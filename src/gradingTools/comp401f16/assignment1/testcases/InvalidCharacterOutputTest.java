@@ -18,7 +18,7 @@ import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 @IsExtra(true)
 public class InvalidCharacterOutputTest extends MultipleTokensOutputTest {
 //	protected String[][] tokenLines = {{"2", "20"}, {"40" , "50"}};
-	protected String[][] postTokenStrings = {{"two", "!@", ",;"}, {"^&", "!@@", "\"", " the end"}};
+	protected String[][] postTokenStrings = {{"two", "!@", ",;", "x."}, {"^&", "!@@", "\"", " the end", "??"}};
 
 
 //    String inputWithNoEndingSpace = "10 ten 20\n40 forty 50!\n.";

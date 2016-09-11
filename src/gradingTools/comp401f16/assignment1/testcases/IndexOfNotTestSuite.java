@@ -16,6 +16,7 @@ import util.annotations.MaxValue;
 	IndexOfNotSpaceAllSpace.class,
 	IndexOfNotSpaceFirst.class,
 	IndexOfNotSpaceSecond.class,
+	IndexOfNotTest.class,
    
 })
 @MaxValue(5)

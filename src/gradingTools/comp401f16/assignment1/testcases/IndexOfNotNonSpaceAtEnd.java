@@ -7,13 +7,14 @@ import util.annotations.IsExtra;
 
 /**
  * Grader version- looks for non-'1' character that it should find at the end
+ * Student version- looks for non-'z' character that it should find at the end
  * 
  * @author Semion
  *
  */
 
 @IsExtra(true)
-public class IndexOfNotNonSpaceAtEnd extends MethodExecutionTest {
+public class IndexOfNotNonSpaceAtEnd extends IndexOfNotTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
@@ -25,20 +26,13 @@ public class IndexOfNotNonSpaceAtEnd extends MethodExecutionTest {
 		return 12;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"zzzzzzzzzzo", 'z', 0} ;
 	}
-	protected String getMethodName() {
-		return "indexOfNot";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return 10;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
 }

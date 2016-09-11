@@ -15,7 +15,7 @@ import org.junit.runners.Suite;
 	TerminatesWithStartingPeriodSuite.class,
 	IndexOfTestSuite.class,
 	ScanStringTestSuite.class,
-	ScanningIteratorTest.class,
+	ScanningIteratorSuite.class,
 	IndexOfNotTestSuite.class
 })
 public class Assignment1Suite {

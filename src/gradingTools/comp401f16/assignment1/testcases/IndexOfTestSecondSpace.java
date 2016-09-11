@@ -6,11 +6,12 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 
 /**
  * Grader version- Looks for second space in a word
+ * Student version- Looks for second space in a word
  * 
  * @author Semion
  *
  */
-public class IndexOfTestSecondSpace extends MethodExecutionTest {
+public class IndexOfTestSecondSpace extends IndexOfTest {
 	
 	@Override
 	public Object[] getGraderArgs() {
@@ -22,20 +23,13 @@ public class IndexOfTestSecondSpace extends MethodExecutionTest {
 		return 8;
 	}
 	
-	protected Object[] getTargetObjects() {
-		return getTargetClasses();
-	}
-
 	@Override
-	protected String[] getClassNames(){
-		return new String[] {"ScanningIterator", "main.Assignment1"};
+	public Object[] getStudentArgs() {
+		return new Object[] {"After that one", ' ', 6} ;
 	}
-	protected String getMethodName() {
-		return "indexOf";
+	
+	@Override
+	protected Object getStudentExpectedReturnValue() {
+		return 10;
 	}
-	protected boolean processInteractiveMethodExecutionResults() {
-		return true;
-	}
-
-
 }
