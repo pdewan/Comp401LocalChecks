@@ -215,10 +215,22 @@ public abstract class AbstractNumberScanningTest extends
 	// "55"}};
 	protected String postTokenString(String[][] aTokenLines, String[] aLine,
 			int aLineNumber, int aTokenNumber) {
+		if (GradingMode.getGraderRun())
+			return postTokenGraderString(aTokenLines, aLine, aLineNumber, aTokenNumber);
+		else
+			return postTokenStudentString(null, aLine, aLineNumber, aTokenNumber);
+	}
+	
+	protected String postTokenStudentString(String[][] aTokenLines, String[] aLine,
+			int aLineNumber, int aTokenNumber) {
 		if (aTokenNumber < aLine.length - 1) {
 			return " ";
 		}
 		return "";
+	}
+	protected String postTokenGraderString(String[][] aTokenLines, String[] aLine,
+			int aLineNumber, int aTokenNumber) {
+		return postTokenStudentString(aTokenLines, aLine, aLineNumber, aTokenNumber);
 	}
 
 	protected  String[][] tokenLines() {

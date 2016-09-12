@@ -27,9 +27,9 @@ public class InvalidCharacterOutputTest extends MultipleTokensOutputTest {
 
 //    String[] expectedOutputs = {"(.*)30(.*)", "(.*)200(.*)", "(.*)90(.*)", "(.*)2000(.*)"};
 	@Override
-	protected String postTokenString(String[][] aTokenLines, String[] aLine, int aLineNumber, int aTokenNumber) {
+	protected String postTokenStudentString(String[][] aTokenLines, String[] aLine, int aLineNumber, int aTokenNumber) {
 
-		return super.postTokenString(aTokenLines, aLine, aLineNumber, aTokenNumber) + postTokenStrings[aLineNumber][aTokenNumber];
+		return super.postTokenStudentString(aTokenLines, aLine, aLineNumber, aTokenNumber) + postTokenStrings[aLineNumber][aTokenNumber];
 	}
 	
     
