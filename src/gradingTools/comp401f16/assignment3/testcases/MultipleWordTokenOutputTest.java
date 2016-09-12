@@ -2,6 +2,7 @@ package gradingTools.comp401f16.assignment3.testcases;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import util.annotations.Explanation;
 import util.annotations.MaxValue;
@@ -35,7 +36,13 @@ public class MultipleWordTokenOutputTest extends MultipleWordOutputTest {
 		return new String[] {aToken.toLowerCase(), "@"};
 	}
     
-
+	@Override
+	protected boolean doTest() throws Throwable {
+		 testBean();
+		 return true;
+		
+	
+	}
 
 }
 
