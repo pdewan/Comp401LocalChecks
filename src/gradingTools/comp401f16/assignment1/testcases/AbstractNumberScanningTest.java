@@ -353,15 +353,22 @@ public abstract class AbstractNumberScanningTest extends
 	//
 	// }
 	// protected abstract String[] expectedOutputs() ;
-	protected String toOutputString(String aToken) {
-		return aToken;
-	}
+//	protected String toOutputString(String aToken) {
+//		return aToken;
+//	}
+//	protected String[] postTokenOutputLines(String aToken) {
+//		return emptyStringArray;
+//	}
 
 	protected String[] expectedTokenOutputs() {
 		String[] anAllTokens = allTokens();
 		tokens.clear();
 		for (int aTokenNumber = 0; aTokenNumber < anAllTokens.length; aTokenNumber++) {
 			tokens.add(toRegex(toOutputString(anAllTokens[aTokenNumber])));
+			String[] aPostLines = postTokenOutputLines(anAllTokens[aTokenNumber]);
+			for (String aPostLine:aPostLines) {
+				tokens.add(toRegex(aPostLine));
+			}
 		}
 		return tokens.toArray(emptyStringArray);
 	}
