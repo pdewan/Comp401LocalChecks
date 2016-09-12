@@ -18,7 +18,7 @@ import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 @IsExtra(true)
 public class InvalidCharacterOutputTest extends MultipleTokensOutputTest {
 //	protected String[][] tokenLines = {{"2", "20"}, {"40" , "50"}};
-	protected String[][] postTokenStudentAndGraderStrings = {{" two", " !@", " ,;", " x."}, {" ^&", " !@@", " \"", " the end", " ??"}};
+	protected String[][] errorStudentAndGraderStrings = {{" two", " !@", " ,;", " x."}, {" ^&", " !@@", " \"", " the end", " ??"}};
 
 
 //    String inputWithNoEndingSpace = "10 ten 20\n40 forty 50!\n.";
@@ -28,8 +28,11 @@ public class InvalidCharacterOutputTest extends MultipleTokensOutputTest {
 //    String[] expectedOutputs = {"(.*)30(.*)", "(.*)200(.*)", "(.*)90(.*)", "(.*)2000(.*)"};
 	@Override
 	protected String postTokenStudentString(String[][] aTokenLines, String[] aLine, int aLineNumber, int aTokenNumber) {
-
-		return super.postTokenStudentString(aTokenLines, aLine, aLineNumber, aTokenNumber) + postTokenStudentAndGraderStrings[aLineNumber][aTokenNumber];
+		String aSuperPost = super.postTokenStudentString(aTokenLines, aLine, aLineNumber, aTokenNumber) ;
+		return 
+//				aSuperPost  + 
+				errorStudentAndGraderStrings[aLineNumber][aTokenNumber] + 
+				aSuperPost;
 	}
 	
     
