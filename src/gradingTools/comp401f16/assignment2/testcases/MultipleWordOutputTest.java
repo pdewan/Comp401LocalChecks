@@ -23,10 +23,10 @@ public class MultipleWordOutputTest extends MultipleTokensOutputTest {
 	protected String[][] studentTokenLines() {
 		return tokenLines;
 	}
-	
-	protected String getClassName() {
-		return Assignment2Suite.MAIN_CLASS_NAME;
+	protected String[] getClassNames(){
+		return new String[] {Assignment2Suite.MAIN_CLASS_NAME, "Assignment"};
 	}
+	
 	protected String toOutputString (String aToken) {
 		return WORD_PREFIX + aToken;
 	}
