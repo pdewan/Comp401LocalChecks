@@ -17,7 +17,7 @@ public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
 	// Second line should have sum 106 and product 400
 	protected String[][] graderTokenLines = {{"10", "11", "0", "4"},{"2", "100", "1", "1", "2"}};
 	protected String[] getClassNames(){
-		return new String[] {Assignment1Suite.MAIN_CLASS_NAME, toRegex("Assignment")};
+		return new String[] {Assignment1Suite.MAIN_CLASS_NAME, "Assignment"};
 	}
 	@Override
 	protected String[][] graderTokenLines() {

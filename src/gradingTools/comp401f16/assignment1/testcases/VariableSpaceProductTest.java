@@ -14,7 +14,7 @@ import grader.basics.project.NotGradableException;
 import grader.basics.project.Project;
 import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 
-@Explanation("Variable Space Sum")
+@Explanation("Variable Space Product")
 @IsExtra(true)
 public class VariableSpaceProductTest extends VariableSpaceOutputTest {
 	

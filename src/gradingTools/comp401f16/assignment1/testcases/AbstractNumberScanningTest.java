@@ -215,10 +215,22 @@ public abstract class AbstractNumberScanningTest extends
 	// "55"}};
 	protected String postTokenString(String[][] aTokenLines, String[] aLine,
 			int aLineNumber, int aTokenNumber) {
+		if (GradingMode.getGraderRun())
+			return postTokenGraderString(aTokenLines, aLine, aLineNumber, aTokenNumber);
+		else
+			return postTokenStudentString(null, aLine, aLineNumber, aTokenNumber);
+	}
+	
+	protected String postTokenStudentString(String[][] aTokenLines, String[] aLine,
+			int aLineNumber, int aTokenNumber) {
 		if (aTokenNumber < aLine.length - 1) {
 			return " ";
 		}
 		return "";
+	}
+	protected String postTokenGraderString(String[][] aTokenLines, String[] aLine,
+			int aLineNumber, int aTokenNumber) {
+		return postTokenStudentString(aTokenLines, aLine, aLineNumber, aTokenNumber);
 	}
 
 	protected  String[][] tokenLines() {
@@ -341,15 +353,22 @@ public abstract class AbstractNumberScanningTest extends
 	//
 	// }
 	// protected abstract String[] expectedOutputs() ;
-	protected String toOutputString(String aToken) {
-		return aToken;
-	}
+//	protected String toOutputString(String aToken) {
+//		return aToken;
+//	}
+//	protected String[] postTokenOutputLines(String aToken) {
+//		return emptyStringArray;
+//	}
 
 	protected String[] expectedTokenOutputs() {
 		String[] anAllTokens = allTokens();
 		tokens.clear();
 		for (int aTokenNumber = 0; aTokenNumber < anAllTokens.length; aTokenNumber++) {
 			tokens.add(toRegex(toOutputString(anAllTokens[aTokenNumber])));
+			String[] aPostLines = postTokenOutputLines(anAllTokens[aTokenNumber]);
+			for (String aPostLine:aPostLines) {
+				tokens.add(toRegex(aPostLine));
+			}
 		}
 		return tokens.toArray(emptyStringArray);
 	}
