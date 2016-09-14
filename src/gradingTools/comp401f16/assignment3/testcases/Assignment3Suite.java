@@ -7,7 +7,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	MultipleWordTokenOutputTest.class	   
+	MultipleWordTokenOutputTest.class,
+	MultipleNumberTokenOutputTest.class,
+	MultipleQuoteTokenOutputTest.class,
+	MultipleSignTokenOutputTest.class,
+	MultipleGroupingTokenOutputTest.class,
+	WordBeanTest.class,
+	NumberBeanTest.class,
+	QuoteBeanTest.class,
+	StartBeanTest.class,
+	EndBeanTest.class,
+	PlusBeanTest.class,
+	MinusBeanTest.class
 })
 public class Assignment3Suite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment3";

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import util.annotations.Explanation;
+import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 import grader.basics.execution.NotRunnableException;
 import grader.basics.junit.NotAutomatableException;
@@ -14,23 +15,20 @@ import grader.basics.project.Project;
 import gradingTools.comp401f16.assignment1.testcases.AbstractNumberScanningTest;
 import gradingTools.comp401f16.assignment1.testcases.Assignment1Suite;
 import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
+import gradingTools.comp401f16.assignment2.testcases.MultipleGroupingOutputTest;
+import gradingTools.comp401f16.assignment2.testcases.MultipleQuoteOutputTest;
+import gradingTools.comp401f16.assignment2.testcases.MultipleSignOutputTest;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
-@Explanation("Multiple Words Output")
+@Explanation("Multiple Grouping Symbols Output")
 @MaxValue(10)
-public class MultipleWordTokenOutputTest extends MultipleWordOutputTest {
+public class MultipleGroupingTokenOutputTest extends MultipleGroupingOutputTest {
 	
-//	@Override
-//	protected String[][] studentTokenLines() {
-//		return tokenLines;
-//	}
-//	
 	@Override
 	protected String toOutputString (String aToken) {
-		return aToken;
+		return putEscape(aToken);
 	}
-	
 	protected String[] postTokenOutputLines(String aToken) {
-		return new String[] {aToken.toLowerCase(), "@"};
+		return new String[] {"@"};
 	}
     
 //	@Override

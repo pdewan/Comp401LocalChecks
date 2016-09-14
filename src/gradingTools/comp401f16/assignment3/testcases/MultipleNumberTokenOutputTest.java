@@ -14,23 +14,20 @@ import grader.basics.project.Project;
 import gradingTools.comp401f16.assignment1.testcases.AbstractNumberScanningTest;
 import gradingTools.comp401f16.assignment1.testcases.Assignment1Suite;
 import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
+import gradingTools.comp401f16.assignment2.testcases.MultipleNumberOutputTest;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
-@Explanation("Multiple Words Output")
+@Explanation("Multiple Numbers Output")
 @MaxValue(10)
-public class MultipleWordTokenOutputTest extends MultipleWordOutputTest {
+public class MultipleNumberTokenOutputTest extends MultipleNumberOutputTest {
 	
-//	@Override
-//	protected String[][] studentTokenLines() {
-//		return tokenLines;
-//	}
-//	
+	
 	@Override
 	protected String toOutputString (String aToken) {
 		return aToken;
 	}
 	
 	protected String[] postTokenOutputLines(String aToken) {
-		return new String[] {aToken.toLowerCase(), "@"};
+		return new String[] {"" + Integer.parseInt(aToken), "@"};
 	}
     
 //	@Override

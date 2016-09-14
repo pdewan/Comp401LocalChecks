@@ -38,8 +38,11 @@ public class MultipleQuoteOutputTest extends MultipleTokensOutputTest {
 	protected String getClassName() {
 		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
+	protected String withoutQuotes(String aToken) {
+		return aToken.substring(1, aToken.length() -1);
+	}
 	protected String toOutputString (String aToken) {
-		return QUOTE_PREFIX + aToken.substring(1, aToken.length() -1);
+		return QUOTE_PREFIX + withoutQuotes(aToken);
 	}
     
 

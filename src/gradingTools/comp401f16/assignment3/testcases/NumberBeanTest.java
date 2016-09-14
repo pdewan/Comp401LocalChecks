@@ -10,13 +10,13 @@ import java.util.Map;
 
 import util.annotations.MaxValue;
 @MaxValue(10)
-public class WordBeanTest extends BeanExecutionTest{
+public class NumberBeanTest extends BeanExecutionTest{
 	public static final String INPUT = "Input";
 	public static final String VALUE = "Value";
-	protected static final String STUDENT_EXAMPLE = "ARthUr";
+	protected static final String STUDENT_EXAMPLE = "0045";
 	@Override
 	protected String[] getClassNames(){
-		return new String[] {"Word"};
+		return new String[] {"Number"};
 	}
 	// not checking the first get, need a framework to do so
 	@Override
@@ -34,7 +34,7 @@ public class WordBeanTest extends BeanExecutionTest{
 		return anInput;
 	}
 	protected Object[] getExpectedStudentOutputValues() {
-		return new Object[] {STUDENT_EXAMPLE.toLowerCase()};
+		return new Object[] {Integer.parseInt(STUDENT_EXAMPLE)};
 	}
 //	@Override
 //	protected boolean doTest() throws Throwable {

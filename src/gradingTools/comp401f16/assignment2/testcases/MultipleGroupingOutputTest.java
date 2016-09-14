@@ -14,13 +14,12 @@ import grader.basics.project.Project;
 import gradingTools.comp401f16.assignment1.testcases.AbstractNumberScanningTest;
 import gradingTools.comp401f16.assignment1.testcases.Assignment1Suite;
 import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
-@Explanation("Multiple Signs Output")
-@IsExtra(true)
+@Explanation("Multiple Delmiters Output")
 @MaxValue(5)
-public class MultipleSignOutputTest extends MultipleTokensOutputTest {
-	public static final String SIGN_PREFIX = toRegex("ign");
-	protected String[][] tokenLines = {{"+" , "-"  ,"+"}, {"+" , "-"}};
-	protected String[][] graderTokenLines = {{"-", "+", "-", "-"},{"-", "-", "+", "+", "+"}};
+public class MultipleGroupingOutputTest extends MultipleTokensOutputTest {
+	public static final String DELIM_PREFIX = toRegex("elim");
+	protected String[][] tokenLines = {{"{" , "}"  ,"{"}, {"{" , "}"}};
+	protected String[][] graderTokenLines = {{"{", "}", "{", "}"},{"{", "{", "}", "}", "}"}};
 	
 	@Override
 	protected String[][] studentTokenLines() {
@@ -39,7 +38,7 @@ public class MultipleSignOutputTest extends MultipleTokensOutputTest {
 		return "\\Q" + aToken + "\\E";
 	}
 	protected String toOutputString (String aToken) {
-		return SIGN_PREFIX + putEscape(aToken);
+		return DELIM_PREFIX + putEscape(aToken);
 	}
 	
     

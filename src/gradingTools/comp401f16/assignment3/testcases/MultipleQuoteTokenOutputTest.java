@@ -14,23 +14,18 @@ import grader.basics.project.Project;
 import gradingTools.comp401f16.assignment1.testcases.AbstractNumberScanningTest;
 import gradingTools.comp401f16.assignment1.testcases.Assignment1Suite;
 import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
+import gradingTools.comp401f16.assignment2.testcases.MultipleQuoteOutputTest;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
-@Explanation("Multiple Words Output")
+@Explanation("Multiple Quotes Output")
 @MaxValue(10)
-public class MultipleWordTokenOutputTest extends MultipleWordOutputTest {
+public class MultipleQuoteTokenOutputTest extends MultipleQuoteOutputTest {
 	
-//	@Override
-//	protected String[][] studentTokenLines() {
-//		return tokenLines;
-//	}
-//	
 	@Override
 	protected String toOutputString (String aToken) {
-		return aToken;
+		return withoutQuotes(aToken);
 	}
-	
 	protected String[] postTokenOutputLines(String aToken) {
-		return new String[] {aToken.toLowerCase(), "@"};
+		return new String[] {"@"};
 	}
     
 //	@Override
