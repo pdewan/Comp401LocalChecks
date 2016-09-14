@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import util.annotations.Explanation;
+import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 import grader.basics.execution.NotRunnableException;
 import grader.basics.junit.NotAutomatableException;
@@ -15,18 +16,28 @@ import gradingTools.comp401f16.assignment1.testcases.Assignment1Suite;
 import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 @Explanation("Missing Quote Output")
 @MaxValue(5)
+@IsExtra(true)
 public class MissingQuoteOutputTest extends MultipleTokensOutputTest {
 	public static final String QUOTE_PREFIX = toRegex("uot");
 	protected String[][] tokenLines = {
 				{"\"Quest?\"", "\"Grail...\"", "\"Color?"}, 
 				{"\"Blue?\"" , "\"Sea !!!!! Gull\"", "\"E u r o p e an\"", "\"  A mer i can  "}};
 	
+	protected String[][] graderTokenLines = {
+			{"\"Unfinished\"", "\"business\"", "\"maybe\"", "\"or"},
+			{"\"an unfinished quote...\"", "\" One quote   there\"", "\"   and  \"", "\" the other so remote \"", "\"!! !# ! @  "}};
+
+	
 	@Override
 	protected String[][] studentTokenLines() {
-		// TODO Auto-generated method stub
 		return tokenLines;
 	}
 	
+	@Override
+	protected String[][] graderTokenLines() {
+		return graderTokenLines;
+	}
+
 	protected String getClassName() {
 		return Assignment2Suite.MAIN_CLASS_NAME;
 	}

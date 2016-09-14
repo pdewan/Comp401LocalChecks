@@ -20,17 +20,23 @@ import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 public class MultipleSignOutputTest extends MultipleTokensOutputTest {
 	public static final String SIGN_PREFIX = toRegex("ign");
 	protected String[][] tokenLines = {{"+" , "-"  ,"+"}, {"+" , "-"}};
+	protected String[][] graderTokenLines = {{"-", "+", "-", "-"},{"-", "-", "+", "+", "+"}};
 	
 	@Override
 	protected String[][] studentTokenLines() {
 		return tokenLines;
 	}
 	
+	@Override
+	protected String[][] graderTokenLines() {
+		return graderTokenLines;
+	}
+	
 	protected String getClassName() {
 		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
 	protected String toOutputString (String aToken) {
-		return SIGN_PREFIX + aToken;
+		return SIGN_PREFIX + "\\Q" + aToken + "\\E";
 	}
 	
     

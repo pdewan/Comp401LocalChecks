@@ -22,8 +22,8 @@ public class Assignment1Suite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment1";
 		public static void main (String[] args) {
 		try {
-			GradingMode.setGraderRun(false);
-		BasicJUnitUtils.interactiveTest(Assignment1Suite.class);
+			
+			BasicJUnitUtils.interactiveTest(Assignment1Suite.class);
 
 
 		} catch (Exception e) {

@@ -21,12 +21,20 @@ public class MultipleQuoteOutputTest extends MultipleTokensOutputTest {
 				{"\"Quest?\"", "\"Grail...\"", "\"Color?\""}, 
 				{"\"Blue?\"" , "\"Sea !!!!! Gull\"", "\"E u r o p e an\"", "\"  A mer i can  \""}};
 	
+	protected String[][] graderTokenLines = {
+		{"\"One_word\"", "\"with_symbols@#!\"", "\"32and_numbers93\"", "\"here\""},
+		{"\"   weird spacing    \"", "\"  more numbers 234 \"", "\"12334\"", "\" AND SYMBOLS #@!\"", "\" 1 ! - end\""}};
+	
 	@Override
 	protected String[][] studentTokenLines() {
-		// TODO Auto-generated method stub
 		return tokenLines;
 	}
 	
+	@Override
+	protected String[][] graderTokenLines() {
+		return graderTokenLines;
+	}
+
 	protected String getClassName() {
 		return Assignment2Suite.MAIN_CLASS_NAME;
 	}

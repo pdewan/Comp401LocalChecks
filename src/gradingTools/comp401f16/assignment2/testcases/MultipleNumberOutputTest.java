@@ -25,7 +25,5 @@ public class MultipleNumberOutputTest extends MultipleTokensOutputTest {
 		return NUMBER_PREFIX + aToken;
 	}
     
-
-
 }
 

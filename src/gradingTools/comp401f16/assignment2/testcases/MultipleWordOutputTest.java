@@ -18,11 +18,20 @@ import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 public class MultipleWordOutputTest extends MultipleTokensOutputTest {
 	public static final String WORD_PREFIX = toRegex("ord");
 	protected String[][] tokenLines = {{"move", "approach", "say"}, {"Arthur" , "Galahad", "Lancelot", "Robin"}};
+	protected String[][] graderTokenLines = {
+			{"DOTH", "one", "perhaps", "surmise"},
+			{"that", "I", "am", "somewhat", "surprised"}};
 	
 	@Override
 	protected String[][] studentTokenLines() {
 		return tokenLines;
 	}
+	
+	@Override
+	protected String[][] graderTokenLines() {
+		return graderTokenLines;
+	}
+	
 	protected String[] getClassNames(){
 		return new String[] {Assignment2Suite.MAIN_CLASS_NAME, "Assignment"};
 	}
