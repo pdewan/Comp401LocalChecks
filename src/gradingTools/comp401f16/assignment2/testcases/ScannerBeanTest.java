@@ -22,10 +22,7 @@ public class ScannerBeanTest extends ScanStringTest{
 	protected Object[] getConstructorArgs() {
 		return BasicProjectExecution.emptyArgs;
 	}
-	@Override
-	protected String[] getOutputPropertyNames() {
-		return new String[]{SCANNED_STRING};
-	}
+	
 	@Override
 	protected Map<String, Object> getInputPropertyValues() {
 		Map<String, Object> anInput = new HashMap<String, Object>();
