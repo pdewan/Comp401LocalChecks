@@ -10,7 +10,7 @@ import util.annotations.MaxValue;
 @Suite.SuiteClasses({
 
 	ScanStringTest.class,
-	ScanStringTest2.class,
+//	ScanStringTest2.class, // we do not have second line
    
 })
 @MaxValue(15)

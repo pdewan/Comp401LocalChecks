@@ -19,6 +19,14 @@ import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 @IsExtra(true)
 @MaxValue(10)
 public class TerminatesWithStartingPeriodOutputTest extends MultipleTokensOutputTest {
+	protected String[][] graderTokenLines = {
+			};
+	
+	@Override
+	protected String[][] graderTokenLines() {
+		
+		return graderTokenLines;
+	}
 	@Override
 	protected String inputWithNoEndingSpace(){
 		return super.inputWithNoEndingSpace() + "45";

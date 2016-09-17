@@ -34,7 +34,10 @@ public class InvalidCharacterOutputTest extends MultipleTokensOutputTest {
 				errorStudentAndGraderStrings[aLineNumber][aTokenNumber] + 
 				aSuperPost;
 	}
-	
+	@Override
+	protected boolean hasError(String anError) {
+		return !error.isEmpty();
+	}
     
     @Override
     protected String[] getExpectedOutputs() {

@@ -15,7 +15,7 @@ import util.annotations.MaxValue;
    InvalidCharacterProductTest.class,
    
 })
-@MaxValue(5)
+@MaxValue(10)
 @IsExtra(true)
 @Explanation("Handles Invalid Characters")
 public class InvalidCharacterSuite {

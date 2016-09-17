@@ -15,7 +15,13 @@ public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
 	
 	// For grading: First line should have sum 25 and product 0
 	// Second line should have sum 106 and product 400
-	protected String[][] graderTokenLines = {{"010", "11", "0", "4"},{"2", "100", "1", "1", "2"}};
+//	protected String[][] graderTokenLines = {
+//			{"010", "11", "0", "4"},
+//			{"2", "100", "1", "1", "2"}};
+	
+	// deleting second line because of piping problems
+	protected String[][] graderTokenLines = {
+			{"010", "11", "0", "4"}};
 	protected String[] getClassNames(){
 		return new String[] {Assignment1Suite.MAIN_CLASS_NAME, "Assignment"};
 	}
