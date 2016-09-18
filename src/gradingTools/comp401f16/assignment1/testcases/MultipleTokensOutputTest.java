@@ -23,7 +23,12 @@ public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
 	protected String[][] graderTokenLines = {
 			{"010", "11", "0", "4"}};
 	protected String[] getClassNames(){
-		return new String[] {Assignment1Suite.MAIN_CLASS_NAME, "ssignment"};
+		return new String[] {
+				Assignment1Suite.MAIN_CLASS_NAME, 
+				"ssignment", 
+				"NumberScanner",
+				"numscan"
+				};
 	}
 	@Override
 	protected String[][] graderTokenLines() {
