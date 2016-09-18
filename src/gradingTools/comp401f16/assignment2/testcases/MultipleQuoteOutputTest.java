@@ -17,6 +17,12 @@ import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 @MaxValue(20)
 public class MultipleQuoteOutputTest extends MultipleTokensOutputTest {
 	public static final String QUOTE_PREFIX = toRegex("uot");
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment2Suite.MAIN_CLASS_NAME, 
+				"ssignment"
+				};
+	}
 	protected String[][] tokenLines = {
 				{"\"Quest?\"", "\"Grail...\"", "\"Color?\""}, 
 				{"\"Blue?\"" , "\"Sea !!!!! Gull\"", "\"E u r o p e an\"", "\"  A mer i can  \""}};

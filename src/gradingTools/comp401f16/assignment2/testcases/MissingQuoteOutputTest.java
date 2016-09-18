@@ -14,6 +14,7 @@ import grader.basics.project.Project;
 import gradingTools.comp401f16.assignment1.testcases.AbstractNumberScanningTest;
 import gradingTools.comp401f16.assignment1.testcases.Assignment1Suite;
 import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
+import gradingTools.comp401f16.assignment3.testcases.Assignment3Suite;
 @Explanation("Missing Quote Output")
 @MaxValue(5)
 @IsExtra(true)
@@ -27,7 +28,12 @@ public class MissingQuoteOutputTest extends MultipleTokensOutputTest {
 			{"\"Unfinished\"", "\"business\"", "\"maybe\"", "\"or"},
 			{"\"an unfinished quote...\"", "\" One quote   there\"", "\"   and  \"", "\" the other so remote \"", "\"!! !# ! @  "}};
 
-	
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment2Suite.MAIN_CLASS_NAME, 
+				"ssignment"
+				};
+	}
 	@Override
 	protected String[][] studentTokenLines() {
 		return tokenLines;

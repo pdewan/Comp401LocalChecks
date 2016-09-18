@@ -22,7 +22,12 @@ import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 @MaxValue(5)
 @IsExtra(true)
 public class MultipleSignTokenOutputTest extends MultipleSignOutputTest {
-	
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment3Suite.MAIN_CLASS_NAME, 
+				"ssignment"
+				};
+	}
 	@Override
 	protected String toOutputString (String aToken) {
 		return putEscape(aToken);

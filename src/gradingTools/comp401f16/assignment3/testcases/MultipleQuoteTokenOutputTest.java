@@ -19,7 +19,12 @@ import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 @Explanation("Multiple Quotes Output")
 @MaxValue(10)
 public class MultipleQuoteTokenOutputTest extends MultipleQuoteOutputTest {
-	
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment3Suite.MAIN_CLASS_NAME, 
+				"ssignment"
+				};
+	}
 	@Override
 	protected String toOutputString (String aToken) {
 		return withoutQuotes(aToken);

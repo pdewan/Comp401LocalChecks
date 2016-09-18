@@ -24,6 +24,12 @@ public class MultipleWordTokenOutputTest extends MultipleWordOutputTest {
 //		return tokenLines;
 //	}
 //	
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment3Suite.MAIN_CLASS_NAME, 
+				"ssignment"
+				};
+	}
 	@Override
 	protected String toOutputString (String aToken) {
 		return aToken;

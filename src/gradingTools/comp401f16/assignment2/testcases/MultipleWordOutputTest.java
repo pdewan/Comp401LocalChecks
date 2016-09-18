@@ -21,7 +21,9 @@ public class MultipleWordOutputTest extends MultipleTokensOutputTest {
 	protected String[][] graderTokenLines = {
 			{"DOTH", "one", "perhaps", "surmise"},
 			{"that", "I", "am", "somewhat", "surprised"}};
-	
+	protected String[] getClassNames(){
+		return new String[] {Assignment2Suite.MAIN_CLASS_NAME, "Assignment"};
+	}
 	@Override
 	protected String[][] studentTokenLines() {
 		return tokenLines;
@@ -32,9 +34,7 @@ public class MultipleWordOutputTest extends MultipleTokensOutputTest {
 		return graderTokenLines;
 	}
 	
-	protected String[] getClassNames(){
-		return new String[] {Assignment2Suite.MAIN_CLASS_NAME, "Assignment"};
-	}
+	
 	
 	protected String toOutputString (String aToken) {
 		return WORD_PREFIX + aToken;

@@ -18,8 +18,11 @@ import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 public class MultipleNumberOutputTest extends MultipleTokensOutputTest {
 	public static final String NUMBER_PREFIX = toRegex("umber");
 	
-	protected String getClassName() {
-		return Assignment2Suite.MAIN_CLASS_NAME;
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment2Suite.MAIN_CLASS_NAME, 
+				"ssignment"
+				};
 	}
 	protected String toOutputString (String aToken) {
 		return NUMBER_PREFIX + aToken;

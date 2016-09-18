@@ -22,7 +22,12 @@ import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 @Explanation("Multiple Grouping Symbols Output")
 @MaxValue(10)
 public class MultipleGroupingTokenOutputTest extends MultipleGroupingOutputTest {
-	
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment3Suite.MAIN_CLASS_NAME, 
+				"ssignment"
+				};
+	}
 	@Override
 	protected String toOutputString (String aToken) {
 		return putEscape(aToken);

@@ -7,7 +7,12 @@ import util.annotations.MaxValue;
 @Explanation("Mixed Types of Tokens Output")
 @MaxValue(20)
 public class MixedOutputTest extends MultipleTokensOutputTest {
-
+	protected String[] getClassNames(){
+		return new String[] {
+				Assignment2Suite.MAIN_CLASS_NAME, 
+				"ssignment"
+				};
+	}
 	protected String[][] tokenLines = {
 				{"My", "\"friend started a band named\"", "1023"}, 
 				{"Mb" , "\"But they haven't gotten a gig yet\"", "000001", "Q"}};
