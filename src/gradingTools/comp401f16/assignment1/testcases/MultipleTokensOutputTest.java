@@ -11,7 +11,7 @@ import grader.basics.project.NotGradableException;
 import grader.basics.project.Project;
 @Explanation("Multiple Tokens Output")
 public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
-	protected String[][] tokenLines = {{"022", "44", "66"}, {"11" , "33", "55", "1"}};
+	protected String[][] tokenLines = {{"22", "44", "66"}, {"11" , "33", "55", "1"}};
 	
 	// For grading: First line should have sum 25 and product 0
 	// Second line should have sum 106 and product 400
@@ -21,7 +21,7 @@ public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
 	
 	// deleting second line because of piping problems
 	protected String[][] graderTokenLines = {
-			{"010", "11", "0", "4"}};
+			{"10", "11", "0", "4"}};
 	protected String[] getClassNames(){
 		return new String[] {
 				Assignment1Suite.MAIN_CLASS_NAME, 
