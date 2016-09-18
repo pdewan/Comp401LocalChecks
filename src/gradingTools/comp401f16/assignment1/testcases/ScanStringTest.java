@@ -51,5 +51,9 @@ public class ScanStringTest extends MultipleTokensOutputTest {
 	protected boolean invokeInteractiveMethod() throws Throwable  {
 		return invokeMethod();
 	}
+	@Override
+	protected boolean doTest() throws Throwable {
+		return super.doTest();
+	}
  }
 

@@ -52,14 +52,14 @@ public class ScannerBeanTest extends ScanStringTest{
 	@Override
 	protected boolean doTest() throws Throwable {
 		inputWithEndingSpace = true;
-		testBean();
+		executeBean();
 		
 		if (processSuccessfulOutputErrrorStatus()) {
 			processGetsAndSetsAfterSucessfulOutput();
 			return true;
 		}
 		inputWithEndingSpace = false;
-		testBean();
+		executeBean();
 		if (processSuccessfulOutputErrrorStatus()) {
 			processGetsAndSetsAfterSucessfulOutput();
 			return true;

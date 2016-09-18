@@ -177,7 +177,7 @@ public abstract class AbstractNumberScanningTest extends
 //	}
 	
 	protected boolean invokeInteractiveMethod() throws Throwable  {
-		return super.doTest();
+		return super.callInteractiveMain();
 	}
 	// do nothing as doTest() does the needful
 	protected void processOutputErrorStatus() {
