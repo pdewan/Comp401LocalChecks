@@ -18,8 +18,7 @@ public class MixedOutputTest extends MultipleTokensOutputTest {
 				{"Mb" , "\"But they haven't gotten a gig yet\"", "000001", "Q"}};
 	
 	protected String[][] graderTokenLines = {
-		{"12", "\"3 and to the 4!\"", "here", "\"    is     a    coder\""},
-		{"\"   !getting on the floor  !  \"", "CAPS", "000231", "\"one!Quotedword\"", "I"}};
+		{"\"12   3 and to the 4!  \"", "CAPS", "000231", "\"oneQuotedword\"", "I"}};
 	
 	@Override
 	protected String[][] studentTokenLines() {

@@ -28,8 +28,7 @@ public class MultipleQuoteOutputTest extends MultipleTokensOutputTest {
 				{"\"Blue?\"" , "\"Sea !!!!! Gull\"", "\"E u r o p e an\"", "\"  A mer i can  \""}};
 	
 	protected String[][] graderTokenLines = {
-		{"\"One_word\"", "\"with_symbols@#!\"", "\"32and_numbers93\"", "\"here\""},
-		{"\"   weird spacing    \"", "\"  more numbers 234 \"", "\"12334\"", "\" AND SYMBOLS #@!\"", "\" 1 ! - end\""}};
+		{"\"   weird spacing    \"", "\"23more_numbers234\"", "\"12334\"", "\" AND SYMBOLS #@!\"", "\" 1 ! - end\""}};
 	
 	@Override
 	protected String[][] studentTokenLines() {

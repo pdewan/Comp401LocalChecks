@@ -25,7 +25,6 @@ public class MissingQuoteOutputTest extends MultipleTokensOutputTest {
 				{"\"Blue?\"" , "\"Sea !!!!! Gull\"", "\"E u r o p e an\"", "\"  A mer i can  "}};
 	
 	protected String[][] graderTokenLines = {
-			{"\"Unfinished\"", "\"business\"", "\"maybe\"", "\"or"},
 			{"\"an unfinished quote...\"", "\" One quote   there\"", "\"   and  \"", "\" the other so remote \"", "\"!! !# ! @  "}};
 
 	protected String[] getClassNames(){

@@ -19,7 +19,7 @@ import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 public class MultipleGroupingOutputTest extends MultipleTokensOutputTest {
 	public static final String DELIM_PREFIX = toRegex("elim");
 	protected String[][] tokenLines = {{"{" , "}"  ,"{"}, {"{" , "}"}};
-	protected String[][] graderTokenLines = {{"{", "}", "{", "}"},{"{", "{", "}", "}", "}"}};
+	protected String[][] graderTokenLines = {{"{", "{", "}", "}", "}"}};
 	
 	protected String[] getClassNames(){
 		return new String[] {
