@@ -18,13 +18,16 @@ public class WordBeanTest extends InputValueBeanTest{
 		return new String[] {"Word"};
 	}
 	
-	public Object[] getExpectedStudentOutputValues() {
-		return new Object[] {STUDENT_EXAMPLE.toLowerCase()};
+	
+	@Override
+	protected String studentInput() {
+		return STUDENT_EXAMPLE;
 	}
 
 	@Override
-	protected String studentExample() {
-		return STUDENT_EXAMPLE;
+	protected Object studentValue() {
+		// TODO Auto-generated method stub
+		return studentInput().toLowerCase();
 	}
 	
 }

@@ -19,7 +19,7 @@ public class EndBeanTest extends InputBeanTest{
 		return new String[] {"End"};
 	}
 	@Override
-	protected String studentExample() {
+	protected String studentInput() {
 		return STUDENT_EXAMPLE;
 	}	
 	

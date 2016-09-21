@@ -18,12 +18,13 @@ public class NumberBeanTest extends InputValueBeanTest{
 		return new String[] {"Number"};
 	}
 	@Override
-	protected String studentExample() {
+	protected String studentInput() {
 		return STUDENT_EXAMPLE;
 	}
 
-	public Object[] getExpectedStudentOutputValues() {
-		return new Object[] {Integer.parseInt(STUDENT_EXAMPLE)};
+	@Override
+	protected Object studentValue() {
+		return Integer.parseInt(studentInput());
 	}
 
 	

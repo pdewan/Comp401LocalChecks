@@ -16,6 +16,10 @@ public abstract class InputValueBeanTest extends InputBeanTest{
 	@Override
 	protected String[] getOutputPropertyNames() {
 		return new String[]{VALUE};
-	}	
+	}
+	protected abstract Object studentValue() ;
+	public Object[] getExpectedStudentOutputValues() {
+		return new Object[] {studentValue()};
+	}
 	
 }

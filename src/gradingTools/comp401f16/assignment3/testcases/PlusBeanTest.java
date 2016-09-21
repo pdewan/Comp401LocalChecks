@@ -19,7 +19,7 @@ public class PlusBeanTest extends InputBeanTest{
 		return new String[] {"Plus"};
 	}
 	@Override
-	protected String studentExample() {
+	protected String studentInput() {
 		return STUDENT_EXAMPLE;
 	}	
 }

@@ -23,7 +23,7 @@ public class StartBeanTest extends InputBeanTest{
 	
 
 	@Override
-	protected String studentExample() {
+	protected String studentInput() {
 		return STUDENT_EXAMPLE;
 	}
 	

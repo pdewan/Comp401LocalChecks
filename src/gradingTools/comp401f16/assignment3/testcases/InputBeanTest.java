@@ -14,29 +14,29 @@ import util.annotations.MaxValue;
 public abstract class InputBeanTest extends BeanExecutionTest{
 	public static final String INPUT = "Input";
 	
-	abstract protected String studentExample() ;
-	protected String graderExample() {
-		return studentExample();
+	abstract protected String studentInput() ;
+	protected String graderInput() {
+		return studentInput();
 	}
 	@Override
 	protected Object[] getStudentConstructorArgs() {
-		return new Object[] {studentExample()};
+		return new Object[] {studentInput()};
 	}
 	@Override
 	protected Object[] getGraderConstructorArgs() {
-		return new Object[] {graderExample()};
+		return new Object[] {graderInput()};
 	}
 	
 	@Override
 	public Map<String, Object> getStudentInputPropertyValues() {
 		Map<String, Object> anInput = new HashMap<String, Object>();
-		anInput.put(INPUT, studentExample());
+		anInput.put(INPUT, studentInput());
 		return anInput;
 	}
 	@Override
 	public Map<String, Object> getGraderInputPropertyValues() {
 		Map<String, Object> anInput = new HashMap<String, Object>();
-		anInput.put(INPUT, graderExample());
+		anInput.put(INPUT, graderInput());
 		return anInput;
 	}
 

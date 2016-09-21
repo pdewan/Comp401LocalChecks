@@ -19,7 +19,7 @@ public class MinusBeanTest extends InputBeanTest{
 		return new String[] {"Minus"};
 	}
 	@Override
-	protected String studentExample() {
+	protected String studentInput() {
 		return STUDENT_EXAMPLE;
 	}
 	
