@@ -11,7 +11,7 @@ import java.util.Map;
 
 import util.annotations.MaxValue;
 @MaxValue(5)
-public class StartBeanTest extends BeanExecutionTest{
+public class StartBeanTest extends InputBeanTest{
 	public static final String INPUT = "Input";
 	protected static final String STUDENT_EXAMPLE = "{";
 	@Override
@@ -19,25 +19,12 @@ public class StartBeanTest extends BeanExecutionTest{
 		return new String[] {"Start"};
 	}
 	// not checking the first get, need a framework to do so
-	@Override
-	protected Object[] getConstructorArgs() {
-		return new Object[] {STUDENT_EXAMPLE};
-	}
 	
-	@Override
-	protected Map<String, Object> getStudentInputPropertyValues() {
-		Map<String, Object> anInput = new HashMap<String, Object>();
-		anInput.put(INPUT, STUDENT_EXAMPLE);
-		return anInput;
-	}
 	
 
 	@Override
-	protected boolean doTest() throws Throwable {
-		testBean();
-		return true;
-
-	
-}
+	protected String studentExample() {
+		return STUDENT_EXAMPLE;
+	}
 	
 }

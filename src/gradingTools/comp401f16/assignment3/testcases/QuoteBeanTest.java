@@ -25,7 +25,7 @@ public class QuoteBeanTest extends BeanExecutionTest{
 	}
 	
 	@Override
-	protected Map<String, Object> getStudentInputPropertyValues() {
+	public Map<String, Object> getStudentInputPropertyValues() {
 		Map<String, Object> anInput = new HashMap<String, Object>();
 		anInput.put(INPUT, STUDENT_EXAMPLE);
 		return anInput;

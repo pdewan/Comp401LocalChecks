@@ -15,7 +15,7 @@ public class ScannerBeanTest extends ScanStringTest{
 		return new String[] {"ScannerBean", toRegex("Bean")};
 	}
 	@Override
-	protected Class[] getConstructorArgTypes() {
+	public Class[] getConstructorArgTypes() {
 		return new Class[]{};
 	}
 	@Override
@@ -24,7 +24,7 @@ public class ScannerBeanTest extends ScanStringTest{
 	}
 	
 	@Override
-	protected Map<String, Object> getInputPropertyValues() {
+	public Map<String, Object> getInputPropertyValues() {
 		Map<String, Object> anInput = new HashMap<String, Object>();
 		anInput.put(SCANNED_STRING, getArgs()[0]);
 		return anInput;
