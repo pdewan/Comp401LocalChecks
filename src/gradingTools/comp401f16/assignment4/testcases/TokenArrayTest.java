@@ -163,7 +163,7 @@ public static final String TOKENS = "Tokens";
 		extractComponentBeanStatus();
 
 		// see the size does not change a second time
-		executeBean(beanObject);
+		executeBean(lastTargetObject);
 		extractTokens();
 		extractSecondOutputCorrectSize();
 		processCompleteOutput();
