@@ -44,8 +44,6 @@ public abstract class InputBeanTest extends BeanExecutionTest{
 	protected boolean doTest() throws Throwable {
 		testBean();
 		return true;
-
-	
-}
+	}
 	
 }

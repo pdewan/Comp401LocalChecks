@@ -18,8 +18,15 @@ public abstract class InputValueBeanTest extends InputBeanTest{
 		return new String[]{VALUE};
 	}
 	protected abstract Object studentValue() ;
+	protected Object graderValue() {
+		return studentValue();
+	}
 	public Object[] getExpectedStudentOutputValues() {
 		return new Object[] {studentValue()};
 	}
+	public Object[] getExpectedGraderOutputValues() {
+		return new Object[] {graderValue()};
+	}
+	
 	
 }

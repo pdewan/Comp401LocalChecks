@@ -27,7 +27,8 @@ public class WordBeanTest extends InputValueBeanTest{
 	@Override
 	protected Object studentValue() {
 		// TODO Auto-generated method stub
-		return studentInput().toLowerCase();
+		return ((String) getInputPropertyValues().get(INPUT)).
+				toLowerCase();
 	}
 	
 }

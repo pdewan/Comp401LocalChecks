@@ -24,7 +24,7 @@ public class NumberBeanTest extends InputValueBeanTest{
 
 	@Override
 	protected Object studentValue() {
-		return Integer.parseInt(studentInput());
+		return Integer.parseInt(((String) getInputPropertyValues().get(INPUT)));
 	}
 
 	

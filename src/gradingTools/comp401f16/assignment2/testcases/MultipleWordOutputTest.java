@@ -17,19 +17,19 @@ import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 @MaxValue(10)
 public class MultipleWordOutputTest extends MultipleTokensOutputTest {
 	public static final String WORD_PREFIX = toRegex("ord");
-	protected String[][] tokenLines = {{"move", "approach", "say"}, {"Arthur" , "Galahad", "Lancelot", "Robin"}};
-	protected String[][] graderTokenLines = {{"DOTH", "I", "perhaps", "surmise", "surprise"}};
+	public static final String[][] STUDENT_TOKEN_LINES = {{"move", "approach", "say"}, {"Arthur" , "Galahad", "Lancelot", "Robin"}};
+	public static final String[][] GRADER_TOKEN_LINES = {{"DOTH", "I", "perhaps", "surmise", "surprise"}};
 	protected String[] getClassNames(){
 		return new String[] {Assignment2Suite.MAIN_CLASS_NAME, "Assignment"};
 	}
 	@Override
 	protected String[][] studentTokenLines() {
-		return tokenLines;
+		return STUDENT_TOKEN_LINES;
 	}
 	
 	@Override
 	protected String[][] graderTokenLines() {
-		return graderTokenLines;
+		return GRADER_TOKEN_LINES;
 	}
 	
 	
