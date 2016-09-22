@@ -1,10 +1,14 @@
 package gradingTools.comp401f16.assignment2.testcases;
 
 import grader.basics.execution.BasicProjectExecution;
+import grader.basics.junit.NotesAndScore;
+import grader.basics.project.BasicProjectIntrospection;
 import gradingTools.comp401f16.assignment1.testcases.ScanStringTest;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import org.junit.Assert;
 
 import util.annotations.MaxValue;
 @MaxValue(25)
@@ -12,7 +16,7 @@ public class ScannerBeanTest extends ScanStringTest{
 	public static final String SCANNED_STRING = "ScannedString";
 	@Override
 	protected String[] getClassNames(){
-		return new String[] {"ScannerBean", toRegex("Bean")};
+		return new String[] {"ScannerBean", "Bean"};
 	}
 	@Override
 	public Class[] getConstructorArgTypes() {
@@ -35,19 +39,25 @@ public class ScannerBeanTest extends ScanStringTest{
 //		 return true;
 //	}
 	@Override
+//	protected double incorrectOutputCredit() {
+//		return getsEqualSets()?
+//		 super.incorrectOutputCredit() + getsEqualsSetsCredit()
+//		: 
+//			super.incorrectOutputCredit();
+//	}
 	protected double incorrectOutputCredit() {
-		return getsEqualSets()?
-		 super.incorrectOutputCredit() + getsEqualsSetsCredit()
-		: 
-			super.incorrectOutputCredit();
+		return 0;
 	}
-	@Override
+//	@Override
+//	protected String incorrectOutputMessage() {
+//		return getsEqualSets()?
+//
+//		 incorrectOutputMessage()
+//		:
+//			 getsEqualsSetsErrorMessage() + " and " + incorrectOutputMessage();
+//	}
 	protected String incorrectOutputMessage() {
-		return getsEqualSets()?
-
-		 incorrectOutputMessage()
-		:
-			 getsEqualsSetsErrorMessage() + " and " + incorrectOutputMessage();
+		return "incorrect output";
 	}
 	@Override
 	protected boolean doTest() throws Throwable {
@@ -60,6 +70,10 @@ public class ScannerBeanTest extends ScanStringTest{
 		}
 		inputWithEndingSpace = false;
 		executeBean();
+		if(outputPropertyValues.get(BasicProjectExecution.MISSING_PROPERTY)!=null) {
+			Assert.assertTrue("ScannedString property not found" + NotesAndScore.PERCENTAGE_MARKER + 0,
+					false);
+		}
 		if (processSuccessfulOutputErrrorStatus()) {
 			processGetsAndSetsAfterSucessfulOutput();
 			return true;
