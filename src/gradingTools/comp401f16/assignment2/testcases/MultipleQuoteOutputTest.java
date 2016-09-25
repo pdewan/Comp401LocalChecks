@@ -18,10 +18,7 @@ import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 public class MultipleQuoteOutputTest extends MultipleTokensOutputTest {
 	public static final String QUOTE_PREFIX = toRegex("uot");
 	protected String[] getClassNames(){
-		return new String[] {
-				Assignment2Suite.MAIN_CLASS_NAME, 
-				"ssignment"
-				};
+		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
 	protected String[][] tokenLines = {
 				{"\"Quest?\"", "\"Grail...\"", "\"Color?\""}, 
@@ -41,7 +38,7 @@ public class MultipleQuoteOutputTest extends MultipleTokensOutputTest {
 	}
 
 	protected String getClassName() {
-		return Assignment2Suite.MAIN_CLASS_NAME;
+		return Assignment2Suite.MAIN_CLASS_NAME[0];
 	}
 	protected String withoutQuotes(String aToken) {
 		return aToken.substring(1, aToken.length() -1);

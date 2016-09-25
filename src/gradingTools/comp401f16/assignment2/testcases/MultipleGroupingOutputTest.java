@@ -22,10 +22,7 @@ public class MultipleGroupingOutputTest extends MultipleTokensOutputTest {
 	protected String[][] graderTokenLines = {{"{", "{", "}", "}", "}"}};
 	
 	protected String[] getClassNames(){
-		return new String[] {
-				Assignment2Suite.MAIN_CLASS_NAME, 
-				"ssignment"
-				};
+		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
 	@Override
 	protected String[][] studentTokenLines() {

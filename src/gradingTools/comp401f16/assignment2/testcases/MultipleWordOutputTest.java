@@ -20,7 +20,7 @@ public class MultipleWordOutputTest extends MultipleTokensOutputTest {
 	public static final String[][] STUDENT_TOKEN_LINES = {{"move", "approach", "say"}, {"Arthur" , "Galahad", "Lancelot", "Robin"}};
 	public static final String[][] GRADER_TOKEN_LINES = {{"DOTH", "I", "perhaps", "surmise", "surprise"}};
 	protected String[] getClassNames(){
-		return new String[] {Assignment2Suite.MAIN_CLASS_NAME, "Assignment"};
+		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
 	@Override
 	protected String[][] studentTokenLines() {

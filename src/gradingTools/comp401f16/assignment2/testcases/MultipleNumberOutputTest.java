@@ -19,10 +19,7 @@ public class MultipleNumberOutputTest extends MultipleTokensOutputTest {
 	public static final String NUMBER_PREFIX = toRegex("umber");
 	
 	protected String[] getClassNames(){
-		return new String[] {
-				Assignment2Suite.MAIN_CLASS_NAME, 
-				"ssignment"
-				};
+		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
 	protected String toOutputString (String aToken) {
 		return NUMBER_PREFIX + aToken;

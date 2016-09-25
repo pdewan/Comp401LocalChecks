@@ -28,10 +28,7 @@ public class MissingQuoteOutputTest extends MultipleTokensOutputTest {
 			{"\"an unfinished quote...\"", "\" One quote   there\"", "\"   and  \"", "\" the other so remote \"", "\"!! !# ! @  "}};
 
 	protected String[] getClassNames(){
-		return new String[] {
-				Assignment2Suite.MAIN_CLASS_NAME, 
-				"ssignment"
-				};
+		return Assignment2Suite.MAIN_CLASS_NAME;
 	}
 	@Override
 	protected String[][] studentTokenLines() {
@@ -44,7 +41,7 @@ public class MissingQuoteOutputTest extends MultipleTokensOutputTest {
 	}
 
 	protected String getClassName() {
-		return Assignment2Suite.MAIN_CLASS_NAME;
+		return Assignment2Suite.MAIN_CLASS_NAME[0];
 	}
 	protected String toOutputString (String aToken) {
 		int anEndIndex = (aToken.charAt(aToken.length() -1) == '\"')?

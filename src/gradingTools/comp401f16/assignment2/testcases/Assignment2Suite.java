@@ -15,7 +15,8 @@ import org.junit.runners.Suite;
 	MixedOutputTest.class
 })
 public class Assignment2Suite {
-	public static final String MAIN_CLASS_NAME = "main.Assignment2";
+	public static final String[] MAIN_CLASS_NAME = new String[] {"main.Assignment2","ssignment",
+			"Main", "main"};
 	public static void main (String[] args) {
 		try {
 			

@@ -16,7 +16,8 @@ public class ScannerBeanTest extends ScanStringTest{
 	public static final String SCANNED_STRING = "ScannedString";
 	@Override
 	protected String[] getClassNames(){
-		return new String[] {"ScannerBean", "Bean"};
+		return new String[] {"ScannerBean", "Bean", "bean", "BeanClass", "MyScanner", "ScanningBean",
+				"Assignment2Bean"};
 	}
 	@Override
 	public Class[] getConstructorArgTypes() {
