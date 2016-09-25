@@ -5,7 +5,7 @@ import util.annotations.Explanation;
 import util.annotations.MaxValue;
 
 @Explanation("Mixed Types of Tokens Output")
-@MaxValue(20)
+@MaxValue(10)
 public class MixedOutputTest extends MultipleTokensOutputTest {
 	protected String[] getClassNames(){
 		return Assignment2Suite.MAIN_CLASS_NAME;
