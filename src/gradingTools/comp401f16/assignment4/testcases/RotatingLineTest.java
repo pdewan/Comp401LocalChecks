@@ -12,12 +12,13 @@ import util.annotations.MaxValue;
 import grader.basics.execution.BasicProjectExecution;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.BasicProjectIntrospection;
+import gradingTools.comp401f16.assignment.testInterfaces.TestRotatingLine;
 import gradingTools.shared.testcases.MethodExecutionTest;
 import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 @IsExtra(true)
 @MaxValue(25)
-public class RotatingLineTest extends OutputAndErrorCheckingTestCase{
-	GraderRotatingLineInterface rotatingLine;
+public class RotatingLineTest extends MethodExecutionTest{
+	TestRotatingLine rotatingLine;
 	@Override
 	protected String[] getClassNames() {
 		return new String[] {"RotatingLine"};
@@ -41,22 +42,14 @@ public class RotatingLineTest extends OutputAndErrorCheckingTestCase{
 	}
 	protected boolean doTest() throws Throwable {
 		
-		Class aClass = getTargetClass();
-		if (aClass == null) {
-			assertNoClass();
-		}
-		if (!Iterator.class.isAssignableFrom(aClass)) {
-			assertWrongInterface(aClass, Iterator.class);
-		}
-		rotatingLine = (GraderRotatingLineInterface)
-				BasicProjectIntrospection.createInstance(GraderRotatingLineInterface.class, getArgs());
-//		List<String> aTokens = new ArrayList();
-//		while (iterator.hasNext()) {
-//			doExtraStep();
-//			aTokens.add(iterator.next());
+//		Class aClass = getTargetClass();
+//		if (aClass == null) {
+//			assertNoClass();
 //		}
 		
-//		setReturnValue(aTokens.toArray());
+		rotatingLine = (TestRotatingLine)
+				BasicProjectIntrospection.createInstance(TestRotatingLine.class, getArgs());
+
 		processReturnValue();
 		return true;
 		
