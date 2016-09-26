@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	CommandSuite.class,
 	TokenArraySuite.class,
-	RotatingLineTest.class
+	LocatableTest.class
 })
 public class Assignment4Suite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment4";
