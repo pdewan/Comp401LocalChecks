@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
 })
 public class Assignment2Suite {
 	public static final String[] MAIN_CLASS_NAME = new String[] {"main.Assignment2","ssignment",
-			"Main", "main"};
+			"Main", "main", "ScanningIterator"};
 	public static void main (String[] args) {
 		try {
 			
