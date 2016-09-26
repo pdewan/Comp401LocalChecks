@@ -13,7 +13,7 @@ public abstract class RotatingLineTest extends LocatableTest{
 		return (TestRotatingLine) locatable;
 	}
 	protected boolean doTest(TestRotatingLine aLocatable) {
-		
+		return true;
 	}
 
 	protected boolean doTest(TestLocatable aLocatable) {
