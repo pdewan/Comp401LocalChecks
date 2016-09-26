@@ -12,7 +12,9 @@ public abstract class RotatingLineTest extends LocatableTest{
 	protected TestRotatingLine getRotatingLine() {
 		return (TestRotatingLine) locatable;
 	}
-	protected abstract boolean doTest(TestRotatingLine aLocatable);
+	protected boolean doTest(TestRotatingLine aLocatable) {
+		
+	}
 
 	protected boolean doTest(TestLocatable aLocatable) {
 		return doTest((TestRotatingLine) aLocatable);

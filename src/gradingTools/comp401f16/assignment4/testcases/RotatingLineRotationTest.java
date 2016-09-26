@@ -3,7 +3,7 @@ package gradingTools.comp401f16.assignment4.testcases;
 import gradingTools.comp401f16.assignment.testInterfaces.TestLocatable;
 import gradingTools.comp401f16.assignment.testInterfaces.TestRotatingLine;
 
-public class RotatingLineZeroDegreeTest extends RotatingLineTest{
+public class RotatingLineRotationTest extends RotatingLineTest{
 	public static Double inputStudentRadius = 5.0;
 	public static Double inputStudentAngle = 0.0;
 	public static Integer inputStudentX = 0;

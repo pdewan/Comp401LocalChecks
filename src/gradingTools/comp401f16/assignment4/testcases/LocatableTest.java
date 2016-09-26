@@ -26,6 +26,8 @@ public abstract class LocatableTest extends MethodExecutionTest{
 	public static final double INT_TOLERANCE = 1;
 	
 	protected abstract Class locatableClass();
+	protected int actualX, actualY, actualWidth, actualHeight;
+	protected double actualRadius, actualAngle;
 	
 	protected TestLocatable createLocatable(){
 		locatable = (TestLocatable) BasicProjectIntrospection.createInstance(locatableClass(), getArgs());
