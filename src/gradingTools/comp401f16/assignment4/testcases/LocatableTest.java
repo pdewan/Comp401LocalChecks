@@ -111,6 +111,12 @@ public abstract class LocatableTest extends MethodExecutionTest{
 //		return null;
 ////		return tokenLines()[getLineIndex()];
 //	}
+	protected abstract void setInput(TestLocatable aLocatable) ;
+	protected abstract void setActual(TestLocatable aLocatable) ;
+
+	protected void setExpected(TestLocatable aLocatable) {
+		
+	}
 
 	protected void doExtraStep() {
 		
@@ -118,10 +124,12 @@ public abstract class LocatableTest extends MethodExecutionTest{
 	protected TestLocatable create() {
 		return createOrGetLastLocatable();
 	}
-	protected abstract boolean doTest(TestLocatable aLocatable);
+	protected abstract boolean checkOutput(TestLocatable aLocatable);
 	protected boolean doTest() throws Throwable {
 		create();
-		return doTest(locatable);
+		setInput(locatable);
+		setExpected(locatable);
+		return checkOutput(locatable);
 		
 	}
 	// Student test data
@@ -261,6 +269,33 @@ public abstract class LocatableTest extends MethodExecutionTest{
 		if (GradingMode.getGraderRun())
 			return expectedGraderY();
 		return expectedStudentY();
+	}
+	
+	protected void assertWrongX() {
+		assertX(actualX, expectedX());
+//		Assert.assertTrue("in object:" + locatable + " expected X:" + expectedX() + " != actual X: " + actualX +
+//				+  NotesAndScore.PERCENTAGE_MARKER + fractionComplete,
+//				false);
+	}
+	protected void assertWrongY() {
+		assertY(actualY, expectedY());
+//		Assert.assertTrue("in object:" + locatable + " expected Y:" + expectedY() + " != actual Y: " + actualY +
+//				+  NotesAndScore.PERCENTAGE_MARKER + fractionComplete,
+//				false);
+	}
+	protected void assertWrongHeight() {
+		assertY(actualHeight, expectedHeight());
+//		Assert.assertTrue("in object:" + locatable + " expected Height:" + expectedHeight() + " != actual Height: " + actualHeight +
+//				+  NotesAndScore.PERCENTAGE_MARKER + fractionComplete,
+//				false);
+	}
+	
+	protected void assertWrongWidth() {
+		assertY(actualWidth, expectedWidth());
+
+//		Assert.assertTrue("in object:" + locatable + " expected Width:" + expectedWidth() + " != actual Width: " + actualWidth +
+//				+  NotesAndScore.PERCENTAGE_MARKER + fractionComplete,
+//				false);
 	}
 	
 //	protected boolean returnValueIsExpected() {

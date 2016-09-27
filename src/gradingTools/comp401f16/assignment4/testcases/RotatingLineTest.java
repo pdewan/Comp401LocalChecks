@@ -12,12 +12,27 @@ public abstract class RotatingLineTest extends LocatableTest{
 	protected TestRotatingLine getRotatingLine() {
 		return (TestRotatingLine) locatable;
 	}
-	protected boolean doTest(TestRotatingLine aLocatable) {
+	@Override
+	protected void setInput(TestLocatable aLocatable) {
+		aLocatable.setX(inputX());
+		aLocatable.setY(inputY());
+		
+	}	
+	@Override
+	protected void setActual(TestLocatable aLocatable) {
+		actualX =  aLocatable.getX();
+		actualY = aLocatable.getY();
+		actualHeight = getRotatingLine().getHeight();
+		actualWidth = getRotatingLine().getWidth();
+	}
+	protected boolean checkOutput(TestLocatable aLocatable) {
+		assertWrongX();
+		assertWrongY();
 		return true;
 	}
+	
+	
+	
 
-	protected boolean doTest(TestLocatable aLocatable) {
-		return doTest((TestRotatingLine) aLocatable);
-	}
-
+	
 }
