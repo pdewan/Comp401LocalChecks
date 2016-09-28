@@ -7,7 +7,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	
+	AngleMoveSuite.class,
+	BridgeSceneComponentMoveSuite.class,
+	BridgeSceneComponentScaleSuite.class
 })
 public class Assignment5Suite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment5";

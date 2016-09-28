@@ -2,6 +2,7 @@ package gradingTools.comp401f16.assignment4.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
+import gradingTools.shared.testcases.shapes.LocatableTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
