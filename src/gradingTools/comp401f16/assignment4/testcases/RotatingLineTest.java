@@ -10,7 +10,7 @@ public abstract class RotatingLineTest extends LocatableTest{
 		return TestRotatingLine.class;
 	}
 	protected TestRotatingLine getRotatingLine() {
-		return (TestRotatingLine) locatable;
+		return (TestRotatingLine) rootLocatable;
 	}
 	@Override
 	protected void setInput(TestLocatable aLocatable) {

@@ -12,12 +12,16 @@ public class RotatingFixedLineRotateTest extends RotatingLineTest{
 	protected Integer inputStudentY = 0;
 	protected int delta = 6;
 	protected double intermediateAngle;
-	protected double inputStudentAngle = Math.PI/4;;
+	protected double inputStudentAngle = Math.PI/4;
+	protected double initialWidth;
+	protected double initialHeight;
 	boolean clockwise;
 	
 	@Override
 	protected void setInput(TestLocatable aLocatable) {
 		super.setInput(aLocatable);
+		initialWidth = getRotatingLine().getWidth();
+		initialHeight = getRotatingLine().getHeight();
 		getRotatingLine().rotate(delta);
 		intermediateAngle = getRotatingLine().getAngle();
 		clockwise = intermediateAngle < inputAngle();
@@ -28,7 +32,9 @@ public class RotatingFixedLineRotateTest extends RotatingLineTest{
 	protected void setActual(TestLocatable aLocatable) {
 		actualAngle =  getRotatingLine().getAngle();
 		
+		
 	}
+	
 	@Override
 	protected Double expectedAngle() {
 		Double anOutputDelta = Math.abs(intermediateAngle - inputAngle());
@@ -44,6 +50,11 @@ public class RotatingFixedLineRotateTest extends RotatingLineTest{
 		Assert.assertTrue("initial angle" + inputAngle() + " same as final angle " +
 					NotesAndScore.PERCENTAGE_MARKER + fractionComplete, 
 					Math.abs (inputAngle() - actualAngle) < FRACTION_TOLERANCE);
+		assertWrongAngle();
+		// proceed from here
+		Assert.assertTrue("initial height" + inputAngle() + " same as final angle " +
+				NotesAndScore.PERCENTAGE_MARKER + fractionComplete, 
+				Math.abs (inputAngle() - actualAngle) < FRACTION_TOLERANCE);
 		
 		
 		return true;

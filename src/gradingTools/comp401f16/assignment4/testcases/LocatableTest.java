@@ -21,7 +21,8 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 
 public abstract class LocatableTest extends MethodExecutionTest{
-	protected TestLocatable locatable;
+	protected TestLocatable rootLocatable;
+	protected TestLocatable leafLocatable;
 	public static final double FRACTION_TOLERANCE = 0.1;
 	public static final double INT_TOLERANCE = 1;
 	
@@ -30,39 +31,41 @@ public abstract class LocatableTest extends MethodExecutionTest{
 	protected double actualRadius, actualAngle;
 	
 	protected TestLocatable createLocatable(){
-		locatable = (TestLocatable) BasicProjectIntrospection.createInstance(locatableClass(), getArgs());
-		return locatable;
+		rootLocatable = (TestLocatable) BasicProjectIntrospection.createInstance(locatableClass(), getArgs());
+		leafLocatable = rootLocatable;
+		return rootLocatable;
 	}
 	
 	protected TestLocatable createOrGetLastLocatable(){
-		locatable = (TestLocatable) BasicProjectIntrospection.createOrGetLastInstance(locatableClass(), getArgs());
-		return locatable;
+		rootLocatable = (TestLocatable) BasicProjectIntrospection.createOrGetLastInstance(locatableClass(), getArgs());
+		leafLocatable = rootLocatable;
+		return rootLocatable;
 	}
 	
 
 	protected void assertAngle(double aComputed, double aCorrect) {
-		Assert.assertTrue("computedAngle " + aComputed + " != correctAngle " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) <= FRACTION_TOLERANCE);
+		Assert.assertTrue("In: " + leafLocatable  + " computedAngle " + aComputed + " != correctAngle " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) <= FRACTION_TOLERANCE);
 
 	}
 	protected void assertRadius(double aComputed, double aCorrect) {
-		Assert.assertTrue("computedRadius " + aComputed + " != correctRadius " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) <= FRACTION_TOLERANCE);
+		Assert.assertTrue("In: " + leafLocatable  + " computedRadius " + aComputed + " != correctRadius " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) <= FRACTION_TOLERANCE);
 
 	}
 	protected void assertHeight(int aComputed, int aCorrect) {
-		Assert.assertTrue("computedHeight " + aComputed + " != correctHeight " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) < INT_TOLERANCE);
+		Assert.assertTrue("In: " + leafLocatable  + " computedHeight " + aComputed + " != correctHeight " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) < INT_TOLERANCE);
 
 	}
 	protected void assertWidth(int aComputed, int aCorrect) {
-		Assert.assertTrue("computedWidth " + aComputed + " != correctWidth " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) < INT_TOLERANCE);
+		Assert.assertTrue("In: " + leafLocatable  + " computedWidth " + aComputed + " != correctWidth " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) < INT_TOLERANCE);
 
 	}
 	
 	protected void assertX(int aComputed, int aCorrect) {
-		Assert.assertTrue("computedX " + aComputed + " != correctX " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) < INT_TOLERANCE);
+		Assert.assertTrue("In: " + leafLocatable  + " computedX " + aComputed + " != correctX " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) < INT_TOLERANCE);
 
 	}
 	protected void assertY(int aComputed, int aCorrect) {
-		Assert.assertTrue("computedY " + aComputed + " != correctY " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) < INT_TOLERANCE);
+		Assert.assertTrue("In: " + leafLocatable  + " computedY " + aComputed + " != correctY " + aCorrect + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, Math.abs(aComputed - aCorrect) < INT_TOLERANCE);
 
 	}
 	
@@ -127,9 +130,9 @@ public abstract class LocatableTest extends MethodExecutionTest{
 	protected abstract boolean checkOutput(TestLocatable aLocatable);
 	protected boolean doTest() throws Throwable {
 		create();
-		setInput(locatable);
-		setExpected(locatable);
-		return checkOutput(locatable);
+		setInput(rootLocatable);
+		setExpected(rootLocatable);
+		return checkOutput(rootLocatable);
 		
 	}
 	// Student test data
@@ -297,6 +300,16 @@ public abstract class LocatableTest extends MethodExecutionTest{
 //				+  NotesAndScore.PERCENTAGE_MARKER + fractionComplete,
 //				false);
 	}
+
+	protected void assertWrongAngle() {
+		assertAngle(actualAngle, expectedAngle());
+
+	}
+	protected void assertWrongRadius() {
+		assertAngle(actualRadius, expectedRadius());
+
+	}
+	
 	
 //	protected boolean returnValueIsExpected() {
 //		return Arrays.equals((Object[]) getExpectedReturnValue(), (Object[]) getReturnValue());
