@@ -21,7 +21,7 @@ public class MultipleTokensOutputTest extends AbstractNumberScanningTest {
 	
 	// deleting second line because of piping problems
 	public static final String[][] GRADER_TOKEN_LINES = {
-			{"10", "11", "0", "4"}};
+			{"1019", "1221", "3413", "4321"}};
 	protected String[] getClassNames(){
 		return new String[] {
 				Assignment1Suite.MAIN_CLASS_NAME, 
