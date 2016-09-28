@@ -7,6 +7,7 @@ import grader.basics.execution.GradingMode;
 import grader.basics.execution.NotRunnableException;
 import grader.basics.junit.BasicJUnitUtils;
 import grader.basics.junit.NotesAndScore;
+import grader.basics.project.CurrentProjectHolder;
 import grader.basics.project.NotGradableException;
 import gradingTools.shared.testcases.OutputAndErrorCheckingTestCase;
 
@@ -191,7 +192,9 @@ public abstract class AbstractNumberScanningTest extends
 				return true;
 			}
 			inputWithEndingSpace = false;
+			CurrentProjectHolder.getOrCreateCurrentProject().setInfinite(false);
 			superRetVal = invokeInteractiveMethod();
+			maybeAssertInfinite();
 			if (processSuccessfulOutputErrrorStatus()) {
 				return true;
 			}
