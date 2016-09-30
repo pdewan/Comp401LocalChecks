@@ -151,7 +151,7 @@ public static final String TOKENS = "Tokens";
 		executeBean();
 		} catch (Throwable e) {
 			failedWithSpace = true;
-			executeBean();
+//			executeBean();
 		}
 		extractTokens();
 		if (tokensOutput == null || failedWithSpace) {

@@ -32,6 +32,11 @@ public class MultipleQuoteTokenOutputTest extends MultipleQuoteOutputTest {
 	protected String[] postTokenOutputLines(String aToken) {
 		return new String[] {"@"};
 	}
+	
+	@Override
+	protected boolean doTest() throws Throwable {
+		return super.doTest();
+	}
     
 //	@Override
 //	protected boolean doTest() throws Throwable {

@@ -24,6 +24,9 @@ protected String[] graderTokensInput() {
 protected InputBeanTest createInputBeanTest() {
 	return new QuoteBeanTest();
 }
+protected boolean doTest() throws Throwable {
+	return super.doTest();
+}
 	
 	
 }
