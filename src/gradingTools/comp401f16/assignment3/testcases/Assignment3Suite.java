@@ -5,7 +5,10 @@ import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import util.annotations.IsExtra;
 @RunWith(Suite.class)
+@IsExtra(true)
 @Suite.SuiteClasses({
 	MultipleWordTokenOutputTest.class,
 	MultipleNumberTokenOutputTest.class,
