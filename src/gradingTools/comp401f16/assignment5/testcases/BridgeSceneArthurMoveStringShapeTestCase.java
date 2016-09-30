@@ -19,8 +19,8 @@ public class BridgeSceneArthurMoveStringShapeTestCase extends BridgeSceneMoveArt
 	
 
 	@Override
-	protected void setLeafLocatable() {
-		leafLocatable = arthur().getStringShape();
+	protected void setLeafProxy() {
+		leafProxy = arthur().getStringShape();
 	}
 	@Override
 	protected boolean doTest() throws Throwable {

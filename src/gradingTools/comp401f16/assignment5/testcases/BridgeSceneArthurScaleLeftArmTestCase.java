@@ -15,8 +15,8 @@ public class BridgeSceneArthurScaleLeftArmTestCase extends BridgeSceneArthurScal
 	}
 
 	@Override
-	protected void setLeafLocatable() {
-		leafLocatable = arthur().getArms().getLeftLine();
+	protected void setLeafProxy() {
+		leafProxy = arthur().getArms().getLeftLine();
 	}
 	@Override
 	protected boolean doTest() throws Throwable {

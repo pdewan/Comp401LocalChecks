@@ -16,10 +16,10 @@ import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 public abstract class BridgeSceneScaleTestCase extends ScalableTest {
 	
 	protected TestBridgeScene bridgeScene() {
-		return (TestBridgeScene) rootLocatable;
+		return (TestBridgeScene) rootProxy;
 	}
 	@Override
-	protected Class locatableClass() {
+	protected Class proxyClass() {
 		return TestBridgeScene.class;
 	}
 	

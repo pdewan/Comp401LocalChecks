@@ -191,6 +191,7 @@ public abstract class AbstractNumberScanningTest extends
 			if (processSuccessfulOutputErrrorStatus()) {
 				return true;
 			}
+			System.err.println("Input with ending space unsuccessful, trying input with no ending space");
 			inputWithEndingSpace = false;
 			CurrentProjectHolder.getOrCreateCurrentProject().setInfinite(false);
 			superRetVal = invokeInteractiveMethod();

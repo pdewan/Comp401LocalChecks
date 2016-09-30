@@ -19,8 +19,8 @@ public class AngleMoveLeftLineTestCase extends AngleMoveTestCase {
 	
 
 	@Override
-	protected void setLeafLocatable() {
-		leafLocatable = angle().getLeftLine();
+	protected void setLeafProxy() {
+		leafProxy = angle().getLeftLine();
 	}
 	@Override
 	protected boolean doTest() throws Throwable {

@@ -19,8 +19,8 @@ public class BridgeSceneArthurMoveHeadTestCase extends BridgeSceneMoveArthurTest
 	
 
 	@Override
-	protected void setLeafLocatable() {
-		leafLocatable = arthur().getHead();
+	protected void setLeafProxy() {
+		leafProxy = arthur().getHead();
 	}
 	@Override
 	protected boolean doTest() throws Throwable {

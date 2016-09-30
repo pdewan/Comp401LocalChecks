@@ -15,8 +15,8 @@ public class BridgeSceneArthurScaleHeadTestCase extends BridgeSceneArthurScaleTe
 	}
 
 	@Override
-	protected void setLeafLocatable() {
-		leafLocatable = arthur().getHead();
+	protected void setLeafProxy() {
+		leafProxy = arthur().getHead();
 	}
 	@Override
 	protected boolean doTest() throws Throwable {

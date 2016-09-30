@@ -13,10 +13,10 @@ import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 public abstract class AngleMoveTestCase extends MovableTest {
 	
 	protected TestAngle angle() {
-		return (TestAngle) rootLocatable;
+		return (TestAngle) rootProxy;
 	}
 	@Override
-	protected Class locatableClass() {
+	protected Class proxyClass() {
 		return TestAngle.class;
 	}
 	protected TestAngle initializeMovable() {
