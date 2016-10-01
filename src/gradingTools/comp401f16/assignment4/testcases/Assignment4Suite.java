@@ -3,6 +3,7 @@ package gradingTools.comp401f16.assignment4.testcases;
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 import gradingTools.shared.testcases.shapes.LocatableTest;
+import gradingTools.shared.testcases.shapes.RotatingLineFortyFiveDegreeTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -10,7 +11,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	CommandSuite.class,
 	TokenArraySuite.class,
-	LocatableTest.class
+	RotatingFixedLineSuite.class
 })
 public class Assignment4Suite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment4";
