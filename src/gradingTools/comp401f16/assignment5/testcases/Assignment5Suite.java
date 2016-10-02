@@ -2,6 +2,10 @@ package gradingTools.comp401f16.assignment5.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
+import gradingTools.comp401f16.assignment5.testcases.angle.AngleMoveSuite;
+import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneComponentMoveSuite;
+import gradingTools.comp401f16.assignment5.testcases.scale.arthur.BridgeSceneArthurScaleHeadTestCase;
+import gradingTools.comp401f16.assignment5.testcases.scale.arthur.BridgeSceneComponentScaleSuite;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -9,7 +13,9 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	AngleMoveSuite.class,
 	BridgeSceneComponentMoveSuite.class,
-	BridgeSceneComponentScaleSuite.class
+	BridgeSceneComponentScaleSuite.class,
+	BridgeSceneArthurScaleHeadTestCase.class
+
 })
 public class Assignment5Suite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment5";
