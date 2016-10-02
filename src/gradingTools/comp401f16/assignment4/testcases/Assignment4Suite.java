@@ -3,7 +3,7 @@ package gradingTools.comp401f16.assignment4.testcases;
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 import gradingTools.comp401f16.assignment4.testcases.rotate.detached.DetachedRotatingLineSuite;
-import gradingTools.comp401f16.assignment4.testcases.rotate.fixed.RotatingFixedLineSuite;
+import gradingTools.comp401f16.assignment4.testcases.rotate.fixed.FixedRotatingLineSuite;
 import gradingTools.comp401f16.assignment4.testcases.rotate.moving.MovingRotatingLineSuite;
 import gradingTools.shared.testcases.shapes.LocatableTest;
 import gradingTools.shared.testcases.shapes.rotate.fixed.RotatingLineFortyFiveDegreeTest;
@@ -15,8 +15,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	CommandSuite.class,
 	TokenArraySuite.class,
-	RotatingFixedLineSuite.class,
-	DetachedRotatingLineSuite.class,
+	FixedRotatingLineSuite.class,
 	MovingRotatingLineSuite.class
 })
 public class Assignment4Suite {
