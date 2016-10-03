@@ -1,12 +1,12 @@
-package gradingTools.comp401f16.assignment6.testcases;
+package gradingTools.comp401f16.assignment6.testcases.iniital;
 
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 
-public class KnightAreaReturnedTestCase extends BridgeSceneGetterReturnTestCase {
+public class GorgeReturnedTestCase extends BridgeSceneGetterReturnTestCase {
 
 	@Override
 	protected String propertyName() {
-		return "KnightArea";
+		return "Gorge";
 	}
 
 	@Override

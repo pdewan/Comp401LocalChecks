@@ -1,6 +1,7 @@
-package gradingTools.comp401f16.assignment6.testcases;
+package gradingTools.comp401f16.assignment6.testcases.iniital;
 
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
+import gradingTools.shared.testcases.GetterExecutionTest;
 
 public abstract class BridgeSceneGetterReturnTestCase extends GetterExecutionTest {
 
@@ -9,7 +10,7 @@ public abstract class BridgeSceneGetterReturnTestCase extends GetterExecutionTes
 		return TestBridgeScene.class;
 	}
 	protected Object create() {
-		return createOrGetLastRootProxy();
+		return createRootProxy();
 	}
 
 

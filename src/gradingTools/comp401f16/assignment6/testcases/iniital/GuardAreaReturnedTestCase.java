@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment6.testcases;
+package gradingTools.comp401f16.assignment6.testcases.iniital;
 
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 

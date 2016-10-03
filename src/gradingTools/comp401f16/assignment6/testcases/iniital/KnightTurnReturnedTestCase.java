@@ -1,15 +1,15 @@
-package gradingTools.comp401f16.assignment6.testcases;
+package gradingTools.comp401f16.assignment6.testcases.iniital;
 
 import org.junit.Assert;
 
 import grader.basics.junit.NotesAndScore;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 
-public class OccupiedReturnedTestCase extends BridgeSceneGetterReturnTestCase {
+public class KnightTurnReturnedTestCase extends BridgeSceneGetterReturnTestCase {
 
 	@Override
 	protected String propertyName() {
-		return "Occupied";
+		return "KnightTurn";
 	}
 	
 	@Override

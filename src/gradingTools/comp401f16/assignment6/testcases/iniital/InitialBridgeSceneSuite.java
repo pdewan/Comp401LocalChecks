@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment6.testcases;
+package gradingTools.comp401f16.assignment6.testcases.iniital;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -11,8 +11,9 @@ import util.annotations.MaxValue;
 	GorgeReturnedTestCase.class,
 	KnightAreaReturnedTestCase.class,
 	GuardAreaReturnedTestCase.class,
-	OccupiedReturnedTestCase.class
+	OccupiedReturnedTestCase.class,
+	KnightTurnReturnedTestCase.class
 })
-public class BridgeSceneComponentSuite {
+public class InitialBridgeSceneSuite {
 
 }
