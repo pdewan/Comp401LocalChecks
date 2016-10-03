@@ -2,6 +2,9 @@ package gradingTools.comp401f16.assignment4.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
+import gradingTools.comp401f16.assignment4.testcases.array.TokenArraySuite;
+import gradingTools.comp401f16.assignment4.testcases.commands.CommandSuite;
+import gradingTools.comp401f16.assignment4.testcases.commands.extra.ExtraCommandSuite;
 import gradingTools.comp401f16.assignment4.testcases.rotate.detached.DetachedRotatingLineSuite;
 import gradingTools.comp401f16.assignment4.testcases.rotate.fixed.FixedRotatingLineSuite;
 import gradingTools.comp401f16.assignment4.testcases.rotate.moving.MovingRotatingLineSuite;
@@ -14,6 +17,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	CommandSuite.class,
+	ExtraCommandSuite.class,	
 	TokenArraySuite.class,
 	FixedRotatingLineSuite.class,
 	MovingRotatingLineSuite.class

@@ -1,8 +1,8 @@
-package gradingTools.comp401f16.assignment4.testcases;
+package gradingTools.comp401f16.assignment4.testcases.commands;
 
 import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
 
-public class SayBeanTest extends WordBeanTest{
+public class PassBeanTest extends WordBeanTest{
 	protected static final String STUDENT_EXAMPLE = "SaY";
 	@Override
 	protected String[] getClassNames(){

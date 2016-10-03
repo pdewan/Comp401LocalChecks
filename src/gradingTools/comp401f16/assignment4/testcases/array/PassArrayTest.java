@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment4.testcases;
+package gradingTools.comp401f16.assignment4.testcases.array;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,21 +11,18 @@ import gradingTools.comp401f16.assignment2.testcases.ScannerBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.InputBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.QuoteBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
+import gradingTools.comp401f16.assignment4.testcases.commands.PassBeanTest;
 
-public class QuoteArrayTest extends TokenArrayTest {
-public static final String TOKENS = "Tokens";
+public class PassArrayTest extends TokenArrayTest {
 protected String[] studentTokensInput() {
-	return new String[] {"\"Sea Gull \"", "\" A m e r i c a n \"", "\" E uropean \""};
+	return new String[] {"pass", "PAss", "PASS"};
 }
 protected String[] graderTokensInput() {
 	return studentTokensInput();
 }
 @Override
 protected InputBeanTest createInputBeanTest() {
-	return new QuoteBeanTest();
-}
-protected boolean doTest() throws Throwable {
-	return super.doTest();
+	return new PassBeanTest();
 }
 	
 	

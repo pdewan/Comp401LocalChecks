@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment4.testcases;
+package gradingTools.comp401f16.assignment4.testcases.array;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,19 +9,19 @@ import grader.basics.junit.NotesAndScore;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 import gradingTools.comp401f16.assignment2.testcases.ScannerBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.InputBeanTest;
-import gradingTools.comp401f16.assignment3.testcases.QuoteBeanTest;
+import gradingTools.comp401f16.assignment3.testcases.NumberBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
 
-public class FailArrayTest extends TokenArrayTest {
+public class NumberArrayTest extends TokenArrayTest {
 protected String[] studentTokensInput() {
-	return new String[] {"fail", "FAil", "FAIL"};
+	return new String[] {"0234", "3023", "111"};
 }
 protected String[] graderTokensInput() {
 	return studentTokensInput();
 }
 @Override
 protected InputBeanTest createInputBeanTest() {
-	return new PassBeanTest();
+	return new NumberBeanTest();
 }
 	
 	

@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment4.testcases;
+package gradingTools.comp401f16.assignment4.testcases.array;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,17 +11,18 @@ import gradingTools.comp401f16.assignment2.testcases.ScannerBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.InputBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.QuoteBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
+import gradingTools.comp401f16.assignment4.testcases.commands.ApproachBeanTest;
 
-public class RepeatArrayTest extends TokenArrayTest {
+public class ApproachArrayTest extends TokenArrayTest {
 protected String[] studentTokensInput() {
-	return new String[] {"repeat", "REpeat", "REPEAT"};
+	return new String[] {"approach", "APProach", "APPROACH"};
 }
 protected String[] graderTokensInput() {
 	return studentTokensInput();
 }
 @Override
 protected InputBeanTest createInputBeanTest() {
-	return new RepeatBeanTest();
+	return new ApproachBeanTest();
 }
 	
 	

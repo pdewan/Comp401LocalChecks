@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment4.testcases;
+package gradingTools.comp401f16.assignment4.testcases.commands;
 
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;

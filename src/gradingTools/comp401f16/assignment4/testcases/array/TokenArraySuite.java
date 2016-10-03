@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment4.testcases;
+package gradingTools.comp401f16.assignment4.testcases.array;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

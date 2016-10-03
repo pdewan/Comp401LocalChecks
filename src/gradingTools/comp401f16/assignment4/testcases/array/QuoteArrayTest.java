@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment4.testcases;
+package gradingTools.comp401f16.assignment4.testcases.array;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,16 +12,20 @@ import gradingTools.comp401f16.assignment3.testcases.InputBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.QuoteBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
 
-public class ApproachArrayTest extends TokenArrayTest {
+public class QuoteArrayTest extends TokenArrayTest {
+public static final String TOKENS = "Tokens";
 protected String[] studentTokensInput() {
-	return new String[] {"approach", "APProach", "APPROACH"};
+	return new String[] {"\"Sea Gull \"", "\" A m e r i c a n \"", "\" E uropean \""};
 }
 protected String[] graderTokensInput() {
 	return studentTokensInput();
 }
 @Override
 protected InputBeanTest createInputBeanTest() {
-	return new ApproachBeanTest();
+	return new QuoteBeanTest();
+}
+protected boolean doTest() throws Throwable {
+	return super.doTest();
 }
 	
 	
