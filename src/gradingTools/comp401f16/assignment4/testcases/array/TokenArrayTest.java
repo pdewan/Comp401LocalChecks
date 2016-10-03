@@ -53,13 +53,16 @@ public static final String TOKENS = "Tokens";
 			"Tokens from different scanned strings combined";
 	}
 	protected double correctSizeCredit() {
-		return 0.3;
+		return outputCorrectSize?
+		 0.3:0.0;
 	}
 	protected double correctSecondSizeCredit() {
-		return 0.2;
+		return secondOutputCorrectSize?
+		 0.2:0.0;
 	}
 	protected double correctComponentsCredit() {
-		return 0.5;
+		return correctComponents?
+		 0.5:0.0;
 	}
 	protected String correctComponentsMessage() {
 			return correctComponents?"":
