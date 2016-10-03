@@ -13,7 +13,7 @@ import gradingTools.shared.testcases.shapes.interfaces.TestLine;
 import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 
-public class BridgeSceneGalahadScrollLeftArmTestCase extends BridgeSceneArthurMoveLeftArmTestCase {
+public class BridgeSceneGalahadScrollLeftArmTestCase extends BridgeSceneArthurScrollLeftArmTestCase {
 	
 	protected TestAvatar avatar() {
 		return bridgeScene().getGalahad();
