@@ -125,6 +125,9 @@ public static final String TOKENS = "Tokens";
 	}
 	
 	protected Map<String, Object> componentInputValues = new HashMap();
+	protected String toInputPropertyValue(String anInputToken) {
+		return anInputToken;
+	}
 	protected void extractComponentBeanStatus() throws Throwable {
 		for (int i = 0; i < tokensInput.length; i++){
 			String aToken = tokensInput[i];
@@ -133,7 +136,7 @@ public static final String TOKENS = "Tokens";
 				correctComponents = false;
 				componentsCredit = 0;
 			}
-			componentInputValues.put(WordBeanTest.INPUT, aToken);
+			componentInputValues.put(WordBeanTest.INPUT, toInputPropertyValue(aToken));
 			inputBeanTest.setInputPropertyValues(componentInputValues);
 			Map<String, Object> aComponentResult = 
 					inputBeanTest.executeBean(tokensOutput[i]);

@@ -27,6 +27,8 @@ protected InputBeanTest createInputBeanTest() {
 protected boolean doTest() throws Throwable {
 	return super.doTest();
 }
-	
+protected String toInputPropertyValue(String anInputToken) {
+	return anInputToken.substring(1, anInputToken.length() -1);
+}
 	
 }
