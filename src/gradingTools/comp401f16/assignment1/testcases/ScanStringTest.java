@@ -8,6 +8,11 @@ public class ScanStringTest extends MultipleTokensOutputTest {
 		return 0;
 	}
 	@Override
+	protected String[][] graderTokenLines() {
+		
+		return studentTokenLines();
+	}
+	@Override
 	protected String[][] tokenLines() {
 		// TODO Auto-generated method stub
 		return new String[][] {super.tokenLines()[getLineIndex()]};

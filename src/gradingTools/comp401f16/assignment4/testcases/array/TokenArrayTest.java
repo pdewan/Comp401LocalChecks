@@ -33,9 +33,8 @@ public static final String TOKENS = "Tokens";
 			tokensInput = graderTokensInput();
 		}
 	}
-	@Override
-	protected void clearOutputs() {
-		super.clearOutputs();
+	
+	protected void clearTokenArrayOutputs() {
 		correctComponents = true;
 		componentsMessage = "";
 		outputCorrectSize = true;
@@ -141,7 +140,8 @@ public static final String TOKENS = "Tokens";
 			if (correctComponents) {
 				componentsCredit = inputBeanTest.completeCredit();
 				correctComponents = componentsCredit == 1.0?
-						true:false;
+						true:
+						false;
 				componentsMessage = inputBeanTest.completeMessage();
 				
 			}
@@ -168,6 +168,7 @@ public static final String TOKENS = "Tokens";
 	protected boolean doTest() throws Throwable {
 		inputWithEndingSpace = true;
 		boolean failedWithSpace = false;
+		clearTokenArrayOutputs();
 		try {
 		executeBean();
 		} catch (Throwable e) {
