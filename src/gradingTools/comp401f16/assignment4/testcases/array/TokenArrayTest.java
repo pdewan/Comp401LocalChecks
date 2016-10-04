@@ -18,6 +18,8 @@ public static final String TOKENS = "Tokens";
 	protected String[] tokensInput ;
 	protected InputBeanTest inputBeanTest ;
 	protected boolean correctComponents = true;
+	protected double componentsCredit = 0;
+	protected String componentsMessage = "";
 	boolean outputCorrectSize;
 	protected boolean secondOutputCorrectSize;
 	
@@ -30,6 +32,14 @@ public static final String TOKENS = "Tokens";
 		} else {
 			tokensInput = graderTokensInput();
 		}
+	}
+	@Override
+	protected void clearOutputs() {
+		super.clearOutputs();
+		correctComponents = true;
+		componentsMessage = "";
+		outputCorrectSize = true;
+		secondOutputCorrectSize = true;
 	}
 	protected abstract InputBeanTest createInputBeanTest() ;
 	protected abstract String[] studentTokensInput() ;
@@ -62,11 +72,11 @@ public static final String TOKENS = "Tokens";
 	}
 	protected double correctComponentsCredit() {
 		return correctComponents?
-		 0.5:0.0;
+		 0.5:0.5*componentsCredit;
 	}
 	protected String correctComponentsMessage() {
 			return correctComponents?"":
-				"Incorrect beans in array";
+				"Incorrect bean in array:" + componentsMessage;
 	}
 	@Override
 	public String completeMessage() {
@@ -119,13 +129,21 @@ public static final String TOKENS = "Tokens";
 	protected void extractComponentBeanStatus() throws Throwable {
 		for (int i = 0; i < tokensInput.length; i++){
 			String aToken = tokensInput[i];
+			if (aToken == null) {
+				componentsMessage = "Null bean";
+				correctComponents = false;
+				componentsCredit = 0;
+			}
 			componentInputValues.put(WordBeanTest.INPUT, aToken);
 			inputBeanTest.setInputPropertyValues(componentInputValues);
 			Map<String, Object> aComponentResult = 
 					inputBeanTest.executeBean(tokensOutput[i]);
 			if (correctComponents) {
-				correctComponents = inputBeanTest.completeCredit() == 1.0?
+				componentsCredit = inputBeanTest.completeCredit();
+				correctComponents = componentsCredit == 1.0?
 						true:false;
+				componentsMessage = inputBeanTest.completeMessage();
+				
 			}
 		}
 	}
