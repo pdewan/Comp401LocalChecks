@@ -20,7 +20,9 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 	protected final String thirdSay = "Color?";
 	protected final String fourthSay = "Blue";
 	
-
+	protected String toString(TestAvatar aTestAvatar) {
+		return "Avatar(" +  aTestAvatar.getHead().getImageFileName() + ")";
+	}
 	protected void printFractionComplete() {
 		System.out.println ("Fraction complete:" + fractionComplete);
 	}
@@ -48,7 +50,7 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		return SAY_CREDIT;
 	}
 	protected double lastSayCredit() {
-		return SAY_CREDIT;
+		return LAST_SAY_CREDIT;
 	}
 	protected String sayErrorMessage() {
 		return "Say failed";
@@ -106,7 +108,7 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		System.out.println("Say:\"" + aSaying + "\"");
 		bridgeScene().say(aSaying);
 		String aText = anAvatar.getStringShape().getText();
-		assertTrue("Interacting avatar  said \"" + aText + "\" instead of \"" + aSaying + "\"",
+		assertTrue(toString(anAvatar) + " said  \"" + aText + "\" instead of \"" + aSaying + "\"",
 			aSaying.equals(aText));
 		fractionComplete += aCredit;
 		printFractionComplete();
@@ -117,8 +119,8 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		say(anAvatar, aSaying, eachSayCredit());
 
 	}
-	protected void correctApproach (TestAvatar anAvatar) {
-		System.out.println("Legal Knight Approach");
+	protected void approach (TestAvatar anAvatar) {
+		System.out.println(toString(anAvatar) + " Approaches");
 		bridgeScene().approach(anAvatar);
 		assertTrue(correctApproachErrorMessage(), 
 				bridgeScene().getOccupied() &&
@@ -127,17 +129,17 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		printFractionComplete();
 	}
 	
-	protected void wrongApproach (TestAvatar anAvatar) {
-		System.out.println("Illegal Knight Approach");
-		bridgeScene().approach(anAvatar);
-		assertTrue(correctApproachErrorMessage(), 
-				bridgeScene().getOccupied() &&
-				!bridgeScene().getKnightTurn());
-		fractionComplete += eachApproachCredit();
-		printFractionComplete();
-	}
+//	protected void wrongApproach (TestAvatar anAvatar) {
+//		System.out.println("Illegal Knight Approach");
+//		bridgeScene().approach(anAvatar);
+//		assertTrue(correctApproachErrorMessage(), 
+//				bridgeScene().getOccupied() &&
+//				!bridgeScene().getKnightTurn());
+//		fractionComplete += eachApproachCredit();
+//		printFractionComplete();
+//	}
 	protected void passed() {
-		System.out.println("Knight Passed");
+		System.out.println("Interacting Knight Passed");
 		bridgeScene().passed();
 		assertTrue(passedErrorMessage(), 
 				!bridgeScene().getOccupied() &&
@@ -146,7 +148,7 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		printFractionComplete();
 	}
 	protected void failed() {
-		System.out.println("Knight Failed");
+		System.out.println("Interacting Knight Failed");
 		bridgeScene().failed();
 		assertTrue("After failed occupied should be false and knight turn false", 
 				!bridgeScene().getOccupied() &&
@@ -156,20 +158,20 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 	}
 	@Override
 	protected void executeOperations(Object aLocatable) {
-		correctApproach(firstAvatar());
+		approach(firstAvatar());
 		say (guard(), firstSay);
 		say (firstAvatar(), secondSay);
 		say (guard(), thirdSay);
 		say (firstAvatar(), fourthSay);
 		passed();
-		correctApproach (secondAvatar());
+		approach (secondAvatar());
 		say (guard(), firstSay);
 		say (secondAvatar(), secondSay);
 		say (guard(), thirdSay);
 		say (secondAvatar(), fourthSay);
 		failed();
-		correctApproach(thirdAvatar());
-		wrongApproach(fourthAvatar());
+		approach(thirdAvatar());
+		approach(fourthAvatar());
 		say (guard(), firstSay);
 		say (thirdAvatar(), secondSay, lastSayCredit());
 
