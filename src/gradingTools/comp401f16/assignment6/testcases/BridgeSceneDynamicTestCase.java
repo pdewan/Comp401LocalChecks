@@ -10,16 +10,20 @@ import gradingTools.shared.testcases.shapes.LocatableTest;
 @MaxValue(50)
 public class BridgeSceneDynamicTestCase extends LocatableTest {
 	protected boolean firstApproachWorks;
-	protected final double APPROACH_CREDIT = 0.5; // 4 times, 2 pts
-	protected final double SAY_CREDIT = 0.04; // ten times, 4 pts
-	protected final double PASSED_CREDIT = 0.2; //once
-	protected final double FAILED_CREDIT = 0.2; // once
+	protected final double APPROACH_CREDIT = 0.05; // 4 times, 	0.2 pts
+	protected final double SAY_CREDIT = 0.05; // 9 times, 		0.45 pts
+	protected final double LAST_SAY_CREDIT = 0.15; // once 		0.15
+	protected final double PASSED_CREDIT = 0.1; //once, 		0.1
+	protected final double FAILED_CREDIT = 0.1; // once, 		0.1
 	protected final String firstSay = "Quest?";
 	protected final String secondSay = "Grail";
 	protected final String thirdSay = "Color?";
 	protected final String fourthSay = "Blue";
 	
 
+	protected void printFractionComplete() {
+		System.out.println ("Fraction complete:" + fractionComplete);
+	}
 
 	protected String initialSceneUnoccupiedrMessage() {
 		return "Scene Initially Occupied";
@@ -43,6 +47,9 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 	protected double eachSayCredit() {
 		return SAY_CREDIT;
 	}
+	protected double lastSayCredit() {
+		return SAY_CREDIT;
+	}
 	protected String sayErrorMessage() {
 		return "Say failed";
 	}
@@ -63,6 +70,8 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		return TestBridgeScene.class;
 	}
 	protected void assertTrue(String aMessage, boolean aCheck) {
+		if (!aCheck)
+		 System.out.println (aMessage);
 		Assert.assertTrue(aMessage + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, aCheck);
 
 //		Assert.assertTrue(aMessage + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, aCheck);
@@ -93,42 +102,57 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		return bridgeScene().getGuard();
 	}
 	
-	protected void say (TestAvatar anAvatar, String aSaying) {
+	protected void say (TestAvatar anAvatar, String aSaying, double aCredit) {
+		System.out.println("Say:\"" + aSaying + "\"");
 		bridgeScene().say(aSaying);
 		String aText = anAvatar.getStringShape().getText();
-		assertTrue("Avatar  said " + aText + " instead of " + aSaying,
+		assertTrue("Interacting avatar  said \"" + aText + "\" instead of \"" + aSaying + "\"",
 			aSaying.equals(aText));
-		fractionComplete += eachSayCredit();
+		fractionComplete += aCredit;
+		printFractionComplete();
+
+	}
+
+	protected void say (TestAvatar anAvatar, String aSaying) {
+		say(anAvatar, aSaying, eachSayCredit());
 
 	}
 	protected void correctApproach (TestAvatar anAvatar) {
+		System.out.println("Legal Knight Approach");
 		bridgeScene().approach(anAvatar);
 		assertTrue(correctApproachErrorMessage(), 
 				bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
 		fractionComplete += eachApproachCredit();
+		printFractionComplete();
 	}
 	
 	protected void wrongApproach (TestAvatar anAvatar) {
+		System.out.println("Illegal Knight Approach");
 		bridgeScene().approach(anAvatar);
 		assertTrue(correctApproachErrorMessage(), 
 				bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
 		fractionComplete += eachApproachCredit();
+		printFractionComplete();
 	}
 	protected void passed() {
+		System.out.println("Knight Passed");
 		bridgeScene().passed();
 		assertTrue(passedErrorMessage(), 
 				!bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
 		fractionComplete += passedCredit();
+		printFractionComplete();
 	}
 	protected void failed() {
+		System.out.println("Knight Failed");
 		bridgeScene().failed();
 		assertTrue("After failed occupied should be false and knight turn false", 
 				!bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
 		fractionComplete += passedCredit();
+		printFractionComplete();
 	}
 	@Override
 	protected void executeOperations(Object aLocatable) {
@@ -147,7 +171,7 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		correctApproach(thirdAvatar());
 		wrongApproach(fourthAvatar());
 		say (guard(), firstSay);
-		say (thirdAvatar(), secondSay);
+		say (thirdAvatar(), secondSay, lastSayCredit());
 
 		
 		
