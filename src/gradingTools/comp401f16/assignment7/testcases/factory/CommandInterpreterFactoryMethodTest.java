@@ -5,6 +5,7 @@ import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMoveTestCase;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
+import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
 import gradingTools.shared.testcases.FactoryMethodTest;
 import gradingTools.shared.testcases.ProxyTest;
 import gradingTools.shared.testcases.interfaces.TestStringTable;
@@ -16,11 +17,15 @@ public class CommandInterpreterFactoryMethodTest extends  BridgeSceneMoveTestCas
 	public CommandInterpreterFactoryMethodTest() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
 	}
+//	@Override
+//	protected Class proxyClass() {
+//		return TestCommandInterpreter.class;
+//	}
+//	
 	@Override
 	protected Class proxyClass() {
-		return TestCommandInterpreter.class;
+		return TestErrorResilientCommandInterpreter.class;
 	}
-	
 	protected TestCommandInterpreter commandInterpreter() {
 		return (TestCommandInterpreter) rootProxy;
 	}

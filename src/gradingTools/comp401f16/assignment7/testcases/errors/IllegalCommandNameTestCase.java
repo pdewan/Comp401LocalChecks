@@ -45,7 +45,15 @@ public class IllegalCommandNameTestCase extends CommandInterpreterArthurMoveLeft
 	protected boolean checkOutput(Object aLocatable) {
 		super.checkOutput(aLocatable);
 		fractionComplete = 0;
-		String anError = errorReslientCommandInterpreter().getErrors();
+		String anError = "";
+		try {
+		 anError = errorReslientCommandInterpreter().getErrors();
+		 if (anError == null) {
+			 assertTrue("Nullt error property:", false);
+		 }
+		} catch (Exception e) {
+			assertTrue("Could not get error property:", false);
+		}
 		if (!anError.isEmpty()) {
 			assertError();
 		}

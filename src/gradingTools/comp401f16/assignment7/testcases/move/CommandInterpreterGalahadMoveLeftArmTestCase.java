@@ -7,6 +7,7 @@ import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneArthurMoveLeftArmTestCase;
 import gradingTools.comp401f16.assignment5.testcases.move.others.BridgeSceneGalahadMoveLeftArmTestCase;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
+import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
 import gradingTools.shared.testcases.MethodExecutionTest;
 import gradingTools.shared.testcases.shapes.MovableTest;
 import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
@@ -23,11 +24,15 @@ public class CommandInterpreterGalahadMoveLeftArmTestCase
 	    avatarName = "Galahad";
 	    
 	}
-	
 	@Override
 	protected Class proxyClass() {
-		return TestCommandInterpreter.class;
+		return TestErrorResilientCommandInterpreter.class;
 	}
+	
+//	@Override
+//	protected Class proxyClass() {
+//		return TestCommandInterpreter.class;
+//	}
 	
 	protected TestCommandInterpreter commandInterpreter() {
 		return (TestCommandInterpreter) rootProxy;
