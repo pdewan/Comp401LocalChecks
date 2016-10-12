@@ -1,24 +1,36 @@
 package gradingTools.comp401f16.assignment7.testcases;
 
+import util.annotations.MaxValue;
 import bus.uigen.test.TestTransient;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
+import gradingTools.comp401f16.assignment7.testcases.factory.StringTableFactoryMethodTest;
+import gradingTools.shared.testcases.FactoryMethodTest;
 import gradingTools.shared.testcases.ProxyTest;
 import gradingTools.shared.testcases.interfaces.TestStringTable;
-
-public class StringTableTest extends  ProxyTest{
+@MaxValue(25)
+public class StringTableTest extends  StringTableFactoryMethodTest{
 	protected static final int NUM_UNTESTED = 5;
 	protected static final double FIRST_GET_CREDIT = 0.2;
-	protected static final double SECOND_GET_CREDIT = 0.2; // 9 times, 		0.45 pts
-	protected static final double THIRD_GET_CREDIT = 0.2; // once 		0.15
-	protected static final  double FOURTH_GET_CREDIT = 0.4; //once, 		0.1
-	@Override
-	protected Class proxyClass() {
-		return TestStringTable.class;
-	}
-	
-	protected TestStringTable table() {
-		return (TestStringTable) rootProxy;
-	}
+	protected static final double SECOND_GET_CREDIT = 0.1; 
+	protected static final double THIRD_GET_CREDIT = 0.1; 
+	protected static final  double FOURTH_GET_CREDIT = 0.1; 
+	protected static final  double LAST_GET_CREDIT = 0.5; 
+
+//	public StringTableTest() {
+//		factoryMethodTags = new String[] {"avatarTableFactoryMethod"};
+//	}
+//	@Override
+//	protected Class proxyClass() {
+//		return TestStringTable.class;
+//	}
+//	
+//	
+//	protected String[] factoryMethodTags() {
+//		return factoryMethodTags;
+//	}
+//	protected TestStringTable table() {
+//		return (TestStringTable) rootProxy;
+//	}
 	
 	protected void addUntested() {
 		for (int i = 0; i < NUM_UNTESTED; i++) {
@@ -31,25 +43,24 @@ public class StringTableTest extends  ProxyTest{
 	protected void testPutGet(String aKey, Object aValue) {
 		table().put(aKey, aValue);
 		Object anActualValue = table().get(aKey);
-		assertNotExpectd(anActualValue, aValue);
-		
-		
+		assertNotExpected(anActualValue, aValue);		
 	}
 	
 
 	@Override
 	protected void executeOperations(Object aProxy) {
+		fractionComplete = 0;
 		testPutGet("one", 1);
 		fractionComplete += FIRST_GET_CREDIT;
 		testPutGet("two", 2);
 		fractionComplete += SECOND_GET_CREDIT;
 		testPutGet("one", 2);
-		fractionComplete += SECOND_GET_CREDIT;
-		testPutGet("two", 1);
 		fractionComplete += THIRD_GET_CREDIT;
+		testPutGet("two", 1);
+		fractionComplete += FOURTH_GET_CREDIT;
 		addUntested();
 		testPutGet("two", 10);
-		fractionComplete += FOURTH_GET_CREDIT;
+		fractionComplete += LAST_GET_CREDIT;
 		
 	}
 
@@ -62,6 +73,10 @@ public class StringTableTest extends  ProxyTest{
 	@Override
 	protected boolean checkOutput(Object aLocatable) {
 		return false;
+	}
+	@Override
+	protected Object create() {
+		return createUsingFactoryMethod();
 	}
 	protected boolean doTest() throws Throwable {
 		create();

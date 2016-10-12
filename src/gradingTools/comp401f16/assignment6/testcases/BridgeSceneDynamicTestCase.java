@@ -6,9 +6,11 @@ import util.annotations.MaxValue;
 import grader.basics.junit.NotesAndScore;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
+import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMoveArthurTestCase;
+import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMoveTestCase;
 import gradingTools.shared.testcases.shapes.LocatableTest;
 @MaxValue(50)
-public class BridgeSceneDynamicTestCase extends LocatableTest {
+public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 	protected boolean firstApproachWorks;
 	protected final double APPROACH_CREDIT = 0.05; // 4 times, 	0.2 pts
 	protected final double SAY_CREDIT = 0.05; // 9 times, 		0.45 pts
@@ -63,10 +65,12 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		return FAILED_CREDIT;
 	}
 
-	protected TestBridgeScene bridgeScene() {
-		return (TestBridgeScene) rootProxy;
+//	protected TestBridgeScene bridgeScene() {
+//		return (TestBridgeScene) rootProxy;
+//	}
+	protected void setDependentObjects() {
+		bridgeScene = (TestBridgeScene) rootProxy;
 	}
-	
 	@Override
 	protected Class proxyClass() {
 		return TestBridgeScene.class;
@@ -103,10 +107,12 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 	protected TestAvatar guard() {
 		return bridgeScene().getGuard();
 	}
-	
+	protected void say (String aSaying) {
+		bridgeScene().say(aSaying);
+	}
 	protected void say (TestAvatar anAvatar, String aSaying, double aCredit) {
 		System.out.println("Say:\"" + aSaying + "\"");
-		bridgeScene().say(aSaying);
+		say(aSaying);
 		String aText = anAvatar.getStringShape().getText();
 		assertTrue(toString(anAvatar) + " said  \"" + aText + "\" instead of \"" + aSaying + "\"",
 			aSaying.equals(aText));
@@ -194,11 +200,14 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 	@Override
 	protected boolean checkOutput(Object aLocatable) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	@Override
 	protected void setLeafProxy() {
 		// TODO Auto-generated method stub
+		
+	}
+	protected void setExpected(Object aLocatable) {
 		
 	}
 	

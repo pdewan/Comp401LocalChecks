@@ -13,12 +13,15 @@ import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 
 public abstract class BridgeSceneMoveArthurTestCase extends BridgeSceneMoveTestCase {
+	protected String avatarName = "arthur";	
 	
 	@Override
 	protected TestAvatar initializeMovable() {
 		return avatar();
 	}
-	
+	protected String avatarName() {
+		return avatarName;
+	}
 	protected TestAvatar avatar() {
 		return bridgeScene().getArthur();
 	}
