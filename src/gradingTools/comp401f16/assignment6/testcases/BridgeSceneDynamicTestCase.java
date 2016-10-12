@@ -72,8 +72,8 @@ public class BridgeSceneDynamicTestCase extends LocatableTest {
 		return TestBridgeScene.class;
 	}
 	protected void assertTrue(String aMessage, boolean aCheck) {
-		if (!aCheck)
-		 System.out.println (aMessage);
+//		if (!aCheck)
+//		 System.out.println (aMessage);
 		Assert.assertTrue(aMessage + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, aCheck);
 
 //		Assert.assertTrue(aMessage + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, aCheck);
