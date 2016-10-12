@@ -1,5 +1,6 @@
 package gradingTools.comp401f16.assignment5.testcases;
 
+import grader.basics.execution.GradingMode;
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 import gradingTools.comp401f16.assignment5.testcases.angle.AngleMoveSuite;
@@ -24,7 +25,7 @@ public class Assignment5Suite {
 	public static void main (String[] args) {
 		try {
 
-
+//	    GradingMode.setGraderRun(true);
 		BasicJUnitUtils.interactiveTest(Assignment5Suite.class);
 
 
