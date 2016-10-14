@@ -7,7 +7,7 @@ import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 
 @IsExtra(true)
-@MaxValue(10)
+@MaxValue(15)
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	WordHistoryTest.class,
