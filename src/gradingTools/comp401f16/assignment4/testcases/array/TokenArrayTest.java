@@ -14,13 +14,13 @@ import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
 
 public abstract class TokenArrayTest extends ScannerBeanTest {
 public static final String TOKENS = "Tokens";
-	protected Object[] tokensOutput;
+	protected Object[] tokenArrayOutput;
 	protected String[] tokensInput ;
 	protected InputBeanTest inputBeanTest ;
 	protected boolean correctComponents = true;
 	protected double componentsCredit = 0;
 	protected String componentsMessage = "";
-	boolean outputCorrectSize;
+	protected boolean outputCorrectSize;
 	protected boolean secondOutputCorrectSize;
 	
 	public TokenArrayTest() {
@@ -34,7 +34,7 @@ public static final String TOKENS = "Tokens";
 		}
 	}
 	
-	protected void clearTokenArrayOutputs() {
+	protected void clearTokenCollectionOutputs() {
 		correctComponents = true;
 		componentsMessage = "";
 		outputCorrectSize = true;
@@ -57,7 +57,7 @@ public static final String TOKENS = "Tokens";
 		return outputCorrectSize?"":
 			"Size of array not correct";
 	}
-	protected String corredtSecondSizeMessage() {
+	protected String correctSecondSizeMessage() {
 		return secondOutputCorrectSize?"":
 			"Tokens from different scanned strings combined";
 	}
@@ -80,7 +80,7 @@ public static final String TOKENS = "Tokens";
 	@Override
 	public String completeMessage() {
 		String aMessage = correctSizeMessage() +
-				corredtSecondSizeMessage() +
+				correctSecondSizeMessage() +
 				correctComponentsMessage();
 		return aMessage;
 	}
@@ -114,19 +114,26 @@ public static final String TOKENS = "Tokens";
 		return new String[]{TOKENS};
 	}
 	protected void extractTokens() {
-		tokensOutput = (Object[])outputPropertyValues.get(TOKENS);
+		tokenArrayOutput = (Object[])outputPropertyValues.get(TOKENS);
 	}
+	protected int sizeOutputCollection() {
+		return tokenArrayOutput.length;
+	}
+	
 	protected void extractOutputCorrectSize() {
-		outputCorrectSize = tokensInput.length == tokensOutput.length;
+		outputCorrectSize = tokensInput.length == sizeOutputCollection();
 	}
 	
 	protected void extractSecondOutputCorrectSize() {
-		secondOutputCorrectSize = tokensInput.length == tokensOutput.length;
+		secondOutputCorrectSize = tokensInput.length == sizeOutputCollection();
 	}
 	
 	protected Map<String, Object> componentInputValues = new HashMap();
 	protected String toInputPropertyValue(String anInputToken) {
 		return anInputToken;
+	}
+	protected Object outputTokenAt(int anIndex) {
+		return tokenArrayOutput[anIndex];
 	}
 	protected void extractComponentBeanStatus() throws Throwable {
 		for (int i = 0; i < tokensInput.length; i++){
@@ -139,7 +146,9 @@ public static final String TOKENS = "Tokens";
 			componentInputValues.put(WordBeanTest.INPUT, toInputPropertyValue(aToken));
 			inputBeanTest.setInputPropertyValues(componentInputValues);
 			Map<String, Object> aComponentResult = 
-					inputBeanTest.executeBean(tokensOutput[i]);
+					inputBeanTest.executeBean(outputTokenAt(i));
+//			inputBeanTest.executeBean(tokenArrayOutput[i]);
+
 			if (correctComponents) {
 				componentsCredit = inputBeanTest.completeCredit();
 				correctComponents = componentsCredit == 1.0?
@@ -168,10 +177,13 @@ public static final String TOKENS = "Tokens";
 //		return true;
 //	
 //}
+	protected boolean isNullCollectionOutput() {
+		return tokenArrayOutput == null;
+	}
 	protected boolean doTest() throws Throwable {
 		inputWithEndingSpace = true;
 		boolean failedWithSpace = false;
-		clearTokenArrayOutputs();
+		clearTokenCollectionOutputs();
 		try {
 		executeBean();
 		} catch (Throwable e) {
@@ -179,12 +191,17 @@ public static final String TOKENS = "Tokens";
 //			executeBean();
 		}
 		extractTokens();
-		if (tokensOutput == null || failedWithSpace) {
+		if (isNullCollectionOutput()|| failedWithSpace) {
+//		if (tokenArrayOutput == null || failedWithSpace) {
 			inputWithEndingSpace = false;
 			executeBean();
 			extractTokens();
 		}
 		extractOutputCorrectSize();
+		if (!outputCorrectSize) {
+			processCompleteOutput();
+			return false;
+		}
 		extractComponentBeanStatus();
 
 		// see the size does not change a second time

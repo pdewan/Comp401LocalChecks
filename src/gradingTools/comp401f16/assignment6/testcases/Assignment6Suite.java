@@ -2,6 +2,7 @@ package gradingTools.comp401f16.assignment6.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
+import gradingTools.comp401f16.assignment6.testcases.history.TokenHistorySuite;
 import gradingTools.comp401f16.assignment6.testcases.iniital.InitialBridgeSceneSuite;
 import gradingTools.comp401f16.assignment6.testcases.scroll.BridgeSceneComponentScrollSuite;
 
@@ -11,7 +12,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	InitialBridgeSceneSuite.class,
 	BridgeSceneDynamicTestCase.class,
-	BridgeSceneComponentScrollSuite.class
+	BridgeSceneComponentScrollSuite.class,
+	TokenHistorySuite.class
 	
 })
 public class Assignment6Suite {
