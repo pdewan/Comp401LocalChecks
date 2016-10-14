@@ -53,11 +53,11 @@ public static final String LIST = "TokenList";
 	}
 	protected double correctSizeCredit() {
 		return outputCorrectSize?
-		 0.1:0.0;
+		 0.2:0.0;
 	}
 	protected double correctSecondSizeCredit() {
 		return secondOutputCorrectSize?
-		 0.4:0.0;
+		 0.3:0.0;
 	}
 	
 }
