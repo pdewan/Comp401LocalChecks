@@ -12,6 +12,9 @@ public class BridgeSceneFactoryMethodTest extends  FactoryMethodTest{
 	public BridgeSceneFactoryMethodTest() {
 		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
 	}
+	protected boolean tryConstructor() {
+		return false;
+	}
 	@Override
 	protected Class proxyClass() {
 		return TestBridgeScene.class;

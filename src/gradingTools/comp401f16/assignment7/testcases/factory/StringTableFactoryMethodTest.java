@@ -11,6 +11,9 @@ public class StringTableFactoryMethodTest extends  FactoryMethodTest{
 	public StringTableFactoryMethodTest() {
 		factoryMethodTags = new String[] {"avatarTableFactoryMethod"};
 	}
+	protected boolean tryConstructor() {
+		return false;
+	}
 	@Override
 	protected Class proxyClass() {
 		return TestStringTable.class;

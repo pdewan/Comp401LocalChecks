@@ -17,6 +17,9 @@ public class CommandInterpreterFactoryMethodTest extends  BridgeSceneMoveTestCas
 	public CommandInterpreterFactoryMethodTest() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
 	}
+	protected boolean tryConstructor() {
+		return false;
+	}
 //	@Override
 //	protected Class proxyClass() {
 //		return TestCommandInterpreter.class;

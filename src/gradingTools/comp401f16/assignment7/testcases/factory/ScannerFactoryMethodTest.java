@@ -13,6 +13,9 @@ public class ScannerFactoryMethodTest extends  FactoryMethodTest{
 	public ScannerFactoryMethodTest() {
 		factoryMethodTags = new String[] {"scannerFactoryMethod"};
 	}
+	protected boolean tryConstructor() {
+		return false;
+	}
 	@Override
 	protected Class proxyClass() {
 		return TestScanner.class;
