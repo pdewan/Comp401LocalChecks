@@ -17,10 +17,15 @@ public class BridgeSceneArthurMoveLeftArmTestCase extends BridgeSceneMoveArthurT
 		return studentYDelta;
 	}
 	
+	protected Object computeLeafProxy() {
+		return avatar().getArms().getLeftLine();
+	}
 
 	@Override
 	protected void setLeafProxy() {
-		leafProxy = avatar().getArms().getLeftLine();
+//		leafProxy = avatar().getArms().getLeftLine();
+		leafProxy = computeLeafProxy();
+
 	}
 	@Override
 	protected boolean doTest() throws Throwable {
