@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment7.testcases;
+package gradingTools.comp401f16.assignment8.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
@@ -14,29 +14,26 @@ import gradingTools.comp401f16.assignment7.testcases.move.CommandInterpreterMove
 import gradingTools.comp401f16.assignment7.testcases.move.signed.CommandInterpreterArthurSignedMoveLeftArmTestCase;
 import gradingTools.comp401f16.assignment7.testcases.move.signed.CommandInterpreterSignedMoveSuite;
 import gradingTools.comp401f16.assignment7.testcases.say.CommandInterpreterApproachedArthurSayTestCase;
+import gradingTools.comp401f16.assignment8.testcases.factory.ConsoleSceneViewFactoryMethodTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	StringTableTest.class,
-	FactoryMethodSuiteA7.class,
-	CommandInterpreterMoveSuite.class,
-	CommandInterpreterSignedMoveSuite.class,
-	CommandInterpreterApproachedArthurSayTestCase.class,
-	CommandInterpreterMixedCaseSuite.class,
-	CommandInterpreterErrorsSuite.class
+	ConsoleSceneViewFactoryMethodTest.class,
+	ConsoleSceneViewOutputTestCase.class
+	
 	
 })
-public class Assignment7Suite {
-	public static final String MAIN_CLASS_NAME = "main.Assignment7";
+public class Assignment8Suite {
+	public static final String MAIN_CLASS_NAME = "main.Assignment8";
 	public static final String[] MAIN_CLASS_NAMES = {MAIN_CLASS_NAME, "Assignment"};
 	
 	public static void main (String[] args) {
 		try {
 
 
-		BasicJUnitUtils.interactiveTest(Assignment7Suite.class);
+		BasicJUnitUtils.interactiveTest(Assignment8Suite.class);
 
 
 		} catch (Exception e) {

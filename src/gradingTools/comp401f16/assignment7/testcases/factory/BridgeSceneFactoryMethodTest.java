@@ -8,9 +8,12 @@ import gradingTools.shared.testcases.ProxyTest;
 import gradingTools.shared.testcases.interfaces.TestStringTable;
 
 public class BridgeSceneFactoryMethodTest extends  FactoryMethodTest{
-	
+	public static final String[] FACTORY_METHOD_TAGS = 
+			new String[] {"bridgeSceneFactoryMethod"};
+
 	public BridgeSceneFactoryMethodTest() {
-		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
+//		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
+		factoryMethodTags = FACTORY_METHOD_TAGS;
 	}
 	protected boolean tryConstructor() {
 		return false;
