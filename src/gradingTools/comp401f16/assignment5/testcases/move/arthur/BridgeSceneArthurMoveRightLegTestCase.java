@@ -16,11 +16,16 @@ public class BridgeSceneArthurMoveRightLegTestCase extends BridgeSceneMoveArthur
 	protected Integer inputStudentYDelta() {
 		return studentYDelta;
 	}
+	protected Object computeLeafProxy() {
+		return avatar().getLegs().getRightLine();
+	}
 	
 
 	@Override
 	protected void setLeafProxy() {
-		leafProxy = avatar().getLegs().getRightLine();
+//		leafProxy = avatar().getLegs().getRightLine();
+		leafProxy = computeLeafProxy();
+
 	}
 	@Override
 	protected boolean doTest() throws Throwable {
