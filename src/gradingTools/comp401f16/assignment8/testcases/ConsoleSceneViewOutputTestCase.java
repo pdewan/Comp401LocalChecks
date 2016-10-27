@@ -23,23 +23,23 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 	protected PropertyChangeListener consoleView;
 	protected TestBridgeScene bridgeScene;
 	protected boolean minPartsCorrect = false;
-	protected boolean allPropertiesChange = false;
+	protected boolean somePropertiesChange = false;
 	protected boolean oldValueCorrespondsToNewValue = false;
 	protected static final double MIN_PARTS_CREDIT = 0.7;
 	protected static final double NEW_OLD_VALUE_CREDIT = 0.15;
-	protected final double ALL_PROPERTIES_CHANGE_CREDIT = 0.15;
+	protected static final double SOME_PROPERTIES_CHANGE_CREDIT = 0.15;
 	
 	protected String minPartsMessage() {
 		return minPartsCorrect?"":"No of unique event sources < 7. ";
 	}
-	protected String allPropertiesMessage() {
-		return allPropertiesChange?"":"Old Value == New Value in some property notification. ";
+	protected String somePropertiesMessage() {
+		return somePropertiesChange?"":"Old Value == New Value in all property notification. ";
 	}
 	protected String oldValueCorrespondsToNewValueMessage() {
 		return oldValueCorrespondsToNewValue?"":"No new value before failed is an old value after failed. ";
 	}
 	protected String fullMessage() {
-		return minPartsMessage() + allPropertiesMessage() + oldValueCorrespondsToNewValueMessage();
+		return minPartsMessage() + somePropertiesMessage() + oldValueCorrespondsToNewValueMessage();
 	}
 	@Override
 	protected Object create() {
@@ -86,16 +86,18 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
     protected void processPropertyChanges() {
     	fractionComplete = 0;
     	System.out.println ("Testing if old values and new values are different after approach");
-    	long noChange = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
+    	long numChanges = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
                 .parallel().unordered()
                 .filter((properties) -> properties[1].equals(properties[2])) // new/old value
                 .count();
-        boolean isNoChange = noChange == 0;
-        if (isNoChange) {
-        	System.out.println (noChange + " values did not change");
+    	somePropertiesChange = numChanges != 0;
+//    	allPropertiesChange = numChanges == approachPropertyChanges.length;
+
+        if (!somePropertiesChange) {
+        	System.out.println (numChanges + " values changed");
 
         } else {
-        	fractionComplete += this.ALL_PROPERTIES_CHANGE_CREDIT;
+        	fractionComplete += this.SOME_PROPERTIES_CHANGE_CREDIT;
         }
     	System.out.println ("Finding the number of unique sources of property changes after approach");
 
@@ -104,7 +106,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
                 .map((properties) -> properties[4]) // source
                 .distinct()
                 .count();
-        boolean minPartsCorrect = uniqueSources >= 7;
+        minPartsCorrect = uniqueSources >= 7;
         if (!minPartsCorrect) {
         	System.out.println ("Unique scources " + uniqueSources + " < expected body parts:" + 7);
 
