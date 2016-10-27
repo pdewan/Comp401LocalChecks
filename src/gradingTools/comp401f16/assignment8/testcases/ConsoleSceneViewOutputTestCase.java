@@ -33,7 +33,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 		return minPartsCorrect?"":"No of unique event sources < 7. ";
 	}
 	protected String somePropertiesMessage() {
-		return somePropertiesChange?"":"Old Value == New Value in all property notification. ";
+		return somePropertiesChange?"":"Old Value == New Value in less than 7 property notification. ";
 	}
 	protected String oldValueCorrespondsToNewValueMessage() {
 		return oldValueCorrespondsToNewValue?"":"No new value before failed is an old value after failed. ";
@@ -86,15 +86,20 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
     protected void processPropertyChanges() {
     	fractionComplete = 0;
     	System.out.println ("Testing if old values and new values are different after approach");
-    	long numChanges = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
+    	long numNoChanges = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
                 .parallel().unordered()
                 .filter((properties) -> properties[1].equals(properties[2])) // new/old value
                 .count();
-    	somePropertiesChange = numChanges != 0;
+    	long numChanges = approachPropertyChanges.length - numNoChanges;
+    	
+    	if (numNoChanges > 0) {
+    		System.out.println (numChanges + " have old value same as new value are thus redundant. No points taken off.");
+    	}
+    	somePropertiesChange = numChanges >= 7;
 //    	allPropertiesChange = numChanges == approachPropertyChanges.length;
 
         if (!somePropertiesChange) {
-        	System.out.println (numChanges + " values changed");
+        	System.out.println ("properties with changed values: " + numChanges + " < 7" );
 
         } else {
         	fractionComplete += this.SOME_PROPERTIES_CHANGE_CREDIT;
