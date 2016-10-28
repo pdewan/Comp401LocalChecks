@@ -85,6 +85,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 	
     protected void processPropertyChanges() {
     	fractionComplete = 0;
+    	System.out.println ("Number of properties notifications after approach:" + approachPropertyChanges);
     	System.out.println ("Testing if old values and new values are different after approach");
     	long numNoChanges = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
                 .parallel().unordered()
@@ -93,7 +94,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
     	long numChanges = approachPropertyChanges.length - numNoChanges;
     	
     	if (numNoChanges > 0) {
-    		System.out.println (numChanges + " have old value same as new value are thus redundant. No points taken off.");
+    		System.out.println (numNoChanges + " have old value same as new value are thus redundant. No points taken off.");
     	}
     	somePropertiesChange = numChanges >= 7;
 //    	allPropertiesChange = numChanges == approachPropertyChanges.length;
