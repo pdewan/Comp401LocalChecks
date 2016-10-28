@@ -85,7 +85,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 	
     protected void processPropertyChanges() {
     	fractionComplete = 0;
-    	System.out.println ("Number of properties notifications after approach:" + approachPropertyChanges);
+    	System.out.println ("Number of properties notifications after approach:" + approachPropertyChanges.length);
     	System.out.println ("Testing if old values and new values are different after approach");
     	long numNoChanges = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
                 .parallel().unordered()
