@@ -91,7 +91,8 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
                 .parallel().unordered()
                 .filter((properties) -> properties[1].equals(properties[2])) // new/old value
                 .count();
-    	long numChanges = approachPropertyChanges.length - numNoChanges;
+    	long numNotifications = approachPropertyChanges.length + failedPropertyChanges.length;
+    	long numChanges = numNotifications - numNoChanges;
     	
     	if (numNoChanges > 0) {
     		System.out.println (numNoChanges + " have old value same as new value are thus redundant. No points taken off.");
