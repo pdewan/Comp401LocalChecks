@@ -16,10 +16,13 @@ import gradingTools.comp401f16.assignment7.testcases.move.signed.CommandInterpre
 import gradingTools.comp401f16.assignment7.testcases.move.signed.CommandInterpreterSignedMoveSuite;
 import gradingTools.comp401f16.assignment7.testcases.say.CommandInterpreterApproachedArthurSayTestCase;
 import gradingTools.comp401f16.assignment8.testcases.factory.ConsoleSceneViewFactoryMethodTest;
+import gradingTools.comp401f16.assignment9.testcases.bridgecontroller.ArthurBridgeSceneControllerTestCase;
+import gradingTools.comp401f16.assignment9.testcases.bridgecontroller.BridgeSceneControllerSuite;
 import gradingTools.comp401f16.assignment9.testcases.factory.ExtraCreditFactoryMethodSuiteA9;
 import gradingTools.comp401f16.assignment9.testcases.factory.FactoryMethodSuiteA9;
 import gradingTools.comp401f16.assignment9.testcases.observablepainter.ExistingPaintListenerTestCase;
 import gradingTools.comp401f16.assignment9.testcases.observablepainter.NewPaintListenerTestCase;
+import gradingTools.comp401f16.assignment9.testcases.observablepainter.ObservablePainterSuite;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -29,8 +32,8 @@ import util.misc.ThreadSupport;
 @Suite.SuiteClasses({
 	FactoryMethodSuiteA9.class,
 	ExtraCreditFactoryMethodSuiteA9.class,
-	NewPaintListenerTestCase.class,
-	ExistingPaintListenerTestCase.class
+	ObservablePainterSuite.class,
+	BridgeSceneControllerSuite.class
 	
 	
 })

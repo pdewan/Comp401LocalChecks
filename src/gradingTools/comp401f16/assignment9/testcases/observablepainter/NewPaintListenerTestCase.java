@@ -140,7 +140,7 @@ public class NewPaintListenerTestCase
 		}
 		fractionComplete += APPROACH_EVENTS_CREDIT;
 
-		if (numEventsFiredByFailed == 0 || numEventsFiredByApproach == 0 ) {
+		if (numEventsFiredByFailed == 0 ) {
 			assertTrue("No paint events fired by failed", false	);
 
 		}
@@ -166,7 +166,18 @@ public class NewPaintListenerTestCase
 	@Override
 	public void run() {
 		approach(firstAvatar());
+//		ThreadSupport.sleep(2000);
+//		if ((numEventsFiredByFailed == 0  ) {
+//			assertTrue("No paint events fired by approach", false	);
+//		}
+//		fractionComplete += APPROACH_EVENTS_CREDIT;
 		failed();
+//		ThreadSupport.sleep(2000);
+//		if (numEventsFiredByFailed == 0 ) {
+//			assertTrue("No paint events fired by failed", false	);
+//
+//		}
+//		fractionComplete += FAILED_EVENTS_CREDIT;
 
 	}
 	
