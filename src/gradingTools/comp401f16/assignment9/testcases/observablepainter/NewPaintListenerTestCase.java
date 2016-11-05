@@ -57,7 +57,7 @@ public class NewPaintListenerTestCase
 	}
 	@Override
 	protected Object create() {
-		
+		try {
 		bridgeScene = (TestBridgeScene) getOrCreateObject(
 				factoryClassTags(), 
 				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
@@ -70,6 +70,10 @@ public class NewPaintListenerTestCase
 				factoryClassTags(), 
 				DelegatingBridgeSceneViewFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				Object.class);
+		} catch (Error e) {
+			fractionComplete = 0;
+			assertTrue ("One or more factory methods failed:", false);
+		}
 		
 		return bridgeScene;
 	}
