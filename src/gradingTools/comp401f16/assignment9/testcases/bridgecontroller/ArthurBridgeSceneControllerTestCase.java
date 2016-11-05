@@ -46,12 +46,18 @@ public class ArthurBridgeSceneControllerTestCase
 	
 	protected Component component;
 	protected void createController() {
+		try {
 		System.out.println("Trying to get bridge scene controller");
 		bridgeSceneController = (TestBridgeSceneController) getOrCreateObject(
 				factoryClassTags(), 
 				BridgeSceneControllerFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestBridgeSceneController.class);
 		return;
+		} catch (Error e) {
+			fractionComplete = 0;
+			assertTrue("Could not get bridge scene controller", false);
+		}
+		
 
 	}
 	protected void createView() {
@@ -81,7 +87,8 @@ public class ArthurBridgeSceneControllerTestCase
 //		return bridgeScene;
 		
 		
-		} catch (Exception e) {
+		} catch (Error e) {
+			fractionComplete = 0;
 			System.out.println ("Could not find observable painter");
 			assertTrue("Could not find inheriting or observable painter", false);
 		}
