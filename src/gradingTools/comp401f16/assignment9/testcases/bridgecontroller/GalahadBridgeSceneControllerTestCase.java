@@ -20,7 +20,6 @@ public class GalahadBridgeSceneControllerTestCase
 	extends ArthurBridgeSceneControllerTestCase 
 	{
 	
-	
     protected void dispatchKeyGClicked () {
     	KeyEvent aKeyPressed = buildKeyEvent('g', KeyEvent.VK_G, KeyEvent.KEY_PRESSED, component);
     	KeyEvent aKeyTyped =	buildKeyEvent('g', KeyEvent.VK_UNDEFINED, KeyEvent.KEY_TYPED, component);
@@ -30,7 +29,22 @@ public class GalahadBridgeSceneControllerTestCase
 		component.dispatchEvent(aKeyReleased);
 
     }
-    protected void dispatchKeyClicked () {
+    protected void callKeyGClickedListeners () {
+    	KeyEvent aKeyPressed = buildKeyEvent('g', KeyEvent.VK_G, KeyEvent.KEY_PRESSED, component);
+    	KeyEvent aKeyTyped =	buildKeyEvent('g', KeyEvent.VK_UNDEFINED, KeyEvent.KEY_TYPED, component);
+		KeyEvent aKeyReleased = buildKeyEvent('g', KeyEvent.VK_G, KeyEvent.KEY_RELEASED, component);
+		bridgeSceneController.keyPressed(aKeyPressed);
+		bridgeSceneController.keyTyped(aKeyTyped);
+		bridgeSceneController.keyReleased(aKeyReleased);
+    }
+    
+   
+    protected void callKeyClickedListeners () {
+    	callKeyGClickedListeners();
+    }
+   
+	@Override    
+	protected void dispatchKeyClicked () {
     	dispatchKeyGClicked();
     }
     

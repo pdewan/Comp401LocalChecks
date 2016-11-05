@@ -1,5 +1,6 @@
 package gradingTools.comp401f16.assignment9.testcases.factory;
 
+import java.awt.Component;
 import java.beans.PropertyChangeListener;
 
 import bus.uigen.test.TestTransient;
@@ -22,7 +23,7 @@ public class InheritingBridgeScenePainterFactoryMethodTest extends  FactoryMetho
 	}
 	@Override
 	protected Class proxyClass() {
-		return TestBridgeScene.class;
+		return Component.class;
 	}
 	
 	protected PropertyChangeListener inheritingBridgeScenePainter() {

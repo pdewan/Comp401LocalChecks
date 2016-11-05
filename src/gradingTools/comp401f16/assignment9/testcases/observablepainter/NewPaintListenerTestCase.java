@@ -13,6 +13,7 @@ import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
 import grader.basics.execution.AMainInNewThread;
 import grader.basics.execution.BasicProjectExecution;
+import grader.basics.execution.GradingMode;
 import grader.basics.execution.ResultingOutErr;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.BasicProjectIntrospection;
@@ -35,6 +36,9 @@ import gradingTools.shared.testcases.shapes.LocatableTest;
 public class NewPaintListenerTestCase 
 	extends ConsoleSceneViewOutputTestCase 
 	implements TestPaintListener, Runnable{
+	public static final int ESTMATE_TIME_FOR_ANIMATION = 4000;
+	public static final int MIN_APPROACH_EVENTS = 1;
+	public static final int MIN_FAILED_EVENTS = 1;
 	public static final double LISTENER_CREDIT =0.3;
 	public static final double APPROACH_EVENTS_CREDIT = 0.5;
 	public static final double FAILED_EVENTS_CREDIT = 0.2;
@@ -112,39 +116,69 @@ public class NewPaintListenerTestCase
 		fractionComplete += LISTENER_CREDIT;
 		
 	}
-	protected boolean doTest() throws Throwable {
-		initState();		
-		rootProxy = create();
-//		Object aListeners = BasicProjectIntrospection.
-//				getFieldValueOfType(observableBridgeScenePainter, List.class);
-		
-//		Class aRealClass = BasicProjectIntrospection.findInterface(TestPaintListener.class);
-		registerPaintListener();
-//		Thread aThread = new Thread (new AMainInNewThread(
-//				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, ""));
-//		BasicProjectExecution.callMain(Assignment9Suite.MAIN_CLASS_NAME,
-//				emptyStringargs, "");
-//		aThread.start();
-//		ThreadSupport.sleep(10000);
-		Assignment9Suite.invokeMain();
-		Thread aThread = new Thread(this);
-		aThread.start();
-//		approach(firstAvatar());
-//		fractionComplete += APPROACH_EVENTS_CREDIT;
-//		failed();
-//		fractionComplete += FAILED_EVENTS_CREDIT;
-		ThreadSupport.sleep(4000);
-
-		if (numEventsFiredByFailed == 0  ) {
-			assertTrue("No paint events fired by approach", false	);
+	protected void checkResults() {
+		System.out.println ("Checking results");
+		if (numEventsFiredByFailed < MIN_APPROACH_EVENTS  ) {
+			assertTrue("At least "  + MIN_APPROACH_EVENTS + " paint event not fired by approach", false	);
 		}
 		fractionComplete += APPROACH_EVENTS_CREDIT;
 
-		if (numEventsFiredByFailed == 0 ) {
-			assertTrue("No paint events fired by failed", false	);
+		if (numEventsFiredByFailed < MIN_FAILED_EVENTS  ) {
+//			assertTrue("No paint events fired by failed", false	);
+			assertTrue("At least "  + MIN_FAILED_EVENTS + " paint event not fired by failed", false	);
+
 
 		}
 		fractionComplete += FAILED_EVENTS_CREDIT;
+	}
+	protected static String[] emptyStringargs = new String[]{};
+
+	protected void executeMethods() {
+		BasicProjectExecution.callMainOnce(
+				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, "");
+		ThreadSupport.sleep(ESTMATE_TIME_FOR_ANIMATION);
+		run();
+//		if (GradingMode.getGraderRun()) {
+//			executeMethodInSameThread();
+//		} else {
+//			executeMethodsInSeparateThread();
+//		}
+		
+	}
+//	protected void executeMethodInSameThread() {
+//		run();
+//	}
+//	protected void executeMethodsInSeparateThread(){
+//		Thread aThread = new Thread(this);
+//		aThread.start();
+//
+////		ThreadSupport.sleep(4000);
+//		
+//	}
+	protected boolean doTest() throws Throwable {
+		initState();		
+		rootProxy = create();
+
+		registerPaintListener();
+
+//		Assignment9Suite.invokeMain();
+//		Thread aThread = new Thread(this);
+//		aThread.start();
+//
+//		ThreadSupport.sleep(4000);
+		executeMethods();
+		checkResults();
+
+//		if (numEventsFiredByFailed == 0  ) {
+//			assertTrue("No paint events fired by approach", false	);
+//		}
+//		fractionComplete += APPROACH_EVENTS_CREDIT;
+//
+//		if (numEventsFiredByFailed == 0 ) {
+//			assertTrue("No paint events fired by failed", false	);
+//
+//		}
+//		fractionComplete += FAILED_EVENTS_CREDIT;
 
 		return true;
 		

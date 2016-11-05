@@ -33,6 +33,19 @@ public class RobinBridgeSceneControllerTestCase
     protected void dispatchKeyClicked () {
     	dispatchKeyRClicked();
     }
+    protected void callKeyRClickedListeners () {
+    	KeyEvent aKeyPressed = buildKeyEvent('r', KeyEvent.VK_R, KeyEvent.KEY_PRESSED, component);
+    	KeyEvent aKeyTyped =	buildKeyEvent('r', KeyEvent.VK_UNDEFINED, KeyEvent.KEY_TYPED, component);
+		KeyEvent aKeyReleased = buildKeyEvent('r', KeyEvent.VK_R, KeyEvent.KEY_RELEASED, component);
+		bridgeSceneController.keyPressed(aKeyPressed);
+		bridgeSceneController.keyTyped(aKeyTyped);
+		bridgeSceneController.keyReleased(aKeyReleased);
+    }
+    
+   
+    protected void callKeyClickedListeners () {
+    	callKeyRClickedListeners();
+    }
     
     protected int getX() {
     	return bridgeScene.getRobin().getArms().getLeftLine().getX();

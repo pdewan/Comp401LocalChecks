@@ -5,13 +5,16 @@ import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
 import gradingTools.comp401f16.assignment8.testcases.ConsoleSceneViewOutputTestCase;
 import gradingTools.comp401f16.assignment9.testcases.Assignment9Suite;
+import gradingTools.comp401f16.assignment9.testcases.factory.BridgeSceneControllerFactoryMethodTest;
 import gradingTools.comp401f16.assignment9.testcases.factory.InheritingBridgeScenePainterFactoryMethodTest;
 import gradingTools.comp401f16.assignment9.testcases.factory.ObservableBridgeScenePainterFactoryMethodTest;
+import gradingTools.comp401f16.assignment9.testcases.interfaces.TestBridgeSceneController;
 import gradingTools.comp401f16.assignment9.testcases.interfaces.TestObservableBridgeScenePainter;
 
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
@@ -25,10 +28,15 @@ public class ArthurBridgeSceneControllerTestCase
 	protected boolean failedCalled = false;
 	protected int numEventsFiredByApproach;
 	protected int numEventsFiredByFailed;
+	protected static final int MOUSE_X = 50;
+	protected static final int MOUSE_Y = 50;
+	protected static final int MOVE_X_INCREMENT = 20;
+	protected static final int MOVE_Y_INCREMENET = 20;
 	
 	protected Object observableBridgeScenePainter;
 	protected Object inheritingBridgeScenePainter;
 	protected Object delegatingBridgeSceneView;
+	protected TestBridgeSceneController bridgeSceneController;
 	protected boolean testSuccessful = false;
 	protected void initState() {
 		fractionComplete = 0;
@@ -37,22 +45,25 @@ public class ArthurBridgeSceneControllerTestCase
 	}
 	
 	protected Component component;
-	@Override
-	protected Object create() {
-		
-		bridgeScene = (TestBridgeScene) getOrCreateObject(
+	protected void createController() {
+		System.out.println("Trying to get bridge scene controller");
+		bridgeSceneController = (TestBridgeSceneController) getOrCreateObject(
 				factoryClassTags(), 
-				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
-				TestBridgeScene.class);
+				BridgeSceneControllerFactoryMethodTest.FACTORY_METHOD_TAGS, 
+				TestBridgeSceneController.class);
+		return;
+
+	}
+	protected void createView() {
 		try {
 			System.out.println("Trying to get inheriting painter");
 			inheritingBridgeScenePainter =  getOrCreateObject(
 					factoryClassTags(), 
 					InheritingBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
-					Object.class);
+					Component.class);
 			Object realObject = BasicProjectIntrospection.getRealObject(inheritingBridgeScenePainter);
 			component = (Component) realObject;
-			return bridgeScene;
+			return;
 			
 			} catch (Error e) {
 				System.out.println("Could not find inheriting painter");
@@ -67,14 +78,56 @@ public class ArthurBridgeSceneControllerTestCase
 				TestObservableBridgeScenePainter.class);
 		Object realObject = BasicProjectIntrospection.getRealObject(observableBridgeScenePainter);
 		component = (Component) realObject; // code duplication yuk
-		return bridgeScene;
+//		return bridgeScene;
 		
 		
 		} catch (Exception e) {
 			System.out.println ("Could not find observable painter");
 			assertTrue("Could not find inheriting or observable painter", false);
 		}
-		return null;
+		return;
+	}
+	@Override
+	protected Object create() {
+		
+		bridgeScene = (TestBridgeScene) getOrCreateObject(
+				factoryClassTags(), 
+				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
+				TestBridgeScene.class);
+		createView();
+		createController();
+		return bridgeScene;
+//		try {
+//			System.out.println("Trying to get inheriting painter");
+//			inheritingBridgeScenePainter =  getOrCreateObject(
+//					factoryClassTags(), 
+//					InheritingBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
+//					Object.class);
+//			Object realObject = BasicProjectIntrospection.getRealObject(inheritingBridgeScenePainter);
+//			component = (Component) realObject;
+//			return bridgeScene;
+//			
+//			} catch (Error e) {
+//				System.out.println("Could not find inheriting painter");
+//
+//			}
+//		try  {
+//			System.out.println("Trying to get observable painter");
+//
+//		observableBridgeScenePainter = (TestObservableBridgeScenePainter) getOrCreateObject(
+//				factoryClassTags(), 
+//				ObservableBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
+//				TestObservableBridgeScenePainter.class);
+//		Object realObject = BasicProjectIntrospection.getRealObject(observableBridgeScenePainter);
+//		component = (Component) realObject; // code duplication yuk
+//		return bridgeScene;
+//		
+//		
+//		} catch (Exception e) {
+//			System.out.println ("Could not find observable painter");
+//			assertTrue("Could not find inheriting or observable painter", false);
+//		}
+//		return null;
 	}
 	
 	
@@ -87,10 +140,10 @@ public class ArthurBridgeSceneControllerTestCase
 		initState();		
 		rootProxy = create();
 
-		Assignment9Suite.invokeMain();
-		Thread aThread = new Thread(this);
-		aThread.start();
-		ThreadSupport.sleep(4000);
+//		Thread aThread = new Thread(this);
+//		aThread.start();
+//		ThreadSupport.sleep(4000);
+		run();
 		System.out.println ("Finished submiting events");
 		assertTrue (
 				"C is not the same after first and second key type event ", 
@@ -130,6 +183,10 @@ public class ArthurBridgeSceneControllerTestCase
     public static KeyEvent buildKeyTypedEvent(char c, int keyCode, Component origin) {
     	return buildKeyEvent(c, keyCode, KeyEvent.KEY_TYPED, origin);
     }
+    /*
+     * Dispatching cannot be done until AWT thread finishes its tasks, it
+     * is more realistic but requires new thread
+     */
     protected void dispatchMouseClicked (int x, int y) {
     	MouseEvent aMousePressed = buildMousePressedEvent(x, y, component);
 		MouseEvent aMouseReleased = buildMouseReleasedEvent(x, y, component);
@@ -137,6 +194,15 @@ public class ArthurBridgeSceneControllerTestCase
 		component.dispatchEvent(aMousePressed);
 		component.dispatchEvent(aMouseReleased);
 		component.dispatchEvent(aMouseClicked);
+    }
+    protected void callMouseClickedListeners (int x, int y) {
+    	MouseEvent aMousePressed = buildMousePressedEvent(x, y, component);
+		MouseEvent aMouseReleased = buildMouseReleasedEvent(x, y, component);
+		MouseEvent aMouseClicked = buildMouseClickedEvent(x, y, component);
+		bridgeSceneController.mousePressed(aMousePressed);
+		bridgeSceneController.mouseReleased(aMouseReleased);
+		bridgeSceneController.mouseClicked(aMouseReleased);
+	
     }
    
     protected void dispatchKeyAClicked () {
@@ -148,35 +214,56 @@ public class ArthurBridgeSceneControllerTestCase
 		component.dispatchEvent(aKeyReleased);
 
     }
+    
+    protected void callKeyAClickedListeners () {
+    	KeyEvent aKeyPressed = buildKeyEvent('a', KeyEvent.VK_A, KeyEvent.KEY_PRESSED, component);
+    	KeyEvent aKeyTyped =	buildKeyEvent('a', KeyEvent.VK_UNDEFINED, KeyEvent.KEY_TYPED, component);
+		KeyEvent aKeyReleased = buildKeyEvent('a', KeyEvent.VK_A, KeyEvent.KEY_RELEASED, component);
+		bridgeSceneController.keyPressed(aKeyPressed);
+		bridgeSceneController.keyTyped(aKeyTyped);
+		bridgeSceneController.keyReleased(aKeyReleased);
+
+
+    }
     protected void dispatchKeyClicked () {
     	dispatchKeyAClicked();
+//    	callKeyAClickedListeners();
+    }
+    protected void callKeyClickedListeners () {
+    	callKeyAClickedListeners();
     }
     
     protected int getX() {
     	return bridgeScene.getArthur().getArms().getLeftLine().getX();
     }
     protected void move() {
-		bridgeScene.getArthur().move(100, 100);
+		bridgeScene.getArthur().move(MOVE_X_INCREMENT, MOVE_Y_INCREMENET);
     }
     protected int beforeClickX, beforeKeyType, afterKeyType, afterMove, afterSecondKeyType;
 	@Override
 	public void run() {
 		beforeClickX = getX();
 		System.out.println ("Before Mouse Click, x = " + beforeClickX);
-		dispatchMouseClicked(0, 0);
+		callMouseClickedListeners(MOUSE_X, MOUSE_Y);
 
 		beforeKeyType=  getX();
 		System.out.println ("Before Key Type, x = " + beforeKeyType);
-		dispatchKeyClicked();
+//		dispatchKeyClicked();
+		callKeyClickedListeners();
 		afterKeyType = getX();
 		System.out.println ("After Key Type, x = " + afterKeyType);
 		move();
 		afterMove = getX();
-		System.out.println ("After Move Type, x = " + afterMove);
-		dispatchKeyClicked();
+		System.out.println ("After Move , x = " + afterMove);
+		testSuccessful = afterMove != afterKeyType;
+		if (!testSuccessful) {
+			System.out.println ("MOVE DID NOT WORK, no change after move");
+		}
+//		dispatchKeyClicked();
+		callKeyClickedListeners();
 		afterSecondKeyType = getX();
-		System.out.println ("Before Second Key Type, x = " + afterSecondKeyType);
-		testSuccessful = afterSecondKeyType == afterKeyType;
+		System.out.println ("After Second Key Type, x = " + afterSecondKeyType);
+		testSuccessful = testSuccessful && ( afterSecondKeyType == afterKeyType);
 		if (testSuccessful) {
 			System.out.println ("TEST SUCCESSFUL, x is the same after first and second key type event");
 		} else {

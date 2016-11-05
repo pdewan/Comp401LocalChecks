@@ -30,6 +30,20 @@ public class LancelotBridgeSceneControllerTestCase
 		component.dispatchEvent(aKeyReleased);
 
     }
+    protected void callKeyLClickedListeners () {
+    	KeyEvent aKeyPressed = buildKeyEvent('l', KeyEvent.VK_L, KeyEvent.KEY_PRESSED, component);
+    	KeyEvent aKeyTyped =	buildKeyEvent('l', KeyEvent.VK_UNDEFINED, KeyEvent.KEY_TYPED, component);
+		KeyEvent aKeyReleased = buildKeyEvent('l', KeyEvent.VK_L, KeyEvent.KEY_RELEASED, component);
+		bridgeSceneController.keyPressed(aKeyPressed);
+		bridgeSceneController.keyTyped(aKeyTyped);
+		bridgeSceneController.keyReleased(aKeyReleased);
+
+
+    }    
+   
+    protected void callKeyClickedListeners () {
+    	callKeyLClickedListeners();
+    }
     protected void dispatchKeyClicked () {
     	dispatchKeyLClicked();
     }

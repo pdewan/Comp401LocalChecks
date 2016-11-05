@@ -1,7 +1,10 @@
 package gradingTools.comp401f16.assignment9.testcases;
 
 import grader.basics.execution.AMainInNewThread;
+import grader.basics.execution.BasicProjectExecution;
+import grader.basics.execution.GradingMode;
 import grader.basics.junit.BasicJUnitUtils;
+import grader.basics.junit.GradableJUnitSuite;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 import gradingTools.comp401f16.assignment6.testcases.iniital.InitialBridgeSceneSuite;
 import gradingTools.comp401f16.assignment6.testcases.scroll.BridgeSceneComponentScrollSuite;
@@ -42,29 +45,31 @@ public class Assignment9Suite {
 	public static final String[] MAIN_CLASS_NAMES = {MAIN_CLASS_NAME, "Assignment"};
 	
 	public static void main (String[] args) {
-		try {
-
-		invokeMain();
-		BasicJUnitUtils.interactiveTest(Assignment9Suite.class);
-
+	try {
+		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);
+		BasicProjectExecution.setUseProcessTimeOut(false);
+//		invokeMain();
+		GradableJUnitSuite aTopSuite = BasicJUnitUtils.interactiveTest(Assignment9Suite.class);
+//		aTopSuite.testAll();
+		aTopSuite.test(NewPaintListenerTestCase.class);
+	
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	static boolean mainInvoked = false;
-	protected static String[] emptyStringargs = new String[]{};
 	
-	public static void invokeMain() {
-		if (mainInvoked) {
-			return;
-		}
-		Thread aThread = new Thread (new AMainInNewThread(
-				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, ""));
-		aThread.start();
-		mainInvoked = true;
-		ThreadSupport.sleep(10000);
-	}
+//	public static void invokeMain() {
+//		if (mainInvoked) {
+//			return;
+//		}
+//		if (GradingMode.getGraderRun()) {
+//		Thread aThread = new Thread (new AMainInNewThread(
+//				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, ""));
+//		aThread.start();
+//		mainInvoked = true;
+//		ThreadSupport.sleep(10000);
+//	}
 	
 	
 }
