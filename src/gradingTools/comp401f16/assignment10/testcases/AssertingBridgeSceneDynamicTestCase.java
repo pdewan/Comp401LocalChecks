@@ -16,7 +16,7 @@ import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMove
 import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
 import gradingTools.shared.testcases.shapes.LocatableTest;
-@MaxValue(50)
+@MaxValue(60)
 public class AssertingBridgeSceneDynamicTestCase 
 	extends BridgeSceneDynamicTestCase implements PropertyChangeListener{
 	protected double eachApproachCredit() {
@@ -191,6 +191,7 @@ public class AssertingBridgeSceneDynamicTestCase
 		
 	}
 	int numCorrectPreconditions = 0;
+	int numCorrectPreEvents = 0;
 	
 	protected boolean find (List<PropertyChangeEvent> aList, String aPropertyName, String oldValue, boolean newValue) {
 		boolean aResult = false;
@@ -213,7 +214,7 @@ public class AssertingBridgeSceneDynamicTestCase
 				anActualOldValue.equals(oldValue) && 
 				anEvent.getPropertyName().equalsIgnoreCase(aPropertyName);
 	}
-    
+    protected final static int NUM_APPROACH_EVENTS = 4;
     protected void checkEventsAfterApproach() {
     	System.out.println ("Checking events after approach");
     	if (find(eventsAfterApproach, "this", "approach", false)) {
@@ -229,6 +230,8 @@ public class AssertingBridgeSceneDynamicTestCase
     		numCorrectPreconditions++;
     	}
     }
+    protected final static int NUM_SAY1_EVENTS = 2;
+
     protected void checkEventsAfterSay1() {
     	System.out.println ("Checking events after Guard Say");
     	
@@ -239,6 +242,8 @@ public class AssertingBridgeSceneDynamicTestCase
     		numCorrectPreconditions++;
     	}
     }
+    protected final static int NUM_SAY2_EVENTS = 2;
+
     protected void checkEventsAfterSay2() {
     	System.out.println ("Checking events after Avatar Say");
     	
@@ -249,6 +254,8 @@ public class AssertingBridgeSceneDynamicTestCase
     		numCorrectPreconditions++;
     	}
     }
+    protected final static int NUM_PASSED_EVENTS = 4;
+
     protected void checkEventsAfterFailed() {
     	System.out.println ("Checking events after failed");
     	if (find(eventsAfterFailed, "this", "approach", true)) {
@@ -264,6 +271,8 @@ public class AssertingBridgeSceneDynamicTestCase
     		numCorrectPreconditions++;
     	}
     }
+    protected final static int NUM_FAILED_EVENTS = 4;
+
     protected void checkEventsAfterPassed() {
     	System.out.println ("Checking events after passed");
     	if (find(eventsAfterPassed, "this", "approach", true)) {
@@ -279,6 +288,7 @@ public class AssertingBridgeSceneDynamicTestCase
     		numCorrectPreconditions++;
     	}
     }
+	protected static final int  NUM_PRE_APPROACH_CHECKS = 5;
 
 	protected void checkPreApproach() {
 		if (!preApproachBeforeApproach) {
@@ -307,6 +317,8 @@ public class AssertingBridgeSceneDynamicTestCase
 			numCorrectPreconditions++;
 		}		
 	}
+	protected static final int  NUM_PRE_SAY_CHECKS = 5;
+
 	protected void checkPreSay() {
 		if (preSayBeforeApproach) {
 			System.out.println("preSay before Approach should be false");
@@ -341,6 +353,8 @@ public class AssertingBridgeSceneDynamicTestCase
 		}
 		return result;
 	}
+	protected static final int  NUM_PRE_PASSED_CHECKS = 6;
+
 	protected void checkPrePassed() {
 		if (prePassedBeforeApproach) {
 			System.out.println("prePassed before Approach should be false");
@@ -373,6 +387,7 @@ public class AssertingBridgeSceneDynamicTestCase
 			numCorrectPreconditions++;
 		}		
 	}
+	protected static final int  NUM_PRE_FAILED_CHECKS = 6;
 	protected void checkPreFailed() {
 		if (preFailedBeforeApproach) {
 			System.out.println("preFailed before Approach should be false");
@@ -405,10 +420,22 @@ public class AssertingBridgeSceneDynamicTestCase
 			numCorrectPreconditions++;
 		}		
 	}
+	protected static final int NUM_CHECKS = 
+			NUM_APPROACH_EVENTS +
+			NUM_FAILED_EVENTS +
+			NUM_PASSED_EVENTS +
+			NUM_SAY1_EVENTS +
+			NUM_SAY2_EVENTS +
+			NUM_PRE_APPROACH_CHECKS +
+			NUM_PRE_SAY_CHECKS +
+			NUM_PRE_PASSED_CHECKS +
+			NUM_PRE_FAILED_CHECKS;
+			
 
 	@Override
 	protected boolean checkOutput(Object aLocatable) {
 		numCorrectPreconditions = 0;
+		numCorrectPreEvents = 0;
 		checkPreApproach();
 		checkPreSay();
 		checkPrePassed();
@@ -418,6 +445,10 @@ public class AssertingBridgeSceneDynamicTestCase
 		checkEventsAfterSay2();
 		checkEventsAfterPassed();
 		checkEventsAfterFailed();
+		fractionComplete = ((double) numCorrectPreconditions) /NUM_CHECKS;
+		if (fractionComplete != 1) {
+			assertTrue(NUM_CHECKS - numCorrectPreconditions + " checks out of " + NUM_CHECKS + " failed. See console output", false); 
+		}
 
 		return true;
 	}
