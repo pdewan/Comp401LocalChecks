@@ -146,6 +146,9 @@ public class ArthurBridgeSceneControllerTestCase
 	protected boolean doTest() throws Throwable {
 		initState();		
 		rootProxy = create();
+		if (component == null) {
+			assertTrue("Could not find painting component:", false);
+		}
 
 //		Thread aThread = new Thread(this);
 //		aThread.start();
@@ -163,6 +166,7 @@ public class ArthurBridgeSceneControllerTestCase
 		
 	}
 	public static MouseEvent buildMouseEvent(int x, int y, int type, Component origin) {
+		System.out.println ("Building mouse event with component:" + origin);
         return new MouseEvent(origin, type, System.currentTimeMillis(), 0, x, y, type == MouseEvent.MOUSE_CLICKED ? 1:0, false);
     }
 	public static MouseEvent buildMousePressedEvent(int x, int y,  Component origin) {
