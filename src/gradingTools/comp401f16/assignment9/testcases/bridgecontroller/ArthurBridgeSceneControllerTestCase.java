@@ -69,7 +69,11 @@ public class ArthurBridgeSceneControllerTestCase
 					Component.class);
 			Object realObject = BasicProjectIntrospection.getRealObject(inheritingBridgeScenePainter);
 			component = (Component) realObject;
+			if (realObject == null) {
+				System.out.println("Null inheriting painter");
+			} else {
 			return;
+			}
 			
 			} catch (Error e) {
 				System.out.println("Could not find inheriting painter");
@@ -82,8 +86,14 @@ public class ArthurBridgeSceneControllerTestCase
 				factoryClassTags(), 
 				ObservableBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestObservableBridgeScenePainter.class);
+		 
 		Object realObject = BasicProjectIntrospection.getRealObject(observableBridgeScenePainter);
 		component = (Component) realObject; // code duplication yuk
+		if (realObject == null) {
+			System.out.println("Null observable painter");
+			assertTrue("Could not find non null inheriting or observable painter", false);
+
+		}
 //		return bridgeScene;
 		
 		
