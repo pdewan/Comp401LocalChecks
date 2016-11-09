@@ -33,7 +33,9 @@ import org.junit.runners.Suite;
 import util.misc.ThreadSupport;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	AssertingBridgeSceneDynamicTestCase.class
+	AssertingBridgeSceneDynamicTestCase.class,
+	AsyncArthurAnimationTestCase.class,
+	MoveArthurCommandObjectTestCase.class
 	
 })
 public class Assignment10Suite {
@@ -45,7 +47,8 @@ public class Assignment10Suite {
 		
 		GradableJUnitSuite aTopSuite = BasicJUnitUtils.interactiveTest(Assignment10Suite.class);
 		
-	
+//		aTopSuite.test(AsyncArthurAnimationTestCase.class);
+
 
 		} catch (Exception e) {
 			e.printStackTrace();

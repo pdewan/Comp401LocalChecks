@@ -16,7 +16,7 @@ import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMove
 import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
 import gradingTools.shared.testcases.shapes.LocatableTest;
-@MaxValue(60)
+@MaxValue(72)
 public class AssertingBridgeSceneDynamicTestCase 
 	extends BridgeSceneDynamicTestCase implements PropertyChangeListener{
 	protected double eachApproachCredit() {
