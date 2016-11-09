@@ -399,8 +399,8 @@ public class AssertingBridgeSceneDynamicTestCase
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (preFailedAfterSay1) {
-			System.out.println("preFailed after Say1 (Guard Say) should be false");
+		if (!preFailedAfterSay1) {
+			System.out.println("preFailed after Say1 (Guard Say) should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
