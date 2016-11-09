@@ -1,5 +1,6 @@
 package gradingTools.comp401f16.assignment10.testcases;
 
+import grader.basics.project.BasicProjectIntrospection;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneArthurMoveLeftArmTestCase;
@@ -15,10 +16,10 @@ import util.models.PropertyListenerRegisterer;
 
 public class MoveArthurCommandObjectTestCase extends BridgeSceneArthurMoveLeftArmTestCase  {
 	
-
-//	public MoveArthurCommandObjectTestCase() {
-//		factoryMethodTags = BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS;
-//	}
+	Class moveCommandClass;
+	public MoveArthurCommandObjectTestCase() {
+		moveCommandClass = BasicProjectIntrospection.findClassByTags("MoveCommand");
+	}
 	
 //	protected void createBridgeScene() {
 //		bridgeScene = (TestBridgeScene) getOrCreateObject(
