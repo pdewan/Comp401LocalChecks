@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment10.testcases;
+package gradingTools.comp401f16.assignment10.async.testcases;
 
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;

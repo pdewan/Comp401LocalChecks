@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment10.testcases;
+package gradingTools.comp401f16.assignment10.commandObjects.testcases;
 
 import grader.basics.project.BasicProjectIntrospection;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
@@ -11,30 +11,58 @@ import gradingTools.shared.testcases.FactoryMethodTest;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
+import util.assertions.Asserter;
 import util.models.PropertyListenerRegisterer;
 
-public class MoveArthurCommandObjectTestCase extends BridgeSceneArthurMoveLeftArmTestCase  {
+public class MoveCommandObjectTestCase extends BridgeSceneArthurMoveLeftArmTestCase  {
 	
 	Class moveCommandClass;
-	public MoveArthurCommandObjectTestCase() {
-		moveCommandClass = BasicProjectIntrospection.findClassByTags("MoveCommand");
+	Class avatarInterface;
+	Constructor moveConstructor;
+	
+	public MoveCommandObjectTestCase() {
+		
 	}
 	
-//	protected void createBridgeScene() {
-//		bridgeScene = (TestBridgeScene) getOrCreateObject(
-//				factoryClassTags(), 
-//				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
-//				TestBridgeScene.class);
-//	}
-//	
-//	
+	protected void init() throws Throwable{
+		moveCommandClass = BasicProjectIntrospection.findClassByTags("MoveCommand");
+		avatarInterface = BasicProjectIntrospection.findInterface(TestAvatar.class);
+			moveConstructor = moveCommandClass.getConstructor(
+					 avatarInterface, Integer.TYPE, Integer.TYPE);
+		
+	}
+	
 	@Override
 	protected void doMove() {
+		
+		fractionComplete = 0;
+		 try {
+			
+			Object anAvatar = BasicProjectIntrospection.getRealObject(avatar());
+		
+			Runnable aCommandObject = (Runnable) (moveConstructor.newInstance(anAvatar, inputXDelta(), inputYDelta()));
+			aCommandObject.run();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			assertTrue(e.getMessage(), false);
+		} 
+
+//		Runnable aMoveCommandObject = (Runnable)
+//			BasicProjectIntrospection.
+//				createInstance(Runnable.class, avatar(), inputXDelta(), inputYDelta()));
+//			    
 		 
 	 }
 	    	
-	
+	protected boolean doTest() throws Throwable {
+		init();
+		return super.doTest();
+	}
 	
 	
 //	@Override

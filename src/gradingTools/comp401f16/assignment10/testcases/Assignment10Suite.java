@@ -5,6 +5,11 @@ import grader.basics.execution.BasicProjectExecution;
 import grader.basics.execution.GradingMode;
 import grader.basics.junit.BasicJUnitUtils;
 import grader.basics.junit.GradableJUnitSuite;
+import gradingTools.comp401f16.assignment10.async.testcases.AsyncAnimationSuite;
+import gradingTools.comp401f16.assignment10.async.testcases.AsyncArthurAnimationTestCase;
+import gradingTools.comp401f16.assignment10.commandObjects.testcases.CommandObjectSuite;
+import gradingTools.comp401f16.assignment10.commandObjects.testcases.MoveCommandObjectTestCase;
+import gradingTools.comp401f16.assignment10.commandObjects.testcases.SayCommandObjectTestCase;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 import gradingTools.comp401f16.assignment6.testcases.iniital.InitialBridgeSceneSuite;
 import gradingTools.comp401f16.assignment6.testcases.scroll.BridgeSceneComponentScrollSuite;
@@ -34,8 +39,8 @@ import util.misc.ThreadSupport;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	AssertingBridgeSceneDynamicTestCase.class,
-	AsyncArthurAnimationTestCase.class,
-	MoveArthurCommandObjectTestCase.class
+	AsyncAnimationSuite.class,
+	CommandObjectSuite.class
 	
 })
 public class Assignment10Suite {
@@ -47,7 +52,7 @@ public class Assignment10Suite {
 		
 		GradableJUnitSuite aTopSuite = BasicJUnitUtils.interactiveTest(Assignment10Suite.class);
 		
-//		aTopSuite.test(AsyncArthurAnimationTestCase.class);
+		aTopSuite.test(AsyncAnimationSuite.class);
 
 
 		} catch (Exception e) {
