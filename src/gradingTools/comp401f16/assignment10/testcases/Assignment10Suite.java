@@ -52,7 +52,7 @@ public class Assignment10Suite {
 		
 		GradableJUnitSuite aTopSuite = BasicJUnitUtils.interactiveTest(Assignment10Suite.class);
 		
-		aTopSuite.test(AsyncAnimationSuite.class);
+//		aTopSuite.test(AsyncAnimationSuite.class);
 
 
 		} catch (Exception e) {
