@@ -18,5 +18,7 @@ public class AsyncLancelotAnimationTestCase extends AsyncArthurAnimationTestCase
 		System.out.println ("Animating Lancelot");
 		commandInterpreter().animateLancelot();
 	}
-	
+	protected TestAvatar avatar() {
+		return bridgeScene.getLancelot();
+	}
 }

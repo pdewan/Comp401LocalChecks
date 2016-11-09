@@ -18,5 +18,8 @@ public class AsyncRobinAnimationTestCase extends AsyncArthurAnimationTestCase im
 		System.out.println ("Animating Robin");
 		commandInterpreter().animateRobin();
 	}
+	protected TestAvatar avatar() {
+		return bridgeScene.getRobin();
+	}
 	
 }
