@@ -144,18 +144,26 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 //		fractionComplete += eachApproachCredit();
 //		printFractionComplete();
 //	}
+	protected void doPassed() {
+		bridgeScene().passed();
+	}
 	protected void passed() {
 		System.out.println("Interacting Knight Passed");
-		bridgeScene().passed();
+		doPassed();
+//		bridgeScene().passed();
 		assertTrue(passedErrorMessage(), 
 				!bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
 		fractionComplete += passedCredit();
 		printFractionComplete();
 	}
+	protected void doFailed() {
+		bridgeScene().failed();
+	}
 	protected void failed() {
 		System.out.println("Interacting Knight Failed");
-		bridgeScene().failed();
+		doFailed();
+//		bridgeScene().failed();
 		assertTrue("After failed occupied should be false and knight turn false", 
 				!bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());

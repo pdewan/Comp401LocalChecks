@@ -7,8 +7,8 @@ import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 
 public class BridgeSceneArthurMoveLeftArmTestCase extends BridgeSceneMoveArthurTestCase {
-	protected int studentXDelta = 12;
-	protected int studentYDelta = 13;
+	protected Integer studentXDelta = 12;
+	protected Integer studentYDelta = 13;
 	
 	protected Integer inputStudentXDelta() {
 		return studentXDelta;
