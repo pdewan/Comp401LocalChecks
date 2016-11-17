@@ -17,12 +17,14 @@ public class OneLevelListTestCase extends BridgeSceneArthurMoveLeftArmTestCase {
 	protected int[] INPUT_STUDENT_Y_DELTAS = {5, 10, 2, 6, 8, 6, 1};
 	protected int NUM_DELTAS = 4;
 	
-	
+	protected int numDeltas() {
+		return NUM_DELTAS;
+	}
 	protected Integer inputStudentXDelta() {
 		if (studentXDelta != null) {
 			return studentXDelta;		}
 		int aResult = 0;
-		for (int i = 0; i < NUM_DELTAS; i++) {
+		for (int i = 0; i < numDeltas(); i++) {
 			aResult += INPUT_STUDENT_X_DELTAS[i];
 		}
 		studentXDelta = aResult;	 
@@ -33,7 +35,7 @@ public class OneLevelListTestCase extends BridgeSceneArthurMoveLeftArmTestCase {
 		if (studentYDelta != null) {
 			return studentYDelta;		}
 		int aResult = 0;
-		for (int i = 0; i < NUM_DELTAS; i++) {
+		for (int i = 0; i < numDeltas(); i++) {
 			aResult += INPUT_STUDENT_Y_DELTAS[i];
 		}
 		studentYDelta = aResult;	 
