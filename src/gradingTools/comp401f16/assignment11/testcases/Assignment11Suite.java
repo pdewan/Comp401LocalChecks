@@ -5,7 +5,7 @@ import grader.basics.junit.GradableJUnitSuite;
 import gradingTools.comp401f16.assignment11.commandObjects.testcases.AtomicCommandObjectSuiteA11;
 import gradingTools.comp401f16.assignment11.commandObjects.testcases.CompositeCommandObjectSuite;
 import gradingTools.comp401f16.assignment11.sync.testcases.SyncAnimationSuite;
-
+import gradingTools.comp401f16.assignment11.testcases.parsing.ParserFactoryMethodTest;
 import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingAtomicCommandTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingSuiteA11;
 import gradingTools.comp401f16.assignment11.testcases.parsing.list.ParsingCommandListSuite;
@@ -20,13 +20,10 @@ import org.junit.runners.Suite;
 	ParsingCommandListSuite.class,
 	ParsingRepeatSuite.class,
 	ParsingRepeatAndCommandListSuite.class,
-//<<<<<<< HEAD
-//	CommandObjectSuiteA11.class,
-//	SyncAnimationSuite.class,
-//=======
 	AtomicCommandObjectSuiteA11.class,
 	CompositeCommandObjectSuite.class,
 	SyncAnimationSuite.class,
+	ParserFactoryMethodTest.class
 
 	
 })
