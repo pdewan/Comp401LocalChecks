@@ -24,6 +24,15 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 	
 	TestParser parser;
 	
+	protected void setParserFromFactoryMethod() {
+		Object retVal = 
+		getOrCreateObject(factoryClassTags,
+				ParserFactoryMethodTest.FACTORY_METHOD_TAGS, TestParser.class);
+		assertTrue(factoryMessage, factoryMessage.isEmpty());
+		parser = (TestParser)
+				retVal;
+	}
+	
 	public ParsingAtomicCommandTestCase() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
 	}
@@ -48,6 +57,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 	@Override 
 	protected void setDependentObjects() {
 		setBridgeSceneFromFactoryMethod();
+		setParserFromFactoryMethod();
 	}
 	@Override
 	protected boolean doTest() throws Throwable {
@@ -91,5 +101,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 				!bridgeScene().getKnightTurn());
 		fractionComplete += eachApproachCredit();
 		printFractionComplete();
+		Object aCommandObject = parser.getCommandObject();
+
 	}
 }
