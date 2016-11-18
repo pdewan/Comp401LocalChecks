@@ -125,9 +125,13 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		say(anAvatar, aSaying, eachSayCredit());
 
 	}
+	protected void doApproach(TestAvatar anAvatar) {
+		bridgeScene().approach(anAvatar);
+	}
 	protected void approach (TestAvatar anAvatar) {
 		System.out.println(toString(anAvatar) + " Approaches");
-		bridgeScene().approach(anAvatar);
+		doApproach(anAvatar);
+//		bridgeScene().approach(anAvatar);
 		assertTrue(correctApproachErrorMessage(), 
 				bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());

@@ -2,6 +2,7 @@ package gradingTools.comp401f16.assignment11.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import grader.basics.junit.GradableJUnitSuite;
+import gradingTools.comp401f16.assignment11.commandObjects.testcases.CommandObjectSuiteA11;
 import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingAtomicCommandTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingSuiteA11;
 import gradingTools.comp401f16.assignment11.testcases.parsing.list.ParsingCommandListSuite;
@@ -15,7 +16,8 @@ import org.junit.runners.Suite;
 	ParsingAtomicCommandTestCase.class,
 	ParsingCommandListSuite.class,
 	ParsingRepeatSuite.class,
-	ParsingRepeatAndCommandListSuite.class
+	ParsingRepeatAndCommandListSuite.class,
+	CommandObjectSuiteA11.class
 	
 })
 public class Assignment11Suite {
