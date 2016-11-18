@@ -7,17 +7,19 @@ import org.junit.runners.Suite;
 
 import util.annotations.MaxValue;
 @RunWith(Suite.class)
-@MaxValue(30)
+@MaxValue(40)
 @Suite.SuiteClasses({
 	
-	ApproachCommandObjectTestCase.class,
-	PassCommandObjectTestCase.class,
-	FailCommandObjectTestCase.class
+//	ApproachCommandObjectTestCase.class,
+//	PassCommandObjectTestCase.class,
+//	FailCommandObjectTestCase.class,
+	CommandListCommandObjectTestCase.class,
+	RepeatCommandObjectTestCase.class
 	
 	
 	
 })
-public class CommandObjectSuiteA11 {
+public class CompositeCommandObjectSuite {
 	
 	
 }
