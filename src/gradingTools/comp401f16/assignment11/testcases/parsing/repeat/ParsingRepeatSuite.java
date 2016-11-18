@@ -51,7 +51,7 @@ import util.misc.ThreadSupport;
 	
 	
 })
-@MaxValue(30)
+@MaxValue(60)
 public class ParsingRepeatSuite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment11";
 	public static final String[] MAIN_CLASS_NAMES = {MAIN_CLASS_NAME, "Assignment"};
