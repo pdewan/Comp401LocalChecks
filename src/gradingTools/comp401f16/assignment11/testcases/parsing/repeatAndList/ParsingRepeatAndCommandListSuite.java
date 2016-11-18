@@ -52,7 +52,7 @@ import util.misc.ThreadSupport;
 	
 	
 })
-@MaxValue(60)
+@MaxValue(45)
 public class ParsingRepeatAndCommandListSuite {
 	
 	

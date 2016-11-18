@@ -52,7 +52,7 @@ import util.misc.ThreadSupport;
 	
 	
 })
-@MaxValue(60)
+@MaxValue(45)
 public class ParsingCommandListSuite {
 	public static final String MAIN_CLASS_NAME = "main.Assignment11";
 	public static final String[] MAIN_CLASS_NAMES = {MAIN_CLASS_NAME, "Assignment"};

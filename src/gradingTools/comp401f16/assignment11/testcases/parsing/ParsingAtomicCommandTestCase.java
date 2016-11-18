@@ -15,7 +15,7 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 import gradingTools.shared.testcases.shapes.MovableTest;
 import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
-@MaxValue(60)
+@MaxValue(45)
 public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedArthurSayTestCase {
 	protected final double APPROACH_CREDIT = 0.6;// 4 times, 	0.2 pts
 	protected final double FAILED_CREDIT = 0.2; // 9 times, 		0.45 pts
