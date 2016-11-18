@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment11.testcases.parsing;
+package gradingTools.comp401f16.assignment11.testcases.parsing.list;
 
 import util.annotations.MaxValue;
 import bus.uigen.visitors.CreateChildrenAdapterVisitor;
@@ -15,13 +15,12 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 import gradingTools.shared.testcases.shapes.MovableTest;
 import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
-@MaxValue(30)
-public class BasicCommandsTestCase extends CommandInterpreterApproachedArthurSayTestCase {
+public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproachedArthurSayTestCase {
 	protected final double APPROACH_CREDIT = 0.6;// 4 times, 	0.2 pts
 	protected final double FAILED_CREDIT = 0.2; // 9 times, 		0.45 pts
 	protected final double PASSED__CREDIT = 0.2; // once 		0.15
 	
-	public BasicCommandsTestCase() {
+	public OneLevelListAtomicCommandTestCase() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
 	}
 	protected String firstAvatarName() {
@@ -61,21 +60,30 @@ public class BasicCommandsTestCase extends CommandInterpreterApproachedArthurSay
 	protected double failedCredit() {
 		return FAILED_CREDIT;
 	}
+	
 	@Override
 	protected void doPassed() {
-		commandInterpreter().setCommand("passed" + " ");
+		setCommand("pass" + " ");
 	}
-//	@Override
-//	protected void doFailed() {
-//		commandInterpreter().setCommand("failed" + " ");
-//	}
+	@Override
+	protected void doFailed() {
+		setCommand("fail" + " ");
+	}
+
 
 	@Override
 	protected void executeOperations(Object aLocatable) {
-		approach(firstAvatarName());				
-		passed();
-		approach (secondAvatarName());	
-		failed();		
+		String aCommand = "{" + " " +
+				"approach " + firstAvatarName() + " " +
+				"pass" + " " +
+				"approach " + secondAvatarName() + " " +
+				"failed" + " " +
+				"}" + " ";
+//		approach(firstAvatarName());				
+//		passed();
+//		approach (secondAvatarName());	
+//		failed();	
+		checkFailed();
 	}
 	protected void approach (String anAvatar) {
 		System.out.println(anAvatar + " Approaches");

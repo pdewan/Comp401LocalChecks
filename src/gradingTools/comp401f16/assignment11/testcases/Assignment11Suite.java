@@ -2,13 +2,20 @@ package gradingTools.comp401f16.assignment11.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import grader.basics.junit.GradableJUnitSuite;
+import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingAtomicCommandTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingSuiteA11;
+import gradingTools.comp401f16.assignment11.testcases.parsing.list.ParsingCommandListSuite;
+import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.ParsingRepeatSuite;
+import gradingTools.comp401f16.assignment11.testcases.parsing.repeatAndList.ParsingRepeatAndCommandListSuite;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	ParsingSuiteA11.class
+	ParsingAtomicCommandTestCase.class,
+	ParsingCommandListSuite.class,
+	ParsingRepeatSuite.class,
+	ParsingRepeatAndCommandListSuite.class
 	
 })
 public class Assignment11Suite {

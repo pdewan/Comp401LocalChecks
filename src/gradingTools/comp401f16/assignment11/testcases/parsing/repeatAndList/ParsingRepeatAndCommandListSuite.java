@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment11.testcases.parsing;
+package gradingTools.comp401f16.assignment11.testcases.parsing.repeatAndList;
 
 import grader.basics.execution.AMainInNewThread;
 import grader.basics.execution.BasicProjectExecution;
@@ -14,9 +14,6 @@ import gradingTools.comp401f16.assignment11.testcases.parsing.list.ManyLevelList
 import gradingTools.comp401f16.assignment11.testcases.parsing.list.OneLevelListAtomicCommandTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.list.OneLevelListMovesTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.list.TwoLevelListMovesTestCase;
-import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.ManyLevelRepeatTestCase;
-import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.OneLevelRepeatTestCase;
-import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.TwoLevelRepeatTestCase;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 import gradingTools.comp401f16.assignment6.testcases.iniital.InitialBridgeSceneSuite;
 import gradingTools.comp401f16.assignment6.testcases.scroll.BridgeSceneComponentScrollSuite;
@@ -43,48 +40,21 @@ import gradingTools.comp401f16.assignment9.testcases.observablepainter.Observabl
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	ParsingAtomicCommandTestCase.class,
-	OneLevelListAtomicCommandTestCase.class,
-	OneLevelListMovesTestCase.class,
-	TwoLevelListMovesTestCase.class,
-	ManyLevelListMovesTestCase.class,
-	OneLevelRepeatTestCase.class,
-	TwoLevelRepeatTestCase.class,
-	ManyLevelRepeatTestCase.class
+	OneLevelRepeatOneLevelList.class,
+	TwoLevelRepeatTwoLevelList.class,
+	ManyLevelLevelRepeatManyLevelList.class
+
+	
 	
 	
 })
-public class ParsingSuiteA11 {
-	public static final String MAIN_CLASS_NAME = "main.Assignment11";
-	public static final String[] MAIN_CLASS_NAMES = {MAIN_CLASS_NAME, "Assignment"};
+@MaxValue(30)
+public class ParsingRepeatAndCommandListSuite {
 	
-	public static void main (String[] args) {
-	try {
-		
-		GradableJUnitSuite aTopSuite = BasicJUnitUtils.interactiveTest(ParsingSuiteA11.class);
-		
-//		aTopSuite.test(AsyncAnimationSuite.class);
-
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-//	public static void invokeMain() {
-//		if (mainInvoked) {
-//			return;
-//		}
-//		if (GradingMode.getGraderRun()) {
-//		Thread aThread = new Thread (new AMainInNewThread(
-//				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, ""));
-//		aThread.start();
-//		mainInvoked = true;
-//		ThreadSupport.sleep(10000);
-//	}
 	
 	
 }

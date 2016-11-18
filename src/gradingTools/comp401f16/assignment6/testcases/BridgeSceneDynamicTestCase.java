@@ -160,15 +160,23 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 	protected void doFailed() {
 		bridgeScene().failed();
 	}
-	protected void failed() {
-		System.out.println("Interacting Knight Failed");
-		doFailed();
-//		bridgeScene().failed();
+	protected void checkFailed() {
 		assertTrue("After failed occupied should be false and knight turn false", 
 				!bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
 		fractionComplete += passedCredit();
 		printFractionComplete();
+	}
+	protected void failed() {
+		System.out.println("Interacting Knight Failed");
+		doFailed();
+		checkFailed();
+//		bridgeScene().failed();
+//		assertTrue("After failed occupied should be false and knight turn false", 
+//				!bridgeScene().getOccupied() &&
+//				!bridgeScene().getKnightTurn());
+//		fractionComplete += passedCredit();
+//		printFractionComplete();
 	}
 	@Override
 	protected void executeOperations(Object aLocatable) {

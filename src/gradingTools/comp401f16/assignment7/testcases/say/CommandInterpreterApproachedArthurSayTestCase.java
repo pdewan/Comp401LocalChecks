@@ -41,6 +41,10 @@ public class CommandInterpreterApproachedArthurSayTestCase extends BridgeSceneDy
 	protected TestCommandInterpreter commandInterpreter() {
 		return (TestCommandInterpreter) rootProxy;
 	}
+	protected void setCommand(String aCommand) {
+		System.out.println("Executing command:" + aCommand);
+		commandInterpreter().setCommand(aCommand);
+	}
 	@Override
 	protected Object create() {
 		return createUsingFactoryMethod();
