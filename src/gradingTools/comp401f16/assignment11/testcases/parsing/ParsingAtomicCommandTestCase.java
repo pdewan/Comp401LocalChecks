@@ -5,6 +5,7 @@ import bus.uigen.visitors.CreateChildrenAdapterVisitor;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAngle;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
+import gradingTools.comp401f16.assignment11.testcases.interfaces.TestParser;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneArthurMoveLeftArmTestCase;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMoveArthurTestCase;
 import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
@@ -20,6 +21,8 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 	protected final double APPROACH_CREDIT = 0.6;// 4 times, 	0.2 pts
 	protected final double FAILED_CREDIT = 0.2; // 9 times, 		0.45 pts
 	protected final double PASSED__CREDIT = 0.2; // once 		0.15
+	
+	TestParser parser;
 	
 	public ParsingAtomicCommandTestCase() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
