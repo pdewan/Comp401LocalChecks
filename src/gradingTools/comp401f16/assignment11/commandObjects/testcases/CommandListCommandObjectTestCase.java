@@ -16,9 +16,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import util.annotations.MaxValue;
 import util.assertions.Asserter;
 import util.models.PropertyListenerRegisterer;
-
+@MaxValue(20)
 public class CommandListCommandObjectTestCase extends OneLevelListMovesTestCase  {
 	
 	Class moveCommandClass;

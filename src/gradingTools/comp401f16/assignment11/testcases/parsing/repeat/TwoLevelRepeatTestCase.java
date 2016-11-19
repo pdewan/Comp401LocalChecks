@@ -1,5 +1,8 @@
 package gradingTools.comp401f16.assignment11.testcases.parsing.repeat;
 
+import util.annotations.MaxValue;
+
+@MaxValue(15)
 public class TwoLevelRepeatTestCase extends OneLevelRepeatTestCase {
 	protected final int NUM_REPEATS_2 = 2;
 	protected int numDeltas() {

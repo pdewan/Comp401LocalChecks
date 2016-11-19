@@ -1,22 +1,22 @@
 package gradingTools.comp401f16.assignment11.parser.testcases;
 
+import util.annotations.MaxValue;
+import gradingTools.comp401f16.assignment10.commandObjects.testcases.MoveCommandObjectTestCase;
 import gradingTools.comp401f16.assignment11.commandObjects.testcases.ApproachCommandObjectTestCase;
 import gradingTools.comp401f16.assignment11.commandObjects.testcases.PassCommandObjectTestCase;
+import gradingTools.comp401f16.assignment11.testcases.commandInterpreterA11.ParsingAtomicCommandTestCase;
 import gradingTools.comp401f16.assignment11.testcases.interfaces.TestParser;
-import gradingTools.comp401f16.assignment11.testcases.parsing.ParserFactoryMethodTest;
-import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingAtomicCommandTestCase;
-
+@MaxValue(5)
 public class ParserCreatesMoveCommandObjectTestCase 
 	extends ParserCreatesApproachCommandObjectTestCase{
 	
 	protected Class commandObjectClass() {
-		return PassCommandObjectTestCase.findPassCommandClass();
+		return MoveCommandObjectTestCase.findMoveCommandClass();
 	}
 	protected void setCommand() {
-		setCommand("approach Arthur ");
-		setCommand("pass ");
-
+		setCommand("move Arthur 2 3 ");
 	}
+	
 	
 	
 

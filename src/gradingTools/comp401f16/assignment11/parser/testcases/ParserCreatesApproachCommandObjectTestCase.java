@@ -1,10 +1,10 @@
 package gradingTools.comp401f16.assignment11.parser.testcases;
 
+import util.annotations.MaxValue;
 import gradingTools.comp401f16.assignment11.commandObjects.testcases.ApproachCommandObjectTestCase;
+import gradingTools.comp401f16.assignment11.testcases.commandInterpreterA11.ParsingAtomicCommandTestCase;
 import gradingTools.comp401f16.assignment11.testcases.interfaces.TestParser;
-import gradingTools.comp401f16.assignment11.testcases.parsing.ParserFactoryMethodTest;
-import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingAtomicCommandTestCase;
-
+@MaxValue(5)
 public class ParserCreatesApproachCommandObjectTestCase 
 	extends ParsingAtomicCommandTestCase{
 	TestParser parser;

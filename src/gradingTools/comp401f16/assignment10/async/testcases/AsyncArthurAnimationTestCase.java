@@ -74,8 +74,7 @@ public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements P
 	protected synchronized void waitForChildThread( ){
 		try {
 			long aDelay = maxDelay();
-			System.out.println("Waiting for child thread for delay:" + aDelay);
-
+			System.out.println("Waiting for child threads to be created within time (ms):" + aDelay);
 			wait(aDelay);
 			stopThread(childThread);
 		} catch (InterruptedException e) {

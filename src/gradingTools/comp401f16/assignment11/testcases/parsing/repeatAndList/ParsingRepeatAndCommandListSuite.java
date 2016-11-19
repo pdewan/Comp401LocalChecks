@@ -46,7 +46,7 @@ import util.misc.ThreadSupport;
 @Suite.SuiteClasses({
 	OneLevelRepeatOneLevelList.class,
 	TwoLevelRepeatTwoLevelList.class,
-	ManyLevelLevelRepeatManyLevelList.class
+	ManyLevelRepeatManyLevelList.class
 
 	
 	

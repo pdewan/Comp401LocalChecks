@@ -1,5 +1,8 @@
 package gradingTools.comp401f16.assignment11.testcases.parsing.repeat;
 
+import util.annotations.MaxValue;
+
+@MaxValue(15)
 public class ManyLevelRepeatTestCase extends TwoLevelRepeatTestCase {
 	
 	protected String createCommand() {

@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment11.testcases.parsing;
+package gradingTools.comp401f16.assignment11.testcases.commandInterpreterA11;
 
 import grader.basics.execution.AMainInNewThread;
 import grader.basics.execution.BasicProjectExecution;
@@ -17,6 +17,9 @@ import gradingTools.comp401f16.assignment11.testcases.parsing.list.TwoLevelListM
 import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.ManyLevelRepeatTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.OneLevelRepeatTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.TwoLevelRepeatTestCase;
+import gradingTools.comp401f16.assignment11.testcases.parsing.repeatAndList.ManyLevelRepeatManyLevelList;
+import gradingTools.comp401f16.assignment11.testcases.parsing.repeatAndList.OneLevelRepeatOneLevelList;
+import gradingTools.comp401f16.assignment11.testcases.parsing.repeatAndList.TwoLevelRepeatTwoLevelList;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
 import gradingTools.comp401f16.assignment6.testcases.iniital.InitialBridgeSceneSuite;
 import gradingTools.comp401f16.assignment6.testcases.scroll.BridgeSceneComponentScrollSuite;
@@ -53,18 +56,21 @@ import util.misc.ThreadSupport;
 	ManyLevelListMovesTestCase.class,
 	OneLevelRepeatTestCase.class,
 	TwoLevelRepeatTestCase.class,
-	ManyLevelRepeatTestCase.class
+	ManyLevelRepeatTestCase.class,
+	OneLevelRepeatOneLevelList.class,
+	TwoLevelRepeatTwoLevelList.class,
+	ManyLevelRepeatManyLevelList.class
 	
 	
 })
-public class ParsingSuiteA11 {
+public class CommandInterpreterSuiteA11 {
 	public static final String MAIN_CLASS_NAME = "main.Assignment11";
 	public static final String[] MAIN_CLASS_NAMES = {MAIN_CLASS_NAME, "Assignment"};
 	
 	public static void main (String[] args) {
 	try {
 		
-		GradableJUnitSuite aTopSuite = BasicJUnitUtils.interactiveTest(ParsingSuiteA11.class);
+		GradableJUnitSuite aTopSuite = BasicJUnitUtils.interactiveTest(CommandInterpreterSuiteA11.class);
 		
 //		aTopSuite.test(AsyncAnimationSuite.class);
 

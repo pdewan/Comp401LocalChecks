@@ -17,9 +17,11 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import util.annotations.MaxValue;
 import util.assertions.Asserter;
+import util.introspect.JavaIntrospectUtility;
 import util.models.PropertyListenerRegisterer;
-
+@MaxValue(20)
 public class RepeatCommandObjectTestCase extends OneLevelRepeatTestCase  {
 	
 	Class moveCommandClass;
@@ -45,9 +47,12 @@ public class RepeatCommandObjectTestCase extends OneLevelRepeatTestCase  {
 		avatarInterface = BasicProjectIntrospection.findInterface(TestAvatar.class);
 		moveConstructor = moveCommandClass.getConstructor(
 					 avatarInterface, Integer.TYPE, Integer.TYPE);
-		Constructor[] aConstructors = repeatClass.getConstructors();
-//		repeatConstructor = repeatClass.getConstructor(Integer.TYPE, Object.class);
-		repeatConstructor = aConstructors[0];
+//		Constructor[] aConstructors = repeatClass.getConstructors();
+//		repeatConstructor = repeatClass.getConstructor(Integer.TYPE, Runnable.class);
+//		repeatConstructor = aConstructors[0];
+		repeatConstructor = JavaIntrospectUtility.
+				getConstructorISA(repeatClass, Integer.TYPE, Runnable.class);
+		
 
 	}
 	protected Runnable createMoveCommand (int anIndex) throws Exception {

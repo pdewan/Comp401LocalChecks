@@ -11,6 +11,7 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 import gradingTools.shared.testcases.shapes.MovableTest;
 import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
+@MaxValue(15)
 public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestCase {
 	protected int[] INPUT_STUDENT_X_DELTAS = {2, 3, 5, 7, 10, 4, 3, 77, 4, 1, 2, 3};
 	protected int[] INPUT_STUDENT_Y_DELTAS = {5, 10, 2, 6, 8, 6, 1, 6, 55, 3, 2, 1};

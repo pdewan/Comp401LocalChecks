@@ -15,9 +15,10 @@ import java.beans.PropertyChangeListener;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import util.annotations.MaxValue;
 import util.assertions.Asserter;
 import util.models.PropertyListenerRegisterer;
-
+@MaxValue(10)
 public class ApproachCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	
 	Class approachCommandClass;

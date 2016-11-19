@@ -2,14 +2,17 @@ package gradingTools.comp401f16.assignment11.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import grader.basics.junit.GradableJUnitSuite;
+import gradingTools.comp401f16.assignment10.commandObjects.testcases.CommandObjectSuite;
 import gradingTools.comp401f16.assignment11.commandObjects.testcases.AtomicCommandObjectSuiteA11;
+import gradingTools.comp401f16.assignment11.commandObjects.testcases.CommandObjectSuiteA11;
 import gradingTools.comp401f16.assignment11.commandObjects.testcases.CompositeCommandObjectSuite;
 import gradingTools.comp401f16.assignment11.parser.testcases.ParserCreatesCommandObjectSuite;
 import gradingTools.comp401f16.assignment11.parser.testcases.ParserCreatesApproachCommandObjectTestCase;
+import gradingTools.comp401f16.assignment11.parser.testcases.ParserFactoryMethodTest;
+import gradingTools.comp401f16.assignment11.parser.testcases.ParserSuite;
 import gradingTools.comp401f16.assignment11.sync.testcases.SyncAnimationSuite;
-import gradingTools.comp401f16.assignment11.testcases.parsing.ParserFactoryMethodTest;
-import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingAtomicCommandTestCase;
-import gradingTools.comp401f16.assignment11.testcases.parsing.ParsingSuiteA11;
+import gradingTools.comp401f16.assignment11.testcases.commandInterpreterA11.ParsingAtomicCommandTestCase;
+import gradingTools.comp401f16.assignment11.testcases.commandInterpreterA11.CommandInterpreterSuiteA11;
 import gradingTools.comp401f16.assignment11.testcases.parsing.list.ParsingCommandListSuite;
 import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.ParsingRepeatSuite;
 import gradingTools.comp401f16.assignment11.testcases.parsing.repeatAndList.ParsingRepeatAndCommandListSuite;
@@ -18,15 +21,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	ParsingAtomicCommandTestCase.class,
-	ParsingCommandListSuite.class,
-	ParsingRepeatSuite.class,
-	ParsingRepeatAndCommandListSuite.class,
-	AtomicCommandObjectSuiteA11.class,
-	CompositeCommandObjectSuite.class,
+//	ParsingAtomicCommandTestCase.class,
+//	ParsingCommandListSuite.class,
+//	ParsingRepeatSuite.class,
+//	ParsingRepeatAndCommandListSuite.class,
+	CommandInterpreterSuiteA11.class,
+	CommandObjectSuiteA11.class,
+//	AtomicCommandObjectSuiteA11.class,
+//	CompositeCommandObjectSuite.class,
 	SyncAnimationSuite.class,
-	ParserFactoryMethodTest.class,
-	ParserCreatesCommandObjectSuite.class
+//	ParserFactoryMethodTest.class,
+	ParserSuite.class
+//	ParserCreatesCommandObjectSuite.class
 
 	
 })

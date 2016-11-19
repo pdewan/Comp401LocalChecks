@@ -19,17 +19,21 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	protected boolean thread2Created;
 	protected boolean child1AfterChild2;
 	protected static Long child2StartTime;
+	protected boolean child2ExecutedForMinimumTime;
 	protected static int DELAY_AFTER_CHILD2_CREATED = 1000;
+	protected static long MAX_DELAY = 10000;
 	protected void initData() {		
 		super.initData();
 		child2Thread = null;
 		thread2Created = false;
 		child1AfterChild2 = false;
 		child2StartTime = null;
+		child2ExecutedForMinimumTime = false;
 	}
-//	protected long maxDelay() {
-//		return MAX_DELAY;
-//	}
+	protected long maxDelay() {
+		return MAX_DELAY;
+	}
+	@Override
 	protected synchronized void waitForChildThread( ){
 		super.waitForChildThread();
 		stopThread(child2Thread);
@@ -57,7 +61,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		return true;
 	}
 	protected void delayFound() {
-		System.out.println("delay found");
+//		System.out.println("delay found");
 
 //		notify();
 	}
@@ -66,14 +70,16 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		super.executeOperations(aProxy);
 	}
 	protected void child2ExecutedForMinimumTime() {
-		System.out.println("Notifying child2 executed for minimun time");
-
+		if (child2ExecutedForMinimumTime) return;
+		System.out.println("Notifying child2 thread executed for minimun time");
+		child2ExecutedForMinimumTime = true;
 		notify();
 	}
 	
 	protected void child1AfterChild2() {
+		if (child1AfterChild2) return;
 		child1AfterChild2 = true;
-		System.out.println ("notifying child 1 after child 2");
+		System.out.println (" child 1 notified after child 2 notified");
 		notify();
 	}
 	
@@ -100,9 +106,5 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 				child2ExecutedForMinimumTime();
 			}
 		}
-		
-		
-		
 	}
-
 }

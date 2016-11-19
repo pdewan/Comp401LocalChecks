@@ -1,4 +1,4 @@
-package gradingTools.comp401f16.assignment11.testcases.parsing;
+package gradingTools.comp401f16.assignment11.testcases.commandInterpreterA11;
 
 import util.annotations.MaxValue;
 import bus.uigen.visitors.CreateChildrenAdapterVisitor;
