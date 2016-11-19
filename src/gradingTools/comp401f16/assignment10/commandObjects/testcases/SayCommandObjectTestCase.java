@@ -27,9 +27,14 @@ public class SayCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	public SayCommandObjectTestCase() {
 		
 	}
+	public static Class findSayCommandClass() {
+		return BasicProjectIntrospection.findClassByTags("SayCommand");
+	}
 	
 	protected void init() throws Throwable {
-		sayCommandClass = BasicProjectIntrospection.findClassByTags("SayCommand");
+//		sayCommandClass = BasicProjectIntrospection.findClassByTags("SayCommand");
+		sayCommandClass = findSayCommandClass();
+
 		bridgeSceneInterface = BasicProjectIntrospection.findInterface(TestBridgeScene.class);
 		sayConstructor = sayCommandClass.getConstructor(
 				 bridgeSceneInterface, String.class);

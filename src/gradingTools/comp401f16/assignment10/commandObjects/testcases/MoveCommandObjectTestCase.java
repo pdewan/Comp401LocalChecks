@@ -27,8 +27,14 @@ public class MoveCommandObjectTestCase extends BridgeSceneArthurMoveLeftArmTestC
 		
 	}
 	
+	public static Class findMoveCommandClass() {
+		return BasicProjectIntrospection.findClassByTags("MoveCommand");
+	}
+	
 	protected void init() throws Throwable{
-		moveCommandClass = BasicProjectIntrospection.findClassByTags("MoveCommand");
+//		moveCommandClass = BasicProjectIntrospection.findClassByTags("MoveCommand");
+		moveCommandClass = findMoveCommandClass();
+
 		avatarInterface = BasicProjectIntrospection.findInterface(TestAvatar.class);
 			moveConstructor = moveCommandClass.getConstructor(
 					 avatarInterface, Integer.TYPE, Integer.TYPE);

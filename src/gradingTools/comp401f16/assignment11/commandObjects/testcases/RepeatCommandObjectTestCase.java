@@ -33,10 +33,13 @@ public class RepeatCommandObjectTestCase extends OneLevelRepeatTestCase  {
 		
 	}
 	
+	public static Class findRepeatCommandClass() {
+		return BasicProjectIntrospection.findClassByTags("RepeatCommand");
+	}
 	
 	protected void init() throws Throwable{
 		moveCommandClass = BasicProjectIntrospection.findClassByTags("MoveCommand");
-		repeatClass = BasicProjectIntrospection.findClassByTags("RepeatCommand");
+		repeatClass = findRepeatCommandClass();
 //		commandListClass = BasicProjectIntrospection.findClassByTags("CommandListCommand");
 
 		avatarInterface = BasicProjectIntrospection.findInterface(TestAvatar.class);

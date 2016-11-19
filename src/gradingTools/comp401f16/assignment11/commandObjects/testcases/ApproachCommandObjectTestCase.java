@@ -28,9 +28,14 @@ public class ApproachCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	public ApproachCommandObjectTestCase() {
 		
 	}
+	public static Class findApproachCommandClass() {
+		return BasicProjectIntrospection.findClassByTags("ApproachCommand");
+	}
 	
 	protected void init() throws Throwable {
-		approachCommandClass = BasicProjectIntrospection.findClassByTags("ApproachCommand");
+		approachCommandClass = findApproachCommandClass();
+
+//		approachCommandClass = BasicProjectIntrospection.findClassByTags("ApproachCommand");
 		bridgeSceneInterface = BasicProjectIntrospection.findInterface(TestBridgeScene.class);
 		avatarInterface = BasicProjectIntrospection.findInterface(TestAvatar.class);
 

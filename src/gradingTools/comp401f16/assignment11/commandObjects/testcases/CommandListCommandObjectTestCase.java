@@ -36,10 +36,13 @@ public class CommandListCommandObjectTestCase extends OneLevelListMovesTestCase 
 		addMethod.invoke(commandList, aCommandObject);
 		
 	}
+	public static Class findCommandListClass() {
+		return BasicProjectIntrospection.findClassByTags("CommandList");
+	}
 	
 	protected void init() throws Throwable{
 		moveCommandClass = BasicProjectIntrospection.findClassByTags("MoveCommand");
-		commandListClass = BasicProjectIntrospection.findClassByTags("CommandList");
+		commandListClass = findCommandListClass();
 //		commandListClass = BasicProjectIntrospection.findClassByTags("CommandListCommand");
 
 		avatarInterface = BasicProjectIntrospection.findInterface(TestAvatar.class);

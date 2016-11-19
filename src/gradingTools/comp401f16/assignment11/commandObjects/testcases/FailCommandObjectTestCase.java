@@ -27,9 +27,12 @@ public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	public FailCommandObjectTestCase() {
 		
 	}
+	public static Class findFailCommandClass() {
+		return BasicProjectIntrospection.findClassByTags("FailCommand");
+	}
 	
 	protected void init() throws Throwable {
-		failedCommandClass = BasicProjectIntrospection.findClassByTags("FailCommand");
+		failedCommandClass = findFailCommandClass();
 		bridgeSceneInterface = BasicProjectIntrospection.findInterface(TestBridgeScene.class);
 		failedConstructor = failedCommandClass.getConstructor(
 				 bridgeSceneInterface);

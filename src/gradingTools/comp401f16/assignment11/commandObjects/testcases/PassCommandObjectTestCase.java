@@ -27,9 +27,11 @@ public class PassCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	public PassCommandObjectTestCase() {
 		
 	}
-	
+	public static Class findPassCommandClass() {
+		return BasicProjectIntrospection.findClassByTags("PassCommand");
+	}
 	protected void init() throws Throwable {
-		passedCommandClass = BasicProjectIntrospection.findClassByTags("PassCommand");
+		passedCommandClass = findPassCommandClass();
 		bridgeSceneInterface = BasicProjectIntrospection.findInterface(TestBridgeScene.class);
 		passedConstructor = passedCommandClass.getConstructor(
 				 bridgeSceneInterface);

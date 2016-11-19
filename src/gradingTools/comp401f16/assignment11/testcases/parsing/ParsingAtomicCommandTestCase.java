@@ -22,16 +22,16 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 	protected final double FAILED_CREDIT = 0.2; // 9 times, 		0.45 pts
 	protected final double PASSED__CREDIT = 0.2; // once 		0.15
 	
-	TestParser parser;
-	
-	protected void setParserFromFactoryMethod() {
-		Object retVal = 
-		getOrCreateObject(factoryClassTags,
-				ParserFactoryMethodTest.FACTORY_METHOD_TAGS, TestParser.class);
-		assertTrue(factoryMessage, factoryMessage.isEmpty());
-		parser = (TestParser)
-				retVal;
-	}
+//	TestParser parser;
+//	
+//	protected void setParserFromFactoryMethod() {
+//		Object retVal = 
+//		getOrCreateObject(factoryClassTags,
+//				ParserFactoryMethodTest.FACTORY_METHOD_TAGS, TestParser.class);
+//		assertTrue(factoryMessage, factoryMessage.isEmpty());
+//		parser = (TestParser)
+//				retVal;
+//	}
 	
 	public ParsingAtomicCommandTestCase() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
@@ -57,7 +57,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 	@Override 
 	protected void setDependentObjects() {
 		setBridgeSceneFromFactoryMethod();
-		setParserFromFactoryMethod();
+//		setParserFromFactoryMethod();
 	}
 	@Override
 	protected boolean doTest() throws Throwable {
@@ -101,7 +101,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 				!bridgeScene().getKnightTurn());
 		fractionComplete += eachApproachCredit();
 		printFractionComplete();
-		Object aCommandObject = parser.getCommandObject();
+//		Object aCommandObject = parser.getCommandObject();
 
 	}
 }
