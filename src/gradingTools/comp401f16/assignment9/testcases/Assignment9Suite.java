@@ -48,6 +48,7 @@ public class Assignment9Suite {
 	try {
 		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);
 		BasicProjectExecution.setUseProcessTimeOut(false);
+//		GradingMode.setGraderRun(true);
 //		invokeMain();
 		GradableJUnitSuite aTopSuite = BasicJUnitUtils.interactiveTest(Assignment9Suite.class);
 //		aTopSuite.testAll();

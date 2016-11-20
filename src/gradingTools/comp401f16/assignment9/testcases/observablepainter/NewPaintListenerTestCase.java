@@ -43,6 +43,7 @@ public class NewPaintListenerTestCase
 	public static final double APPROACH_EVENTS_CREDIT = 0.5;
 	public static final double FAILED_EVENTS_CREDIT = 0.2;
 	protected boolean failedCalled = false;
+	protected boolean paintReceived = false;
 	protected int numEventsFiredByApproach;
 	protected int numEventsFiredByFailed;
 	
@@ -54,6 +55,7 @@ public class NewPaintListenerTestCase
 		failedCalled = false;
 		numEventsFiredByApproach = 0;
 		numEventsFiredByFailed = 0;
+		paintReceived = false;
 	}
 	@Override
 	protected Object create() {
@@ -195,7 +197,10 @@ public class NewPaintListenerTestCase
 	}
 	@Override
 	public void paint(Graphics2D g) {
-		System.out.println ("RECEIVED PAINT EVENT, TEST SUCCESSFUL");
+		if (!paintReceived) {
+			System.out.println ("Received Paint Event, NewPaintListener Test Successful");
+			paintReceived = true;
+		}
 		if (failedCalled)
 			numEventsFiredByFailed++;
 		else
