@@ -149,18 +149,9 @@ public class NewPaintListenerTestCase
 		ThreadSupport.sleep(ESTMATE_TIME_FOR_ANIMATION);
 		run();
 		if (anError != null && anError.getFuture() != null) {
-			try {
-				anError.getFuture().get(0, TimeUnit.MILLISECONDS);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+				anError.getFuture().cancel(true); // This does not do anything for this program
+			
 		}
 //		if (GradingMode.getGraderRun()) {
 //			executeMethodInSameThread();
