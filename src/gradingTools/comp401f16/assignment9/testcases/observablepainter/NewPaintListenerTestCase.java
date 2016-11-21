@@ -5,6 +5,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import java.util.stream.Stream;
 
 import org.junit.Assert;
@@ -140,10 +143,25 @@ public class NewPaintListenerTestCase
 	protected static String[] emptyStringargs = new String[]{};
 
 	protected void executeMethods() {
-		BasicProjectExecution.callMainOnce(
+		ResultingOutErr anError = BasicProjectExecution.invokeMainOnceAsynchronously(
 				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, "");
+		
 		ThreadSupport.sleep(ESTMATE_TIME_FOR_ANIMATION);
 		run();
+		if (anError != null && anError.getFuture() != null) {
+			try {
+				anError.getFuture().get(0, TimeUnit.MILLISECONDS);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TimeoutException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 //		if (GradingMode.getGraderRun()) {
 //			executeMethodInSameThread();
 //		} else {
