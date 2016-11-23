@@ -30,12 +30,12 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		child2StartTime = null;
 		child2ExecutedForMinimumTime = false;
 	}
-	protected long maxDelay() {
+	protected long maxDelayToCreateChildThread() {
 		return MAX_DELAY;
 	}
 	@Override
-	protected synchronized void waitForChildThread( ){
-		super.waitForChildThread();
+	protected synchronized void waitForStartedChildThreads( ){
+		super.waitForStartedChildThreads();
 		stopThread(child2Thread);
 	}
 	
@@ -55,6 +55,9 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		}
 		if (!thread2Created) {
 			assertTrue("Child thread 2 not found:", false);
+		}
+		if (!foundDelay) {
+			assertTrue("No delayed events (missing sleep call?):", false);
 		}
 		checkChildrenOrder();
 		

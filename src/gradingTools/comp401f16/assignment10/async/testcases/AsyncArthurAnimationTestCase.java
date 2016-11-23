@@ -9,10 +9,14 @@ import gradingTools.shared.testcases.FactoryMethodTest;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.HashSet;
+import java.util.Set;
 
 import util.models.PropertyListenerRegisterer;
 
 public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements PropertyChangeListener {
+	protected Set<Thread> currentThreads = new HashSet();
+
 	protected Thread parentThread;
 	protected Thread childThread;
 	protected boolean threadCreated;
@@ -20,7 +24,7 @@ public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements P
 	protected long lastEventTime;
 	protected boolean foundDelay;
 	protected long MIN_EVENT_DELAY = 4;
-	protected long MAX_DELAY = 3000;
+	protected static long MAX_DELAY_TO_CREATE_CHILD_THREAD = 3000;
 	protected TestBridgeScene bridgeScene;
 
 	
@@ -28,8 +32,8 @@ public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements P
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
 	}
 	
-	protected long maxDelay() {
-		return MAX_DELAY;
+	protected long maxDelayToCreateChildThread() {
+		return MAX_DELAY_TO_CREATE_CHILD_THREAD;
 	}
 	
 	protected void createBridgeScene() {
@@ -40,7 +44,9 @@ public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements P
 	}
 	
 	protected void initData() {
+		currentThreads.clear();
 		parentThread = Thread.currentThread();
+		currentThreads.add(parentThread);
 		childThread = null;
 		threadCreated = false;
 		lastEventTime = 0;
@@ -71,9 +77,9 @@ public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements P
 		System.out.println ("Animating arthur");
 		commandInterpreter().animateArthur();
 	}
-	protected synchronized void waitForChildThread( ){
+	protected synchronized void waitForStartedChildThreads( ){
 		try {
-			long aDelay = maxDelay();
+			long aDelay = maxDelayToCreateChildThread();
 			System.out.println("Waiting for child threads to be created within time (ms):" + aDelay);
 			wait(aDelay);
 			stopThread(childThread);
@@ -93,7 +99,7 @@ public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements P
 		}
 		fractionComplete += threadCredit();
 		if (!foundDelay) {
-			assertTrue("No delayed events:", false);
+			assertTrue("No delayed events (missing sleep call?):", false);
 		}
 		return true;
 	}
@@ -125,7 +131,7 @@ public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements P
 		addPropertyChangeListeners();
 //		addPropertyChangeListener(avatar(), this);
 		executeOperations(rootProxy);
-		waitForChildThread();
+		waitForStartedChildThreads();
 		checkOutput(rootProxy);
 		return true;
 	}
@@ -139,6 +145,7 @@ public class AsyncArthurAnimationTestCase extends FactoryMethodTest implements P
 		if (aChildThread != parentThread && childThread == null) {
 			threadCreated = true;
 			childThread = aChildThread;
+			currentThreads.add(aChildThread);
 			System.out.println ("child 1:" + childThread);
 		}
 //		threadCreated = childThread != parentThread;

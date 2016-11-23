@@ -18,5 +18,35 @@ public interface TestCommandInterpreter extends PropertyListenerRegisterer{
 	
 	@Tags({"asynchronousRobin"})
 	public void animateRobin();
+	
+	@Tags({"waitingArthur"})
+	public void animateArthurWithWait();
+	
+	@Tags({"waitingGalahad"})
+	public void animateGalahadWithWait();
+	
+	@Tags({"waitingLancelot"})
+	public void animateLancelotWithWait();
+	
+	@Tags({"waitingRobin"})
+	public void animateRobinWithWait();
+	
+	@Tags({"startAnimation"})
+	public void startAnimation();
+
+	@Tags({"lockstepArthur"})
+	public void animateArthurWithLockstep();
+	
+	@Tags({"lockstepGalahad"})
+	public void animateGalahadWithLockstep();
+	
+	@Tags({"lockstepLancelot"})
+	public void animateLancelotWithLockstep();
+	
+	@Tags({"lockstepRobin"})
+	public void animateRobinWithLockstep();
+	
+	@Tags({"lockstepGuard"})
+	public void clapGuardLockstep();
 
 }
