@@ -127,7 +127,7 @@ public class NewPaintListenerTestCase
 	}
 	protected void checkResults() {
 		System.out.println ("Checking results");
-		if (numEventsFiredByFailed < MIN_APPROACH_EVENTS  ) {
+		if (numEventsFiredByApproach < MIN_APPROACH_EVENTS  ) {
 			assertTrue("At least "  + MIN_APPROACH_EVENTS + " paint event not fired by approach", false	);
 		}
 		fractionComplete += APPROACH_EVENTS_CREDIT;
