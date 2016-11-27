@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 import util.annotations.MaxValue;
 import util.assertions.Asserter;
 import util.models.PropertyListenerRegisterer;
-@MaxValue(20)
+@MaxValue(10)
 public class CommandListCommandObjectTestCase extends OneLevelListMovesTestCase  {
 	
 	Class moveCommandClass;

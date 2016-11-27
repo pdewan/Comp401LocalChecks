@@ -21,7 +21,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	protected static Long child2StartTime;
 	protected boolean child2ExecutedForMinimumTime;
 	protected static int DELAY_AFTER_CHILD2_CREATED = 1000;
-	protected static long MAX_DELAY = 10000;
+	public static long MAX_TIME_FOR_ANIMATION = 5000;
 	protected void initData() {		
 		super.initData();
 		child2Thread = null;
@@ -31,7 +31,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		child2ExecutedForMinimumTime = false;
 	}
 	protected long maxTimeForAnimatingThread() {
-		return MAX_DELAY;
+		return MAX_TIME_FOR_ANIMATION;
 	}
 	@Override
 	protected synchronized void waitForThreads( ){

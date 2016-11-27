@@ -7,7 +7,7 @@ import gradingTools.comp401f16.assignment11.testcases.interfaces.TestParser;
 @MaxValue(5)
 public class ParserCreatesApproachCommandObjectTestCase 
 	extends ParsingAtomicCommandTestCase{
-	TestParser parser;
+	protected TestParser parser;
 	
 	protected void setParserFromFactoryMethod() {
 		Object retVal = 

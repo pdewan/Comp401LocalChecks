@@ -4,10 +4,13 @@ import java.lang.reflect.Method;
 
 import javax.swing.JTextField;
 
+import util.annotations.IsExtra;
+import util.annotations.MaxValue;
 import bus.uigen.widgets.TextFieldFactory;
 import bus.uigen.widgets.swing.SwingTextFieldFactory;
 import gradingTools.shared.testcases.MethodExecutionTest;
-
+@MaxValue(10)
+@IsExtra(true)
 public class SwingTextFieldFactoryTestCase extends MethodExecutionTest{
 	protected static final double HAS_FACTORY_CLASS_CREDIT = 0.3;
 	protected static final String TEXT = "hello";

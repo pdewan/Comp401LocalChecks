@@ -50,7 +50,7 @@ import util.misc.ThreadSupport;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	ParsingAtomicCommandTestCase.class,
-	OneLevelListAtomicCommandTestCase.class,
+//	OneLevelListAtomicCommandTestCase.class,
 	OneLevelListMovesTestCase.class,
 	TwoLevelListMovesTestCase.class,
 	ManyLevelListMovesTestCase.class,

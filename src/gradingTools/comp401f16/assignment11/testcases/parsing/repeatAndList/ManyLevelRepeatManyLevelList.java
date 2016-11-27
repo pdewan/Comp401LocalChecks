@@ -7,7 +7,7 @@ import gradingTools.comp401f16.assignment11.testcases.parsing.list.TwoLevelListM
 import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.ManyLevelRepeatTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.OneLevelRepeatTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.repeat.TwoLevelRepeatTestCase;
-@MaxValue(15)
+@MaxValue(10)
 public class ManyLevelRepeatManyLevelList extends ManyLevelRepeatTestCase {
 	protected int numDeltas() {
 		return ManyLevelListMovesTestCase.NUM_NEW_DELTAS +

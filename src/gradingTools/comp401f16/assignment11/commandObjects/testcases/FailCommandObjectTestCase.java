@@ -18,7 +18,7 @@ import java.lang.reflect.InvocationTargetException;
 import util.annotations.MaxValue;
 import util.assertions.Asserter;
 import util.models.PropertyListenerRegisterer;
-@MaxValue(10)
+@MaxValue(5)
 public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	
 //	Class instantiatedClass;

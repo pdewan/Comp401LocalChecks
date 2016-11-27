@@ -15,6 +15,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import util.annotations.MaxValue;
+import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
 @MaxValue(20)
 public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCase {
@@ -97,6 +98,9 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
 		if (!testing)
 			return;
+		if (isPreviousThread()) {
+			return;
+		}
 //		super.propertyChange(evt);
 		maybeAddThread();
 		
@@ -110,5 +114,16 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 //		}
 //		System.out.println("New child thread:" + aChildThread);
 //		currentThreads.add(aChildThread);		
+	}
+	public static void waitForAnimation() {
+		System.out.println ("Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+		System.out.println ("Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+
+	}
+	protected boolean doTest() throws Throwable {
+		boolean retVal =  super.doTest();
+		waitForAnimation();
+		return retVal;
 	}
  }

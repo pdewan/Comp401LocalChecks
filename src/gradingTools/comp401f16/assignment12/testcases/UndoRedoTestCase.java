@@ -1,7 +1,10 @@
 package gradingTools.comp401f16.assignment12.testcases;
 
+import util.annotations.IsExtra;
+import util.annotations.MaxValue;
 import gradingTools.comp401f16.assignment7.testcases.move.CommandInterpreterArthurMoveLeftArmTestCase;
-
+@MaxValue(20)
+@IsExtra(true)
 public class UndoRedoTestCase extends CommandInterpreterArthurMoveLeftArmTestCase {
 	protected boolean beforeMove = false;
 	protected boolean beforeUndo = false;

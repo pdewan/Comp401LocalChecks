@@ -7,6 +7,7 @@ import gradingTools.comp401f16.assignment12.testcases.commandObjects.CommandObje
 import gradingTools.comp401f16.assignment12.testcases.commandObjects.RotateLeftArmCommandObjectTestCase;
 import gradingTools.comp401f16.assignment12.testcases.exceptions.ExceptionSuite;
 import gradingTools.comp401f16.assignment12.testcases.exceptions.ScanningExceptionTestCase;
+import gradingTools.comp401f16.assignment12.testcases.parser.ParserSuiteA12;
 import gradingTools.comp401f16.assignment12.waitnotify.testcases.LockstepAvatarsAnimationTestCase;
 import gradingTools.comp401f16.assignment12.waitnotify.testcases.WaitingAvatarsAnimationTestCase;
 
@@ -19,6 +20,7 @@ import org.junit.runners.Suite;
 	LockstepAvatarsAnimationTestCase.class,
 	CommandObjectSuiteA12.class,
 	CommandInterpreterSuiteA12.class,
+	ParserSuiteA12.class,
 	ExceptionSuite.class,
 	UndoRedoTestCase.class,
 	SwingTextFieldFactoryTestCase.class

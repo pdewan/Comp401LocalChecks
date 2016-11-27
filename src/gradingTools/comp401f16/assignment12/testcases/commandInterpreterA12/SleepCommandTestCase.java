@@ -1,5 +1,6 @@
 package gradingTools.comp401f16.assignment12.testcases.commandInterpreterA12;
 
+import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 import bus.uigen.visitors.CreateChildrenAdapterVisitor;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAngle;
@@ -12,7 +13,8 @@ import gradingTools.shared.testcases.MethodExecutionTest;
 import gradingTools.shared.testcases.shapes.MovableTest;
 import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
-@MaxValue(15)
+@MaxValue(10)
+@IsExtra(true)
 public class SleepCommandTestCase extends CommandInterpreterArthurMoveLeftArmTestCase {
 	
 	protected static final long SLEEP_TIME = 100;

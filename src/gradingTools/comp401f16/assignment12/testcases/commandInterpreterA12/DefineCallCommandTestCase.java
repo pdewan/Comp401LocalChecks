@@ -20,17 +20,29 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import util.annotations.MaxValue;
 import util.models.PropertyListenerRegisterer;
-
+@MaxValue(20)
 public class DefineCallCommandTestCase extends OneLevelListMovesTestCase  {
 	
 	 public static final String PROCEDURE_NAME = "doMove";
+	 public String createDefineCommand() {
+			String aBodyCommand = super.createCommand();
+			String aDefineCommand = 
+					"define " + PROCEDURE_NAME + " " + aBodyCommand;
+			return aDefineCommand;
+	 }
+	 public String createCallCommand() {
+			return "call " + PROCEDURE_NAME + " ";
+	 }
      protected void doMove() {
 		
-		String aBodyCommand = super.createCommand();
-		String aDefineCommand = 
-				"define " + PROCEDURE_NAME + " " + aBodyCommand;
-		String aCallCommand = "call " + PROCEDURE_NAME + " ";
+//		String aBodyCommand = super.createCommand();
+//		String aDefineCommand = 
+//				"define " + PROCEDURE_NAME + " " + aBodyCommand;
+//		String aCallCommand = "call " + PROCEDURE_NAME + " ";
+    	String aDefineCommand = createDefineCommand();
+    	String aCallCommand = createCallCommand();
 		setCommand(aDefineCommand);
 		setCommand(aCallCommand);
 //    	movable().move(inputXDelta(), inputYDelta());

@@ -2,7 +2,7 @@ package gradingTools.comp401f16.assignment11.testcases.parsing.list;
 
 import util.annotations.MaxValue;
 
-@MaxValue(15)
+@MaxValue(10)
 public class TwoLevelListMovesTestCase extends OneLevelListMovesTestCase{
 protected static int NUM_NEW_DELTAS = 3;
 	

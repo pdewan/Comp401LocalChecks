@@ -2,12 +2,15 @@ package gradingTools.comp401f16.assignment12.testcases.exceptions;
 
 import java.io.IOException;
 
+import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 import grader.basics.project.BasicProjectIntrospection;
 import gradingTools.comp401f16.assignment1.testcases.InvalidCharacterOutputTest;
 import gradingTools.comp401f16.assignment2.testcases.ScannerBeanTest;
 import gradingTools.comp401f16.assignment7.testcases.TestScanner;
 import gradingTools.comp401f16.assignment7.testcases.factory.ScannerFactoryMethodTest;
+@MaxValue(10)
+@IsExtra(true)
 public class ScanningExceptionTestCase extends ScannerFactoryMethodTest {
 	protected static final double HAS_EXCEPTION_CREDIT = 0.2;
 	protected static final double CHECKED_EXCEPTION_CREDIT = 0.1;

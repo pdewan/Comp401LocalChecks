@@ -11,6 +11,7 @@ import gradingTools.shared.testcases.FactoryMethodTest;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -22,6 +23,7 @@ import util.models.PropertyListenerRegisterer;
 public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase implements PropertyChangeListener {
 	
 	protected List<Thread> currentThreads = new ArrayList();
+	protected Set<Thread> previousThreads;
 	protected Map <Thread, Integer> threadToSleeps = new HashMap<>();
 	protected Map <Thread, Long> lastEventTimes = new HashMap();
 	protected Thread parentThread;
@@ -32,7 +34,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected boolean foundDelay;
 	protected long MIN_EVENT_DELAY = 10;
 	protected static long MAX_DELAY_TO_CREATE_CHILD_THREAD = 1000;
-	protected boolean testing = false;
+//	protected boolean testing = false;
 //	protected TestBridgeScene bridgeScene;
 
 	
@@ -50,13 +52,15 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestBridgeScene.class);
 		if (bridgeScene == null) {
+//			testing = false;
 			assertTrue("Could not create bridge scene", false);
 		}
 	}
 	
 	protected void initData() {
-		testing = true;
+//		testing = true;
 		currentThreads.clear();
+		previousThreads = Thread.getAllStackTraces().keySet();
 		parentThread = Thread.currentThread();
 		threadToSleeps.clear();
 		lastEventTimes.clear();
@@ -66,11 +70,14 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		lastEventTime = 0;
 		foundDelay = false;
 	}
+	protected boolean isPreviousThread() {
+		return previousThreads.contains(Thread.currentThread());
+	}
 	protected synchronized void stopThread(Thread aThread) {
 		if (aThread == null) {
 			return;
 		}
-		testing = false;
+//		testing = false;
 //		System.out.println ("Stopping thread:" + aThread);
 //		aThread.interrupt();
 //		aThread.suspend();
@@ -90,7 +97,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	}
 	protected synchronized void maybeKillThreads() {
 		stopThread(childThread);
-		testing = false;
+//		testing = false;
 	}
 	protected void executeOperations(Object aProxy) throws Exception {
 		System.out.println ("Animating arthur");
@@ -128,13 +135,15 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	}
 	protected void maybeCheckDelay() {
 		if (!foundDelay) {
+//			testing = false;
 			assertTrue("No delayed events (missing sleep call?):", false);
 		}
 	}
 	protected boolean checkOutput(Object aProxy) {
 		fractionComplete = 0;
 		if (!threadCreated) {
-			
+//			testing = false;
+
 			assertTrue("Child thread not found:", false);
 		}
 		fractionComplete += threadCredit();
@@ -176,7 +185,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		executeOperations(rootProxy);
 		waitForThreads();
 		maybeKillThreads();
-		testing = false;
+//		testing = false;
 
 		checkOutput(rootProxy);
 		return true;
@@ -226,6 +235,10 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
 		if (!testing)
 			return;
+		if (isPreviousThread()) {
+			return;
+		}
+
 		maybeAddThread();
 //		if (foundDelay) {
 //			delayFound();

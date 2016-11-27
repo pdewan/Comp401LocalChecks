@@ -15,9 +15,12 @@ import java.beans.PropertyChangeListener;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
+import util.annotations.IsExtra;
+import util.annotations.MaxValue;
 import util.assertions.Asserter;
 import util.models.PropertyListenerRegisterer;
-
+@MaxValue(5)
+@IsExtra(true)
 public class RotateLeftArmCommandObjectTestCase extends OneLevelListMovesTestCase  {
 	public static final String TAG = "RotateLeftArmCommand";
 

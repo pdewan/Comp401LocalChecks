@@ -22,7 +22,7 @@ import util.annotations.MaxValue;
 import util.assertions.Asserter;
 import util.introspect.JavaIntrospectUtility;
 import util.models.PropertyListenerRegisterer;
-@MaxValue(20)
+@MaxValue(10)
 public class RepeatCommandObjectTestCase extends OneLevelRepeatTestCase  {
 	
 	protected Class moveCommandClass;

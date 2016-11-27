@@ -15,7 +15,7 @@ import gradingTools.shared.testcases.ProxyTest;
 import gradingTools.shared.testcases.interfaces.TestStringTable;
 import gradingTools.shared.testcases.shapes.LocatableTest;
 import gradingTools.shared.testcases.shapes.MovableTest;
-@MaxValue(10)
+@MaxValue(5)
 public class ParserFactoryMethodTest extends  FactoryMethodTest{
 	public static final String[] FACTORY_METHOD_TAGS = new String[] {"parserFactoryMethod"};
 	public ParserFactoryMethodTest() {

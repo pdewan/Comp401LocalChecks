@@ -55,7 +55,7 @@ public class ThreadCommandObjectTestCase extends ThreadCommandTestCase  {
 //		constructor = instantiatedClass.getConstructor(String.class);
 //		threadCommand = (Runnable) (constructor.newInstance(PROCEDURE_NAME));
 
-		threadCommand = (Runnable) instantiateClass(PROCEDURE_NAME);
+		threadCommand = (Runnable) instantiateClass(DefineCallCommandObjectTestCase.PROCEDURE_NAME);
 		threadCommand.run();
 	
 		

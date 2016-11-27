@@ -18,10 +18,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import util.annotations.MaxValue;
 import util.models.PropertyListenerRegisterer;
-
+@MaxValue(10)
 public class ThreadCommandTestCase extends AsyncArthurAnimationTestCase  {
-	 public static final String PROCEDURE_NAME = "doAsyncMove";
+//	 public static final String PROCEDURE_NAME = "doAsyncMove";
+	static DefineCallCommandTestCase defineCallCommandTestCase = new DefineCallCommandTestCase();
 
 	protected String createCommand() {
 		
@@ -44,13 +46,16 @@ public class ThreadCommandTestCase extends AsyncArthurAnimationTestCase  {
 //		return createCommandName() + " " + avatarName() + anXDelta + aYDelta + " ";
 	}
 	protected void doDefine() {
-		String aBodyCommand = super.createCommand();
-		String aDefineCommand = 
-				"define " + PROCEDURE_NAME + " " + aBodyCommand;
-		setCommand(aDefineCommand);
+//		String aBodyCommand = super.createCommand();
+//		String aDefineCommand = 
+//				"define " + PROCEDURE_NAME + " " + aBodyCommand;
+		setCommand(defineCallCommandTestCase.createDefineCommand());
+	}
+	public static String createThreadCommand() {
+		return "thread " + defineCallCommandTestCase.PROCEDURE_NAME + " ";
 	}
 	protected void doThread() throws Exception {
-		String aThreadCommand = "thread " + PROCEDURE_NAME + " ";
+		String aThreadCommand = "thread " + defineCallCommandTestCase.PROCEDURE_NAME + " ";
 		setCommand(aThreadCommand);
 	}
 	 protected void defineThread() throws Exception {
