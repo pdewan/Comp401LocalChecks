@@ -212,7 +212,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		if (isPreviousThread()) {
 			return;
 		}
-		System.out.println ("Lockstep Thread:" + Thread.currentThread() + " " + this);
+//		System.out.println ("Lockstep Thread:" + Thread.currentThread() + " " + this);
 
 //		System.out.println ("not previous  thread");
 
