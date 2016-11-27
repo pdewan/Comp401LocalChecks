@@ -161,7 +161,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		fractionComplete += passedCredit();
 		printFractionComplete();
 	}
-	protected void doFailed() {
+	protected void doPassOrFailed() {
 		bridgeScene().failed();
 	}
 	protected void checkFailed() {
@@ -173,7 +173,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 	}
 	protected void failed() {
 		System.out.println("Interacting Knight Failed");
-		doFailed();
+		doPassOrFailed();
 		checkFailed();
 //		bridgeScene().failed();
 //		assertTrue("After failed occupied should be false and knight turn false", 

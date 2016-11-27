@@ -2,6 +2,12 @@ package gradingTools.comp401f16.assignment12.testcases;
 
 import grader.basics.junit.BasicJUnitUtils;
 import grader.basics.junit.GradableJUnitSuite;
+import gradingTools.comp401f16.assignment12.testcases.commandInterpreterA12.CommandInterpreterSuiteA12;
+import gradingTools.comp401f16.assignment12.testcases.commandObjects.CommandObjectSuiteA12;
+import gradingTools.comp401f16.assignment12.testcases.commandObjects.RotateLeftArmCommandObjectTestCase;
+import gradingTools.comp401f16.assignment12.testcases.exceptions.ExceptionSuite;
+import gradingTools.comp401f16.assignment12.testcases.exceptions.ScanningExceptionTestCase;
+import gradingTools.comp401f16.assignment12.waitnotify.testcases.LockstepAvatarsAnimationTestCase;
 import gradingTools.comp401f16.assignment12.waitnotify.testcases.WaitingAvatarsAnimationTestCase;
 
 import org.junit.runner.RunWith;
@@ -9,7 +15,13 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	BroadcastingClearanceManagerFactoryMethodTest.class,
-	WaitingAvatarsAnimationTestCase.class
+	WaitingAvatarsAnimationTestCase.class,
+	LockstepAvatarsAnimationTestCase.class,
+	CommandObjectSuiteA12.class,
+	CommandInterpreterSuiteA12.class,
+	ExceptionSuite.class,
+	UndoRedoTestCase.class,
+	SwingTextFieldFactoryTestCase.class
 ////	ParsingAtomicCommandTestCase.class,
 ////	ParsingCommandListSuite.class,
 ////	ParsingRepeatSuite.class,

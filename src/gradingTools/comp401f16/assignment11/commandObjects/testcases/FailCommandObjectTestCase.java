@@ -21,30 +21,39 @@ import util.models.PropertyListenerRegisterer;
 @MaxValue(10)
 public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	
-	Class failedCommandClass;
+//	Class instantiatedClass;
 	Class bridgeSceneInterface;	
-	Constructor failedConstructor;
-	
+//	Constructor constructor;
+	public static final String TAG = "FailCommand";
+
+	protected String instantiatedTag() {
+		return TAG;
+	}	
+	protected Class[] constructorArgs() {
+		return new Class[] {bridgeSceneInterface};
+	}
 	public FailCommandObjectTestCase() {
 		
 	}
 	public static Class findFailCommandClass() {
-		return BasicProjectIntrospection.findClassByTags("FailCommand");
+		return BasicProjectIntrospection.findClassByTags(TAG);
 	}
 	
 	protected void init() throws Throwable {
-		failedCommandClass = findFailCommandClass();
+//		instantiatedClass = findFailCommandClass();
 		bridgeSceneInterface = BasicProjectIntrospection.findInterface(TestBridgeScene.class);
-		failedConstructor = failedCommandClass.getConstructor(
-				 bridgeSceneInterface);
+//		constructor = instantiatedClass.getConstructor(
+//				 bridgeSceneInterface);
 	}
 	@Override
-	protected void doFailed () {
+	protected void doPassOrFailed () {
 		fractionComplete = 0;
 		 try {
 			
 		
-			Runnable aCommandObject = (Runnable) failedConstructor.newInstance(BasicProjectIntrospection.getRealObject(bridgeScene()));
+//			Runnable aCommandObject = (Runnable) constructor.newInstance(BasicProjectIntrospection.getRealObject(bridgeScene()));
+			Runnable aCommandObject = (Runnable)  instantiateClass(BasicProjectIntrospection.getRealObject(bridgeScene()));
+
 			aCommandObject.run();
 			
 		} catch (Exception e) {
@@ -57,13 +66,19 @@ public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	protected TestAvatar firstAvatar() {
 		return bridgeScene().getLancelot();
 	}
+	protected void doPostApproachOperation() {
+		failed();
+
+	}
 	@Override
 	protected boolean doTest() throws Throwable {
 		init();
+		initConstructor();
 		create();
 		setDependentObjects();
-		approach(firstAvatar());		
-		failed();
+		approach(firstAvatar());
+		doPostApproachOperation();
+//		failed();
 		return true;
 		
 	}

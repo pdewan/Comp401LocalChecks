@@ -5,8 +5,9 @@ import util.annotations.Tags;
 @Tags({"Parser"})
 public interface TestParser {
 	public String getCommandText();
-	public void setCommandText(String string);
+	public void setCommandText(String string) throws Exception;
 	public Runnable getCommandObject();
 	public String getErrors();
+	
 
 }

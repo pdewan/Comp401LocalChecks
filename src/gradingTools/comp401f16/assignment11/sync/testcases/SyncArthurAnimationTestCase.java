@@ -30,12 +30,28 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		child2StartTime = null;
 		child2ExecutedForMinimumTime = false;
 	}
-	protected long maxDelayToCreateChildThread() {
+	protected long maxTimeForAnimatingThread() {
 		return MAX_DELAY;
 	}
 	@Override
-	protected synchronized void waitForStartedChildThreads( ){
-		super.waitForStartedChildThreads();
+	protected synchronized void waitForThreads( ){
+		super.waitForThreads();
+		waitForThreadsToExecute();
+//		stopThread(child2Thread);
+	}
+	protected synchronized void waitForThreadsToExecute( ){
+		try {
+			long aDelay = maxTimeForAnimatingThread();
+			System.out.println("Waiting for child thread to finish amimation in(ms):" + aDelay);
+			wait(aDelay);
+//			stopThread(childThread);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	protected synchronized void maybeKillThreads() {
+		super.maybeKillThreads();
 		stopThread(child2Thread);
 	}
 	
@@ -48,6 +64,11 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		}
 		return true;
 	}
+	protected void maybeCheckDelay() {
+		if (!foundDelay) {
+			assertTrue("No delayed events (missing sleep call?):", false);
+		}
+	}
 	protected boolean checkOutput(Object aProxy) {
 		fractionComplete = 0;
 		if (!threadCreated) {
@@ -56,9 +77,10 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		if (!thread2Created) {
 			assertTrue("Child thread 2 not found:", false);
 		}
-		if (!foundDelay) {
-			assertTrue("No delayed events (missing sleep call?):", false);
-		}
+		maybeCheckDelay();
+//		if (!foundDelay) {
+//			assertTrue("No delayed events (missing sleep call?):", false);
+//		}
 		checkChildrenOrder();
 		
 		return true;
@@ -68,7 +90,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 
 //		notify();
 	}
-	protected void executeOperations(Object aProxy) {
+	protected void executeOperations(Object aProxy) throws Exception {
 		super.executeOperations(aProxy);
 		super.executeOperations(aProxy);
 	}
@@ -89,9 +111,13 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
+		if (!testing)
+			return;
 		super.propertyChange(evt);
 		Thread aChildThread = Thread.currentThread();
-		if (aChildThread != parentThread && childThread != aChildThread && child2Thread == null) {
+		if (currentThreads.size() > 2 && child2Thread == null) {
+
+//		if (aChildThread != parentThread && childThread != aChildThread && child2Thread == null) {
 			thread2Created = true;
 			child2Thread = aChildThread;
 			child2StartTime = System.currentTimeMillis();
@@ -101,7 +127,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		
 		long aCurrentTime = System.currentTimeMillis();
 		if (child2StartTime != null) {
-			if (aChildThread == childThread) { 
+			if (aChildThread == currentThreads.get(1)) { 
 				child1AfterChild2();
 			}
 		

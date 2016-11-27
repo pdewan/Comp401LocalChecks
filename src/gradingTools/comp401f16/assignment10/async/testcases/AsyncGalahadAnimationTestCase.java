@@ -16,7 +16,7 @@ public class AsyncGalahadAnimationTestCase extends AsyncArthurAnimationTestCase 
 	
 	protected void executeOperations(Object aProxy) {
 		System.out.println ("Animating Galahad");
-		commandInterpreter().animateGalahad();
+		commandInterpreter().asynchronousGalahad();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getGalahad();

@@ -6,6 +6,6 @@ import util.annotations.Tags;
 
 public interface TestScanner {
 	public String getCommand();
-	public void setCommand(String aCommand);
+	public void setCommand(String aCommand) throws Exception;
 
 }

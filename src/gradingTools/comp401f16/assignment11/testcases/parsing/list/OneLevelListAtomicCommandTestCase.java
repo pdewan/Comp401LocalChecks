@@ -67,7 +67,7 @@ public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproac
 		setCommand("pass" + " ");
 	}
 	@Override
-	protected void doFailed() {
+	protected void doPassOrFailed() {
 		setCommand("fail" + " ");
 	}
 

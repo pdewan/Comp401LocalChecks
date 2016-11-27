@@ -25,14 +25,14 @@ public abstract class FactoryMethodsTestCase extends ProxyTest{
 	protected String[] factoryMethodTags() {
 		return factoryMethodTags;
 	}
-	protected boolean doSingletonCheck(Object aFirstInstantiation) {
+	protected boolean doSingletonCheck(Object aFirstInstantiation) throws Throwable {
 		Object aSecondCreation = createUsingFactoryMethod();
 		singletonCheckPassed = aSecondCreation == aFirstInstantiation;
 		return singletonCheckPassed;
 	}	
 	
 	
-	protected Object getOrCreateObject (String[] factoryClassTag, String[] factoryMethodTag, Class instantiatedTypeClass) {
+	protected Object getOrCreateObject (String[] factoryClassTag, String[] factoryMethodTag, Class instantiatedTypeClass) throws Throwable {
 		Class<?> factoryClass = BasicProjectIntrospection.findClassByTags(factoryClassTags());
 		foundFactoryClass = factoryClass != null;
 
@@ -61,7 +61,7 @@ public abstract class FactoryMethodsTestCase extends ProxyTest{
 		return anInstance;
 		
 	}
-	protected Object createUsingFactoryMethod() {
+	protected Object createUsingFactoryMethod() throws Throwable {
 		return getOrCreateObject(factoryClassTags(), factoryMethodTags(), proxyClass());
 		
 	}	

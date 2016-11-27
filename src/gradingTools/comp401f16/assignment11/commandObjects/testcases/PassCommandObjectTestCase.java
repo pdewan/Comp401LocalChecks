@@ -19,51 +19,66 @@ import util.annotations.MaxValue;
 import util.assertions.Asserter;
 import util.models.PropertyListenerRegisterer;
 @MaxValue(10)
-public class PassCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
+public class PassCommandObjectTestCase extends FailCommandObjectTestCase  {
 	
-	Class passedCommandClass;
-	Class bridgeSceneInterface;	
-	Constructor passedConstructor;
-	
+//	Class instantiatedClass;
+//	Class bridgeSceneInterface;	
+//	Constructor constructor;
+	public static final String TAG = "PassCommand";
+
+	protected String instantiatedTag() {
+		return TAG;
+	}	
+//	protected Class[] constructorArgs() {
+//		return new Class[] {bridgeSceneInterface};
+//	}
 	public PassCommandObjectTestCase() {
 		
 	}
 	public static Class findPassCommandClass() {
-		return BasicProjectIntrospection.findClassByTags("PassCommand");
+		return BasicProjectIntrospection.findClassByTags(TAG);
 	}
-	protected void init() throws Throwable {
-		passedCommandClass = findPassCommandClass();
-		bridgeSceneInterface = BasicProjectIntrospection.findInterface(TestBridgeScene.class);
-		passedConstructor = passedCommandClass.getConstructor(
-				 bridgeSceneInterface);
+//	protected void init() throws Throwable {
+//		instantiatedClass = findPassCommandClass();
+//		bridgeSceneInterface = BasicProjectIntrospection.findInterface(TestBridgeScene.class);
+////		constructor = instantiatedClass.getConstructor(
+////				 bridgeSceneInterface);
+//	}
+	protected void doPostApproachOperation() {
+		passed();
+
 	}
 	@Override
 	protected void doPassed () {
-		fractionComplete = 0;
-		 try {
-			
-		
-			Runnable aCommandObject = (Runnable) passedConstructor.newInstance(BasicProjectIntrospection.getRealObject(bridgeScene()));
-			aCommandObject.run();
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			assertTrue(e.getMessage(), false);
-		} 
+		super.doPassOrFailed();
+//		fractionComplete = 0;
+//		 try {
+//			
+//		
+////			Runnable aCommandObject = (Runnable) constructor.newInstance(BasicProjectIntrospection.getRealObject(bridgeScene()));
+//		    Runnable aCommandObject = (Runnable) instantiateClass(BasicProjectIntrospection.getRealObject(bridgeScene()));
+//
+//			 aCommandObject.run();
+//			
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			assertTrue(e.getMessage(), false);
+//		} 
 		 
 	}
-	protected TestAvatar firstAvatar() {
-		return bridgeScene().getLancelot();
-	}
-	@Override
-	protected boolean doTest() throws Throwable {
-		init();
-		create();
-		setDependentObjects();
-		approach(firstAvatar());		
-		passed();
-		return true;
-		
-	}
+//	protected TestAvatar firstAvatar() {
+//		return bridgeScene().getLancelot();
+//	}
+//	@Override
+//	protected boolean doTest() throws Throwable {
+//		init();
+//		initConstructor();
+//		create();
+//		setDependentObjects();
+//		approach(firstAvatar());		
+//		passed();
+//		return true;
+//		
+//	}
 }

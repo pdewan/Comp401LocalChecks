@@ -5,6 +5,7 @@ import bus.uigen.visitors.CreateChildrenAdapterVisitor;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAngle;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneArthurMoveLeftArmTestCase;
+import gradingTools.comp401f16.assignment7.testcases.factory.CommandInterpreterFactoryMethodTest;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
 import gradingTools.shared.testcases.MethodExecutionTest;
@@ -45,7 +46,9 @@ public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestC
 	
 	
 	public OneLevelListMovesTestCase() {
-		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
+//		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
+		factoryMethodTags = CommandInterpreterFactoryMethodTest.FACTORY_METHOD_TAGS;
+
 		studentXDelta = null;
 		studentYDelta = null;
 
@@ -69,6 +72,7 @@ public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestC
 	}
 	@Override 
 	protected void setDependentObjects() {
+//		super.setDependentObjects();
 		setBridgeSceneFromFactoryMethod();
 	}
 	@Override
@@ -124,7 +128,7 @@ public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestC
 		return anInt >= 0? " " + anInt: " " + (-anInt);
 		
 	}
-	protected void doMove() {
+	protected void doMove() throws Exception {
 		
 		String aCommand = createCommand();
 		setCommand(aCommand);

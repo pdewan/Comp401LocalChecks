@@ -18,9 +18,9 @@ public class SyncGalahadAnimationTestCase extends SyncArthurAnimationTestCase {
 	
 	protected void executeOperations(Object aProxy) {
 		System.out.println ("Animating Galahad");
-		commandInterpreter().animateGalahad();
+		commandInterpreter().asynchronousGalahad();
 		System.out.println ("Animating Galahad");
-		commandInterpreter().animateGalahad();
+		commandInterpreter().asynchronousGalahad();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getGalahad();

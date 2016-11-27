@@ -9,9 +9,9 @@ import gradingTools.shared.testcases.ProxyTest;
 import gradingTools.shared.testcases.interfaces.TestStringTable;
 
 public class ScannerFactoryMethodTest extends  FactoryMethodTest{
-	
+	public static final String[] FACTORY_METHOD_TAGS = new String[] {"scannerFactoryMethod"};
 	public ScannerFactoryMethodTest() {
-		factoryMethodTags = new String[] {"scannerFactoryMethod"};
+		factoryMethodTags = FACTORY_METHOD_TAGS;
 	}
 	protected boolean tryConstructor() {
 		return false;

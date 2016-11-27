@@ -21,27 +21,35 @@ import util.models.PropertyListenerRegisterer;
 @MaxValue(10)
 public class ApproachCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	
-	Class approachCommandClass;
+//	Class instantiatedClass;
 	Class bridgeSceneInterface;	
 	Class avatarInterface;
-	Constructor approachConstructor;
+//	Constructor constructor;
+	public static final String TAG = "ApproachCommand";
+
+	protected String instantiatedTag() {
+		return TAG;
+	}	
+	protected Class[] constructorArgs() {
+		return new Class[] {bridgeSceneInterface, avatarInterface};
+	}
 	
 	public ApproachCommandObjectTestCase() {
 		
 	}
 	public static Class findApproachCommandClass() {
-		return BasicProjectIntrospection.findClassByTags("ApproachCommand");
+		return BasicProjectIntrospection.findClassByTags(TAG);
 	}
 	
 	protected void init() throws Throwable {
-		approachCommandClass = findApproachCommandClass();
+//		instantiatedClass = findApproachCommandClass();
 
 //		approachCommandClass = BasicProjectIntrospection.findClassByTags("ApproachCommand");
 		bridgeSceneInterface = BasicProjectIntrospection.findInterface(TestBridgeScene.class);
 		avatarInterface = BasicProjectIntrospection.findInterface(TestAvatar.class);
 
-		approachConstructor = approachCommandClass.getConstructor(
-				 bridgeSceneInterface, avatarInterface);
+//		constructor = instantiatedClass.getConstructor(
+//				 bridgeSceneInterface, avatarInterface);
 	}
 	
 //	protected void say (TestAvatar anAvatar, String aSaying) {
@@ -67,7 +75,10 @@ public class ApproachCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 		 try {
 			
 		
-			Runnable aCommandObject = (Runnable) approachConstructor.newInstance(
+//			Runnable aCommandObject = (Runnable) constructor.newInstance(
+//					BasicProjectIntrospection.getRealObject(bridgeScene()), 
+//					BasicProjectIntrospection.getRealObject(firstAvatar()));
+			Runnable aCommandObject = (Runnable) instantiateClass(
 					BasicProjectIntrospection.getRealObject(bridgeScene()), 
 					BasicProjectIntrospection.getRealObject(firstAvatar()));
 			aCommandObject.run();
@@ -81,6 +92,7 @@ public class ApproachCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 	@Override
 	protected boolean doTest() throws Throwable {
 		init();
+		initConstructor();
 		create();
 		setDependentObjects();
 		approach(firstAvatar());

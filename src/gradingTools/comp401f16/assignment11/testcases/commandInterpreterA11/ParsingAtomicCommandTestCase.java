@@ -9,6 +9,7 @@ import gradingTools.comp401f16.assignment11.testcases.interfaces.TestParser;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneArthurMoveLeftArmTestCase;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMoveArthurTestCase;
 import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
+import gradingTools.comp401f16.assignment7.testcases.factory.CommandInterpreterFactoryMethodTest;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
 import gradingTools.comp401f16.assignment7.testcases.say.CommandInterpreterApproachedArthurSayTestCase;
@@ -34,7 +35,9 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 //	}
 	
 	public ParsingAtomicCommandTestCase() {
-		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
+//		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
+		factoryMethodTags = CommandInterpreterFactoryMethodTest.FACTORY_METHOD_TAGS;
+
 	}
 	protected String firstAvatarName() {
 		return "lancelot";
@@ -80,7 +83,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 		setCommand("pass" + " ");
 	}
 	@Override
-	protected void doFailed() {
+	protected void doPassOrFailed() {
 		setCommand("fail" + " ");
 	}
 

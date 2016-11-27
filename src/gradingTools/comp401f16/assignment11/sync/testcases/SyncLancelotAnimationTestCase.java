@@ -18,9 +18,9 @@ public class SyncLancelotAnimationTestCase extends SyncArthurAnimationTestCase {
 	
 	protected void executeOperations(Object aProxy) {
 		System.out.println ("Animating Lancelot");
-		commandInterpreter().animateLancelot();
+		commandInterpreter().asynchronousLancelot();
 		System.out.println ("Animating Lancelot");
-		commandInterpreter().animateLancelot();
+		commandInterpreter().asynchronousLancelot();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getLancelot();

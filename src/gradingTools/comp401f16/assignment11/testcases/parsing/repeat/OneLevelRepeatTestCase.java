@@ -9,11 +9,14 @@ public class OneLevelRepeatTestCase extends ManyLevelListMovesTestCase {
 	protected int numDeltas() {
 		return 1;
 	}
+	protected int numRepeats() {
+		return NUM_REPEATS;
+	}
 	protected Integer inputStudentXDelta() {
-		return super.inputStudentXDelta()*NUM_REPEATS;
+		return super.inputStudentXDelta()*numRepeats();
 	}
 	protected Integer inputStudentYDelta() {
-		return super.inputStudentYDelta()*NUM_REPEATS;
+		return super.inputStudentYDelta()*numRepeats();
 	}
 	protected String createOneLevelRepeatCommand() {
 		return  createCommand(0);
@@ -22,7 +25,7 @@ public class OneLevelRepeatTestCase extends ManyLevelListMovesTestCase {
 		String aCommand1 = createOneLevelRepeatCommand();
 		String aCommand = 
 				"repeat" + " " +
-				NUM_REPEATS + " " +
+				numRepeats() + " " +
 				aCommand1;
 		return aCommand;
 	}

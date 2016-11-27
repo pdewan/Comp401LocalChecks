@@ -16,7 +16,7 @@ public class AsyncRobinAnimationTestCase extends AsyncArthurAnimationTestCase im
 	
 	protected void executeOperations(Object aProxy) {
 		System.out.println ("Animating Robin");
-		commandInterpreter().animateRobin();
+		commandInterpreter().asynchronousRobin();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getRobin();

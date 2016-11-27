@@ -18,9 +18,9 @@ public class SyncRobinAnimationTestCase extends SyncArthurAnimationTestCase {
 	
 	protected void executeOperations(Object aProxy) {
 		System.out.println ("Animating Robin");
-		commandInterpreter().animateRobin();
+		commandInterpreter().asynchronousRobin();
 		System.out.println ("Animating Robin");
-		commandInterpreter().animateRobin();
+		commandInterpreter().asynchronousRobin();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getRobin();

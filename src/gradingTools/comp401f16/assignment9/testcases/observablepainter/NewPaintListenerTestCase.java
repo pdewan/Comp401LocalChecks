@@ -142,7 +142,7 @@ public class NewPaintListenerTestCase
 	}
 	protected static String[] emptyStringargs = new String[]{};
 
-	protected void executeMethods() {
+	protected void executeMethods() throws Throwable {
 		ResultingOutErr anError = BasicProjectExecution.invokeMainOnceAsynchronously(
 				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, "");
 		

@@ -8,45 +8,45 @@ public interface TestCommandInterpreter extends PropertyListenerRegisterer{
 	public String getCommand();
 	public void setCommand(String aCommand);
 	@Tags({"asynchronousArthur"})
-	public void animateArthur();
+	public void asynchronousArthur();
 	
 	@Tags({"asynchronousGalahad"})
-	public void animateGalahad();
+	public void asynchronousGalahad();
 	
 	@Tags({"asynchronousLancelot"})
-	public void animateLancelot();
+	public void asynchronousLancelot();
 	
 	@Tags({"asynchronousRobin"})
-	public void animateRobin();
+	public void asynchronousRobin();
 	
 	@Tags({"waitingArthur"})
-	public void animateArthurWithWait();
+	public void waitingArthur();
 	
 	@Tags({"waitingGalahad"})
-	public void animateGalahadWithWait();
+	public void waitingGalahad();
 	
 	@Tags({"waitingLancelot"})
-	public void animateLancelotWithWait();
+	public void waitingLancelot();
 	
 	@Tags({"waitingRobin"})
-	public void animateRobinWithWait();
+	public void waitingRobin();
 	
 	@Tags({"startAnimation"})
 	public void startAnimation();
 
 	@Tags({"lockstepArthur"})
-	public void animateArthurWithLockstep();
+	public void lockstepArthur();
 	
 	@Tags({"lockstepGalahad"})
-	public void animateGalahadWithLockstep();
+	public void lockstepGalahad();
 	
 	@Tags({"lockstepLancelot"})
-	public void animateLancelotWithLockstep();
+	public void lockstepLancelot();
 	
 	@Tags({"lockstepRobin"})
-	public void animateRobinWithLockstep();
+	public void lockstepRobin();
 	
 	@Tags({"lockstepGuard"})
-	public void clapGuardLockstep();
+	public void lockstepGuard();
 
 }
