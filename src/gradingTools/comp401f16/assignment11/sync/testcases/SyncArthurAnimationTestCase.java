@@ -21,7 +21,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	protected static Long child2StartTime;
 	protected boolean child2ExecutedForMinimumTime;
 	protected static int DELAY_AFTER_CHILD2_CREATED = 1000;
-	public static long MAX_TIME_FOR_ANIMATION = 5000;
+//	public static long MAX_TIME_FOR_ANIMATION = 5000;
 	protected void initData() {		
 		super.initData();
 		child2Thread = null;
@@ -30,26 +30,26 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		child2StartTime = null;
 		child2ExecutedForMinimumTime = false;
 	}
-	protected long maxTimeForAnimatingThread() {
-		return MAX_TIME_FOR_ANIMATION;
-	}
+//	protected long maxTimeForAnimatingThread() {
+//		return MAX_TIME_FOR_ANIMATION;
+//	}
 	@Override
 	protected synchronized void waitForThreads( ){
 		super.waitForThreads();
 		waitForThreadsToExecute();
 //		stopThread(child2Thread);
 	}
-	protected synchronized void waitForThreadsToExecute( ){
-		try {
-			long aDelay = maxTimeForAnimatingThread();
-			System.out.println("Waiting for child thread to finish amimation in(ms):" + aDelay);
-			wait(aDelay);
-//			stopThread(childThread);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	protected synchronized void waitForThreadsToExecute( ){
+//		try {
+//			long aDelay = maxTimeForAnimatingThread();
+//			System.out.println("Waiting for child thread to finish amimation in(ms):" + aDelay);
+//			wait(aDelay);
+////			stopThread(childThread);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	protected synchronized void maybeKillThreads() {
 		super.maybeKillThreads();
 		stopThread(child2Thread);

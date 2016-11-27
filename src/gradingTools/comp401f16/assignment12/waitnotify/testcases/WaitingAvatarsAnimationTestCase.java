@@ -115,12 +115,12 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 //		System.out.println("New child thread:" + aChildThread);
 //		currentThreads.add(aChildThread);		
 	}
-	public static void waitForAnimation() {
-		System.out.println ("Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-		System.out.println ("Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-
-	}
+//	public static void waitForAnimation() {
+//		System.out.println ("Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//		System.out.println ("Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//
+//	}
 	protected boolean doTest() throws Throwable {
 		boolean retVal =  super.doTest();
 		waitForAnimation();

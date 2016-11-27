@@ -2,6 +2,7 @@ package gradingTools.comp401f16.assignment10.async.testcases;
 
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
+import gradingTools.comp401f16.assignment11.sync.testcases.SyncArthurAnimationTestCase;
 import gradingTools.comp401f16.assignment11.testcases.parsing.list.OneLevelListMovesTestCase;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
 // extending OneLevelList so we can inherit from it in subclasses
 public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase implements PropertyChangeListener {
@@ -34,6 +36,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected boolean foundDelay;
 	protected long MIN_EVENT_DELAY = 10;
 	protected static long MAX_DELAY_TO_CREATE_CHILD_THREAD = 1000;
+	public static long MAX_TIME_FOR_ANIMATION = 5000;
 //	protected boolean testing = false;
 //	protected TestBridgeScene bridgeScene;
 
@@ -45,7 +48,9 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected long maxDelayToCreateChildThread() {
 		return MAX_DELAY_TO_CREATE_CHILD_THREAD;
 	}
-	
+	protected long maxTimeForAnimatingThread() {
+		return MAX_TIME_FOR_ANIMATION;
+	}
 	protected void createBridgeScene() {
 		bridgeScene = (TestBridgeScene) getOrCreateObject(
 				factoryClassTags(), 
@@ -230,6 +235,23 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 //		System.out.println ("Storing acurrentEventTime for " + aChildThread);
 		lastEventTimes.put(aChildThread, aCurrentEventTime);
 
+	}
+	public static void waitForAnimation() {
+		System.out.println ("Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+		System.out.println ("Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+
+	}
+	protected synchronized void waitForThreadsToExecute( ){
+		try {
+			long aDelay = maxTimeForAnimatingThread();
+			System.out.println("Waiting for child thread to finish amimation in(ms):" + aDelay);
+			wait(aDelay);
+//			stopThread(childThread);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {

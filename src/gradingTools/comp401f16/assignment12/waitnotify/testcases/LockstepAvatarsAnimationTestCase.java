@@ -221,10 +221,14 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		
 	}
 	protected boolean doTest() throws Throwable {
+		try {
 //		assertTrue("testing", false);
 		boolean retVal =  super.doTest();
-		WaitingAvatarsAnimationTestCase.waitForAnimation();
+//		WaitingAvatarsAnimationTestCase.waitForAnimation();
 		assertTrue(failureMessage,resultCorrect);
 		return retVal;
+		} finally {
+			WaitingAvatarsAnimationTestCase.waitForAnimation();
+		}
 	}
  }
