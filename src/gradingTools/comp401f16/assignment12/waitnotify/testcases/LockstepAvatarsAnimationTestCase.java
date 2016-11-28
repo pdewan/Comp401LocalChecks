@@ -68,7 +68,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	
 	
 	protected void checkNumThreads() {
-		System.out.println ("num threads found:" + threadToSleeps.size());
+		System.out.println ("num coordinated threads found:" + threadToSleeps.size());
 		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
 			 resultCorrect = false;
 			 failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
@@ -129,6 +129,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	protected void doLockSteps (int aNumSteps) {
 		for (int i = 0; i  < aNumSteps; i++) {
 			recordPreviousThreads();
+			freezeNotifications = true;
 			System.out.println ("Executing animating lockstep Guard ");
 			;
 			commandInterpreter().lockstepGuard();
@@ -136,6 +137,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 			assertNewThreadCreated();
 			guardThread = newThreads.get(0);
 			previousNotifyingThreads.add(guardThread);
+			freezeNotifications = false;
 //			waitForLockstepAnimation();
 		}		
 	}
@@ -219,6 +221,8 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
 //		System.out.println ("Locketep Thread:" + Thread.currentThread());
 		if (!testing)
+			return;
+		if (freezeNotifications) // do not want guard notifications
 			return;
 
 //		System.out.println ("after testing");

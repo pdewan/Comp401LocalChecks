@@ -25,7 +25,7 @@ import util.models.PropertyListenerRegisterer;
 public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase implements PropertyChangeListener {
 
 	protected List<Thread> currentNotifyingThreads = new ArrayList();
-	protected Set<Thread> previousNotifyingThreads;
+	protected Set<Thread> previousNotifyingThreads = new HashSet();
 	protected Map <Thread, Integer> threadToSleeps = new HashMap<>();
 	protected Map <Thread, Long> lastEventTimes = new HashMap();
 	protected Thread parentThread;
@@ -37,6 +37,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected long MIN_EVENT_DELAY = 10;
 	protected static long MAX_DELAY_TO_CREATE_CHILD_THREAD = 1000;
 	public static long MAX_TIME_FOR_ANIMATION = 5000;
+	protected boolean freezeNotifications = false;
 //	protected boolean testing = false;
 //	protected TestBridgeScene bridgeScene;
 
@@ -65,8 +66,10 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected void initData() {
 //		testing = true;
 		currentNotifyingThreads.clear();
-		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
+//		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
 		parentThread = Thread.currentThread();
+		previousNotifyingThreads.clear();
+		previousNotifyingThreads.add(parentThread);
 		threadToSleeps.clear();
 		lastEventTimes.clear();
 		currentNotifyingThreads.add(parentThread);
@@ -119,6 +122,8 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 			long aDelay = maxDelayToCreateChildThread();
 			System.out.println("Waiting for child threads to be created within time (ms):" + aDelay);
 			wait(aDelay);
+			System.out.println("Finished waiting for child threads to be created within time (ms):" + aDelay);
+
 //			stopThread(childThread);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -208,7 +213,10 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected void maybeAddThread() {
 		Thread aChildThread = Thread.currentThread();
 		if (!currentNotifyingThreads.contains(aChildThread)) {			
-			System.out.println("New child thread:" + aChildThread);
+			System.out.println("New notifying child thread:" + aChildThread);
+			if (previousThreads.contains(aChildThread)) {
+				System.out.println("Is previously created thread");
+			}
 			currentNotifyingThreads.add(aChildThread);
 			threadToSleeps.put(aChildThread, 1);
 			lastEventTimes.put(aChildThread, (long) 0);
@@ -250,6 +258,8 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 			long aDelay = maxTimeForAnimatingThread();
 			System.out.println("Waiting for child thread to finish amimation in(ms):" + aDelay);
 			wait(aDelay);
+			System.out.println("Finished waiting for child thread to finish amimation in(ms):" + aDelay);
+
 //			stopThread(childThread);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

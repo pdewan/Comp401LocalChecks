@@ -4,10 +4,16 @@ import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 
 public class SyncArthurLancelotTestCase extends SyncArthurAnimationTestCase{
 	protected void executeOperations(Object aProxy) {
+		recordPreviousThreads();
 		System.out.println ("Animating arthur");
 		commandInterpreter().asynchronousArthur();
+		recordCurrentThreads();
+		assertNewThreadCreated();
+		recordPreviousThreads();
 		System.out.println ("Animating lancelot");
 		commandInterpreter().asynchronousLancelot();
+		recordCurrentThreads();
+		assertNewThreadCreated();
 	}
 	protected void maybeCheckDelay() {
 //		if (!foundDelay) {
