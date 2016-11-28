@@ -23,9 +23,9 @@ import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
 // extending OneLevelList so we can inherit from it in subclasses
 public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase implements PropertyChangeListener {
-	
-	protected List<Thread> currentThreads = new ArrayList();
-	protected Set<Thread> previousThreads;
+
+	protected List<Thread> currentNotifyingThreads = new ArrayList();
+	protected Set<Thread> previousNotifyingThreads;
 	protected Map <Thread, Integer> threadToSleeps = new HashMap<>();
 	protected Map <Thread, Long> lastEventTimes = new HashMap();
 	protected Thread parentThread;
@@ -64,19 +64,19 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	
 	protected void initData() {
 //		testing = true;
-		currentThreads.clear();
-		previousThreads = Thread.getAllStackTraces().keySet();
+		currentNotifyingThreads.clear();
+		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
 		parentThread = Thread.currentThread();
 		threadToSleeps.clear();
 		lastEventTimes.clear();
-		currentThreads.add(parentThread);
+		currentNotifyingThreads.add(parentThread);
 		childThread = null;
 		threadCreated = false;
 		lastEventTime = 0;
 		foundDelay = false;
 	}
 	protected boolean isPreviousThread() {
-		return previousThreads.contains(Thread.currentThread());
+		return previousNotifyingThreads.contains(Thread.currentThread());
 	}
 	protected synchronized void stopThread(Thread aThread) {
 		if (aThread == null) {
@@ -105,8 +105,11 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 //		testing = false;
 	}
 	protected void executeOperations(Object aProxy) throws Exception {
+		recordPreviousThreads();
 		System.out.println ("Animating arthur");
 		commandInterpreter().asynchronousArthur();
+		recordCurrentThreads();
+		assertNewThreadCreated();
 //		waitForStartedChildThreads();
 //		stopThread(childThread);
 
@@ -204,9 +207,9 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	
 	protected void maybeAddThread() {
 		Thread aChildThread = Thread.currentThread();
-		if (!currentThreads.contains(aChildThread)) {			
+		if (!currentNotifyingThreads.contains(aChildThread)) {			
 			System.out.println("New child thread:" + aChildThread);
-			currentThreads.add(aChildThread);
+			currentNotifyingThreads.add(aChildThread);
 			threadToSleeps.put(aChildThread, 1);
 			lastEventTimes.put(aChildThread, (long) 0);
 			threadCreated = true;
@@ -225,7 +228,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 				}
 				aNumSleeps++;
 				threadToSleeps.put(aChildThread, aNumSleeps );
-				System.out.println ("num sleeps by thread: " + aChildThread + "  " + aNumSleeps);
+//				System.out.println ("num sleeps by thread: " + aChildThread + "  " + aNumSleeps);
 
 				foundDelay = true;
 				delayFound();

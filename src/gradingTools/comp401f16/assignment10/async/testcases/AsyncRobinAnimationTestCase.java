@@ -15,8 +15,11 @@ import util.models.PropertyListenerRegisterer;
 public class AsyncRobinAnimationTestCase extends AsyncArthurAnimationTestCase implements PropertyChangeListener {
 	
 	protected void executeOperations(Object aProxy) {
+		recordPreviousThreads();
 		System.out.println ("Animating Robin");
 		commandInterpreter().asynchronousRobin();
+		recordCurrentThreads();
+		assertNewThreadCreated();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getRobin();

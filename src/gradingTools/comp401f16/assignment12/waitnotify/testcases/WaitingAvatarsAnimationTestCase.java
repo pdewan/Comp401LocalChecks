@@ -60,7 +60,7 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			System.out.println ("Animating waiting Robin");
 			commandInterpreter().waitingRobin();
 			waitForThreadsToStart();
-			if (currentThreads.size() > 1) {				
+			if (currentNotifyingThreads.size() > 1) {				
 				assertTrue("At least one thread created before proceedAll", false);				
 			}
 			doProceedAll();
@@ -75,19 +75,19 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 //		stopThread(child2Thread);
 	}
 	protected synchronized void maybeKillThreads() {
-		for (Thread aThread:currentThreads) {
+		for (Thread aThread:currentNotifyingThreads) {
 			stopThread(aThread);
 		}
 	}
 	protected synchronized boolean checkOutput(Object aProxy) {
-		int aNumThreads = currentThreads.size() - 1;
+		int aNumThreads = currentNotifyingThreads.size() - 1;
 		System.out.println ("Number of notifying threads after proceedAll " + 
 		aNumThreads);
 		if (aNumThreads == 1 ) {
 			assertTrue("No thread notified after proceedAll", false);	
-		} else if (currentThreads.size() < NUM_CHILD_THREADS) {
+		} else if (currentNotifyingThreads.size() < NUM_CHILD_THREADS) {
 			assertTrue("Threads notified after proceedAll;" + aNumThreads + " " +
-					currentThreads.size() + " expected threads:" + NUM_CHILD_THREADS, false);
+					currentNotifyingThreads.size() + " expected threads:" + NUM_CHILD_THREADS, false);
 
 		}
 		return true;
@@ -106,7 +106,7 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 		
 		Thread aChildThread = Thread.currentThread();
 //		System.out.println ("Got event from:" + aChildThread);
-		if (currentThreads.size() == NUM_CHILD_THREADS) {
+		if (currentNotifyingThreads.size() == NUM_CHILD_THREADS) {
 			notify();
 		}
 //		if (currentThreads.contains(aChildThread)) {

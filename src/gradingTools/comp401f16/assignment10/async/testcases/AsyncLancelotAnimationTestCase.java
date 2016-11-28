@@ -15,8 +15,11 @@ import util.models.PropertyListenerRegisterer;
 public class AsyncLancelotAnimationTestCase extends AsyncArthurAnimationTestCase implements PropertyChangeListener {
 	
 	protected void executeOperations(Object aProxy) {
+		recordPreviousThreads();
 		System.out.println ("Animating Lancelot");
 		commandInterpreter().asynchronousLancelot();
+		recordCurrentThreads();
+		assertNewThreadCreated();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getLancelot();

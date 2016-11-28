@@ -15,8 +15,11 @@ import util.models.PropertyListenerRegisterer;
 public class AsyncGalahadAnimationTestCase extends AsyncArthurAnimationTestCase implements PropertyChangeListener {
 	
 	protected void executeOperations(Object aProxy) {
+		recordPreviousThreads();
 		System.out.println ("Animating Galahad");
 		commandInterpreter().asynchronousGalahad();
+		recordCurrentThreads();
+		assertNewThreadCreated();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getGalahad();

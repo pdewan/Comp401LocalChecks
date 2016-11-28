@@ -31,6 +31,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	protected String failureMessage = "";
 	protected boolean resultCorrect = true;
 	protected boolean lockstepThreadStarted = false;
+	Thread guardThread;
 	protected long minEventDelay() {
 		return 200;
 	}
@@ -127,19 +128,31 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //	}
 	protected void doLockSteps (int aNumSteps) {
 		for (int i = 0; i  < aNumSteps; i++) {
+			recordPreviousThreads();
 			System.out.println ("Executing animating lockstep Guard ");
+			;
 			commandInterpreter().lockstepGuard();
+			recordCurrentThreads();
+			assertNewThreadCreated();
+			guardThread = newThreads.get(0);
+			previousNotifyingThreads.add(guardThread);
 //			waitForLockstepAnimation();
 		}		
 	}
 	protected void executeOperations(Object aProxy) {
 			fractionComplete = 0;
+			recordPreviousThreads();
 			System.out.println ("Animating lockstep Arthur");
 			commandInterpreter().lockstepArthur();
+			recordCurrentThreads();
+			assertNewThreadCreated();
+			recordPreviousThreads();
 			System.out.println ("Animating lockstep Lancelot");
 			commandInterpreter().lockstepLancelot();
-			System.out.println ("Animating lockstep Galahad");
-			commandInterpreter().lockstepGalahad();
+			recordCurrentThreads();
+			assertNewThreadCreated();
+//			System.out.println ("Animating lockstep Galahad");
+//			commandInterpreter().lockstepGalahad();
 //			System.out.println ("Animating lockstep Robin");
 //			commandInterpreter().lockstepRobin();
 //			waitForThreadsToStart();
@@ -169,7 +182,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //		stopThread(child2Thread);
 	}
 	protected synchronized void maybeKillThreads() {
-		for (Thread aThread:currentThreads) {
+		for (Thread aThread:currentNotifyingThreads) {
 			stopThread(aThread);
 		}
 //		testing = false;
@@ -212,6 +225,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		if (isPreviousThread()) {
 			return;
 		}
+		
 //		System.out.println ("Lockstep Thread:" + Thread.currentThread() + " " + this);
 
 //		System.out.println ("not previous  thread");

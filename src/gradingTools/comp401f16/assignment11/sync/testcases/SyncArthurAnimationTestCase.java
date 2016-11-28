@@ -115,7 +115,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 			return;
 		super.propertyChange(evt);
 		Thread aChildThread = Thread.currentThread();
-		if (currentThreads.size() > 2 && child2Thread == null) {
+		if (currentNotifyingThreads.size() > 2 && child2Thread == null) {
 
 //		if (aChildThread != parentThread && childThread != aChildThread && child2Thread == null) {
 			thread2Created = true;
@@ -127,7 +127,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		
 		long aCurrentTime = System.currentTimeMillis();
 		if (child2StartTime != null) {
-			if (aChildThread == currentThreads.get(1)) { 
+			if (aChildThread == currentNotifyingThreads.get(1)) { 
 				child1AfterChild2();
 			}
 		
