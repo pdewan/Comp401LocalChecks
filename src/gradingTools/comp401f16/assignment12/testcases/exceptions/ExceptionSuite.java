@@ -11,6 +11,8 @@ import gradingTools.comp401f16.assignment12.waitnotify.testcases.WaitingAvatarsA
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import util.annotations.IsExtra;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	ScanningExceptionTestCase.class,
@@ -18,6 +20,7 @@ import org.junit.runners.Suite;
 
 	
 })
+@IsExtra(true)
 public class ExceptionSuite {
 	
 	

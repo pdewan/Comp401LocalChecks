@@ -29,7 +29,7 @@ public class SleepCommandTestCase extends CommandInterpreterArthurMoveLeftArmTes
 		long aPostsleepTime = System.currentTimeMillis();
 		 System.out.println ("Post sleep time:" + aPostsleepTime);
 		 return
-				 (aPostsleepTime - aPresleepTime) > SLEEP_TIME;
+				 (aPostsleepTime - aPresleepTime) >= SLEEP_TIME - 5; // in case there is an error in sleep
 	}
 	
 	

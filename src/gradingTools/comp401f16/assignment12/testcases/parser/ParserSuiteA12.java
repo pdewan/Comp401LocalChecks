@@ -5,6 +5,7 @@ import gradingTools.comp401f16.assignment7.testcases.MoveCommandTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -15,6 +16,7 @@ import util.annotations.MaxValue;
 	ParserCreatesRotateRightArmCommandObjectTestCase.class,
 	ParserCreatesProceedAllCommandObjectTestCase.class	
 })
+@IsExtra(true)
 public class ParserSuiteA12 {
 	
 	

@@ -2,6 +2,8 @@ package gradingTools.comp401f16.assignment12.testcases.commandObjects;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import util.annotations.IsExtra;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	EnvironmentFactoryMethodTest.class,
@@ -14,6 +16,7 @@ import org.junit.runners.Suite;
 	
 	
 })
+@IsExtra(true)
 public class CommandObjectSuiteA12 {
 	
 	

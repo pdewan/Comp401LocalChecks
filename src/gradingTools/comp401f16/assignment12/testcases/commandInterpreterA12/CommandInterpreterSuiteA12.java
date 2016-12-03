@@ -5,6 +5,8 @@ import grader.basics.junit.GradableJUnitSuite;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import util.annotations.IsExtra;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	SleepCommandTestCase.class,
@@ -16,6 +18,7 @@ import org.junit.runners.Suite;
 	
 	
 })
+@IsExtra(true)
 public class CommandInterpreterSuiteA12 {
 	public static final String MAIN_CLASS_NAME = "main.Assignment11";
 	public static final String[] MAIN_CLASS_NAMES = {MAIN_CLASS_NAME, "Assignment"};
