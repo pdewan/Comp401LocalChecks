@@ -18,6 +18,12 @@ public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestC
 	protected int[] INPUT_STUDENT_Y_DELTAS = {5, 10, 2, 6, 8, 6, 1, 6, 55, 3, 2, 1};
 	protected static int NUM_DELTAS = 4;
 	
+	protected int[] inputStudentXDeltas() {
+		return INPUT_STUDENT_X_DELTAS;
+	}
+	protected int[] inputStudentYDeltas() {
+		return INPUT_STUDENT_Y_DELTAS;
+	}
 	protected int numDeltas() {
 		return NUM_DELTAS;
 	}
@@ -26,7 +32,7 @@ public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestC
 			return studentXDelta;		}
 		int aResult = 0;
 		for (int i = 0; i < numDeltas(); i++) {
-			aResult += INPUT_STUDENT_X_DELTAS[i];
+			aResult += inputStudentXDeltas()[i];
 		}
 		studentXDelta = aResult;	 
 		
@@ -37,7 +43,7 @@ public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestC
 			return studentYDelta;		}
 		int aResult = 0;
 		for (int i = 0; i < numDeltas(); i++) {
-			aResult += INPUT_STUDENT_Y_DELTAS[i];
+			aResult += inputStudentYDeltas()[i];
 		}
 		studentYDelta = aResult;	 
 		
@@ -80,8 +86,8 @@ public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestC
 		return super.doTest();
 	}
 	protected String createCommand (int anIndex) {
-		int anXDelta = INPUT_STUDENT_X_DELTAS[anIndex];
-		int aYDelta =INPUT_STUDENT_Y_DELTAS[anIndex];
+		int anXDelta = inputStudentXDeltas()[anIndex];
+		int aYDelta =inputStudentYDeltas()[anIndex];
 		return createCommand(anXDelta, aYDelta);
 	}
 	protected String createOneLevelCommandList() {
