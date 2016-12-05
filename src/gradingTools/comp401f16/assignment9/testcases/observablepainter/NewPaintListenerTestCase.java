@@ -20,6 +20,8 @@ import grader.basics.execution.GradingMode;
 import grader.basics.execution.ResultingOutErr;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.BasicProjectIntrospection;
+import grader.driver.GradingManagerFactory;
+import grader.driver.GradingManagerType;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMoveArthurTestCase;
@@ -171,6 +173,8 @@ public class NewPaintListenerTestCase
 //		
 //	}
 	protected boolean doTest() throws Throwable {
+		assertTrue("Cannot grade test in headless mode:", !GradingManagerFactory.isHeadless());
+	
 		initState();		
 		rootProxy = create();
 
@@ -232,5 +236,6 @@ public class NewPaintListenerTestCase
 //		fractionComplete += FAILED_EVENTS_CREDIT;
 
 	}
+	
 	
 }
