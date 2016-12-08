@@ -5,7 +5,7 @@ import util.annotations.Tags;
 @Tags({"ScannerBean"})
 
 public interface TestScanner {
-	public String getCommand();
-	public void setCommand(String aCommand) throws Exception;
+	public String getScannedString();
+	public void setScannedString(String aCommand) throws Exception;
 
 }

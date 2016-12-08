@@ -26,7 +26,7 @@ public class ScanningExceptionTestCase extends ScannerFactoryMethodTest {
 	}
 	
 	protected void doErroneousOperations(Object aProxy) throws Exception {
-		((TestScanner) aProxy).setCommand(" @ ");
+		((TestScanner) aProxy).setScannedString(" @ ");
 	}
 	protected void checkThrownExceptionClass (Exception e) {
 		assertTrue("Exception " + e + " not instance of " + exceptionClass, 
