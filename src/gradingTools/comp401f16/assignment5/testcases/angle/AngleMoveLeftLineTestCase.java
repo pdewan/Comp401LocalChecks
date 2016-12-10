@@ -20,7 +20,11 @@ public class AngleMoveLeftLineTestCase extends AngleMoveTestCase {
 
 	@Override
 	protected void setLeafProxy() {
-		leafProxy = angle().getLeftLine();
+		//leafProxy = angle().getLeftLine();
+		leafProxy = computeLeafProxy();
+	}
+	protected Object computeLeafProxy() {
+		return  angle().getLeftLine();
 	}
 	@Override
 	protected boolean doTest() throws Throwable {
