@@ -22,6 +22,9 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 	public static final int NUM_CHILD_THREADS = 4; // including parent thread
 	public static final double PROCEED_CREDIT = 0.5;
 	BroadcastingClearanceManager broadcastingClearanceManager;
+	public WaitingAvatarsAnimationTestCase() {
+		System.out.println ("Wating Avatarts case created:" + this);
+	}
 	protected void createClearanceManager() {
 		broadcastingClearanceManager = (BroadcastingClearanceManager) getOrCreateObject(
 				factoryClassTags(), 
@@ -46,18 +49,18 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 		addPropertyChangeListener(bridgeScene.getRobin(), this);
 	}
 	protected void doProceedAll() throws Exception {
-		System.out.println ("Executing proceedAll on broadcasting clearance manager");
+		System.out.println ("Executing proceedAll on broadcasting clearance manager at time:" + System.currentTimeMillis());
 		broadcastingClearanceManager.proceedAll();
 	}
 	protected synchronized void executeOperations(Object aProxy) throws Exception {
 			fractionComplete = 0;
-			System.out.println ("Animating waiting Arthur");
+			System.out.println ("Animating waiting Arthur at time:" + System.currentTimeMillis());
 			commandInterpreter().waitingArthur();
-			System.out.println ("Animating waiting Lancelot");
+			System.out.println ("Animating waiting Lancelot"+ System.currentTimeMillis());
 			commandInterpreter().waitingLancelot();
-			System.out.println ("Animating waiting Galahad");
+			System.out.println ("Animating waiting Galahad"+ System.currentTimeMillis());
 			commandInterpreter().waitingGalahad();
-			System.out.println ("Animating waiting Robin");
+			System.out.println ("Animating waiting Robin"+ System.currentTimeMillis());
 			commandInterpreter().waitingRobin();
 			waitForThreadsToStart();
 			if (currentNotifyingThreads.size() > 1) {				
@@ -96,9 +99,12 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 	}
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
-		if (!testing)
+		if (!testing) {
+//			System.out.println ("Not testing:" + this);
 			return;
+		}
 		if (isPreviousThread()) {
+			System.out.println("Previous thread, ignoring notification:"+ Thread.currentThread());
 			return;
 		}
 //		super.propertyChange(evt);

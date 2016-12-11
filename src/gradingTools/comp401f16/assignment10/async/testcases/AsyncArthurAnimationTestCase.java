@@ -65,6 +65,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	
 	protected void initData() {
 //		testing = true;
+		System.out.println("Iniializing thread data");
 		currentNotifyingThreads.clear();
 //		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
 		parentThread = Thread.currentThread();
@@ -120,9 +121,9 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected synchronized void waitForThreadsToStart( ){
 		try {
 			long aDelay = maxDelayToCreateChildThread();
-			System.out.println("Waiting for child threads to be created within time (ms):" + aDelay);
+			System.out.println("Waiting for child threads to be created within time (ms):" + aDelay + " at time:" +  System.currentTimeMillis());
 			wait(aDelay);
-			System.out.println("Finished waiting for child threads to be created within time (ms):" + aDelay);
+			System.out.println("Finished waiting for child threads to be created/to notify within time (ms):" + aDelay + " at time " +  System.currentTimeMillis());
 
 //			stopThread(childThread);
 		} catch (InterruptedException e) {
@@ -271,6 +272,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		if (!testing)
 			return;
 		if (isPreviousThread()) {
+			System.out.println ("Previous thread nofified, returning at time:" +System.currentTimeMillis());
 			return;
 		}
 
