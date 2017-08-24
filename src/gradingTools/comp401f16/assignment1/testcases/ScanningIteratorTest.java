@@ -56,9 +56,15 @@ public class ScanningIteratorTest extends ScanStringTest{
 		}
 		iterator = (Iterator)
 				BasicProjectIntrospection.createInstance(Iterator.class, getArgs());
+//		iterator = (Iterator)
+//				BasicProjectIntrospection.createInstance(aClass, getArgs());
 		List<String> aTokens = new ArrayList();
+		System.out.println ("Putting iterator return values in array");
 		while (iterator.hasNext()) {
 			doExtraStep();
+			System.out.println ("Calling next() on iterator");
+			Object aNext = iterator.next();
+			System.out.println ("Put next value " + aNext + " in array");
 			aTokens.add(iterator.next());
 		}
 		
