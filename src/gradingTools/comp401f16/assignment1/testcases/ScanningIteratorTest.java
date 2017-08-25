@@ -63,9 +63,9 @@ public class ScanningIteratorTest extends ScanStringTest{
 		while (iterator.hasNext()) {
 			doExtraStep();
 			System.out.println ("Calling next() on iterator");
-			Object aNext = iterator.next();
+			String aNext = iterator.next();
 			System.out.println ("Put next value " + aNext + " in array");
-			aTokens.add(iterator.next());
+			aTokens.add(aNext);
 		}
 		
 		setReturnValue(aTokens.toArray());
