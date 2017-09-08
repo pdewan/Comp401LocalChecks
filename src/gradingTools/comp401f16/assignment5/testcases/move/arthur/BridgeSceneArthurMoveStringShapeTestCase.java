@@ -17,11 +17,13 @@ public class BridgeSceneArthurMoveStringShapeTestCase extends BridgeSceneMoveArt
 		return studentYDelta;
 	}
 	
-
-	@Override
-	protected void setLeafProxy() {
-		leafProxy = avatar().getStringShape();
+	protected Object computeLeafProxy() {
+		return avatar().getStringShape();
 	}
+//	@Override
+//	protected void setLeafProxy() {
+//		leafProxy = avatar().getStringShape();
+//	}
 	@Override
 	protected boolean doTest() throws Throwable {
 		return super.doTest();

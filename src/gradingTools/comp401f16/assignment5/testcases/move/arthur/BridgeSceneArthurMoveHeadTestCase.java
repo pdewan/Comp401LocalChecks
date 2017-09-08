@@ -16,12 +16,16 @@ public class BridgeSceneArthurMoveHeadTestCase extends BridgeSceneMoveArthurTest
 	protected Integer inputStudentYDelta() {
 		return studentYDelta;
 	}
-	
-
-	@Override
-	protected void setLeafProxy() {
-		leafProxy = avatar().getHead();
+	protected Object computeLeafProxy() {
+		return avatar().getHead();
 	}
+
+//	@Override
+//	protected void setLeafProxy() {
+////		leafProxy = avatar().getHead();
+//		leafProxy = computeLeafProxy();
+//
+//	}
 	@Override
 	protected boolean doTest() throws Throwable {
 		return super.doTest();
