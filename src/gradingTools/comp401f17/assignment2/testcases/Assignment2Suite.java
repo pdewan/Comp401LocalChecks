@@ -8,7 +8,8 @@ import gradingTools.comp401f16.assignment2.testcases.MultipleNumberOutputTest;
 import gradingTools.comp401f16.assignment2.testcases.MultipleQuoteOutputTest;
 import gradingTools.comp401f16.assignment2.testcases.MultipleSignOutputTest;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
-import gradingTools.comp401f16.assignment2.testcases.ScannerBeanTest;
+import gradingTools.comp401f16.assignment2.testcases.ScannerBeanOutputTest;
+import gradingTools.comp401f16.assignment2.testcases.ScannerBeanPropertyTest;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -17,7 +18,8 @@ import org.junit.runners.Suite;
 	MultipleNumberOutputTest.class,
 	MultipleWordOutputTest.class,
 	MultipleQuoteOutputTest.class,
-	ScannerBeanTest.class,
+	ScannerBeanPropertyTest.class,
+	ScannerBeanOutputTest.class,
 	MultipleSignOutputTest.class,
 	MissingQuoteOutputTest.class,
 	MixedOutputTest.class

@@ -9,7 +9,7 @@ import org.junit.runners.Suite;
 	MultipleNumberOutputTest.class,
 	MultipleWordOutputTest.class,
 	MultipleQuoteOutputTest.class,
-	ScannerBeanTest.class,
+	ScannerBeanPropertyTest.class,
 	MultipleSignOutputTest.class,
 	MissingQuoteOutputTest.class,
 	MixedOutputTest.class

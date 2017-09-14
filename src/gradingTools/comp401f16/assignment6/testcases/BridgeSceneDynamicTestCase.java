@@ -197,6 +197,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		say (secondAvatar(), fourthSay);
 		failed();
 		approach(thirdAvatar());
+		System.out.println("The next approach should fail");
 		approach(fourthAvatar());
 		say (guard(), firstSay);
 		say (thirdAvatar(), secondSay, lastSayCredit());

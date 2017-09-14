@@ -8,11 +8,11 @@ import org.junit.Assert;
 import grader.basics.execution.GradingMode;
 import grader.basics.junit.NotesAndScore;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
-import gradingTools.comp401f16.assignment2.testcases.ScannerBeanTest;
+import gradingTools.comp401f16.assignment2.testcases.ScannerBeanPropertyTest;
 import gradingTools.comp401f16.assignment3.testcases.InputBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
 
-public abstract class TokenArrayTest extends ScannerBeanTest {
+public abstract class TokenArrayTest extends ScannerBeanPropertyTest {
 public static final String TOKENS = "Tokens";
 	protected Object[] tokenArrayOutput;
 	protected String[] tokensInput ;

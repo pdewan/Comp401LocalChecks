@@ -9,7 +9,7 @@ import grader.basics.execution.GradingMode;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.BasicProjectIntrospection;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
-import gradingTools.comp401f16.assignment2.testcases.ScannerBeanTest;
+import gradingTools.comp401f16.assignment2.testcases.ScannerBeanPropertyTest;
 import gradingTools.comp401f16.assignment3.testcases.InputBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
 import gradingTools.comp401f16.assignment4.testcases.array.TokenArrayTest;
