@@ -58,11 +58,18 @@ public class ScannerBeanOutputTest extends ScannerBeanPropertyTest{
 //			 getsEqualsSetsErrorMessage() + " and " + incorrectOutputMessage();
 //	}
 	protected String incorrectOutputMessage() {
-		return "incorrect output";
+		return "incorrect output.";
 	}
 	protected void invokePropertyMethods(Object anObject) throws Throwable {
 		invokeSetters(anObject);
 //		invokeGetters(anObject);
+	}
+	protected void compareOutputWithExpected() {
+		// do nothing, we did not call getters
+	}
+	public  boolean getsReturnedSets(Map<String, Object> anInputs,
+			Map<String, Object> anActualOutputs) {
+		return true;
 	}
 	@Override
 	protected boolean doTest() throws Throwable {
