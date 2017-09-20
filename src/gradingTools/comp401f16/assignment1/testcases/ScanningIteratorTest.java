@@ -9,6 +9,7 @@ import org.junit.Assert;
 
 import util.annotations.IsExtra;
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import grader.basics.execution.BasicProjectExecution;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.BasicProjectIntrospection;
@@ -31,7 +32,7 @@ public class ScanningIteratorTest extends ScanStringTest{
 //				+ wrongInterfaceCredit(), false);
 //	}
 	protected void traceProcessReturnValue() {
-		System.out.println(
+		Tracer.info(this,
 				"Comparing actial return value: " + 
 						Arrays.toString((Object[]) getReturnValue()) +
 				" with expected return value: " + 
@@ -59,12 +60,12 @@ public class ScanningIteratorTest extends ScanStringTest{
 //		iterator = (Iterator)
 //				BasicProjectIntrospection.createInstance(aClass, getArgs());
 		List<String> aTokens = new ArrayList();
-		System.out.println ("Putting iterator return values in array");
+		Tracer.info(this,"Putting iterator return values in array");
 		while (iterator.hasNext()) {
 			doExtraStep();
-			System.out.println ("Calling next() on iterator");
+			Tracer.info(this,"Calling next() on iterator");
 			String aNext = iterator.next();
-			System.out.println ("Put next value " + aNext + " in array");
+			Tracer.info(this,"Put next value " + aNext + " in array");
 			aTokens.add(aNext);
 		}
 		

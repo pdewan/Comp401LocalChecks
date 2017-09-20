@@ -21,6 +21,7 @@ import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
+import util.trace.Tracer;
 @MaxValue(20)
 @IsExtra(true)
 public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCase {
@@ -50,7 +51,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	}
 	protected synchronized void waitForLockstepAnimation( ){
 		try {
-			System.out.println("Waiting for lock steps within time (ms):" + MAX_ANIMATION_TIME);
+			Tracer.info(this,"Waiting for lock steps within time (ms):" + MAX_ANIMATION_TIME);
 			wait(MAX_ANIMATION_TIME);
 //			stopThread(childThread);
 		} catch (InterruptedException e) {
@@ -68,7 +69,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	
 	
 	protected void checkNumThreads() {
-		System.out.println ("num coordinated threads found:" + threadToSleeps.size());
+		Tracer.info(this,"num coordinated threads found:" + threadToSleeps.size());
 		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
 			 resultCorrect = false;
 			 failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
@@ -84,16 +85,16 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		for (Thread aThread:threadToSleeps.keySet()) {
 			 Integer aNumSleeps = threadToSleeps.get(aThread);
 			 result = Math.max(result, aNumSleeps );
-			 System.out.println ("Number of sleeps by thread : " + aThread + " " + aNumSleeps);
+			 Tracer.info(this,"Number of sleeps by thread : " + aThread + " " + aNumSleeps);
 			 
 		}
-		System.out.println("Maximum sleeps:" + result);
+		Tracer.info(this,"Maximum sleeps:" + result);
 		return result;
 	}
 	protected synchronized void checkNumThreadsWithNumSleeps(int aLimit) {
 		for (Thread aThread:threadToSleeps.keySet()) {
 			 Integer aNumSleeps = threadToSleeps.get(aThread);
-			 System.out.println ("Number of sleeps by thread : " + aThread + " " + aNumSleeps);
+			 Tracer.info(this,"Number of sleeps by thread : " + aThread + " " + aNumSleeps);
 			 if (Math.abs(aLimit - aNumSleeps) > 2) {
 				 failureMessage = "Number of sleeps by thread:" + 
 						 aThread + " " + aNumSleeps + " instead of " + aLimit;
@@ -104,7 +105,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //						 aThread + " " + aNumSleeps + " instead of " + aLimit, false);
 			 }
 		}
-//		System.out.println ("Num threads that slept:" + threadToSleeps.size());
+//		Tracer.info(this,"Num threads that slept:" + threadToSleeps.size());
 //		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
 //			failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
 //			 resultCorrect = false;
@@ -118,7 +119,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //		waitForLockstepAnimation();
 ////		try {
 ////			long aDelay = maxDelayToCreateChildThread();
-////			System.out.println("Waiting for child threads to be created within time (ms):" + aDelay);
+////			Tracer.info(this,"Waiting for child threads to be created within time (ms):" + aDelay);
 ////			wait(aDelay);
 //////			stopThread(childThread);
 ////		} catch (InterruptedException e) {
@@ -130,7 +131,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		for (int i = 0; i  < aNumSteps; i++) {
 			recordPreviousThreads();
 			freezeNotifications = true;
-			System.out.println ("Executing animating lockstep Guard ");
+			Tracer.info(this,"Executing animating lockstep Guard ");
 			;
 			commandInterpreter().lockstepGuard();
 			recordCurrentThreads();
@@ -144,32 +145,32 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	protected void executeOperations(Object aProxy) {
 			fractionComplete = 0;
 			recordPreviousThreads();
-			System.out.println ("Animating lockstep Arthur");
+			Tracer.info(this,"Animating lockstep Arthur");
 			commandInterpreter().lockstepArthur();
 			recordCurrentThreads();
 			assertNewThreadCreated();
 			recordPreviousThreads();
-			System.out.println ("Animating lockstep Lancelot");
+			Tracer.info(this,"Animating lockstep Lancelot");
 			commandInterpreter().lockstepLancelot();
 			recordCurrentThreads();
 			assertNewThreadCreated();
-//			System.out.println ("Animating lockstep Galahad");
+//			Tracer.info(this,"Animating lockstep Galahad");
 //			commandInterpreter().lockstepGalahad();
-//			System.out.println ("Animating lockstep Robin");
+//			Tracer.info(this,"Animating lockstep Robin");
 //			commandInterpreter().lockstepRobin();
 //			waitForThreadsToStart();
 			doLockSteps(NUM_LOCK_STEPS);
 //			checkOutput(rootPro)
 			
 //			threadToSleeps.clear();
-//			System.out.println ("Executing animating lockstep Guard ");
+//			Tracer.info(this,"Executing animating lockstep Guard ");
 
 //			commandInterpreter().lockstepGuard();
 //			waitForThreadsToSleep();
-//			System.out.println ("Executing animating lockstep Guard ");
+//			Tracer.info(this,"Executing animating lockstep Guard ");
 //
 //			commandInterpreter().lockstepGuard();
-//			System.out.println ("Checking sleeps");
+//			Tracer.info(this,"Checking sleeps");
 
 //			checkNumThreadsWithNumSleeps(NUM_LOCK_STEPS);
 
@@ -213,26 +214,26 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //	protected void maybeAddThread() {
 //		Thread aChildThread = Thread.currentThread();
 //		if (!currentThreads.contains(aChildThread)) {			
-//			System.out.println("New child thread:" + aChildThread);
+//			Tracer.info(this,"New child thread:" + aChildThread);
 //			currentThreads.add(aChildThread);
 //		}
 //	}
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
-//		System.out.println ("Locketep Thread:" + Thread.currentThread());
+//		Tracer.info(this,"Locketep Thread:" + Thread.currentThread());
 		if (!testing)
 			return;
 		if (freezeNotifications) // do not want guard notifications
 			return;
 
-//		System.out.println ("after testing");
+//		Tracer.info(this,"after testing");
 		if (isPreviousThread()) {
 			return;
 		}
 		
-//		System.out.println ("Lockstep Thread:" + Thread.currentThread() + " " + this);
+//		Tracer.info(this,"Lockstep Thread:" + Thread.currentThread() + " " + this);
 
-//		System.out.println ("not previous  thread");
+//		Tracer.info(this,"not previous  thread");
 
 //		super.propertyChange(evt);
 		maybeAddThread();

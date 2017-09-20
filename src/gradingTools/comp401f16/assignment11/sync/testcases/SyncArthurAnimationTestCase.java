@@ -12,6 +12,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import util.models.PropertyListenerRegisterer;
+import util.trace.Tracer;
 
 public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	
@@ -42,7 +43,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 //	protected synchronized void waitForThreadsToExecute( ){
 //		try {
 //			long aDelay = maxTimeForAnimatingThread();
-//			System.out.println("Waiting for child thread to finish amimation in(ms):" + aDelay);
+//			Tracer.info(this,"Waiting for child thread to finish amimation in(ms):" + aDelay);
 //			wait(aDelay);
 ////			stopThread(childThread);
 //		} catch (InterruptedException e) {
@@ -86,7 +87,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		return true;
 	}
 	protected void delayFound() {
-//		System.out.println("delay found");
+//		Tracer.info(this,"delay found");
 
 //		notify();
 	}
@@ -96,7 +97,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	}
 	protected void child2ExecutedForMinimumTime() {
 		if (child2ExecutedForMinimumTime) return;
-		System.out.println("Notifying child2 thread executed for minimun time");
+		Tracer.info(this,"Notifying child2 thread executed for minimun time");
 		child2ExecutedForMinimumTime = true;
 		notify();
 	}

@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 import org.junit.Assert;
 
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import grader.basics.execution.BasicProjectExecution;
 import grader.basics.execution.ResultingOutErr;
 import grader.basics.junit.NotesAndScore;
@@ -87,8 +88,8 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
     	fractionComplete = 0;
     	long numNotifications = approachPropertyChanges.length + failedPropertyChanges.length;
 
-    	System.out.println ("Number of properties notifications after approach and failed:" + numNotifications);
-    	System.out.println ("Testing if old values and new values are different in notifications");
+    	Tracer.info(this,"Number of properties notifications after approach and failed:" + numNotifications);
+    	Tracer.info(this,"Testing if old values and new values are different in notifications");
     	long numNoChanges = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
                 .parallel().unordered()
                 .filter((properties) -> properties[1].equals(properties[2])) // new/old value
@@ -96,18 +97,18 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
     	long numChanges = numNotifications - numNoChanges;
     	
     	if (numNoChanges > 0) {
-    		System.out.println (numNoChanges + " have old value same as new value are thus redundant. No points taken off.");
+    		Tracer.info(this,numNoChanges + " have old value same as new value are thus redundant. No points taken off.");
     	}
     	somePropertiesChange = numChanges >= 7;
 //    	allPropertiesChange = numChanges == approachPropertyChanges.length;
 
         if (!somePropertiesChange) {
-        	System.out.println ("properties with changed values: " + numChanges + " < 7" );
+        	Tracer.info(this,"properties with changed values: " + numChanges + " < 7" );
 
         } else {
         	fractionComplete += this.SOME_PROPERTIES_CHANGE_CREDIT;
         }
-    	System.out.println ("Finding the number of unique sources of property changes after approach");
+    	Tracer.info(this,"Finding the number of unique sources of property changes after approach");
 
         long uniqueSources = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
                 .parallel().unordered()
@@ -116,7 +117,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
                 .count();
         minPartsCorrect = uniqueSources >= 7;
         if (!minPartsCorrect) {
-        	System.out.println ("Unique scources " + uniqueSources + " < expected body parts:" + 7);
+        	Tracer.info(this,"Unique scources " + uniqueSources + " < expected body parts:" + 7);
 
         } else {
         	fractionComplete += MIN_PARTS_CREDIT;
@@ -126,7 +127,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
         System.arraycopy(failedPropertyChanges, 0, all, approachPropertyChanges.length, failedPropertyChanges.length);
         // check for property with same source with an newValue equal to a past oldValue
         oldValueCorrespondsToNewValue = false;
-        System.out.println ("Testing if new values before failed are old values after it");
+        Tracer.info(this,"Testing if new values before failed are old values after it");
         for(int i = 0; !oldValueCorrespondsToNewValue && i < all.length; i ++) {
             String[] prop1 = all[i];
             for(int j = i; !oldValueCorrespondsToNewValue && j < all.length; j ++) {
@@ -134,11 +135,11 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
                 if (prop1[4].equals(prop2[4]) && prop1[0].equals(prop2[0])) {
                     if (prop1[2].equals(prop2[1])) {
                     	oldValueCorrespondsToNewValue = true;
-                    	System.out.println ("property: " + prop1[4] + "new value " +
+                    	Tracer.info(this,"property: " + prop1[4] + "new value " +
                     			
                     			prop1[2] + " == old value " + prop2[1]);
                     } else {
-//                    	System.out.println ("property: " + prop1[4] + "old value" +
+//                    	Tracer.info(this,"property: " + prop1[4] + "old value" +
 //                    			
 //                    			prop1[0] + " != " + prop1[0]);
                     	
@@ -147,7 +148,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
             }
         }
         if (!oldValueCorrespondsToNewValue) {
-        	System.out.println ("No old value was a new value");
+        	Tracer.info(this,"No old value was a new value");
         } else {
         	fractionComplete += NEW_OLD_VALUE_CREDIT; 
         }
@@ -157,7 +158,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
     }
 	
 	protected void approach (TestAvatar anAvatar) {
-		System.out.println(toString(anAvatar) + " Approaches");
+		Tracer.info(this,toString(anAvatar) + " Approaches");
 		BasicProjectExecution.redirectOutput();
 		bridgeScene().approach(anAvatar);
 		output= BasicProjectExecution.restoreAndGetOut();
@@ -176,7 +177,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
     protected String[][] failedPropertyChanges;
 
 	protected void failed() {
-		System.out.println("Interacting Knight Failed");
+		Tracer.info(this,"Interacting Knight Failed");
 		BasicProjectExecution.redirectOutput();
 		bridgeScene().failed();
 		output= BasicProjectExecution.restoreAndGetOut();

@@ -1,6 +1,7 @@
 package gradingTools.comp401f16.assignment11.testcases.commandInterpreterA11;
 
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import bus.uigen.visitors.CreateChildrenAdapterVisitor;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAngle;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
@@ -96,7 +97,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 		failed();		
 	}
 	protected void approach (String anAvatar) {
-		System.out.println(anAvatar + " Approaches");
+		Tracer.info(this,anAvatar + " Approaches");
 		commandInterpreter().setCommand("approach" + " "+ anAvatar + " ");
 
 		assertTrue(correctApproachErrorMessage(), 

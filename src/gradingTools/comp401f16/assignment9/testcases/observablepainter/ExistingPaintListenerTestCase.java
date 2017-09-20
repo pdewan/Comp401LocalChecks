@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import org.junit.Assert;
 
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import grader.basics.execution.BasicProjectExecution;
 import grader.basics.execution.ResultingOutErr;
 import grader.basics.junit.NotesAndScore;
@@ -69,7 +70,7 @@ public class ExistingPaintListenerTestCase
    
     
 //	protected void approach (TestAvatar anAvatar) {
-//		System.out.println(toString(anAvatar) + " Approaches");
+//		Tracer.info(this,toString(anAvatar) + " Approaches");
 //		BasicProjectExecution.redirectOutput();
 //		bridgeScene().approach(anAvatar);
 //		output= BasicProjectExecution.restoreAndGetOut();
@@ -87,13 +88,13 @@ public class ExistingPaintListenerTestCase
 //	}
 //
 //	protected void failed() {
-//		System.out.println("Interacting Knight Failed");
+//		Tracer.info(this,"Interacting Knight Failed");
 //		failedCalled = true;
 //		bridgeScene().failed();
 //	}	
 //		
 //	protected void registerPaintListener() {
-//		System.out.println ("Adding paint listener to observable bridge scene painter ");
+//		Tracer.info(this,"Adding paint listener to observable bridge scene painter ");
 //		observableBridgeScenePainter.addPaintListener(this);
 //		
 //	}
@@ -101,21 +102,21 @@ public class ExistingPaintListenerTestCase
 	protected List getListeners() {
 		List retVal = null;
 		try {
-			System.out.println("Getting PaintListener property of observable painter");
+			Tracer.info(this,"Getting PaintListener property of observable painter");
 			retVal = observableBridgeScenePainter.getPaintListeners();
 			return retVal;
 			
 		} catch (Error e) {
-			System.out.println("Could not find PaintListener property");
+			Tracer.info(this,"Could not find PaintListener property");
 			
 		}
 		try {
-			System.out.println ("Getting List field of observable painter ");
+			Tracer.info(this,"Getting List field of observable painter ");
 			retVal = (List) BasicProjectIntrospection.
 					getFieldValueOfType(observableBridgeScenePainter, List.class);
 			return retVal;
 		} catch (Error e) {
-			System.out.println("Could not find field ");
+			Tracer.info(this,"Could not find field ");
 
 		}
 		return null;

@@ -14,6 +14,7 @@ import org.junit.Assert;
 
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
+import util.trace.Tracer;
 import grader.basics.execution.AMainInNewThread;
 import grader.basics.execution.BasicProjectExecution;
 import grader.basics.execution.GradingMode;
@@ -89,7 +90,7 @@ public class NewPaintListenerTestCase
    
     
 	protected void approach (TestAvatar anAvatar) {
-		System.out.println(toString(anAvatar) + " Approaches");
+		Tracer.info(this,toString(anAvatar) + " Approaches");
 		BasicProjectExecution.redirectOutput();
 		bridgeScene().approach(anAvatar);
 		output= BasicProjectExecution.restoreAndGetOut();
@@ -107,14 +108,14 @@ public class NewPaintListenerTestCase
 	}
 
 	protected void failed() {
-		System.out.println("Interacting Knight Failed");
+		Tracer.info(this,"Interacting Knight Failed");
 		failedCalled = true;
 		bridgeScene().failed();
 	}	
 		
 	protected void registerPaintListener() {
 		try {
-		System.out.println ("Adding paint listener to observable bridge scene painter ");
+		Tracer.info(this,"Adding paint listener to observable bridge scene painter ");
 		Class aRealInterface = BasicProjectIntrospection.findInterface(TestPaintListener.class);
 
 		Object aReverseProxy = BasicProjectIntrospection.createReverseProxy(TestPaintListener.class, aRealInterface, this);
@@ -128,7 +129,7 @@ public class NewPaintListenerTestCase
 		
 	}
 	protected void checkResults() {
-		System.out.println ("Checking results");
+		Tracer.info(this,"Checking results");
 		if (numEventsFiredByApproach < MIN_APPROACH_EVENTS  ) {
 			assertTrue("At least "  + MIN_APPROACH_EVENTS + " paint event not fired by approach", false	);
 		}
@@ -211,7 +212,7 @@ public class NewPaintListenerTestCase
 	@Override
 	public void paint(Graphics2D g) {
 		if (!paintReceived) {
-			System.out.println ("Received Paint Event, NewPaintListener Test Successful");
+			Tracer.info(this,"Received Paint Event, NewPaintListener Test Successful");
 			paintReceived = true;
 		}
 		if (failedCalled)

@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Assert;
 
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import grader.basics.junit.NotesAndScore;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
@@ -109,10 +110,10 @@ public class AssertingBridgeSceneDynamicTestCase
 		preFailedBeforeApproach = bridgeScene.preFailed();
 		prePassedBeforeApproach = bridgeScene.prePassed();
 		preSayBeforeApproach = bridgeScene.preSay();
-		System.out.println("preApproach Before Approach:" + preApproachBeforeApproach );
-		System.out.println("preSay Before Approach:" + preSayBeforeApproach );
-		System.out.println("preFailed Before Approach:" + preFailedBeforeApproach );
-		System.out.println("prePassed Before Approach:" + prePassedBeforeApproach );
+		Tracer.info(this,"preApproach Before Approach:" + preApproachBeforeApproach );
+		Tracer.info(this,"preSay Before Approach:" + preSayBeforeApproach );
+		Tracer.info(this,"preFailed Before Approach:" + preFailedBeforeApproach );
+		Tracer.info(this,"prePassed Before Approach:" + prePassedBeforeApproach );
 		
 		currentEvents = eventsAfterApproach;
 		currentEvents.clear();
@@ -121,10 +122,10 @@ public class AssertingBridgeSceneDynamicTestCase
 		preFailedAfterApproach = bridgeScene.preFailed();
 		prePassedAfterApproach = bridgeScene.prePassed();
 		preSayAfterApproach = bridgeScene.preSay();	
-		System.out.println("preApproach After Approach:" + preApproachAfterApproach );
-		System.out.println("preSay After Approach:" + preSayAfterApproach );
-		System.out.println("preFailed After Approach:" + preFailedAfterApproach );
-		System.out.println("prePassed After Approach:" + prePassedAfterApproach );
+		Tracer.info(this,"preApproach After Approach:" + preApproachAfterApproach );
+		Tracer.info(this,"preSay After Approach:" + preSayAfterApproach );
+		Tracer.info(this,"preFailed After Approach:" + preFailedAfterApproach );
+		Tracer.info(this,"prePassed After Approach:" + prePassedAfterApproach );
 		System.out.println ("Events after appproach:\n" + toString(currentEvents));
 		
 		currentEvents = eventsAfterSay1;
@@ -134,10 +135,10 @@ public class AssertingBridgeSceneDynamicTestCase
 		preFailedAfterSay1 = bridgeScene.preFailed();
 		prePassedAfterSay1 = bridgeScene.prePassed();
 		preSayAfterSay1 = bridgeScene.preSay();
-		System.out.println("preApproach After Say1:" + preApproachAfterSay1 );
-		System.out.println("preSay After Say1:" + preSayAfterSay1 );
-		System.out.println("preFailed After Say1:" + preFailedAfterSay1 );
-		System.out.println("prePassed After Say1:" + prePassedAfterSay1 );
+		Tracer.info(this,"preApproach After Say1:" + preApproachAfterSay1 );
+		Tracer.info(this,"preSay After Say1:" + preSayAfterSay1 );
+		Tracer.info(this,"preFailed After Say1:" + preFailedAfterSay1 );
+		Tracer.info(this,"prePassed After Say1:" + prePassedAfterSay1 );
 		System.out.println ("Events after Say1:\n" + toString(currentEvents));
 
 		
@@ -150,10 +151,10 @@ public class AssertingBridgeSceneDynamicTestCase
 		preFailedAfterSay2 = bridgeScene.preFailed();
 		prePassedAfterSay2 = bridgeScene.prePassed();
 		preSayAfterSay2 = bridgeScene.preSay();	
-		System.out.println("preSay After Say2 (Knight Say):" + preApproachAfterSay2 );
-		System.out.println("preSay After Say2  (Knight Say):" + preSayAfterSay2 );
-		System.out.println("preFailed After Say2  (Knight Say):" + preFailedAfterSay2 );
-		System.out.println("prePassed After Say2  (Knight Say):" + prePassedAfterSay2 );	
+		Tracer.info(this,"preSay After Say2 (Knight Say):" + preApproachAfterSay2 );
+		Tracer.info(this,"preSay After Say2  (Knight Say):" + preSayAfterSay2 );
+		Tracer.info(this,"preFailed After Say2  (Knight Say):" + preFailedAfterSay2 );
+		Tracer.info(this,"prePassed After Say2  (Knight Say):" + prePassedAfterSay2 );	
 		System.out.println ("Events after Say2  (Knight Say):\n" + toString(currentEvents));
 
 		
@@ -164,10 +165,10 @@ public class AssertingBridgeSceneDynamicTestCase
 		preFailedAfterPassed = bridgeScene.preFailed();
 		prePassedAfterPassed = bridgeScene.prePassed();
 		preSayAfterPassed = bridgeScene.preSay();
-		System.out.println("preSay Passed:" + preApproachAfterSay2 );
-		System.out.println("preSay Passed:" + preSayAfterSay2 );
-		System.out.println("preFailed After Passed):" + preFailedAfterSay2 );
-		System.out.println("prePassed After Passed:" + prePassedAfterSay2 );			
+		Tracer.info(this,"preSay Passed:" + preApproachAfterSay2 );
+		Tracer.info(this,"preSay Passed:" + preSayAfterSay2 );
+		Tracer.info(this,"preFailed After Passed):" + preFailedAfterSay2 );
+		Tracer.info(this,"prePassed After Passed:" + prePassedAfterSay2 );			
 		System.out.println ("Events after Passed):\n" + toString(currentEvents));
 
 		approach (secondAvatar());	
@@ -178,10 +179,10 @@ public class AssertingBridgeSceneDynamicTestCase
 		preFailedAfterFailed = bridgeScene.preFailed();
 		prePassedAfterFailed = bridgeScene.prePassed();
 		preSayAfterFailed = bridgeScene.preSay();
-		System.out.println("preApproach After Failed:" + preApproachAfterFailed );
-		System.out.println("preSay After Failed:" + preSayAfterFailed );
-		System.out.println("preFailed After Failed:" + preFailedAfterFailed );
-		System.out.println("prePassed After Failed:" + prePassedAfterFailed );
+		Tracer.info(this,"preApproach After Failed:" + preApproachAfterFailed );
+		Tracer.info(this,"preSay After Failed:" + preSayAfterFailed );
+		Tracer.info(this,"preFailed After Failed:" + preFailedAfterFailed );
+		Tracer.info(this,"prePassed After Failed:" + prePassedAfterFailed );
 		System.out.println ("Events after Failed:\n" + toString(currentEvents));
 
 		
@@ -200,7 +201,7 @@ public class AssertingBridgeSceneDynamicTestCase
 				return true;
 			}
 		}
-		System.out.println("Did not receive event with propertyName: " + aPropertyName + ", old value:" + oldValue + " and newValue:" + newValue);
+		Tracer.info(this,"Did not receive event with propertyName: " + aPropertyName + ", old value:" + oldValue + " and newValue:" + newValue);
 		return false;
 	}
     protected boolean matches (PropertyChangeEvent anEvent, String aPropertyName, String oldValue, boolean newValue) {
@@ -292,27 +293,27 @@ public class AssertingBridgeSceneDynamicTestCase
 
 	protected void checkPreApproach() {
 		if (!preApproachBeforeApproach) {
-			System.out.println("preApproach before Approach should be true");
+			Tracer.info(this,"preApproach before Approach should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (preApproachAfterApproach) {
-			System.out.println("preApproach after Approach should be false");
+			Tracer.info(this,"preApproach after Approach should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (preApproachAfterSay1 || preApproachAfterSay2 ) {
-			System.out.println("preApproach after Say1 and Say2 should be false");
+			Tracer.info(this,"preApproach after Say1 and Say2 should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!preApproachAfterFailed) {
-			System.out.println("preApproach after Failed should be true");
+			Tracer.info(this,"preApproach after Failed should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!preApproachAfterPassed) {
-			System.out.println("preApproach after Passed should be true");
+			Tracer.info(this,"preApproach after Passed should be true");
 		} else {
 			numCorrectPreconditions++;
 		}		
@@ -321,27 +322,27 @@ public class AssertingBridgeSceneDynamicTestCase
 
 	protected void checkPreSay() {
 		if (preSayBeforeApproach) {
-			System.out.println("preSay before Approach should be false");
+			Tracer.info(this,"preSay before Approach should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!preSayAfterApproach) {
-			System.out.println("preSay after Approach should be true");
+			Tracer.info(this,"preSay after Approach should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!preSayAfterSay1 || !preSayAfterSay2 ) {
-			System.out.println("preSay after Guard and Avatar Say should be true");
+			Tracer.info(this,"preSay after Guard and Avatar Say should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (preSayAfterFailed) {
-			System.out.println("preSay after Failed should be false");
+			Tracer.info(this,"preSay after Failed should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (preSayAfterPassed) {
-			System.out.println("preSay after Passed should be false");
+			Tracer.info(this,"preSay after Passed should be false");
 		} else {
 			numCorrectPreconditions++;
 		}		
@@ -357,32 +358,32 @@ public class AssertingBridgeSceneDynamicTestCase
 
 	protected void checkPrePassed() {
 		if (prePassedBeforeApproach) {
-			System.out.println("prePassed before Approach should be false");
+			Tracer.info(this,"prePassed before Approach should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!prePassedAfterApproach) {
-			System.out.println("prePassed after Approach should be true");
+			Tracer.info(this,"prePassed after Approach should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (prePassedAfterSay1) {
-			System.out.println("prePassed after Say1 (Guard Say) should be false");
+			Tracer.info(this,"prePassed after Say1 (Guard Say) should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!prePassedAfterSay2) {
-			System.out.println("prePassed After Say2  (Knight Say) should be true");
+			Tracer.info(this,"prePassed After Say2  (Knight Say) should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (prePassedAfterFailed) {
-			System.out.println("prePassed after Failed should be false");
+			Tracer.info(this,"prePassed after Failed should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (prePassedAfterPassed) {
-			System.out.println("prePassed after Passed should be false");
+			Tracer.info(this,"prePassed after Passed should be false");
 		} else {
 			numCorrectPreconditions++;
 		}		
@@ -390,32 +391,32 @@ public class AssertingBridgeSceneDynamicTestCase
 	protected static final int  NUM_PRE_FAILED_CHECKS = 6;
 	protected void checkPreFailed() {
 		if (preFailedBeforeApproach) {
-			System.out.println("preFailed before Approach should be false");
+			Tracer.info(this,"preFailed before Approach should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!preFailedAfterApproach) {
-			System.out.println("preFailed after Approach should be true");
+			Tracer.info(this,"preFailed after Approach should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!preFailedAfterSay1) {
-			System.out.println("preFailed after Say1 (Guard Say) should be true");
+			Tracer.info(this,"preFailed after Say1 (Guard Say) should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (!preFailedAfterSay2) {
-			System.out.println("preFailed after Say2 should be true");
+			Tracer.info(this,"preFailed after Say2 should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (preFailedAfterFailed) {
-			System.out.println("preFailed after Failed should be false");
+			Tracer.info(this,"preFailed after Failed should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
 		if (preFailedAfterPassed) {
-			System.out.println("preFailed after Passed should be false");
+			Tracer.info(this,"preFailed after Passed should be false");
 		} else {
 			numCorrectPreconditions++;
 		}		

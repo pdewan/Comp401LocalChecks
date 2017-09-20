@@ -2,6 +2,7 @@ package gradingTools.comp401f16.assignment12.testcases.commandInterpreterA12;
 
 import util.annotations.IsExtra;
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import bus.uigen.visitors.CreateChildrenAdapterVisitor;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAngle;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
@@ -20,14 +21,14 @@ public class SleepCommandTestCase extends CommandInterpreterArthurMoveLeftArmTes
 	protected static final long SLEEP_TIME = 100;
 	public static long presleepTime() {
 		long aPresleepTime = System.currentTimeMillis();
-	    System.out.println ("Pre sleep time:" + aPresleepTime);
-	    System.out.println ("Sleeping for (ms):" + SLEEP_TIME);
+	    Tracer.info(SleepCommandTestCase.class,"Pre sleep time:" + aPresleepTime);
+	    Tracer.info(SleepCommandTestCase.class,"Sleeping for (ms):" + SLEEP_TIME);
 	    return aPresleepTime;
 		
 	}
 	public static boolean checkSleep(long aPresleepTime, long aSleepTime ) {
 		long aPostsleepTime = System.currentTimeMillis();
-		 System.out.println ("Post sleep time:" + aPostsleepTime);
+		 Tracer.info(SleepCommandTestCase.class,"Post sleep time:" + aPostsleepTime);
 		 return
 				 (aPostsleepTime - aPresleepTime) >= SLEEP_TIME - 5; // in case there is an error in sleep
 	}

@@ -11,12 +11,13 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import util.models.PropertyListenerRegisterer;
+import util.trace.Tracer;
 
 public class AsyncGalahadAnimationTestCase extends AsyncArthurAnimationTestCase implements PropertyChangeListener {
 	
 	protected void executeOperations(Object aProxy) {
 		recordPreviousThreads();
-		System.out.println ("Animating Galahad");
+		Tracer.info(this,"Animating Galahad");
 		commandInterpreter().asynchronousGalahad();
 		recordCurrentThreads();
 		assertNewThreadCreated();

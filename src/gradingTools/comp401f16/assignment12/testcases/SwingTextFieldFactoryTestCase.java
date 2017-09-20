@@ -8,6 +8,7 @@ import javax.swing.text.StyledEditorKit.ForegroundAction;
 
 import util.annotations.IsExtra;
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import bus.uigen.widgets.TextFieldFactory;
 import bus.uigen.widgets.swing.SwingTextFieldFactory;
 import gradingTools.shared.testcases.MethodExecutionTest;
@@ -35,7 +36,7 @@ public class SwingTextFieldFactoryTestCase extends MethodExecutionTest{
 		SwingTextFieldFactory aFactory = (SwingTextFieldFactory) anObject;
 		Method aMethod = SwingTextFieldFactory.class.getDeclaredMethod("createJTextField", String.class);
 		aMethod.setAccessible(true);
-		System.out.println ("Creating text field for " + TEXT + " using " + aFactory);
+		Tracer.info(this,"Creating text field for " + TEXT + " using " + aFactory);
 
 		JTextField aJTextField = (JTextField) aMethod.invoke(aFactory, TEXT);
 		assertTrue ("Text property of " + aJTextField + " is not " + TEXT,

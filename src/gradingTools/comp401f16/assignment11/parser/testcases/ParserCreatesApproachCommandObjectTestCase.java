@@ -1,6 +1,7 @@
 package gradingTools.comp401f16.assignment11.parser.testcases;
 
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import gradingTools.comp401f16.assignment11.commandObjects.testcases.ApproachCommandObjectTestCase;
 import gradingTools.comp401f16.assignment11.testcases.commandInterpreterA11.ParsingAtomicCommandTestCase;
 import gradingTools.comp401f16.assignment11.testcases.interfaces.TestParser;
@@ -29,7 +30,7 @@ public class ParserCreatesApproachCommandObjectTestCase
 		if (aClass == null) {
 			assertTrue("Could not find command class", false);			
 		}
-		System.out.println ("Getting parser command object");
+		Tracer.info(this,"Getting parser command object");
 		Object anObject = parser.getCommandObject();
 		doStepAfterGettingCommandObject();
 		if (anObject == null) {

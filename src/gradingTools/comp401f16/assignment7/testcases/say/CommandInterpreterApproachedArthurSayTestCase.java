@@ -1,6 +1,7 @@
 package gradingTools.comp401f16.assignment7.testcases.say;
 
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import bus.uigen.visitors.CreateChildrenAdapterVisitor;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAngle;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
@@ -42,7 +43,7 @@ public class CommandInterpreterApproachedArthurSayTestCase extends BridgeSceneDy
 		return (TestCommandInterpreter) rootProxy;
 	}
 	protected void setCommand(String aCommand) {
-		System.out.println("Executing command:" + aCommand);
+		Tracer.info(this,"Executing command:" + aCommand);
 		commandInterpreter().setCommand(aCommand);
 	}
 	@Override

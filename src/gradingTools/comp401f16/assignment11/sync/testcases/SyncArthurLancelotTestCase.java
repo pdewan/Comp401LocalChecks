@@ -1,16 +1,17 @@
 package gradingTools.comp401f16.assignment11.sync.testcases;
 
+import util.trace.Tracer;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 
 public class SyncArthurLancelotTestCase extends SyncArthurAnimationTestCase{
 	protected void executeOperations(Object aProxy) {
 		recordPreviousThreads();
-		System.out.println ("Animating arthur");
+		Tracer.info(this,"Animating arthur");
 		commandInterpreter().asynchronousArthur();
 		recordCurrentThreads();
 		assertNewThreadCreated();
 		recordPreviousThreads();
-		System.out.println ("Animating lancelot");
+		Tracer.info(this,"Animating lancelot");
 		commandInterpreter().asynchronousLancelot();
 		recordCurrentThreads();
 		assertNewThreadCreated();

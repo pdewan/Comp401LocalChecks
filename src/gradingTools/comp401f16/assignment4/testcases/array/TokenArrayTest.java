@@ -1,10 +1,12 @@
 package gradingTools.comp401f16.assignment4.testcases.array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Assert;
 
+import util.trace.Tracer;
 import grader.basics.execution.GradingMode;
 import grader.basics.junit.NotesAndScore;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
@@ -13,7 +15,7 @@ import gradingTools.comp401f16.assignment2.testcases.ScannerBeanPropertyTest;
 import gradingTools.comp401f16.assignment3.testcases.InputBeanTest;
 import gradingTools.comp401f16.assignment3.testcases.WordBeanTest;
 
-public abstract class TokenArrayTest extends ScannerBeanOutputTest {
+public abstract class TokenArrayTest extends ScannerBeanPropertyTest {
 public static final String TOKENS = "Tokens";
 	protected Object[] tokenArrayOutput;
 	protected String[] tokensInput ;
@@ -60,7 +62,7 @@ public static final String TOKENS = "Tokens";
 	}
 	protected String correctSecondSizeMessage() {
 		return secondOutputCorrectSize?"":
-			"Tokens from different scanned strings combined";
+			"ScannBean setter adds to tokens found by previous calls to it";
 	}
 	protected double correctSizeCredit() {
 		return outputCorrectSize?
@@ -115,18 +117,33 @@ public static final String TOKENS = "Tokens";
 		return new String[]{TOKENS};
 	}
 	protected void extractTokens() {
-		tokenArrayOutput = (Object[])outputPropertyValues.get(TOKENS);
+		Object aTokens = outputPropertyValues.get(TOKENS);
+		if (aTokens == null) {
+			tokenArrayOutput = null;
+//			System.out.println("Null token array!");
+			Assert.assertTrue("Null token array returned by token array getter%0", false);			
+		} else {
+			tokenArrayOutput = (Object[]) aTokens; 
+			Tracer.info(this, "Getter returned token array:" + Arrays.toString(tokenArrayOutput));
+		}
+//		tokenArrayOutput = (Object[])outputPropertyValues.get(TOKENS);
 	}
 	protected int sizeOutputCollection() {
 		return tokenArrayOutput.length;
 	}
 	
 	protected void extractOutputCorrectSize() {
-		outputCorrectSize = tokensInput.length == sizeOutputCollection();
+		outputCorrectSize = (tokenArrayOutput != null) && tokensInput.length == sizeOutputCollection();
 	}
 	
 	protected void extractSecondOutputCorrectSize() {
-		secondOutputCorrectSize = tokensInput.length == sizeOutputCollection();
+		int aSecondOutputSize = sizeOutputCollection();
+//		secondOutputCorrectSize = tokensInput.length == sizeOutputCollection();
+		secondOutputCorrectSize = tokensInput.length ==aSecondOutputSize;
+
+		if (!secondOutputCorrectSize) {
+			Tracer.error("Second call to setScannedString resulted in a token array of size:" + aSecondOutputSize + " instead of:" + tokensInput.length);
+		}
 	}
 	
 	protected Map<String, Object> componentInputValues = new HashMap();

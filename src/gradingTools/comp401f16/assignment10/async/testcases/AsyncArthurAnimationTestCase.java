@@ -21,6 +21,7 @@ import java.util.Set;
 
 import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
+import util.trace.Tracer;
 // extending OneLevelList so we can inherit from it in subclasses
 public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase implements PropertyChangeListener {
 
@@ -65,7 +66,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	
 	protected void initData() {
 //		testing = true;
-		System.out.println("Iniializing thread data");
+		Tracer.info(this,"Iniializing thread data");
 		currentNotifyingThreads.clear();
 //		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
 		parentThread = Thread.currentThread();
@@ -87,7 +88,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 			return;
 		}
 //		testing = false;
-//		System.out.println ("Stopping thread:" + aThread);
+//		Tracer.info(this,"Stopping thread:" + aThread);
 //		aThread.interrupt();
 //		aThread.suspend();
 //		aThread.stop();
@@ -110,7 +111,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	}
 	protected void executeOperations(Object aProxy) throws Exception {
 		recordPreviousThreads();
-		System.out.println ("Animating arthur");
+		Tracer.info(this,"Animating arthur");
 		commandInterpreter().asynchronousArthur();
 		recordCurrentThreads();
 		assertNewThreadCreated();
@@ -121,9 +122,9 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected synchronized void waitForThreadsToStart( ){
 		try {
 			long aDelay = maxDelayToCreateChildThread();
-			System.out.println("Waiting for child threads to be created within time (ms):" + aDelay + " at time:" +  System.currentTimeMillis());
+			Tracer.info(this,"Waiting for child threads to be created within time (ms):" + aDelay + " at time:" +  System.currentTimeMillis());
 			wait(aDelay);
-			System.out.println("Finished waiting for child threads to be created/to notify within time (ms):" + aDelay + " at time " +  System.currentTimeMillis());
+			Tracer.info(this,"Finished waiting for child threads to be created/to notify within time (ms):" + aDelay + " at time " +  System.currentTimeMillis());
 
 //			stopThread(childThread);
 		} catch (InterruptedException e) {
@@ -135,7 +136,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		waitForThreadsToStart();
 //		try {
 //			long aDelay = maxDelayToCreateChildThread();
-//			System.out.println("Waiting for child threads to be created within time (ms):" + aDelay);
+//			Tracer.info(this,"Waiting for child threads to be created within time (ms):" + aDelay);
 //			wait(aDelay);
 ////			stopThread(childThread);
 //		} catch (InterruptedException e) {
@@ -214,9 +215,9 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected void maybeAddThread() {
 		Thread aChildThread = Thread.currentThread();
 		if (!currentNotifyingThreads.contains(aChildThread)) {			
-			System.out.println("New notifying child thread:" + aChildThread);
+			Tracer.info(this,"New notifying child thread:" + aChildThread);
 			if (previousThreads.contains(aChildThread)) {
-				System.out.println("Is previously created thread");
+				Tracer.info(this,"Is previously created thread");
 			}
 			currentNotifyingThreads.add(aChildThread);
 			threadToSleeps.put(aChildThread, 1);
@@ -227,7 +228,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		Long aLastEventTime = lastEventTimes.get(aChildThread) ;
 		long aCurrentEventTime = System.currentTimeMillis();
 		if (aLastEventTime != 0) {
-//			System.out.println ("current event time " + aChildThread + " " + aCurrentEventTime);
+//			Tracer.info(this,"current event time " + aChildThread + " " + aCurrentEventTime);
 
 			boolean aFoundDelay = aCurrentEventTime - aLastEventTime > minEventDelay();
 			if (aFoundDelay) {
@@ -237,29 +238,29 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 				}
 				aNumSleeps++;
 				threadToSleeps.put(aChildThread, aNumSleeps );
-//				System.out.println ("num sleeps by thread: " + aChildThread + "  " + aNumSleeps);
+//				Tracer.info(this,"num sleeps by thread: " + aChildThread + "  " + aNumSleeps);
 
 				foundDelay = true;
 				delayFound();
 			}
 			 
 		}
-//		System.out.println ("Storing acurrentEventTime for " + aChildThread);
+//		Tracer.info(this,"Storing acurrentEventTime for " + aChildThread);
 		lastEventTimes.put(aChildThread, aCurrentEventTime);
 
 	}
 	public static void waitForAnimation() {
-		System.out.println ("Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+		Tracer.info(AsyncArthurAnimationTestCase.class,"Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
 		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-		System.out.println ("Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+		Tracer.info(AsyncArthurAnimationTestCase.class,"Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
 
 	}
 	protected synchronized void waitForThreadsToExecute( ){
 		try {
 			long aDelay = maxTimeForAnimatingThread();
-			System.out.println("Waiting for child thread to finish amimation in(ms):" + aDelay);
+			Tracer.info(this,"Waiting for child thread to finish amimation in(ms):" + aDelay);
 			wait(aDelay);
-			System.out.println("Finished waiting for child thread to finish amimation in(ms):" + aDelay);
+			Tracer.info(this,"Finished waiting for child thread to finish amimation in(ms):" + aDelay);
 
 //			stopThread(childThread);
 		} catch (InterruptedException e) {
@@ -272,7 +273,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		if (!testing)
 			return;
 		if (isPreviousThread()) {
-			System.out.println ("Previous thread nofified, returning at time:" +System.currentTimeMillis());
+			Tracer.info(this,"Previous thread nofified, returning at time:" +System.currentTimeMillis());
 			return;
 		}
 
@@ -286,7 +287,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 //			threadCreated = true;
 //			childThread = aChildThread;
 //			currentThreads.add(aChildThread);
-//			System.out.println ("child 1:" + childThread);
+//			Tracer.info(this,"child 1:" + childThread);
 //		}
 ////		threadCreated = childThread != parentThread;
 //		if (foundDelay) {
@@ -295,7 +296,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 //		if (lastEventTime != 0) {
 //		foundDelay = System.currentTimeMillis() - lastEventTime > MIN_EVENT_DELAY;
 //		if (foundDelay) {
-//			System.out.println ("Found delay between events");
+//			Tracer.info(this,"Found delay between events");
 ////			notify();
 //			delayFound();
 //			return;

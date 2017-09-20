@@ -3,6 +3,7 @@ package gradingTools.comp401f16.assignment6.testcases;
 import org.junit.Assert;
 
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import grader.basics.junit.NotesAndScore;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
@@ -26,7 +27,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		return "Avatar(" +  aTestAvatar.getHead().getImageFileName() + ")";
 	}
 	protected void printFractionComplete() {
-		System.out.println ("Fraction complete:" + fractionComplete);
+		Tracer.info(this,"Fraction complete:" + fractionComplete);
 	}
 
 	protected String initialSceneUnoccupiedrMessage() {
@@ -77,7 +78,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 	}
 	protected void assertTrue(String aMessage, boolean aCheck) {
 //		if (!aCheck)
-//		 System.out.println (aMessage);
+//		 Tracer.info(this,aMessage);
 		Assert.assertTrue(aMessage + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, aCheck);
 
 //		Assert.assertTrue(aMessage + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, aCheck);
@@ -111,7 +112,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		bridgeScene().say(aSaying);
 	}
 	protected void say (TestAvatar anAvatar, String aSaying, double aCredit) {
-		System.out.println("Say:\"" + aSaying + "\"");
+		Tracer.info(this,"Say:\"" + aSaying + "\"");
 		say(aSaying);
 		String aText = anAvatar.getStringShape().getText();
 		assertTrue(toString(anAvatar) + " said  \"" + aText + "\" instead of \"" + aSaying + "\"",
@@ -129,7 +130,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		bridgeScene().approach(anAvatar);
 	}
 	protected void approach (TestAvatar anAvatar) {
-		System.out.println(toString(anAvatar) + " Approaches");
+		Tracer.info(this,toString(anAvatar) + " Approaches");
 		doApproach(anAvatar);
 //		bridgeScene().approach(anAvatar);
 		assertTrue(correctApproachErrorMessage(), 
@@ -140,7 +141,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 	}
 	
 //	protected void wrongApproach (TestAvatar anAvatar) {
-//		System.out.println("Illegal Knight Approach");
+//		Tracer.info(this,"Illegal Knight Approach");
 //		bridgeScene().approach(anAvatar);
 //		assertTrue(correctApproachErrorMessage(), 
 //				bridgeScene().getOccupied() &&
@@ -152,7 +153,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		bridgeScene().passed();
 	}
 	protected void passed() {
-		System.out.println("Interacting Knight Passed");
+		Tracer.info(this,"Interacting Knight Passed");
 		doPassed();
 //		bridgeScene().passed();
 		assertTrue(passedErrorMessage(), 
@@ -172,7 +173,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		printFractionComplete();
 	}
 	protected void failed() {
-		System.out.println("Interacting Knight Failed");
+		Tracer.info(this,"Interacting Knight Failed");
 		doPassOrFailed();
 		checkFailed();
 //		bridgeScene().failed();
@@ -197,7 +198,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		say (secondAvatar(), fourthSay);
 		failed();
 		approach(thirdAvatar());
-		System.out.println("The next approach should fail");
+		Tracer.info(this,"The next approach should fail");
 		approach(fourthAvatar());
 		say (guard(), firstSay);
 		say (thirdAvatar(), secondSay, lastSayCredit());

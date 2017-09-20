@@ -6,6 +6,8 @@ import gradingTools.shared.testcases.ProxyTest;
 
 import java.lang.reflect.Method;
 
+import util.trace.Tracer;
+
 public abstract class FactoryMethodsTestCase extends ProxyTest{
 	protected String[] factoryClassTags = new String[] {"SingletonsCreator"};
 	protected String[] factoryMethodTags = new String[] {};
@@ -37,7 +39,7 @@ public abstract class FactoryMethodsTestCase extends ProxyTest{
 		foundFactoryClass = factoryClass != null;
 
 		if (!foundFactoryClass) {
-			System.out.println("Factory class:" + factoryClassTag + " not found.");			
+			Tracer.info(this,"Factory class:" + factoryClassTag + " not found.");			
 			return BasicProjectIntrospection.createInstance(instantiatedTypeClass);
 		}
 		Method factoryMethod =	BasicProjectIntrospection.findUniqueMethodByTag(

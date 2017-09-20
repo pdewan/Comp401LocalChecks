@@ -13,13 +13,14 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import util.models.PropertyListenerRegisterer;
+import util.trace.Tracer;
 
 public class SyncGalahadAnimationTestCase extends SyncArthurAnimationTestCase {
 	
 	protected void executeOperations(Object aProxy) {
-		System.out.println ("Animating Galahad");
+		Tracer.info(this,"Animating Galahad");
 		commandInterpreter().asynchronousGalahad();
-		System.out.println ("Animating Galahad");
+		Tracer.info(this,"Animating Galahad");
 		commandInterpreter().asynchronousGalahad();
 	}
 	protected TestAvatar avatar() {

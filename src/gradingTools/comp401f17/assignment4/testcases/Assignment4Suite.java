@@ -14,6 +14,8 @@ import gradingTools.shared.testcases.shapes.rotate.moving.MovingRotatingLineFort
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import trace.gradingTools.comp401.Comp401TraceUtility;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	CommandSuite.class,
@@ -28,7 +30,8 @@ public class Assignment4Suite {
 	public static void main (String[] args) {
 		try {
 
-
+//		Comp401TraceUtility.setTracing();
+		
 		BasicJUnitUtils.interactiveTest(Assignment4Suite.class);
 
 

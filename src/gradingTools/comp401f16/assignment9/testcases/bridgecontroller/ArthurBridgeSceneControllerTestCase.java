@@ -18,6 +18,7 @@ import java.awt.event.MouseListener;
 
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
+import util.trace.Tracer;
 @MaxValue(10)
 public class ArthurBridgeSceneControllerTestCase 
 	extends ConsoleSceneViewOutputTestCase 
@@ -47,7 +48,7 @@ public class ArthurBridgeSceneControllerTestCase
 	protected Component component;
 	protected void createController() {
 		try {
-		System.out.println("Trying to get bridge scene controller");
+		Tracer.info(this,"Trying to get bridge scene controller");
 		bridgeSceneController = (TestBridgeSceneController) getOrCreateObject(
 				factoryClassTags(), 
 				BridgeSceneControllerFactoryMethodTest.FACTORY_METHOD_TAGS, 
@@ -62,7 +63,7 @@ public class ArthurBridgeSceneControllerTestCase
 	}
 	protected void createView() {
 		try {
-			System.out.println("Trying to get inheriting painter");
+			Tracer.info(this,"Trying to get inheriting painter");
 			inheritingBridgeScenePainter =  getOrCreateObject(
 					factoryClassTags(), 
 					InheritingBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
@@ -70,17 +71,17 @@ public class ArthurBridgeSceneControllerTestCase
 			Object realObject = BasicProjectIntrospection.getRealObject(inheritingBridgeScenePainter);
 			component = (Component) realObject;
 			if (realObject == null) {
-				System.out.println("Null inheriting painter");
+				Tracer.info(this,"Null inheriting painter");
 			} else {
 			return;
 			}
 			
 			} catch (Error e) {
-				System.out.println("Could not find inheriting painter");
+				Tracer.info(this,"Could not find inheriting painter");
 
 			}
 		try  {
-			System.out.println("Trying to get observable painter");
+			Tracer.info(this,"Trying to get observable painter");
 
 		observableBridgeScenePainter = (TestObservableBridgeScenePainter) getOrCreateObject(
 				factoryClassTags(), 
@@ -90,7 +91,7 @@ public class ArthurBridgeSceneControllerTestCase
 		Object realObject = BasicProjectIntrospection.getRealObject(observableBridgeScenePainter);
 		component = (Component) realObject; // code duplication yuk
 		if (realObject == null) {
-			System.out.println("Null observable painter");
+			Tracer.info(this,"Null observable painter");
 			assertTrue("Could not find non null inheriting or observable painter", false);
 
 		}
@@ -99,7 +100,7 @@ public class ArthurBridgeSceneControllerTestCase
 		
 		} catch (Error e) {
 			fractionComplete = 0;
-			System.out.println ("Could not find observable painter");
+			Tracer.info(this,"Could not find observable painter");
 			assertTrue("Could not find inheriting or observable painter", false);
 		}
 		return;
@@ -115,7 +116,7 @@ public class ArthurBridgeSceneControllerTestCase
 		createController();
 		return bridgeScene;
 //		try {
-//			System.out.println("Trying to get inheriting painter");
+//			Tracer.info(this,"Trying to get inheriting painter");
 //			inheritingBridgeScenePainter =  getOrCreateObject(
 //					factoryClassTags(), 
 //					InheritingBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
@@ -125,11 +126,11 @@ public class ArthurBridgeSceneControllerTestCase
 //			return bridgeScene;
 //			
 //			} catch (Error e) {
-//				System.out.println("Could not find inheriting painter");
+//				Tracer.info(this,"Could not find inheriting painter");
 //
 //			}
 //		try  {
-//			System.out.println("Trying to get observable painter");
+//			Tracer.info(this,"Trying to get observable painter");
 //
 //		observableBridgeScenePainter = (TestObservableBridgeScenePainter) getOrCreateObject(
 //				factoryClassTags(), 
@@ -141,7 +142,7 @@ public class ArthurBridgeSceneControllerTestCase
 //		
 //		
 //		} catch (Exception e) {
-//			System.out.println ("Could not find observable painter");
+//			Tracer.info(this,"Could not find observable painter");
 //			assertTrue("Could not find inheriting or observable painter", false);
 //		}
 //		return null;
@@ -164,7 +165,7 @@ public class ArthurBridgeSceneControllerTestCase
 //		aThread.start();
 //		ThreadSupport.sleep(4000);
 		run();
-		System.out.println ("Finished submiting events");
+		Tracer.info(this,"Finished submiting events");
 		assertTrue (
 				"C is not the same after first and second key type event ", 
 				afterKeyType == afterSecondKeyType);
@@ -176,7 +177,7 @@ public class ArthurBridgeSceneControllerTestCase
 		
 	}
 	public static MouseEvent buildMouseEvent(int x, int y, int type, Component origin) {
-		System.out.println ("Building mouse event with component:" + origin);
+		Tracer.info(ArthurBridgeSceneControllerTestCase.class,"Building mouse event with component:" + origin);
         return new MouseEvent(origin, type, System.currentTimeMillis(), 0, x, y, type == MouseEvent.MOUSE_CLICKED ? 1:0, false);
     }
 	public static MouseEvent buildMousePressedEvent(int x, int y,  Component origin) {
@@ -264,31 +265,31 @@ public class ArthurBridgeSceneControllerTestCase
 	@Override
 	public void run() {
 		beforeClickX = getX();
-		System.out.println ("Before Mouse Click, x = " + beforeClickX);
+		Tracer.info(this,"Before Mouse Click, x = " + beforeClickX);
 		callMouseClickedListeners(MOUSE_X, MOUSE_Y);
 
 		beforeKeyType=  getX();
-		System.out.println ("Before Key Type, x = " + beforeKeyType);
+		Tracer.info(this,"Before Key Type, x = " + beforeKeyType);
 //		dispatchKeyClicked();
 		callKeyClickedListeners();
 		afterKeyType = getX();
-		System.out.println ("After Key Type, x = " + afterKeyType);
+		Tracer.info(this,"After Key Type, x = " + afterKeyType);
 		move();
 		afterMove = getX();
-		System.out.println ("After Move , x = " + afterMove);
+		Tracer.info(this,"After Move , x = " + afterMove);
 		testSuccessful = afterMove != afterKeyType;
 		if (!testSuccessful) {
-			System.out.println ("MOVE DID NOT WORK, no change after move");
+			Tracer.info(this,"MOVE DID NOT WORK, no change after move");
 		}
 //		dispatchKeyClicked();
 		callKeyClickedListeners();
 		afterSecondKeyType = getX();
-		System.out.println ("After Second Key Type, x = " + afterSecondKeyType);
+		Tracer.info(this,"After Second Key Type, x = " + afterSecondKeyType);
 		testSuccessful = testSuccessful && ( afterSecondKeyType == afterKeyType);
 		if (testSuccessful) {
-			System.out.println ("TEST SUCCESSFUL, x is the same after first and second key type event");
+			Tracer.info(this,"TEST SUCCESSFUL, x is the same after first and second key type event");
 		} else {
-			System.out.println ("TEST FAILeD, x is not the same after first and second key type event");
+			Tracer.info(this,"TEST FAILeD, x is not the same after first and second key type event");
 		}
 
 		

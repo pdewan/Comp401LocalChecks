@@ -17,13 +17,14 @@ import java.beans.PropertyChangeListener;
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
+import util.trace.Tracer;
 @MaxValue(20)
 public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCase {
 	public static final int NUM_CHILD_THREADS = 4; // including parent thread
 	public static final double PROCEED_CREDIT = 0.5;
 	BroadcastingClearanceManager broadcastingClearanceManager;
 	public WaitingAvatarsAnimationTestCase() {
-		System.out.println ("Wating Avatarts case created:" + this);
+		Tracer.info(this,"Wating Avatarts case created:" + this);
 	}
 	protected void createClearanceManager() {
 		broadcastingClearanceManager = (BroadcastingClearanceManager) getOrCreateObject(
@@ -49,25 +50,25 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 		addPropertyChangeListener(bridgeScene.getRobin(), this);
 	}
 	protected void doProceedAll() throws Exception {
-		System.out.println ("Executing proceedAll on broadcasting clearance manager at time:" + System.currentTimeMillis());
+		Tracer.info(this,"Executing proceedAll on broadcasting clearance manager at time:" + System.currentTimeMillis());
 		broadcastingClearanceManager.proceedAll();
 	}
 	protected synchronized void executeOperations(Object aProxy) throws Exception {
 			fractionComplete = 0;
-			System.out.println ("Animating waiting Arthur at time:" + System.currentTimeMillis());
+			Tracer.info(this,"Animating waiting Arthur at time:" + System.currentTimeMillis());
 			commandInterpreter().waitingArthur();
-			System.out.println ("Animating waiting Lancelot"+ System.currentTimeMillis());
+			Tracer.info(this,"Animating waiting Lancelot"+ System.currentTimeMillis());
 			commandInterpreter().waitingLancelot();
-			System.out.println ("Animating waiting Galahad"+ System.currentTimeMillis());
+			Tracer.info(this,"Animating waiting Galahad"+ System.currentTimeMillis());
 			commandInterpreter().waitingGalahad();
-			System.out.println ("Animating waiting Robin"+ System.currentTimeMillis());
+			Tracer.info(this,"Animating waiting Robin"+ System.currentTimeMillis());
 			commandInterpreter().waitingRobin();
 			waitForThreadsToStart();
 			if (currentNotifyingThreads.size() > 1) {				
 				assertTrue("At least one thread created before proceedAll", false);				
 			}
 			doProceedAll();
-//			System.out.println ("Executing proceedAll on broadcasting clearance manager");
+//			Tracer.info(this,"Executing proceedAll on broadcasting clearance manager");
 //			broadcastingClearanceManager.proceedAll();
 			
 //			waitForThreads();
@@ -84,7 +85,7 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 	}
 	protected synchronized boolean checkOutput(Object aProxy) {
 		int aNumThreads = currentNotifyingThreads.size() - 1;
-		System.out.println ("Number of notifying threads after proceedAll " + 
+		Tracer.info(this,"Number of notifying threads after proceedAll " + 
 		aNumThreads);
 		if (aNumThreads == 1 ) {
 			assertTrue("No thread notified after proceedAll", false);	
@@ -100,18 +101,18 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
 		if (!testing) {
-//			System.out.println ("Not testing:" + this);
+//			Tracer.info(this,"Not testing:" + this);
 			return;
 		}
 		if (isPreviousThread()) {
-			System.out.println("Previous thread, ignoring notification:"+ Thread.currentThread());
+			Tracer.info(this,"Previous thread, ignoring notification:"+ Thread.currentThread());
 			return;
 		}
 //		super.propertyChange(evt);
 		maybeAddThread();
 		
 		Thread aChildThread = Thread.currentThread();
-//		System.out.println ("Got event from:" + aChildThread);
+//		Tracer.info(this,"Got event from:" + aChildThread);
 		if (currentNotifyingThreads.size() == NUM_CHILD_THREADS) {
 			notify();
 		}
@@ -122,9 +123,9 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 //		currentThreads.add(aChildThread);		
 	}
 //	public static void waitForAnimation() {
-//		System.out.println ("Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//		Tracer.info(this,"Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
 //		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-//		System.out.println ("Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//		Tracer.info(this,"Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
 //
 //	}
 	protected boolean doTest() throws Throwable {

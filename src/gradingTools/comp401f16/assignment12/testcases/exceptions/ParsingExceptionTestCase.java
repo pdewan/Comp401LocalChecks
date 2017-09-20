@@ -8,6 +8,7 @@ import java.util.Set;
 
 import util.annotations.IsExtra;
 import util.annotations.MaxValue;
+import util.trace.Tracer;
 import grader.basics.project.BasicProjectIntrospection;
 import gradingTools.comp401f16.assignment1.testcases.InvalidCharacterOutputTest;
 import gradingTools.comp401f16.assignment11.parser.testcases.ParserFactoryMethodTest;
@@ -34,12 +35,12 @@ public class ParsingExceptionTestCase extends ScanningExceptionTestCase {
 		int aNumMethodsWithThrows = 0;
 		for (Method aMethod:aMethods) {
 			if (aMethod.getName().startsWith("parse")) {
-				System.out.println("Checking throws clause of " + aMethod);
+				Tracer.info(this,"Checking throws clause of " + aMethod);
 			    List<Class> aClasses = Arrays.asList(aMethod.getExceptionTypes());
 			    if (aClasses.contains(exceptionClass)) {
 			    	aNumMethodsWithThrows++;
 			    } else {
-			    	System.out.println (aMethod + " does not throw " + exceptionClass);
+			    	Tracer.info(this,aMethod + " does not throw " + exceptionClass);
 			    }
 			}			
 		}
