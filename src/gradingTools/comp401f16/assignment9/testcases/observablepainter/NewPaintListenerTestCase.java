@@ -117,12 +117,20 @@ public class NewPaintListenerTestCase
 		try {
 		Tracer.info(this,"Adding paint listener to observable bridge scene painter ");
 		Class aRealInterface = BasicProjectIntrospection.findInterface(TestPaintListener.class);
+		if (aRealInterface == null) {
+			Assert.assertTrue("Did not find unique interface matching " + 
+					Arrays.toString(BasicProjectIntrospection.getTags(TestPaintListener.class) ) + ". See console.", false);
+		}
 
 		Object aReverseProxy = BasicProjectIntrospection.createReverseProxy(TestPaintListener.class, aRealInterface, this);
 		TestPaintListener aForwardProxy = (TestPaintListener)
 				BasicProjectIntrospection.createProxy(TestPaintListener.class, aReverseProxy);
 		observableBridgeScenePainter.addPaintListener(aForwardProxy);
-		} catch (Error e) {
+		} 
+		catch (AssertionError e) {
+			throw e;
+		}
+		catch (Error e) {
 			assertTrue("Could not register paint listener", false);
 		}
 		fractionComplete += LISTENER_CREDIT;

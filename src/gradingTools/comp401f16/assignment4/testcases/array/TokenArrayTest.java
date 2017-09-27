@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.junit.Assert;
 
+import bus.uigen.visitors.HasUncreatedChildrenVisitor;
 import util.trace.Tracer;
+import grader.basics.execution.BasicProjectExecution;
 import grader.basics.execution.GradingMode;
 import grader.basics.junit.NotesAndScore;
 import gradingTools.comp401f16.assignment2.testcases.MultipleWordOutputTest;
@@ -80,6 +82,7 @@ public static final String TOKENS = "Tokens";
 			return correctComponents?"":
 				"Incorrect bean in array:" + componentsMessage;
 	}
+	
 	@Override
 	public String completeMessage() {
 		String aMessage = correctSizeMessage() +
@@ -205,6 +208,11 @@ public static final String TOKENS = "Tokens";
 		try {
 		executeBean();
 		} catch (Throwable e) {
+			Boolean aMissingOutputProperty = (Boolean) outputPropertyValues.get(BasicProjectExecution.MISSING_PROPERTY);
+			if (aMissingOutputProperty != null && aMissingOutputProperty) {
+				throw e;
+			}
+			
 			failedWithSpace = true;
 //			executeBean();
 		}
