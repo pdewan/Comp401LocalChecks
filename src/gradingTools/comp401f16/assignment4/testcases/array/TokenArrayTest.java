@@ -135,8 +135,13 @@ public static final String TOKENS = "Tokens";
 		return tokenArrayOutput.length;
 	}
 	
+//	protected boolean isNonNullList () {
+//		return tokenArrayOutput != null;
+//	}
+	
 	protected void extractOutputCorrectSize() {
-		outputCorrectSize = (tokenArrayOutput != null) && tokensInput.length == sizeOutputCollection();
+		Tracer.info(this, "Determning if token output is correct size");
+		outputCorrectSize = !isNullCollectionOutput() && tokensInput.length == sizeOutputCollection();
 	}
 	
 	protected void extractSecondOutputCorrectSize() {
@@ -199,6 +204,7 @@ public static final String TOKENS = "Tokens";
 //	
 //}
 	protected boolean isNullCollectionOutput() {
+		Tracer.info(this, "Checking if token array is null");
 		return tokenArrayOutput == null;
 	}
 	protected boolean doTest() throws Throwable {
@@ -231,6 +237,7 @@ public static final String TOKENS = "Tokens";
 		extractComponentBeanStatus();
 
 		// see the size does not change a second time
+		Tracer.info(this, "Repeating the process");
 		executeBean(lastTargetObject);
 		extractTokens();
 		extractSecondOutputCorrectSize();

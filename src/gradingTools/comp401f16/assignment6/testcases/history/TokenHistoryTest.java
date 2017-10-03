@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.junit.Assert;
 
+import util.trace.Tracer;
 import grader.basics.execution.GradingMode;
 import grader.basics.junit.NotesAndScore;
 import grader.basics.project.BasicProjectIntrospection;
@@ -24,14 +25,20 @@ public static final String LIST = "TokenList";
 	protected String[] getOutputPropertyNames() {
 		return new String[]{LIST};
 	}
+	protected boolean isNullCollectionOutput() {
+		Tracer.info(this, "Checking if token collection is null");
+		return tokenListOutput == null;
+	}
 	@Override
 	protected Object outputTokenAt(int anIndex) {
 		return tokenListOutput.elementAt(anIndex);
 	}
 	@Override
 	protected void extractTokens() {
+		Tracer.info(this, "Extracting tokens from returned value");
 		Object anActualList = outputPropertyValues.get(LIST);
 		if (actualTokenListOutput != null) {
+			Tracer.info(this, "Checking if the history object has changed");
 			if (anActualList != tokenListOutput) {
 				assertTrue("Multiple clearable histories created by scanner", false);
 			} else {
@@ -47,10 +54,7 @@ public static final String LIST = "TokenList";
 	protected int sizeOutputCollection() {
 		return tokenListOutput.size();
 	}
-	@Override
-	protected boolean isNullCollectionOutput() {
-		return tokenListOutput == null;
-	}
+	
 	protected double correctSizeCredit() {
 		return outputCorrectSize?
 		 0.2:0.0;
