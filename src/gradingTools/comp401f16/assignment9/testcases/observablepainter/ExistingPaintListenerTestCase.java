@@ -128,7 +128,9 @@ public class ExistingPaintListenerTestCase
 			assertTrue("Could not find listeners", false);
 		}
 		int aNumListeners = aListeners.size();
-		fractionComplete = Math.max(1.0, ((double) aNumListeners)/MIN_PAINT_LISTENERS );
+//		fractionComplete = Math.max(1.0, ((double) aNumListeners)/MIN_PAINT_LISTENERS );
+		fractionComplete = (double) (aNumListeners)/MIN_PAINT_LISTENERS ;
+
 		if (fractionComplete < 1.0) {
 			String aMessage = "Num paint listeners: " + aNumListeners + " < min paint listeners:" + MIN_PAINT_LISTENERS;
 			assertTrue(aMessage, false);
