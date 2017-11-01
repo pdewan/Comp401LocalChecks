@@ -115,7 +115,7 @@ public class NewPaintListenerTestCase
 		
 	protected void registerPaintListener() {
 		try {
-		Tracer.info(this,"Adding paint listener to observable bridge scene painter ");
+		Tracer.info(this,"Adding paint listener to observable bridge scene painter");
 		Class aRealInterface = BasicProjectIntrospection.findInterface(TestPaintListener.class);
 		if (aRealInterface == null) {
 			Assert.assertTrue("Did not find unique interface matching " + 
@@ -154,10 +154,12 @@ public class NewPaintListenerTestCase
 	protected static String[] emptyStringargs = new String[]{};
 
 	protected void executeMethods() throws Throwable {
+		Tracer.info(this, "Calling main to allow UI to be created");
 		ResultingOutErr anError = BasicProjectExecution.invokeMainOnceAsynchronously(
 				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, "");
-		
+		Tracer.info(this, "Waiting for predefined animation to finish");
 		ThreadSupport.sleep(ESTMATE_TIME_FOR_ANIMATION);
+		Tracer.info(this, "Finished waiting for predefined animation to finish");
 		run();
 		if (anError != null && anError.getFuture() != null) {
 			
@@ -183,7 +185,9 @@ public class NewPaintListenerTestCase
 //	}
 	protected boolean doTest() throws Throwable {
 		assertTrue("Cannot grade test in headless mode:", !GradingManagerFactory.isHeadless());
-	
+		String aThreadName = Thread.currentThread().toString();
+		assertTrue("Cannot do test interactively when the executing thread is AWT-EventQueue", !aThreadName.contains("AWT-EventQueue"));
+		
 		initState();		
 		rootProxy = create();
 
@@ -230,6 +234,9 @@ public class NewPaintListenerTestCase
 	}
 	@Override
 	public void run() {
+		Tracer.info(this, "Invoking methods in model to ensure paint() method is triggered ");
+		Tracer.info(this, "This should be followed by a message saying: Received Paint Event");
+
 		approach(firstAvatar());
 //		ThreadSupport.sleep(2000);
 //		if ((numEventsFiredByFailed == 0  ) {

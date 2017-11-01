@@ -13,8 +13,8 @@ import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	ExistingPaintListenerTestCase.class
-//	NewPaintListenerTestCase.class,	
+	ExistingPaintListenerTestCase.class,
+	NewPaintListenerTestCase.class	
 })
 @MaxValue(30)
 @IsExtra(true)
