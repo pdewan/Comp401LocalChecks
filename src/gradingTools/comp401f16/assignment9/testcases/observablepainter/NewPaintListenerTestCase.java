@@ -184,7 +184,7 @@ public class NewPaintListenerTestCase
 //		
 //	}
 	protected boolean doTest() throws Throwable {
-		assertTrue("Cannot grade test in headless mode:", !GradingManagerFactory.isHeadless());
+		assertTrue("Cannot grade test in headless mode", !GradingManagerFactory.isHeadless());
 		String aThreadName = Thread.currentThread().toString();
 		assertTrue("Cannot do test interactively when the executing thread is AWT-EventQueue", !aThreadName.contains("AWT-EventQueue"));
 		

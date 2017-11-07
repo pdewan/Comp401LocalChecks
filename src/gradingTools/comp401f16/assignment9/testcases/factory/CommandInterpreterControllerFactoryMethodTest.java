@@ -1,6 +1,7 @@
 package gradingTools.comp401f16.assignment9.testcases.factory;
 
 import bus.uigen.test.TestTransient;
+import grader.driver.GradingManagerFactory;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment9.testcases.interfaces.TestBridgeSceneController;
@@ -29,10 +30,9 @@ public class CommandInterpreterControllerFactoryMethodTest extends  FactoryMetho
 		return (TestBridgeSceneController) rootProxy;
 	}
 	
-	
 	protected boolean doTest() throws Throwable {
-		 return doFactoryMethodTest();
-		
+		assertTrue("Cannot grade test in headless mode", !GradingManagerFactory.isHeadless());
+		return doFactoryMethodTest();
 	}
 	
 }
