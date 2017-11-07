@@ -50,6 +50,7 @@ public class AssertingBridgeSceneDynamicTestCase
 	}
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		if (currentEvents != null)
 		currentEvents.add(evt);
 	}
 	protected boolean preApproachBeforeApproach;
