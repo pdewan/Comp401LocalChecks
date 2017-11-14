@@ -105,7 +105,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	protected void child1AfterChild2() {
 		if (child1AfterChild2) return;
 		child1AfterChild2 = true;
-		System.out.println (" child 1 notified after child 2 notified");
+		Tracer.info (this, "Child 1 notified after child 2 notified");
 		notify();
 	}
 	
@@ -122,7 +122,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 			thread2Created = true;
 			child2Thread = aChildThread;
 			child2StartTime = System.currentTimeMillis();
-			System.out.println ("child 2:" + child2Thread);
+			Tracer.info (this, "child 2:" + child2Thread);
 
 		}
 		
