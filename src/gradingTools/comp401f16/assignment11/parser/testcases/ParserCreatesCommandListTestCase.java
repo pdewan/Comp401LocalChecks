@@ -15,7 +15,7 @@ public class ParserCreatesCommandListTestCase
 		return CommandListCommandObjectTestCase.findCommandListClass();
 	}
 	protected void setCommand() {
-		setCommand("{ approach Arthur fail } ");
+		setCommand("{ approach Arthur failed } ");
 
 	}
 
