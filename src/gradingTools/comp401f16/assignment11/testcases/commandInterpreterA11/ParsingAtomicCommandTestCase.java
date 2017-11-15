@@ -81,11 +81,11 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 	
 	@Override
 	protected void doPassed() {
-		setCommand("pass" + " ");
+		setCommand("passed" + " ");
 	}
 	@Override
 	protected void doPassOrFailed() {
-		setCommand("fail" + " ");
+		setCommand("failed" + " ");
 	}
 
 

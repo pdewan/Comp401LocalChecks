@@ -69,7 +69,7 @@ public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproac
 	}
 	@Override
 	protected void doPassOrFailed() {
-		setCommand("fail" + " ");
+		setCommand("failed" + " ");
 	}
 
 
@@ -77,7 +77,7 @@ public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproac
 	protected void executeOperations(Object aLocatable) {
 		String aCommand = "{" + " " +
 				"approach " + firstAvatarName() + " " +
-				"pass" + " " +
+				"passed" + " " +
 				"approach " + secondAvatarName() + " " +
 				"failed" + " " +
 				"}" + " ";

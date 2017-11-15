@@ -22,7 +22,7 @@ public class ParserCreatesSayCommandObjectTestCase
 
 	}
 	protected void doStepAfterGettingCommandObject() {
-		setCommand ("pass ");
+		setCommand ("passed ");
 	}
 	
 	

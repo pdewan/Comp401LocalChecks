@@ -15,7 +15,7 @@ public class ParserCreatesFailCommandObjectTestCase
 	}
 	protected void setCommand() {
 		setCommand("approach Arthur ");
-		setCommand("fail ");
+		setCommand("failed ");
 
 	}
 	
