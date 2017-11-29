@@ -42,7 +42,7 @@ import gradingTools.shared.testcases.shapes.LocatableTest;
 public class NewPaintListenerTestCase 
 	extends ConsoleSceneViewOutputTestCase 
 	implements TestPaintListener, Runnable{
-	public static final int ESTMATE_TIME_FOR_ANIMATION = 4000;
+	public static final int ESTMATE_TIME_FOR_ANIMATION = 8000;
 	public static final int MIN_APPROACH_EVENTS = 1;
 	public static final int MIN_FAILED_EVENTS = 1;
 	public static final double LISTENER_CREDIT =0.3;

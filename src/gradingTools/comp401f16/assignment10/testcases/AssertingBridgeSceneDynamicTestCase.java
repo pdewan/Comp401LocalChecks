@@ -127,7 +127,7 @@ public class AssertingBridgeSceneDynamicTestCase
 		Tracer.info(this,"preSay After Approach:" + preSayAfterApproach );
 		Tracer.info(this,"preFailed After Approach:" + preFailedAfterApproach );
 		Tracer.info(this,"prePassed After Approach:" + prePassedAfterApproach );
-		System.out.println ("Events after appproach:\n" + toString(currentEvents));
+		Tracer.info (this, "Events after appproach:\n" + toString(currentEvents));
 		
 		currentEvents = eventsAfterSay1;
 		currentEvents.clear();
@@ -218,7 +218,7 @@ public class AssertingBridgeSceneDynamicTestCase
 	}
     protected final static int NUM_APPROACH_EVENTS = 4;
     protected void checkEventsAfterApproach() {
-    	System.out.println ("Checking events after approach");
+    	Tracer.info (this, "Checking events after approach");
     	if (find(eventsAfterApproach, "this", "approach", false)) {
     		numCorrectPreconditions++;
     	}
@@ -235,7 +235,7 @@ public class AssertingBridgeSceneDynamicTestCase
     protected final static int NUM_SAY1_EVENTS = 2;
 
     protected void checkEventsAfterSay1() {
-    	System.out.println ("Checking events after Guard Say");
+    	Tracer.info  (this, "Checking events after Guard Say");
     	
     	if (find(eventsAfterApproach, "this", "passed", false)) {
     		numCorrectPreconditions++;
@@ -247,7 +247,7 @@ public class AssertingBridgeSceneDynamicTestCase
     protected final static int NUM_SAY2_EVENTS = 2;
 
     protected void checkEventsAfterSay2() {
-    	System.out.println ("Checking events after Avatar Say");
+    	Tracer.info (this, "Checking events after Avatar Say");
     	
     	if (find(eventsAfterApproach, "this", "passed", true)) {
     		numCorrectPreconditions++;
@@ -259,7 +259,7 @@ public class AssertingBridgeSceneDynamicTestCase
     protected final static int NUM_PASSED_EVENTS = 4;
 
     protected void checkEventsAfterFailed() {
-    	System.out.println ("Checking events after failed");
+    	Tracer.info (this, "Checking events after failed");
     	if (find(eventsAfterFailed, "this", "approach", true)) {
     		numCorrectPreconditions++;
     	}
@@ -276,7 +276,7 @@ public class AssertingBridgeSceneDynamicTestCase
     protected final static int NUM_FAILED_EVENTS = 4;
 
     protected void checkEventsAfterPassed() {
-    	System.out.println ("Checking events after passed");
+    	Tracer.info (this, "Checking events after passed");
     	if (find(eventsAfterPassed, "this", "approach", true)) {
     		numCorrectPreconditions++;
     	}
