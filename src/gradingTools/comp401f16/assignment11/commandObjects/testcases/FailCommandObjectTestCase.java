@@ -54,12 +54,19 @@ public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 //			Runnable aCommandObject = (Runnable) constructor.newInstance(BasicProjectIntrospection.getRealObject(bridgeScene()));
 			Runnable aCommandObject = (Runnable)  instantiateClass(BasicProjectIntrospection.getRealObject(bridgeScene()));
 
-			aCommandObject.run();
+//			aCommandObject.run();
+//			invokeRunMethod(aCommandObject);
+			invokeRunMethod(aCommandObject);
+
+
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			assertTrue(e.getMessage(), false);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} 
 		 
 	}

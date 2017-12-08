@@ -12,7 +12,13 @@ public class ProceedAllCommandObjectTestCase extends WaitingAvatarsAnimationTest
 	public static final String TAG = "ProceedAllCommand";
 	protected void doProceedAll() throws Exception {
 		Runnable aRunnable =  (Runnable) instantiateClass();
-		aRunnable.run();
+//		aRunnable.run();
+		try {
+			invokeRunMethod(aRunnable);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public static Class findProceedAllCommandClass() {
 		return BasicProjectIntrospection.findClassByTags(TAG);

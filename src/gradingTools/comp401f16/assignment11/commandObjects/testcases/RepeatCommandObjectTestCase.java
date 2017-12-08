@@ -22,6 +22,7 @@ import util.annotations.MaxValue;
 import util.assertions.Asserter;
 import util.introspect.JavaIntrospectUtility;
 import util.models.PropertyListenerRegisterer;
+import util.trace.Tracer;
 @MaxValue(10)
 public class RepeatCommandObjectTestCase extends OneLevelRepeatTestCase  {
 	
@@ -83,7 +84,9 @@ public class RepeatCommandObjectTestCase extends OneLevelRepeatTestCase  {
 			Object anAvatar = BasicProjectIntrospection.getRealObject(avatar());
 			Runnable aCommand1 = createMoveCommand(0);
 			repeatCommand = (Runnable) (repeatConstructor.newInstance(NUM_REPEATS, aCommand1));
-			repeatCommand.run();
+//			Tracer.info(this, "Calling run method on:" + repeatCommand);
+//			repeatCommand.run();
+			invokeRunMethod(repeatCommand);
 
 		
 			
@@ -91,6 +94,9 @@ public class RepeatCommandObjectTestCase extends OneLevelRepeatTestCase  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			assertTrue(e.getMessage(), false);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} 
 
 //		Runnable aMoveCommandObject = (Runnable)

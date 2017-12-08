@@ -43,7 +43,14 @@ public class SleepCommandObjectTestCase extends SleepCommandTestCase  {
 //				 Long.TYPE);
 //	}
 	protected void executeSleep() throws Exception  {
-		createSleepCommandObject().run();
+//		createSleepCommandObject().run();
+		try {
+			invokeRunMethod(createSleepCommandObject());
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 //	public static long presleepTime() {
 //		long aPresleepTime = System.currentTimeMillis();

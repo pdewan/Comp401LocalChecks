@@ -101,15 +101,25 @@ public class DefineCallCommandObjectTestCase extends RepeatCommandObjectTestCase
 			Runnable aCommand1 = createMoveCommand(0);
 			defineCommand = (Runnable) (constructor.newInstance(PROCEDURE_NAME, aCommand1));
 			
-			defineCommand.run();
+//			defineCommand.run();
+			
+			invokeRunMethod(defineCommand);
+
+			
 			callCommand = (Runnable) (callConstructor.newInstance(PROCEDURE_NAME));
-			callCommand.run();
+			
+			invokeRunMethod(callCommand);
+			
+//			callCommand.run();
 		
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			assertTrue(e.getMessage(), false);
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} 
 
 //		Runnable aMoveCommandObject = (Runnable)

@@ -80,7 +80,14 @@ public class RotateLeftArmCommandObjectTestCase extends OneLevelListMovesTestCas
 //				Runnable aCommandObject = (Runnable) (constructor.newInstance(anAvatar, NUM_ROTATION_UNITS));
 				Runnable aCommandObject = (Runnable) (instantiateClass(anAvatar, NUM_ROTATION_UNITS));
 
-				aCommandObject.run();
+//				aCommandObject.run();
+				try {
+					invokeRunMethod(aCommandObject);
+				} catch (Throwable e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 				
 			
 	}
