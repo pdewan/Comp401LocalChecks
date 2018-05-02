@@ -82,7 +82,7 @@ public class OneLevelListMovesTestCase extends BridgeSceneArthurMoveLeftArmTestC
 		setBridgeSceneFromFactoryMethod();
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 	protected String createCommand (int anIndex) {

@@ -30,7 +30,7 @@ public class CommandInterpreterControllerFactoryMethodTest extends  FactoryMetho
 		return (TestBridgeSceneController) rootProxy;
 	}
 	
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		assertTrue("Cannot grade test in headless mode", !GradingManagerFactory.isHeadless());
 		return doFactoryMethodTest();
 	}

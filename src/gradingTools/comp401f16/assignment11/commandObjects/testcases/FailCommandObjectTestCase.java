@@ -78,7 +78,7 @@ public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		init();
 		initConstructor();
 		create();

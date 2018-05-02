@@ -28,7 +28,7 @@ public class SwingTextFieldFactoryTestCase extends MethodExecutionTest{
 		return constructorArgs;
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		initConstructor();
 		Object anObject = instantiateClass();
 		assertTrue(anObject + " not instance of " + SwingTextFieldFactory.class,  

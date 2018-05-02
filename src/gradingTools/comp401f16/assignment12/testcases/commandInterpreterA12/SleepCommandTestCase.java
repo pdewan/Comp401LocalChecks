@@ -69,7 +69,7 @@ public class SleepCommandTestCase extends CommandInterpreterArthurMoveLeftArmTes
 				 checkSleep(aPresleepTime, SLEEP_TIME));
 		 return true;
 	}
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		
 		create();
 		checkSleep();

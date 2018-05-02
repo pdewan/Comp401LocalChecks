@@ -19,7 +19,7 @@ public class BridgeSceneArthurScaleLeftArmTestCase extends BridgeSceneArthurScal
 		leafProxy = avatar().getArms().getLeftLine();
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 

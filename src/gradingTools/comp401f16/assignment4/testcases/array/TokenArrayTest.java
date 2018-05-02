@@ -207,7 +207,7 @@ public static final String TOKENS = "Tokens";
 		Tracer.info(this, "Checking if token array is null");
 		return tokenArrayOutput == null;
 	}
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		inputWithEndingSpace = true;
 		boolean failedWithSpace = false;
 		clearTokenCollectionOutputs();

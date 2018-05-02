@@ -154,7 +154,7 @@ public class ArthurBridgeSceneControllerTestCase
 	
 		
 	
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		initState();		
 		rootProxy = create();
 		if (component == null) {

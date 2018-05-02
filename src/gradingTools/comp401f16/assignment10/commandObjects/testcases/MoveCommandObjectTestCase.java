@@ -65,7 +65,7 @@ public class MoveCommandObjectTestCase extends BridgeSceneArthurMoveLeftArmTestC
 		 
 	 }
 	    	
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		init();
 		return super.doTest();
 	}

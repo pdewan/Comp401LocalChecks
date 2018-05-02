@@ -60,7 +60,7 @@ public class ScanningExceptionTestCase extends ScannerFactoryMethodTest {
 		assertTrue("Could not find ExceptionClass", exceptionClass != null);
 		fractionComplete += HAS_EXCEPTION_CREDIT;
 	}
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		exceptionClass = BasicProjectIntrospection.findClassByTags(exceptionClassTag());
 		checkHasExceptionClass();
 		 checkCheckedException();

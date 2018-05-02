@@ -30,7 +30,7 @@ public class ProceedAllCommandObjectTestCase extends WaitingAvatarsAnimationTest
 		return constructorArgs;
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		initConstructor();
 		return super.doTest();
 	}

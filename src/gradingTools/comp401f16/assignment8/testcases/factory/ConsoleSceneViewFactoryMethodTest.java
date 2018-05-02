@@ -39,7 +39,7 @@ public class ConsoleSceneViewFactoryMethodTest extends  BridgeSceneMoveTestCase{
 	}
 	
 	
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		 return doFactoryMethodTest();
 		
 	}

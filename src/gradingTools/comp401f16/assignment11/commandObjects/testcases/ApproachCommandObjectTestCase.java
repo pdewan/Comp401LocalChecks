@@ -94,7 +94,7 @@ public class ApproachCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 		} 
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		init();
 		initConstructor();
 		create();

@@ -27,7 +27,7 @@ public class AngleMoveLeftLineTestCase extends AngleMoveTestCase {
 		return  angle().getLeftLine();
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 

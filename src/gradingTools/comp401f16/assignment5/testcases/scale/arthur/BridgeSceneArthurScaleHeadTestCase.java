@@ -22,7 +22,7 @@ public class BridgeSceneArthurScaleHeadTestCase extends BridgeSceneArthurScaleTe
 		leafProxy = avatar().getHead();
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 

@@ -60,7 +60,7 @@ public class ParserCreatesThreadCommandObjectTestCase
 		setCommand(ThreadCommandTestCase.createThreadCommand());
 
 	}
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		create();
 		
 		setDependentObjects();

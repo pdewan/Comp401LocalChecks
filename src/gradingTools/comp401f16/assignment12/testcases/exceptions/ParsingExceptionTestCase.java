@@ -70,7 +70,7 @@ public class ParsingExceptionTestCase extends ScanningExceptionTestCase {
 	protected Class proxyClass() {
 		return TestParser.class;
 	}
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		super.doTest();
 		exceptionClass = BasicProjectIntrospection.findClassByTags(exceptionClassTag());
 		checkThrowsClauses(rootProxy);

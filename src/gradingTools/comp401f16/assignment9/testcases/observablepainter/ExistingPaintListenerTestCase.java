@@ -137,7 +137,7 @@ public class ExistingPaintListenerTestCase
 		}
 		
 	}
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		initState();		
 		rootProxy = create();
 //		Object aListeners = BasicProjectIntrospection.

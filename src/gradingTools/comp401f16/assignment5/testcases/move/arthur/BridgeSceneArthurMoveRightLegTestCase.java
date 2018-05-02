@@ -28,7 +28,7 @@ public class BridgeSceneArthurMoveRightLegTestCase extends BridgeSceneMoveArthur
 
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 

@@ -41,7 +41,7 @@ public abstract class InputBeanTest extends BeanExecutionTest{
 	}
 
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		testBean();
 		return true;
 	}

@@ -29,7 +29,7 @@ public  class RotatingLineMoveTestCase extends MovableTest {
 		leafProxy = rotatingLine();
 	}
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 	

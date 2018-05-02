@@ -191,7 +191,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	
 
 	@Override
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		initData();
 		create();
 		setDependentObjects();

@@ -47,7 +47,7 @@ public class IndexOfTest extends MethodExecutionTest {
 	protected boolean processInteractiveMethodExecutionResults() {
 		return true;
 	}
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 

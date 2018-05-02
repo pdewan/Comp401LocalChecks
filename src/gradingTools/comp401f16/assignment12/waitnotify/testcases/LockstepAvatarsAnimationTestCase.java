@@ -239,7 +239,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		maybeAddThread();
 		
 	}
-	protected boolean doTest() throws Throwable {
+	public boolean doTest() throws Throwable {
 		try {
 //		assertTrue("testing", false);
 		boolean retVal =  super.doTest();
