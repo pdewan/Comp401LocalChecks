@@ -46,7 +46,7 @@ public class ParserCreatesApproachCommandObjectTestCase
 		setCommand("approach Arthur ");
 
 	}
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		create();
 		
 		setDependentObjects();

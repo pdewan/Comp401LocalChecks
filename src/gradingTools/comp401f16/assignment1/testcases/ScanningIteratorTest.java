@@ -46,7 +46,7 @@ public class ScanningIteratorTest extends ScanStringTest{
 	protected void doExtraStep() {
 		
 	}
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		
 		Class aClass = getTargetClass();
 		if (aClass == null) {

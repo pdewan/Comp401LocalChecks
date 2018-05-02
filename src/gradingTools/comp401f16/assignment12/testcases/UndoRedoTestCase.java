@@ -31,7 +31,7 @@ public class UndoRedoTestCase extends CommandInterpreterArthurMoveLeftArmTestCas
 			commandInterpreter().setCommand("redo ");
 		}
 	}
-	public  boolean doTest() throws Throwable {
+	protected  boolean doTest() throws Throwable {
 		beforeMove = true;
 		beforeUndo = true;
 		boolean retVal = super.doTest();

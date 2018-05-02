@@ -26,7 +26,7 @@ public class ScannerFactoryMethodTest extends  FactoryMethodTest{
 	}
 	
 	
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		 return doFactoryMethodTest();
 		
 	}

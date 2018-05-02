@@ -31,7 +31,7 @@ public class SingleTokenOutputTest extends AbstractNumberScanningTest{
 		return "printing number (e.g. 20) instead of token (e.g. 020)";
 	}
 	@Override
-	public boolean doTest() throws Throwable  {
+	protected boolean doTest() throws Throwable  {
 		return super.doTest();
 	}
 

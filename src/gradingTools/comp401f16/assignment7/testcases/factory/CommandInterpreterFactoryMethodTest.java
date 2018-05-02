@@ -36,7 +36,7 @@ public class CommandInterpreterFactoryMethodTest extends  BridgeSceneMoveTestCas
 	}
 	
 	
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		 return doFactoryMethodTest();
 		
 	}

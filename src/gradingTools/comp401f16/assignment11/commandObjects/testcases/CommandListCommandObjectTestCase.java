@@ -105,7 +105,7 @@ public class CommandListCommandObjectTestCase extends OneLevelListMovesTestCase 
 		 
 	 }
 	    	
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		init();
 		return super.doTest();
 	}

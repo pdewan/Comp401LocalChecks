@@ -54,7 +54,7 @@ public  class BeanParameterizedPropertyTest extends BeanExecutionTest{
 //	}
 
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		testBean();
 		return true;
 	}

@@ -39,7 +39,7 @@ public class BroadcastingClearanceManagerFactoryMethodTest extends  FactoryMetho
 	
 	
 	
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		 return doFactoryMethodTest();
 		
 	}

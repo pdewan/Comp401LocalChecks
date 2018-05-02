@@ -25,7 +25,7 @@ public class BridgeSceneArthurMoveStringShapeTestCase extends BridgeSceneMoveArt
 //		leafProxy = avatar().getStringShape();
 //	}
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 

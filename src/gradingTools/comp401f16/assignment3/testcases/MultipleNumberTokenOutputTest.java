@@ -35,7 +35,7 @@ public class MultipleNumberTokenOutputTest extends MultipleNumberOutputTest {
 		return new String[] {"" + Integer.parseInt(aToken), "@"};
 	}
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		return super.doTest();
 	}
     

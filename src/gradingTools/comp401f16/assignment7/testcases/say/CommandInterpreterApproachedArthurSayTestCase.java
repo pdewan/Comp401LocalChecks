@@ -55,7 +55,7 @@ public class CommandInterpreterApproachedArthurSayTestCase extends BridgeSceneDy
 		setBridgeSceneFromFactoryMethod();
 	}
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 	protected void executeOperations(Object aRootProxy) {

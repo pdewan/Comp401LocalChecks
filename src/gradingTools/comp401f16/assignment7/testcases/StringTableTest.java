@@ -78,7 +78,7 @@ public class StringTableTest extends  StringTableFactoryMethodTest{
 	protected Object create() {
 		return createUsingFactoryMethod();
 	}
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		create();
 		executeOperations(rootProxy);		
 		return true;

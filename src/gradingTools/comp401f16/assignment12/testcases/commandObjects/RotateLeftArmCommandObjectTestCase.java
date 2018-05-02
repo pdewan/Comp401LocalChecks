@@ -121,7 +121,7 @@ public class RotateLeftArmCommandObjectTestCase extends OneLevelListMovesTestCas
 	}
 
 	
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		init();
 		initConstructor();
 		return super.doTest();

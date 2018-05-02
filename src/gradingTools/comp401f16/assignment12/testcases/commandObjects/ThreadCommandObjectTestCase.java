@@ -117,7 +117,7 @@ public class ThreadCommandObjectTestCase extends ThreadCommandTestCase  {
 //		 
 //	 }
 	    	
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		init();
 		initConstructor();
 		return super.doTest();

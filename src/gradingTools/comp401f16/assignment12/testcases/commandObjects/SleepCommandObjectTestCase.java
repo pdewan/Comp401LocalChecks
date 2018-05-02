@@ -100,7 +100,7 @@ public class SleepCommandObjectTestCase extends SleepCommandTestCase  {
 //		constructor = findSleepConstructor(instantiatedClass);
 //	}
 	
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 //		initSleepConstructor();
 		initConstructor();
 		return super.doTest();		

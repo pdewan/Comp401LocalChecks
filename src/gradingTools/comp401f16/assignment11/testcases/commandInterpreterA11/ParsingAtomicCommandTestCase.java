@@ -64,7 +64,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 //		setParserFromFactoryMethod();
 	}
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 	protected double eachApproachCredit() {

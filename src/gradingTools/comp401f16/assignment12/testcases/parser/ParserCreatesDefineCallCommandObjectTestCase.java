@@ -57,7 +57,7 @@ public class ParserCreatesDefineCallCommandObjectTestCase
 		setCommand(defineCallCommandTestCase.createCallCommand());
 
 	}
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		create();
 		
 		setDependentObjects();

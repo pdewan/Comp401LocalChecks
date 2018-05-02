@@ -186,7 +186,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 		
 	}
 	
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		rootProxy = create();
 		approach(firstAvatar());
 		failed();

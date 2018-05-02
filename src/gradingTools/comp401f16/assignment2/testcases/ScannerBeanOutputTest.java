@@ -72,7 +72,7 @@ public class ScannerBeanOutputTest extends ScannerBeanPropertyTest{
 		return true;
 	}
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		inputWithEndingSpace = true;
 		executeBean();
 		

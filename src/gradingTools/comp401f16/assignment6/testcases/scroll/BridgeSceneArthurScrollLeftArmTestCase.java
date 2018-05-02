@@ -22,7 +22,7 @@ public class BridgeSceneArthurScrollLeftArmTestCase extends BridgeSceneArthurMov
 		bridgeScene().scroll(inputXDelta(), inputYDelta());
 	}
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 	protected void setExpected(Object aLocatable) {

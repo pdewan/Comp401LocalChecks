@@ -48,7 +48,7 @@ public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproac
 		setBridgeSceneFromFactoryMethod();
 	}
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		return super.doTest();
 	}
 	protected double eachApproachCredit() {

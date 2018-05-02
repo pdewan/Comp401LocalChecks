@@ -128,7 +128,7 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 //		Tracer.info(this,"Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
 //
 //	}
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		boolean retVal =  super.doTest();
 		waitForAnimation();
 		return retVal;

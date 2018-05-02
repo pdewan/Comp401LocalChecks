@@ -83,7 +83,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 
 //		Assert.assertTrue(aMessage + NotesAndScore.PERCENTAGE_MARKER + fractionComplete, aCheck);
 	}
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		create();
 		
 		setDependentObjects();

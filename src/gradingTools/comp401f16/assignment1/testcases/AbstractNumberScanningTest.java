@@ -185,7 +185,7 @@ public abstract class AbstractNumberScanningTest extends
 		
 	}
 
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 			inputWithEndingSpace = true;
 			boolean superRetVal = invokeInteractiveMethod();
 			if (processSuccessfulOutputErrrorStatus()) {

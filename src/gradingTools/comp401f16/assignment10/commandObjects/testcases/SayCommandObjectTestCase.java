@@ -59,7 +59,7 @@ public class SayCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 		return bridgeScene().getArthur();
 	}
 	@Override
-	public boolean doTest() throws Throwable {
+	protected boolean doTest() throws Throwable {
 		init();
 		create();
 		setDependentObjects();
