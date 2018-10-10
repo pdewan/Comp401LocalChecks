@@ -16,7 +16,7 @@ import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap;
+//import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap;
 import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
