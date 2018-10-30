@@ -43,8 +43,10 @@ public class NewPaintListenerTestCase
 	extends ConsoleSceneViewOutputTestCase 
 	implements TestPaintListener, Runnable{
 	public static final int ESTMATE_TIME_FOR_ANIMATION = 8000;
+	public static final int ESTIMATE_TIME_FOR_PAINT_INVOCATION = 500;
 	public static final int MIN_APPROACH_EVENTS = 1;
 	public static final int MIN_FAILED_EVENTS = 1;
+	public static final int MIN_EVENTS = 1;
 	public static final double LISTENER_CREDIT =0.3;
 	public static final double APPROACH_EVENTS_CREDIT = 0.5;
 	public static final double FAILED_EVENTS_CREDIT = 0.2;
@@ -52,6 +54,7 @@ public class NewPaintListenerTestCase
 	protected boolean paintReceived = false;
 	protected int numEventsFiredByApproach;
 	protected int numEventsFiredByFailed;
+	protected int numEventsFired;
 	
 	protected TestBridgeScene bridgeScene;
 	protected TestObservableBridgeScenePainter observableBridgeScenePainter;
@@ -90,7 +93,7 @@ public class NewPaintListenerTestCase
    
     
 	protected void approach (TestAvatar anAvatar) {
-		Tracer.info(this,toString(anAvatar) + " Approaches");
+		Tracer.info("Making"  + this,toString(anAvatar) + " approach (Bridge scene should be unoccupied after your main method finishes)");
 		BasicProjectExecution.redirectOutput();
 		bridgeScene().approach(anAvatar);
 		output= BasicProjectExecution.restoreAndGetOut();
@@ -108,7 +111,7 @@ public class NewPaintListenerTestCase
 	}
 
 	protected void failed() {
-		Tracer.info(this,"Interacting Knight Failed");
+		Tracer.info(this,"Calling Interacting Knight Failed");
 		failedCalled = true;
 		bridgeScene().failed();
 	}	
@@ -138,18 +141,21 @@ public class NewPaintListenerTestCase
 	}
 	protected void checkResults() {
 		Tracer.info(this,"Checking results");
-		if (numEventsFiredByApproach < MIN_APPROACH_EVENTS  ) {
-			assertTrue("At least "  + MIN_APPROACH_EVENTS + " paint event not fired by approach", false	);
+		if (!paintReceived) {
+			assertTrue("At least "  + MIN_EVENTS + " paint events not fired in response to approach", false	);
 		}
-		fractionComplete += APPROACH_EVENTS_CREDIT;
-
-		if (numEventsFiredByFailed < MIN_FAILED_EVENTS  ) {
-//			assertTrue("No paint events fired by failed", false	);
-			assertTrue("At least "  + MIN_FAILED_EVENTS + " paint event not fired by failed", false	);
-
-
-		}
-		fractionComplete += FAILED_EVENTS_CREDIT;
+//		if (numEventsFiredByApproach < MIN_APPROACH_EVENTS  ) {
+//			assertTrue("At least "  + MIN_APPROACH_EVENTS + " paint event not fired by approach", false	);
+//		}
+//		fractionComplete += APPROACH_EVENTS_CREDIT;
+//
+//		if (numEventsFiredByFailed < MIN_FAILED_EVENTS  ) {
+////			assertTrue("No paint events fired by failed", false	);
+//			assertTrue("At least "  + MIN_FAILED_EVENTS + " paint event not fired by failed", false	);
+//
+//
+//		}
+		fractionComplete += FAILED_EVENTS_CREDIT + APPROACH_EVENTS_CREDIT;
 	}
 	protected static String[] emptyStringargs = new String[]{};
 
@@ -199,6 +205,7 @@ public class NewPaintListenerTestCase
 //
 //		ThreadSupport.sleep(4000);
 		executeMethods();
+		ThreadSupport.sleep(ESTIMATE_TIME_FOR_PAINT_INVOCATION);
 		checkResults();
 
 //		if (numEventsFiredByFailed == 0  ) {
@@ -227,10 +234,17 @@ public class NewPaintListenerTestCase
 			Tracer.info(this,"Received Paint Event, NewPaintListener Test Successful");
 			paintReceived = true;
 		}
-		if (failedCalled)
+		numEventsFired++;
+		// actually the paint method may be called once for both approach and fail, so the
+		// code below does not make sense
+		if (failedCalled) {
+			Tracer.info(this, "Received paint event after fail call");
 			numEventsFiredByFailed++;
-		else
+		} else {
+			Tracer.info(this, "Received paint event after approach call");
+
 			numEventsFiredByApproach++;
+		}
 	}
 	@Override
 	public void run() {
@@ -238,18 +252,11 @@ public class NewPaintListenerTestCase
 		Tracer.info(this, "This should be followed by a message saying: Received Paint Event");
 
 		approach(firstAvatar());
-//		ThreadSupport.sleep(2000);
-//		if ((numEventsFiredByFailed == 0  ) {
-//			assertTrue("No paint events fired by approach", false	);
-//		}
-//		fractionComplete += APPROACH_EVENTS_CREDIT;
-		failed();
-//		ThreadSupport.sleep(2000);
-//		if (numEventsFiredByFailed == 0 ) {
-//			assertTrue("No paint events fired by failed", false	);
-//
-//		}
-//		fractionComplete += FAILED_EVENTS_CREDIT;
+		
+// no point calling failed(), as only one paint() event will be fired
+		
+//		failed();
+
 
 	}
 	
