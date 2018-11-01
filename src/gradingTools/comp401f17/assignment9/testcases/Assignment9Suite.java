@@ -46,7 +46,7 @@ public class Assignment9Suite {
 	
 	public static void main (String[] args) {
 	try {
-		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);
+//		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);
 		BasicProjectExecution.setUseProcessTimeOut(false);
 //		GradingMode.setGraderRun(true);
 //		invokeMain();
