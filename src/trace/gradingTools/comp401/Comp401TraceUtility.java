@@ -20,7 +20,9 @@ import trace.grader.basics.GraderBasicsTraceUtility;
 import util.trace.ImplicitKeywordKind;
 import util.trace.Tracer;
 
-public class Comp401TraceUtility {
+
+public class Comp401TraceUtility extends GraderBasicsTraceUtility {
+	
 	public static void setTracing() {
 		GraderBasicsTraceUtility.setTracing();
 		Tracer.setImplicitPrintKeywordKind(ImplicitKeywordKind.OBJECT_PACKAGE_NAME);		
@@ -52,17 +54,6 @@ public class Comp401TraceUtility {
 		//A6
 		Tracer.setKeywordPrintStatus(BridgeSceneDynamicTestCase.class, true);
 		Tracer.setKeywordPrintStatus(ApproachHistoryTest.class, true);
-		
 
-		
-
-
-
-
-		
-
-
-		
-		
 	}
 }
