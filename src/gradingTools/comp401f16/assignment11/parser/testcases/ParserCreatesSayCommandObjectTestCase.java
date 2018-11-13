@@ -15,7 +15,9 @@ public class ParserCreatesSayCommandObjectTestCase
 		return SayCommandObjectTestCase.findSayCommandClass();
 	}
 	protected void setCommand() {
-		setCommand("approach arthur } ");
+//		setCommand("approach arthur } ");
+		setCommand("approach arthur ");
+
 		setCommand("say \"quest?\" ");
 		setCommand("say \"grail\" ");
 		

@@ -15,7 +15,9 @@ public class ParserCreatesRepeatCommandObjectTestCase
 		return RepeatCommandObjectTestCase.findRepeatCommandClass();
 	}
 	protected void setCommand() {
-		setCommand("repeat 5 move arthur 2 3 } ");		
+//		setCommand("repeat 5 move arthur 2 3 } ");	
+		setCommand("repeat 5 move arthur 2 3 ");		
+
 
 	}
 	
