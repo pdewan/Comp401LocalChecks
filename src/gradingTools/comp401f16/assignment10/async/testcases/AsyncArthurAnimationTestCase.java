@@ -63,9 +63,10 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 			assertTrue("Could not create bridge scene", false);
 		}
 	}
-	
+	/*
+	 * This should be renamed to initThreads
+	 */
 	protected void initData() {
-//		testing = true;
 		Tracer.info(this,"Iniializing thread data");
 		currentNotifyingThreads.clear();
 //		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
@@ -80,6 +81,25 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		lastEventTime = 0;
 		foundDelay = false;
 	}
+//	protected void initTargetObjects() {
+////		testing = true;
+////		Tracer.info(this,"Iniializing thread data");
+////		currentNotifyingThreads.clear();
+//////		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
+////		parentThread = Thread.currentThread();
+////		previousNotifyingThreads.clear();
+////		previousNotifyingThreads.add(parentThread);
+////		threadToSleeps.clear();
+////		lastEventTimes.clear();
+////		currentNotifyingThreads.add(parentThread);
+////		childThread = null;
+////		threadCreated = false;
+////		lastEventTime = 0;
+////		foundDelay = false;
+//		
+//		
+////		initThreads();
+//	}
 	protected boolean isPreviousThread() {
 		return previousNotifyingThreads.contains(Thread.currentThread());
 	}
@@ -192,10 +212,12 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 
 	@Override
 	protected boolean doTest() throws Throwable {
-		initData();
+//		initData();
 		create();
 		setDependentObjects();
 		addPropertyChangeListeners();
+		initData(); // ignore events sent by addPropertyChangeListeners
+
 //		addPropertyChangeListener(avatar(), this);
 		executeOperations(rootProxy);
 		waitForThreads();

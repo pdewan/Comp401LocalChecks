@@ -35,10 +35,16 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			assertTrue("Could not create clearance manager", false);
 		}
 	}
-	protected void initData() {		
-		super.initData();
-		broadcastingClearanceManager = null;
+	@Override
+	protected Object create() {
+		broadcastingClearanceManager = null; // why do this?
+		return super.create();
 	}
+//	@Override
+//	protected void initData() {		
+//		super.initData();
+//		broadcastingClearanceManager = null;
+//	}
 	protected void setDependentObjects() {
 		super.setDependentObjects();
 		createClearanceManager();		

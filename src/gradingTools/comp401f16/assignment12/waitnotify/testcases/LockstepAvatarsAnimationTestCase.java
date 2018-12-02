@@ -39,6 +39,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	public LockstepAvatarsAnimationTestCase() {
 		
 	}
+	@Override
 	protected void initData() {		
 		super.initData();
 		resultCorrect = false;
