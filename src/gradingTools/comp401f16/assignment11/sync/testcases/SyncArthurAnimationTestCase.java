@@ -112,8 +112,15 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
+		if (!isThreadsInitialized()) {
+			return;
+		}
 		if (!testing)
 			return;
+		if (isPreviousThread()) {
+			Tracer.info(this,"Previous thread notified, returning at time:" +System.currentTimeMillis());
+			return;
+		}
 		super.propertyChange(evt);
 		Thread aChildThread = Thread.currentThread();
 		if (currentNotifyingThreads.size() > 2 && child2Thread == null) {

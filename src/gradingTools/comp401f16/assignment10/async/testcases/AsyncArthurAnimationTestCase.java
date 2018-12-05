@@ -39,10 +39,12 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	protected static long MAX_DELAY_TO_CREATE_CHILD_THREAD = 1000;
 	public static long MAX_TIME_FOR_ANIMATION = 5000;
 	protected boolean freezeNotifications = false;
+	protected boolean threadsInitialized = false;
 //	protected boolean testing = false;
 //	protected TestBridgeScene bridgeScene;
 
 	
+
 	public AsyncArthurAnimationTestCase() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
 	}
@@ -63,6 +65,14 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 			assertTrue("Could not create bridge scene", false);
 		}
 	}
+
+	public boolean isThreadsInitialized() {
+		return threadsInitialized;
+	}
+
+	public void setThreadsInitialized(boolean threadsInitialized) {
+		this.threadsInitialized = threadsInitialized;
+	}
 	/*
 	 * This should be renamed to initThreads
 	 */
@@ -80,6 +90,8 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		threadCreated = false;
 		lastEventTime = 0;
 		foundDelay = false;
+		setThreadsInitialized(true);
+
 	}
 //	protected void initTargetObjects() {
 ////		testing = true;
@@ -213,6 +225,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	@Override
 	protected boolean doTest() throws Throwable {
 //		initData();
+		setThreadsInitialized(false);
 		create();
 		setDependentObjects();
 		addPropertyChangeListeners();
@@ -292,6 +305,9 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	}
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
+		if (!isThreadsInitialized()) {
+			return;
+		}
 		if (!testing)
 			return;
 		if (isPreviousThread()) {
