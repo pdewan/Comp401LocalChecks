@@ -68,7 +68,7 @@ public class SayCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 		say (firstAvatar(), secondSay);
 		say (guard(), thirdSay);
 		say (firstAvatar(), fourthSay);
-		passed();
+		pass();
 		return true;
 		
 	}

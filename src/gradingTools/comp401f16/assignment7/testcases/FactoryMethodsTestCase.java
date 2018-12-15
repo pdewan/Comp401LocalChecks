@@ -15,7 +15,7 @@ public abstract class FactoryMethodsTestCase extends ProxyTest{
 	protected boolean foundFactoryClass;
 	protected boolean nullInstantiation;
 	protected boolean correctInstantiatedClass;
-	protected boolean singletonCheckPassed;
+	protected boolean singletonCheckPass;
 
 	
 	protected Object[] emptyObjectArgs = new Object[] {};
@@ -29,8 +29,8 @@ public abstract class FactoryMethodsTestCase extends ProxyTest{
 	}
 	protected boolean doSingletonCheck(Object aFirstInstantiation) throws Throwable {
 		Object aSecondCreation = createUsingFactoryMethod();
-		singletonCheckPassed = aSecondCreation == aFirstInstantiation;
-		return singletonCheckPassed;
+		singletonCheckPass = aSecondCreation == aFirstInstantiation;
+		return singletonCheckPass;
 	}	
 	
 	

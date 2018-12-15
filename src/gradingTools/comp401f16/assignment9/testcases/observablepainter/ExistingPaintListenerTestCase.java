@@ -33,9 +33,9 @@ import gradingTools.shared.testcases.shapes.LocatableTest;
 public class ExistingPaintListenerTestCase 
 	extends ConsoleSceneViewOutputTestCase 
 	{
-//	protected boolean failedCalled = false;
+//	protected boolean failCalled = false;
 //	protected int numEventsFiredByApproach;
-//	protected int numEventsFiredByFailed;
+//	protected int numEventsFiredByFail;
 //	
 //	protected TestBridgeScene bridgeScene;
 	protected static final int MIN_PAINT_LISTENERS = 6; 
@@ -43,9 +43,9 @@ public class ExistingPaintListenerTestCase
 	protected Object delegatingBridgeSceneView;
 	protected void initState() {
 		fractionComplete = 0;
-//		failedCalled = false;
+//		failCalled = false;
 //		numEventsFiredByApproach = 0;
-//		numEventsFiredByFailed = 0;
+//		numEventsFiredByFail = 0;
 	}
 	@Override
 	protected Object create() {
@@ -87,10 +87,10 @@ public class ExistingPaintListenerTestCase
 ////		printFractionComplete();
 //	}
 //
-//	protected void failed() {
-//		Tracer.info(this,"Interacting Knight Failed");
-//		failedCalled = true;
-//		bridgeScene().failed();
+//	protected void fail() {
+//		Tracer.info(this,"Interacting Knight Fail");
+//		failCalled = true;
+//		bridgeScene().fail();
 //	}	
 //		
 //	protected void registerPaintListener() {

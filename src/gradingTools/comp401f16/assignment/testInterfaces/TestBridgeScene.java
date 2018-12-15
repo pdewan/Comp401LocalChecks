@@ -20,18 +20,18 @@ public interface TestBridgeScene  extends PropertyListenerRegisterer{
 	@Tags({"say"})
 	public void say(String string);
 	
-	@Tags({"passed"})
-	public void passed();
+	@Tags({"pass"})
+	public void pass();
 	
-	@Tags({"failed"})
-	public void failed();
+	@Tags({"fail"})
+	public void fail();
 	public boolean getOccupied();
 	public boolean getKnightTurn();
 	
 	@Tags({"scroll"})
 	public void scroll(int scrollAmount, int i);
-	public boolean preFailed();
-	public boolean prePassed();
+	public boolean preFail();
+	public boolean prePass();
 	public boolean preSay();
 	public boolean preApproach();
 }

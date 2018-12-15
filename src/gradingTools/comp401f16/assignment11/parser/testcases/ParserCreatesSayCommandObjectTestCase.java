@@ -24,7 +24,7 @@ public class ParserCreatesSayCommandObjectTestCase
 
 	}
 	protected void doStepAfterGettingCommandObject() {
-		setCommand ("passed ");
+		setCommand ("pass ");
 	}
 	
 	

@@ -46,7 +46,7 @@ public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 //				 bridgeSceneInterface);
 	}
 	@Override
-	protected void doPassOrFailed () {
+	protected void doPassOrFail () {
 		fractionComplete = 0;
 		 try {
 			
@@ -74,7 +74,7 @@ public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 		return bridgeScene().getLancelot();
 	}
 	protected void doPostApproachOperation() {
-		failed();
+		fail();
 
 	}
 	@Override

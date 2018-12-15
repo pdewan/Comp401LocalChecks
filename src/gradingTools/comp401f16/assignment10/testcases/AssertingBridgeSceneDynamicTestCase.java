@@ -30,11 +30,11 @@ public class AssertingBridgeSceneDynamicTestCase
 		return 0;
 	}
 	
-	protected double passedCredit() {
+	protected double passCredit() {
 		return 0;
 	}
 	
-	protected double failedCredit() {
+	protected double failCredit() {
 		return 0;
 	}
 	@Override
@@ -54,50 +54,50 @@ public class AssertingBridgeSceneDynamicTestCase
 		currentEvents.add(evt);
 	}
 	protected boolean preApproachBeforeApproach;
-	protected boolean preFailedBeforeApproach;
-	protected boolean prePassedBeforeApproach;
+	protected boolean preFailBeforeApproach;
+	protected boolean prePassBeforeApproach;
 	protected boolean preSayBeforeApproach;
 	
 	protected boolean preApproachAfterApproach;
 	protected boolean preSayAfterApproach;
-	protected boolean prePassedAfterApproach;
-	protected boolean preFailedAfterApproach;
+	protected boolean prePassAfterApproach;
+	protected boolean preFailAfterApproach;
 	
 	protected boolean preApproachAfterSay1;
 	protected boolean preSayAfterSay1;
-	protected boolean prePassedAfterSay1;
-	protected boolean preFailedAfterSay1;
+	protected boolean prePassAfterSay1;
+	protected boolean preFailAfterSay1;
 	
 	protected boolean preApproachAfterSay2;
 	protected boolean preSayAfterSay2;
-	protected boolean prePassedAfterSay2;
-	protected boolean preFailedAfterSay2;
+	protected boolean prePassAfterSay2;
+	protected boolean preFailAfterSay2;
 	
-	protected boolean preApproachAfterPassed;
-	protected boolean preSayAfterPassed;
-	protected boolean prePassedAfterPassed;
-	protected boolean preFailedAfterPassed;
+	protected boolean preApproachAfterPass;
+	protected boolean preSayAfterPass;
+	protected boolean prePassAfterPass;
+	protected boolean preFailAfterPass;
 	
-	protected boolean preApproachAfterFailed;
-	protected boolean preSayAfterFailed;
-	protected boolean prePassedAfterFailed;
-	protected boolean preFailedAfterFailed;
+	protected boolean preApproachAfterFail;
+	protected boolean preSayAfterFail;
+	protected boolean prePassAfterFail;
+	protected boolean preFailAfterFail;
 	List<PropertyChangeEvent> eventsAfterApproach = new ArrayList();
 	List<PropertyChangeEvent> eventsAfterSay1 = new ArrayList();
 	List<PropertyChangeEvent> eventsAfterSay2 = new ArrayList();
-	List<PropertyChangeEvent> eventsAfterFailed = new ArrayList();
-	List<PropertyChangeEvent> eventsAfterPassed = new ArrayList();
+	List<PropertyChangeEvent> eventsAfterFail = new ArrayList();
+	List<PropertyChangeEvent> eventsAfterPass = new ArrayList();
 	List<PropertyChangeEvent> currentEvents;
 	
 //	protected static final double APPROACH_TRUE_BEFORE_APPROACH_CREDIT = 0.1;
 //	protected static final double SAY_FALSE_BEFORE_APPROACH_CREDIT = 0.1;	
-//	protected static final double PASSED_FALSE_BEFORE_APPROACH_CREDIT = 0.1;
-//	protected static final double FAILED_FALSE_BEFORE_APPROACH_CREDIT = 0.1;
+//	protected static final double Pass_FALSE_BEFORE_APPROACH_CREDIT = 0.1;
+//	protected static final double Fail_FALSE_BEFORE_APPROACH_CREDIT = 0.1;
 //
 //	protected static final double APPROACH_FALSE_AFTER_APPROACH_CREDIT = 0.2;
 //	protected static final double SAY_TRUE_AFTER_APPROACH_CREDIT = 0.2;
-//	protected static final double PASSED_TRUE_AFTER_APPROACH_CREDIT = 0.1;
-//	protected static final double FAILED_TRUE_AFTER_APPROACH_CREDIT = 0.1;
+//	protected static final double Pass_TRUE_AFTER_APPROACH_CREDIT = 0.1;
+//	protected static final double Fail_TRUE_AFTER_APPROACH_CREDIT = 0.1;
 	
 	
 	
@@ -108,38 +108,38 @@ public class AssertingBridgeSceneDynamicTestCase
 	@Override
 	protected void executeOperations(Object aLocatable) {
 		preApproachBeforeApproach = bridgeScene.preApproach();
-		preFailedBeforeApproach = bridgeScene.preFailed();
-		prePassedBeforeApproach = bridgeScene.prePassed();
+		preFailBeforeApproach = bridgeScene.preFail();
+		prePassBeforeApproach = bridgeScene.prePass();
 		preSayBeforeApproach = bridgeScene.preSay();
 		Tracer.info(this,"preApproach Before Approach:" + preApproachBeforeApproach );
 		Tracer.info(this,"preSay Before Approach:" + preSayBeforeApproach );
-		Tracer.info(this,"preFailed Before Approach:" + preFailedBeforeApproach );
-		Tracer.info(this,"prePassed Before Approach:" + prePassedBeforeApproach );
+		Tracer.info(this,"preFail Before Approach:" + preFailBeforeApproach );
+		Tracer.info(this,"prePass Before Approach:" + prePassBeforeApproach );
 		
 		currentEvents = eventsAfterApproach;
 		currentEvents.clear();
 		approach(firstAvatar());
 		preApproachAfterApproach = bridgeScene.preApproach();
-		preFailedAfterApproach = bridgeScene.preFailed();
-		prePassedAfterApproach = bridgeScene.prePassed();
+		preFailAfterApproach = bridgeScene.preFail();
+		prePassAfterApproach = bridgeScene.prePass();
 		preSayAfterApproach = bridgeScene.preSay();	
 		Tracer.info(this,"preApproach After Approach:" + preApproachAfterApproach );
 		Tracer.info(this,"preSay After Approach:" + preSayAfterApproach );
-		Tracer.info(this,"preFailed After Approach:" + preFailedAfterApproach );
-		Tracer.info(this,"prePassed After Approach:" + prePassedAfterApproach );
+		Tracer.info(this,"preFail After Approach:" + preFailAfterApproach );
+		Tracer.info(this,"prePass After Approach:" + prePassAfterApproach );
 		Tracer.info (this, "Events after appproach:\n" + toString(currentEvents));
 		
 		currentEvents = eventsAfterSay1;
 		currentEvents.clear();
 		say (guard(), firstSay);		
 		preApproachAfterSay1 = bridgeScene.preApproach();
-		preFailedAfterSay1 = bridgeScene.preFailed();
-		prePassedAfterSay1 = bridgeScene.prePassed();
+		preFailAfterSay1 = bridgeScene.preFail();
+		prePassAfterSay1 = bridgeScene.prePass();
 		preSayAfterSay1 = bridgeScene.preSay();
 		Tracer.info(this,"preApproach After Say1:" + preApproachAfterSay1 );
 		Tracer.info(this,"preSay After Say1:" + preSayAfterSay1 );
-		Tracer.info(this,"preFailed After Say1:" + preFailedAfterSay1 );
-		Tracer.info(this,"prePassed After Say1:" + prePassedAfterSay1 );
+		Tracer.info(this,"preFail After Say1:" + preFailAfterSay1 );
+		Tracer.info(this,"prePass After Say1:" + prePassAfterSay1 );
 		Tracer.info(this,"Events after Say1:\n" + toString(currentEvents));
 
 		
@@ -149,42 +149,42 @@ public class AssertingBridgeSceneDynamicTestCase
 		currentEvents.clear();
 		say (firstAvatar(), secondSay);
 		preApproachAfterSay2 = bridgeScene.preApproach();
-		preFailedAfterSay2 = bridgeScene.preFailed();
-		prePassedAfterSay2 = bridgeScene.prePassed();
+		preFailAfterSay2 = bridgeScene.preFail();
+		prePassAfterSay2 = bridgeScene.prePass();
 		preSayAfterSay2 = bridgeScene.preSay();	
 		Tracer.info(this,"preSay After Say2 (Knight Say):" + preApproachAfterSay2 );
 		Tracer.info(this,"preSay After Say2  (Knight Say):" + preSayAfterSay2 );
-		Tracer.info(this,"preFailed After Say2  (Knight Say):" + preFailedAfterSay2 );
-		Tracer.info(this,"prePassed After Say2  (Knight Say):" + prePassedAfterSay2 );	
+		Tracer.info(this,"preFail After Say2  (Knight Say):" + preFailAfterSay2 );
+		Tracer.info(this,"prePass After Say2  (Knight Say):" + prePassAfterSay2 );	
 		Tracer.info(this,"Events after Say2  (Knight Say):\n" + toString(currentEvents));
 
 		
-		currentEvents = eventsAfterPassed;
+		currentEvents = eventsAfterPass;
 		currentEvents.clear();
-		passed();
-		preApproachAfterPassed = bridgeScene.preApproach();
-		preFailedAfterPassed = bridgeScene.preFailed();
-		prePassedAfterPassed = bridgeScene.prePassed();
-		preSayAfterPassed = bridgeScene.preSay();
-		Tracer.info(this,"preSay Passed:" + preApproachAfterSay2 );
-		Tracer.info(this,"preSay Passed:" + preSayAfterSay2 );
-		Tracer.info(this,"preFailed After Passed):" + preFailedAfterSay2 );
-		Tracer.info(this,"prePassed After Passed:" + prePassedAfterSay2 );			
-		Tracer.info(this,"Events after Passed:\n" + toString(currentEvents));
+		pass();
+		preApproachAfterPass = bridgeScene.preApproach();
+		preFailAfterPass = bridgeScene.preFail();
+		prePassAfterPass = bridgeScene.prePass();
+		preSayAfterPass = bridgeScene.preSay();
+		Tracer.info(this,"preSay Pass:" + preApproachAfterSay2 );
+		Tracer.info(this,"preSay Pass:" + preSayAfterSay2 );
+		Tracer.info(this,"preFail After Pass):" + preFailAfterSay2 );
+		Tracer.info(this,"prePass After Pass:" + prePassAfterSay2 );			
+		Tracer.info(this,"Events after Pass:\n" + toString(currentEvents));
 
 		approach (secondAvatar());	
-		currentEvents = eventsAfterFailed;
+		currentEvents = eventsAfterFail;
 		currentEvents.clear();
-		failed();
-		preApproachAfterFailed = bridgeScene.preApproach();
-		preFailedAfterFailed = bridgeScene.preFailed();
-		prePassedAfterFailed = bridgeScene.prePassed();
-		preSayAfterFailed = bridgeScene.preSay();
-		Tracer.info(this,"preApproach After Failed:" + preApproachAfterFailed );
-		Tracer.info(this,"preSay After Failed:" + preSayAfterFailed );
-		Tracer.info(this,"preFailed After Failed:" + preFailedAfterFailed );
-		Tracer.info(this,"prePassed After Failed:" + prePassedAfterFailed );
-		Tracer.info(this,"Events after Failed:\n" + toString(currentEvents));
+		fail();
+		preApproachAfterFail = bridgeScene.preApproach();
+		preFailAfterFail = bridgeScene.preFail();
+		prePassAfterFail = bridgeScene.prePass();
+		preSayAfterFail = bridgeScene.preSay();
+		Tracer.info(this,"preApproach After Fail:" + preApproachAfterFail );
+		Tracer.info(this,"preSay After Fail:" + preSayAfterFail );
+		Tracer.info(this,"preFail After Fail:" + preFailAfterFail );
+		Tracer.info(this,"prePass After Fail:" + prePassAfterFail );
+		Tracer.info(this,"Events after Fail:\n" + toString(currentEvents));
 
 		
 		
@@ -225,10 +225,10 @@ public class AssertingBridgeSceneDynamicTestCase
     	if (find(eventsAfterApproach, "this", "say", true)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterApproach, "this", "passed", true)) {
+    	if (find(eventsAfterApproach, "this", "pass", true)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterApproach, "this", "failed", true)) {
+    	if (find(eventsAfterApproach, "this", "fail", true)) {
     		numCorrectPreconditions++;
     	}
     }
@@ -237,10 +237,10 @@ public class AssertingBridgeSceneDynamicTestCase
     protected void checkEventsAfterSay1() {
     	Tracer.info  (this, "Checking events after Guard Say");
     	
-    	if (find(eventsAfterApproach, "this", "passed", false)) {
+    	if (find(eventsAfterApproach, "this", "pass", false)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterApproach, "this", "failed", false)) {
+    	if (find(eventsAfterApproach, "this", "fail", false)) {
     		numCorrectPreconditions++;
     	}
     }
@@ -249,44 +249,44 @@ public class AssertingBridgeSceneDynamicTestCase
     protected void checkEventsAfterSay2() {
     	Tracer.info (this, "Checking events after Avatar Say");
     	
-    	if (find(eventsAfterApproach, "this", "passed", true)) {
+    	if (find(eventsAfterApproach, "this", "pass", true)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterApproach, "this", "failed", true)) {
-    		numCorrectPreconditions++;
-    	}
-    }
-    protected final static int NUM_PASSED_EVENTS = 4;
-
-    protected void checkEventsAfterFailed() {
-    	Tracer.info (this, "Checking events after failed");
-    	if (find(eventsAfterFailed, "this", "approach", true)) {
-    		numCorrectPreconditions++;
-    	}
-    	if (find(eventsAfterFailed, "this", "say", false)) {
-    		numCorrectPreconditions++;
-    	}
-    	if (find(eventsAfterFailed, "this", "passed", false)) {
-    		numCorrectPreconditions++;
-    	}
-    	if (find(eventsAfterFailed, "this", "failed", false)) {
+    	if (find(eventsAfterApproach, "this", "fail", true)) {
     		numCorrectPreconditions++;
     	}
     }
-    protected final static int NUM_FAILED_EVENTS = 4;
+    protected final static int NUM_Pass_EVENTS = 4;
 
-    protected void checkEventsAfterPassed() {
-    	Tracer.info (this, "Checking events after passed");
-    	if (find(eventsAfterPassed, "this", "approach", true)) {
+    protected void checkEventsAfterFail() {
+    	Tracer.info (this, "Checking events after fail");
+    	if (find(eventsAfterFail, "this", "approach", true)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterPassed, "this", "say", false)) {
+    	if (find(eventsAfterFail, "this", "say", false)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterPassed, "this", "passed", false)) {
+    	if (find(eventsAfterFail, "this", "pass", false)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterPassed, "this", "failed", false)) {
+    	if (find(eventsAfterFail, "this", "fail", false)) {
+    		numCorrectPreconditions++;
+    	}
+    }
+    protected final static int NUM_Fail_EVENTS = 4;
+
+    protected void checkEventsAfterPass() {
+    	Tracer.info (this, "Checking events after pass");
+    	if (find(eventsAfterPass, "this", "approach", true)) {
+    		numCorrectPreconditions++;
+    	}
+    	if (find(eventsAfterPass, "this", "say", false)) {
+    		numCorrectPreconditions++;
+    	}
+    	if (find(eventsAfterPass, "this", "pass", false)) {
+    		numCorrectPreconditions++;
+    	}
+    	if (find(eventsAfterPass, "this", "fail", false)) {
     		numCorrectPreconditions++;
     	}
     }
@@ -308,13 +308,13 @@ public class AssertingBridgeSceneDynamicTestCase
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (!preApproachAfterFailed) {
-			Tracer.error("preApproach after Failed should be true");
+		if (!preApproachAfterFail) {
+			Tracer.error("preApproach after Fail should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (!preApproachAfterPassed) {
-			Tracer.error("preApproach after Passed should be true");
+		if (!preApproachAfterPass) {
+			Tracer.error("preApproach after Pass should be true");
 		} else {
 			numCorrectPreconditions++;
 		}		
@@ -337,13 +337,13 @@ public class AssertingBridgeSceneDynamicTestCase
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (preSayAfterFailed) {
-			Tracer.error("preSay after Failed should be false");
+		if (preSayAfterFail) {
+			Tracer.error("preSay after Fail should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (preSayAfterPassed) {
-			Tracer.error("preSay after Passed should be false");
+		if (preSayAfterPass) {
+			Tracer.error("preSay after Pass should be false");
 		} else {
 			numCorrectPreconditions++;
 		}		
@@ -355,83 +355,83 @@ public class AssertingBridgeSceneDynamicTestCase
 		}
 		return result;
 	}
-	protected static final int  NUM_PRE_PASSED_CHECKS = 6;
+	protected static final int  NUM_PRE_Pass_CHECKS = 6;
 
-	protected void checkPrePassed() {
-		if (prePassedBeforeApproach) {
-			Tracer.error("prePassed before Approach should be false");
+	protected void checkPrePass() {
+		if (prePassBeforeApproach) {
+			Tracer.error("prePass before Approach should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (!prePassedAfterApproach) {
-			Tracer.error("prePassed after Approach should be true");
+		if (!prePassAfterApproach) {
+			Tracer.error("prePass after Approach should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (prePassedAfterSay1) {
-			Tracer.error("prePassed after Say1 (Guard Say) should be false");
+		if (prePassAfterSay1) {
+			Tracer.error("prePass after Say1 (Guard Say) should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (!prePassedAfterSay2) {
-			Tracer.error("prePassed After Say2  (Knight Say) should be true");
+		if (!prePassAfterSay2) {
+			Tracer.error("prePass After Say2  (Knight Say) should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (prePassedAfterFailed) {
-			Tracer.error("prePassed after Failed should be false");
+		if (prePassAfterFail) {
+			Tracer.error("prePass after Fail should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (prePassedAfterPassed) {
-			Tracer.error("prePassed after Passed should be false");
+		if (prePassAfterPass) {
+			Tracer.error("prePass after Pass should be false");
 		} else {
 			numCorrectPreconditions++;
 		}		
 	}
-	protected static final int  NUM_PRE_FAILED_CHECKS = 6;
-	protected void checkPreFailed() {
-		if (preFailedBeforeApproach) {
-			Tracer.error("preFailed before Approach should be false");
+	protected static final int  NUM_PRE_Fail_CHECKS = 6;
+	protected void checkPreFail() {
+		if (preFailBeforeApproach) {
+			Tracer.error("preFail before Approach should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (!preFailedAfterApproach) {
-			Tracer.error("preFailed after Approach should be true");
+		if (!preFailAfterApproach) {
+			Tracer.error("preFail after Approach should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (!preFailedAfterSay1) {
-			Tracer.error("preFailed after Say1 (Guard Say) should be true");
+		if (!preFailAfterSay1) {
+			Tracer.error("preFail after Say1 (Guard Say) should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (!preFailedAfterSay2) {
-			Tracer.error("preFailed after Say2 should be true");
+		if (!preFailAfterSay2) {
+			Tracer.error("preFail after Say2 should be true");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (preFailedAfterFailed) {
-			Tracer.error("preFailed after Failed should be false");
+		if (preFailAfterFail) {
+			Tracer.error("preFail after Fail should be false");
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (preFailedAfterPassed) {
-			Tracer.error("preFailed after Passed should be false");
+		if (preFailAfterPass) {
+			Tracer.error("preFail after Pass should be false");
 		} else {
 			numCorrectPreconditions++;
 		}		
 	}
 	protected static final int NUM_CHECKS = 
 			NUM_APPROACH_EVENTS +
-			NUM_FAILED_EVENTS +
-			NUM_PASSED_EVENTS +
+			NUM_Fail_EVENTS +
+			NUM_Pass_EVENTS +
 			NUM_SAY1_EVENTS +
 			NUM_SAY2_EVENTS +
 			NUM_PRE_APPROACH_CHECKS +
 			NUM_PRE_SAY_CHECKS +
-			NUM_PRE_PASSED_CHECKS +
-			NUM_PRE_FAILED_CHECKS;
+			NUM_PRE_Pass_CHECKS +
+			NUM_PRE_Fail_CHECKS;
 			
 
 	@Override
@@ -440,16 +440,16 @@ public class AssertingBridgeSceneDynamicTestCase
 		numCorrectPreEvents = 0;
 		checkPreApproach();
 		checkPreSay();
-		checkPrePassed();
-		checkPreFailed();
+		checkPrePass();
+		checkPreFail();
 		checkEventsAfterApproach();
 		checkEventsAfterSay1();
 		checkEventsAfterSay2();
-		checkEventsAfterPassed();
-		checkEventsAfterFailed();
+		checkEventsAfterPass();
+		checkEventsAfterFail();
 		fractionComplete = ((double) numCorrectPreconditions) /NUM_CHECKS;
 		if (fractionComplete != 1) {
-			assertTrue(NUM_CHECKS - numCorrectPreconditions + " checks out of " + NUM_CHECKS + " failed. See console error messages", false); 
+			assertTrue(NUM_CHECKS - numCorrectPreconditions + " checks out of " + NUM_CHECKS + " fail. See console error messages", false); 
 		}
 
 		return true;

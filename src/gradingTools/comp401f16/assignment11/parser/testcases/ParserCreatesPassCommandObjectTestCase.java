@@ -15,8 +15,8 @@ public class ParserCreatesPassCommandObjectTestCase
 	}
 	protected void setCommand() {
 		setCommand("approach Arthur ");
-		setCommand("passed ");
-
+		setCommand("pass ");
+		
 	}
 	
 	

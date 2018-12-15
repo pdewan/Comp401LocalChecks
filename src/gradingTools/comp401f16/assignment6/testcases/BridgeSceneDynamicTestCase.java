@@ -16,8 +16,8 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 	protected final double APPROACH_CREDIT = 0.05; // 4 times, 	0.2 pts
 	protected final double SAY_CREDIT = 0.05; // 9 times, 		0.45 pts
 	protected final double LAST_SAY_CREDIT = 0.15; // once 		0.15
-	protected final double PASSED_CREDIT = 0.1; //once, 		0.1
-	protected final double FAILED_CREDIT = 0.1; // once, 		0.1
+	protected final double Pass_CREDIT = 0.1; //once, 		0.1
+	protected final double Fail_CREDIT = 0.1; // once, 		0.1
 	protected final String firstSay = "Quest?";
 	protected final String secondSay = "Grail";
 	protected final String thirdSay = "Color?";
@@ -43,11 +43,11 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 //	protected String wrongApproachErrorMessage() {
 //		return "After wrong approach occupied should be true and knight turn false";
 //	}
-	protected String passedErrorMessage() {
-		return "After passed occupied should be false and knight turn false";
+	protected String passErrorMessage() {
+		return "After pass occupied should be false and knight turn false";
 	}
-	protected String failedErrorMessage() {
-		return "After failed occupied should be false and knight turn false";
+	protected String failErrorMessage() {
+		return "After fail occupied should be false and knight turn false";
 	}
 	protected double eachSayCredit() {
 		return SAY_CREDIT;
@@ -56,14 +56,14 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		return LAST_SAY_CREDIT;
 	}
 	protected String sayErrorMessage() {
-		return "Say failed";
+		return "Say fail";
 	}
-	protected double passedCredit() {
-		return PASSED_CREDIT;
+	protected double passCredit() {
+		return Pass_CREDIT;
 	}
 	
-	protected double failedCredit() {
-		return FAILED_CREDIT;
+	protected double failCredit() {
+		return Fail_CREDIT;
 	}
 
 //	protected TestBridgeScene bridgeScene() {
@@ -149,38 +149,38 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 //		fractionComplete += eachApproachCredit();
 //		printFractionComplete();
 //	}
-	protected void doPassed() {
-		bridgeScene().passed();
+	protected void doPass() {
+		bridgeScene().pass();
 	}
-	protected void passed() {
-		Tracer.info(this,"Interacting Knight Passed");
-		doPassed();
-//		bridgeScene().passed();
-		assertTrue(passedErrorMessage(), 
+	protected void pass() {
+		Tracer.info(this,"Interacting Knight Pass");
+		doPass();
+//		bridgeScene().pass();
+		assertTrue(passErrorMessage(), 
 				!bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
-		fractionComplete += passedCredit();
+		fractionComplete += passCredit();
 		printFractionComplete();
 	}
-	protected void doPassOrFailed() {
-		bridgeScene().failed();
+	protected void doPassOrFail() {
+		bridgeScene().fail();
 	}
-	protected void checkFailed() {
-		assertTrue("After failed occupied should be false and knight turn false", 
+	protected void checkFail() {
+		assertTrue("After fail occupied should be false and knight turn false", 
 				!bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
-		fractionComplete += passedCredit();
+		fractionComplete += passCredit();
 		printFractionComplete();
 	}
-	protected void failed() {
-		Tracer.info(this,"Interacting Knight Failed");
-		doPassOrFailed();
-		checkFailed();
-//		bridgeScene().failed();
-//		assertTrue("After failed occupied should be false and knight turn false", 
+	protected void fail() {
+		Tracer.info(this,"Interacting Knight Fail");
+		doPassOrFail();
+		checkFail();
+//		bridgeScene().fail();
+//		assertTrue("After fail occupied should be false and knight turn false", 
 //				!bridgeScene().getOccupied() &&
 //				!bridgeScene().getKnightTurn());
-//		fractionComplete += passedCredit();
+//		fractionComplete += passCredit();
 //		printFractionComplete();
 	}
 	@Override
@@ -190,13 +190,13 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		say (firstAvatar(), secondSay);
 		say (guard(), thirdSay);
 		say (firstAvatar(), fourthSay);
-		passed();
+		pass();
 		approach (secondAvatar());
 		say (guard(), firstSay);
 		say (secondAvatar(), secondSay);
 		say (guard(), thirdSay);
 		say (secondAvatar(), fourthSay);
-		failed();
+		fail();
 		approach(thirdAvatar());
 		Tracer.info(this,"The next approach should fail");
 		approach(fourthAvatar());

@@ -47,8 +47,8 @@ public class ParsingExceptionTestCase extends ScanningExceptionTestCase {
 		if (aNumMethodsWithThrows < MIN_PARSE_THROWS ) {
 			
 		
-		double aCredit = THROWS_EXCEPTION_CREDIT *
-					((double) aNumMethodsWithThrows)/MIN_PARSE_THROWS;
+		double aCredit = Math.min (THROWS_EXCEPTION_CREDIT, THROWS_EXCEPTION_CREDIT *
+					((double) aNumMethodsWithThrows)/MIN_PARSE_THROWS);
 		fractionComplete += aCredit;
 		assertTrue ("At least " + MIN_PARSE_THROWS + " parse methods do not throw " + exceptionClass, false);
 		}
@@ -65,6 +65,10 @@ public class ParsingExceptionTestCase extends ScanningExceptionTestCase {
 //		fractionComplete += THROWS_EXCEPTION_CREDIT;
 
 		
+	}
+	protected void checkSuccessfulSet() {
+		
+
 	}
 	@Override
 	protected Class proxyClass() {

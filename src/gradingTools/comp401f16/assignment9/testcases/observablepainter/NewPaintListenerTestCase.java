@@ -45,15 +45,15 @@ public class NewPaintListenerTestCase
 	public static final int ESTMATE_TIME_FOR_ANIMATION = 8000;
 	public static final int ESTIMATE_TIME_FOR_PAINT_INVOCATION = 500;
 	public static final int MIN_APPROACH_EVENTS = 1;
-	public static final int MIN_FAILED_EVENTS = 1;
+	public static final int MIN_Fail_EVENTS = 1;
 	public static final int MIN_EVENTS = 1;
 	public static final double LISTENER_CREDIT =0.3;
 	public static final double APPROACH_EVENTS_CREDIT = 0.5;
-	public static final double FAILED_EVENTS_CREDIT = 0.2;
-	protected boolean failedCalled = false;
+	public static final double Fail_EVENTS_CREDIT = 0.2;
+	protected boolean failCalled = false;
 	protected boolean paintReceived = false;
 	protected int numEventsFiredByApproach;
-	protected int numEventsFiredByFailed;
+	protected int numEventsFiredByFail;
 	protected int numEventsFired;
 	
 	protected TestBridgeScene bridgeScene;
@@ -61,10 +61,13 @@ public class NewPaintListenerTestCase
 	protected Object delegatingBridgeSceneView;
 	protected void initState() {
 		fractionComplete = 0;
-		failedCalled = false;
+		failCalled = false;
 		numEventsFiredByApproach = 0;
-		numEventsFiredByFailed = 0;
+		numEventsFiredByFail = 0;
 		paintReceived = false;
+	}
+	protected boolean tryConstructor() {
+		return false; // we do not want to search exhanistively
 	}
 	@Override
 	protected Object create() {
@@ -83,7 +86,7 @@ public class NewPaintListenerTestCase
 				Object.class);
 		} catch (Error e) {
 			fractionComplete = 0;
-			assertTrue ("One or more factory methods failed:", false);
+			assertTrue ("One or more factory methods fail:", false);
 		}
 		
 		return bridgeScene;
@@ -110,10 +113,10 @@ public class NewPaintListenerTestCase
 //		printFractionComplete();
 	}
 
-	protected void failed() {
-		Tracer.info(this,"Calling Interacting Knight Failed");
-		failedCalled = true;
-		bridgeScene().failed();
+	protected void fail() {
+		Tracer.info(this,"Calling Interacting Knight Fail");
+		failCalled = true;
+		bridgeScene().fail();
 	}	
 		
 	protected void registerPaintListener() {
@@ -149,13 +152,13 @@ public class NewPaintListenerTestCase
 //		}
 //		fractionComplete += APPROACH_EVENTS_CREDIT;
 //
-//		if (numEventsFiredByFailed < MIN_FAILED_EVENTS  ) {
-////			assertTrue("No paint events fired by failed", false	);
-//			assertTrue("At least "  + MIN_FAILED_EVENTS + " paint event not fired by failed", false	);
+//		if (numEventsFiredByFail < MIN_Fail_EVENTS  ) {
+////			assertTrue("No paint events fired by fail", false	);
+//			assertTrue("At least "  + MIN_Fail_EVENTS + " paint event not fired by fail", false	);
 //
 //
 //		}
-		fractionComplete += FAILED_EVENTS_CREDIT + APPROACH_EVENTS_CREDIT;
+		fractionComplete += Fail_EVENTS_CREDIT + APPROACH_EVENTS_CREDIT;
 	}
 	protected static String[] emptyStringargs = new String[]{};
 
@@ -167,6 +170,7 @@ public class NewPaintListenerTestCase
 		ThreadSupport.sleep(ESTMATE_TIME_FOR_ANIMATION);
 		Tracer.info(this, "Finished waiting for predefined animation to finish");
 		run();
+		anError.getFuture().cancel(true); // This does not do anything for this program
 		if (anError != null && anError.getFuture() != null) {
 			
 				anError.getFuture().cancel(true); // This does not do anything for this program
@@ -208,16 +212,16 @@ public class NewPaintListenerTestCase
 		ThreadSupport.sleep(ESTIMATE_TIME_FOR_PAINT_INVOCATION);
 		checkResults();
 
-//		if (numEventsFiredByFailed == 0  ) {
+//		if (numEventsFiredByFail == 0  ) {
 //			assertTrue("No paint events fired by approach", false	);
 //		}
 //		fractionComplete += APPROACH_EVENTS_CREDIT;
 //
-//		if (numEventsFiredByFailed == 0 ) {
-//			assertTrue("No paint events fired by failed", false	);
+//		if (numEventsFiredByFail == 0 ) {
+//			assertTrue("No paint events fired by fail", false	);
 //
 //		}
-//		fractionComplete += FAILED_EVENTS_CREDIT;
+//		fractionComplete += Fail_EVENTS_CREDIT;
 
 		return true;
 		
@@ -230,6 +234,9 @@ public class NewPaintListenerTestCase
 	}
 	@Override
 	public void paint(Graphics2D g) {
+		if (Tracer.isMaxTraceMessageGiven()) {
+			return;
+		}
 		if (!paintReceived) {
 			Tracer.info(this,"Received Paint Event, NewPaintListener Test Successful");
 			paintReceived = true;
@@ -237,9 +244,9 @@ public class NewPaintListenerTestCase
 		numEventsFired++;
 		// actually the paint method may be called once for both approach and fail, so the
 		// code below does not make sense
-		if (failedCalled) {
+		if (failCalled) {
 			Tracer.info(this, "Received paint event after fail call");
-			numEventsFiredByFailed++;
+			numEventsFiredByFail++;
 		} else {
 			Tracer.info(this, "Received paint event after approach call");
 
@@ -253,9 +260,9 @@ public class NewPaintListenerTestCase
 
 		approach(firstAvatar());
 		
-// no point calling failed(), as only one paint() event will be fired
+// no point calling fail(), as only one paint() event will be fired
 		
-//		failed();
+//		fail();
 
 
 	}

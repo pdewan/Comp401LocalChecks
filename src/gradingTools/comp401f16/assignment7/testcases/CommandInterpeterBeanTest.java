@@ -63,14 +63,14 @@ public class CommandInterpeterBeanTest extends ScanStringTest{
 //}
 //	protected boolean doTest() throws Throwable {
 //		inputWithEndingSpace = true;
-//		boolean failedWithSpace = false;
+//		boolean failWithSpace = false;
 //		try {
 //		executeBean();
 //		} catch (Throwable e) {
-//			failedWithSpace = true;
+//			failWithSpace = true;
 ////			executeBean();
 //		}
-//		if (tokensOutput == null || failedWithSpace) {
+//		if (tokensOutput == null || failWithSpace) {
 //			inputWithEndingSpace = false;
 //			executeBean();
 //			extractTokens();

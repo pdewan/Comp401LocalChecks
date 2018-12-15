@@ -19,8 +19,8 @@ import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 @MaxValue(15)
 public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproachedArthurSayTestCase {
 	protected final double APPROACH_CREDIT = 0.6;// 4 times, 	0.2 pts
-	protected final double FAILED_CREDIT = 0.2; // 9 times, 		0.45 pts
-	protected final double PASSED__CREDIT = 0.2; // once 		0.15
+	protected final double Fail_CREDIT = 0.2; // 9 times, 		0.45 pts
+	protected final double Pass__CREDIT = 0.2; // once 		0.15
 	
 	public OneLevelListAtomicCommandTestCase() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
@@ -55,21 +55,21 @@ public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproac
 		return APPROACH_CREDIT;
 	}
 	@Override
-	protected double passedCredit() {
-		return PASSED_CREDIT;
+	protected double passCredit() {
+		return Pass_CREDIT;
 	}
 	@Override
-	protected double failedCredit() {
-		return FAILED_CREDIT;
+	protected double failCredit() {
+		return Fail_CREDIT;
 	}
 	
 	@Override
-	protected void doPassed() {
+	protected void doPass() {
 		setCommand("pass" + " ");
 	}
 	@Override
-	protected void doPassOrFailed() {
-		setCommand("failed" + " ");
+	protected void doPassOrFail() {
+		setCommand("fail" + " ");
 	}
 
 
@@ -77,15 +77,15 @@ public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproac
 	protected void executeOperations(Object aLocatable) {
 		String aCommand = "{" + " " +
 				"approach " + firstAvatarName() + " " +
-				"passed" + " " +
+				"pass" + " " +
 				"approach " + secondAvatarName() + " " +
-				"failed" + " " +
+				"fail" + " " +
 				"}" + " ";
 //		approach(firstAvatarName());				
-//		passed();
+//		pass();
 //		approach (secondAvatarName());	
-//		failed();	
-		checkFailed();
+//		fail();	
+		checkFail();
 	}
 	protected void approach (String anAvatar) {
 		Tracer.info(this,anAvatar + " Approaches");

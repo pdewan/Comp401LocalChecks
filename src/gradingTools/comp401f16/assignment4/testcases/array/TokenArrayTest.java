@@ -209,7 +209,7 @@ public static final String TOKENS = "Tokens";
 	}
 	protected boolean doTest() throws Throwable {
 		inputWithEndingSpace = true;
-		boolean failedWithSpace = false;
+		boolean failWithSpace = false;
 		clearTokenCollectionOutputs();
 		try {
 		executeBean();
@@ -219,12 +219,12 @@ public static final String TOKENS = "Tokens";
 				throw e;
 			}
 			
-			failedWithSpace = true;
+			failWithSpace = true;
 //			executeBean();
 		}
 		extractTokens();
-		if (isNullCollectionOutput()|| failedWithSpace) {
-//		if (tokenArrayOutput == null || failedWithSpace) {
+		if (isNullCollectionOutput()|| failWithSpace) {
+//		if (tokenArrayOutput == null || failWithSpace) {
 			inputWithEndingSpace = false;
 			executeBean();
 			extractTokens();

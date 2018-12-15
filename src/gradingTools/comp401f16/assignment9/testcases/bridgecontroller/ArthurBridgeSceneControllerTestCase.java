@@ -25,10 +25,10 @@ public class ArthurBridgeSceneControllerTestCase
 	implements  Runnable{
 	public static final double LISTENER_CREDIT =0.3;
 	public static final double APPROACH_EVENTS_CREDIT = 0.5;
-	public static final double FAILED_EVENTS_CREDIT = 0.2;
-	protected boolean failedCalled = false;
+	public static final double Fail_EVENTS_CREDIT = 0.2;
+	protected boolean failCalled = false;
 	protected int numEventsFiredByApproach;
-	protected int numEventsFiredByFailed;
+	protected int numEventsFiredByFail;
 	protected static final int MOUSE_X = 50;
 	protected static final int MOUSE_Y = 50;
 	protected static final int MOVE_X_INCREMENT = 20;
@@ -289,7 +289,7 @@ public class ArthurBridgeSceneControllerTestCase
 		if (testSuccessful) {
 			Tracer.info(this,"TEST SUCCESSFUL, x is the same after first and second key type event");
 		} else {
-			Tracer.info(this,"TEST FAILeD, x is not the same after first and second key type event");
+			Tracer.info(this,"TEST FAILED, x is not the same after first and second key type event");
 		}
 
 		

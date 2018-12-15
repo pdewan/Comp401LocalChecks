@@ -45,12 +45,12 @@ public class PassCommandObjectTestCase extends FailCommandObjectTestCase  {
 ////				 bridgeSceneInterface);
 //	}
 	protected void doPostApproachOperation() {
-		passed();
+		pass();
 
 	}
 	@Override
-	protected void doPassed () {
-		super.doPassOrFailed();
+	protected void doPass () {
+		super.doPassOrFail();
 //		fractionComplete = 0;
 //		 try {
 //			

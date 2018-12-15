@@ -21,8 +21,8 @@ import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 @MaxValue(45)
 public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedArthurSayTestCase {
 	protected final double APPROACH_CREDIT = 0.6;// 4 times, 	0.2 pts
-	protected final double FAILED_CREDIT = 0.2; // 9 times, 		0.45 pts
-	protected final double PASSED__CREDIT = 0.2; // once 		0.15
+	protected final double Fail_CREDIT = 0.2; // 9 times, 		0.45 pts
+	protected final double Pass_CREDIT = 0.2; // once 		0.15
 	
 //	TestParser parser;
 //	
@@ -71,30 +71,30 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 		return APPROACH_CREDIT;
 	}
 	@Override
-	protected double passedCredit() {
-		return PASSED_CREDIT;
+	protected double passCredit() {
+		return Pass_CREDIT;
 	}
 	@Override
-	protected double failedCredit() {
-		return FAILED_CREDIT;
+	protected double failCredit() {
+		return Fail_CREDIT;
 	}
 	
 	@Override
-	protected void doPassed() {
-		setCommand("passed" + " ");
+	protected void doPass() {
+		setCommand("pass" + " ");
 	}
 	@Override
-	protected void doPassOrFailed() {
-		setCommand("failed" + " ");
+	protected void doPassOrFail() {
+		setCommand("fail" + " ");
 	}
 
 
 	@Override
 	protected void executeOperations(Object aLocatable) {
 		approach(firstAvatarName());				
-		passed();
+		pass();
 		approach (secondAvatarName());	
-		failed();		
+		fail();		
 	}
 	protected void approach (String anAvatar) {
 		Tracer.info(this,anAvatar + " Approaches");

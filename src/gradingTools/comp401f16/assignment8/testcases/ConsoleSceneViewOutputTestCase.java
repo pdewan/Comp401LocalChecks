@@ -37,7 +37,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 		return somePropertiesChange?"":"Old Value == New Value in less than 7 property notification. ";
 	}
 	protected String oldValueCorrespondsToNewValueMessage() {
-		return oldValueCorrespondsToNewValue?"":"No new value before failed is an old value after failed. ";
+		return oldValueCorrespondsToNewValue?"":"No new value before fail is an old value after fail. ";
 	}
 	protected String fullMessage() {
 		return minPartsMessage() + somePropertiesMessage() + oldValueCorrespondsToNewValueMessage();
@@ -86,11 +86,11 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 	
     protected void processPropertyChanges() {
     	fractionComplete = 0;
-    	long numNotifications = approachPropertyChanges.length + failedPropertyChanges.length;
+    	long numNotifications = approachPropertyChanges.length + failPropertyChanges.length;
 
-    	Tracer.info(this,"Number of properties notifications after approach and failed:" + numNotifications);
+    	Tracer.info(this,"Number of properties notifications after approach and fail:" + numNotifications);
     	Tracer.info(this,"Testing if old values and new values are different in notifications");
-    	long numNoChanges = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
+    	long numNoChanges = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failPropertyChanges))
                 .parallel().unordered()
                 .filter((properties) -> properties[1].equals(properties[2])) // new/old value
                 .count();
@@ -110,7 +110,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
         }
     	Tracer.info(this,"Finding the number of unique sources of property changes after approach");
 
-        long uniqueSources = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failedPropertyChanges))
+        long uniqueSources = Stream.concat(Arrays.stream(approachPropertyChanges), Arrays.stream(failPropertyChanges))
                 .parallel().unordered()
                 .map((properties) -> properties[4]) // source
                 .distinct()
@@ -123,11 +123,11 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
         	fractionComplete += MIN_PARTS_CREDIT;
         }
         
-        String[][] all = Arrays.copyOf(approachPropertyChanges, approachPropertyChanges.length + failedPropertyChanges.length);
-        System.arraycopy(failedPropertyChanges, 0, all, approachPropertyChanges.length, failedPropertyChanges.length);
+        String[][] all = Arrays.copyOf(approachPropertyChanges, approachPropertyChanges.length + failPropertyChanges.length);
+        System.arraycopy(failPropertyChanges, 0, all, approachPropertyChanges.length, failPropertyChanges.length);
         // check for property with same source with an newValue equal to a past oldValue
         oldValueCorrespondsToNewValue = false;
-        Tracer.info(this,"Testing if new values before failed are old values after it");
+        Tracer.info(this,"Testing if new values before fail are old values after it");
         for(int i = 0; !oldValueCorrespondsToNewValue && i < all.length; i ++) {
             String[] prop1 = all[i];
             for(int j = i; !oldValueCorrespondsToNewValue && j < all.length; j ++) {
@@ -174,14 +174,14 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 		
 //		printFractionComplete();
 	}
-    protected String[][] failedPropertyChanges;
+    protected String[][] failPropertyChanges;
 
-	protected void failed() {
-		Tracer.info(this,"Interacting Knight Failed");
+	protected void fail() {
+		Tracer.info(this,"Interacting Knight Fail");
 		BasicProjectExecution.redirectOutput();
-		bridgeScene().failed();
+		bridgeScene().fail();
 		output= BasicProjectExecution.restoreAndGetOut();
-		failedPropertyChanges = parsePropertyChanges(output);
+		failPropertyChanges = parsePropertyChanges(output);
 		
 		
 	}
@@ -189,7 +189,7 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 	protected boolean doTest() throws Throwable {
 		rootProxy = create();
 		approach(firstAvatar());
-		failed();
+		fail();
 		processPropertyChanges();
 		return true;
 		
