@@ -45,11 +45,11 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 	@Override
 	protected Object create() {
 		
-		bridgeScene = (TestBridgeScene) getOrCreateObject(
+		bridgeScene = (TestBridgeScene) getObjectFromFactory(
 				factoryClassTags(), 
 				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestBridgeScene.class);
-		consoleView = (PropertyChangeListener) getOrCreateObject(
+		consoleView = (PropertyChangeListener) getObjectFromFactory(
 				factoryClassTags(), 
 				ConsoleSceneViewFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				PropertyChangeListener.class);

@@ -56,7 +56,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 	}
 	@Override
 	protected Object create() {
-		return createUsingFactoryMethod();
+		return createUsingFactoryClassAndMethodTags();
 	}
 	@Override 
 	protected void setDependentObjects() {
@@ -92,7 +92,7 @@ public class ParsingAtomicCommandTestCase extends CommandInterpreterApproachedAr
 	@Override
 	protected void executeOperations(Object aLocatable) {
 		approach(firstAvatarName());				
-		pass();
+		passKnight();
 		approach (secondAvatarName());	
 		fail();		
 	}

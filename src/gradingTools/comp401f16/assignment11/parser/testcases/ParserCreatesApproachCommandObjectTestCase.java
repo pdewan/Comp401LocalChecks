@@ -12,7 +12,7 @@ public class ParserCreatesApproachCommandObjectTestCase
 	
 	protected void setParserFromFactoryMethod() {
 		Object retVal = 
-		getOrCreateObject(factoryClassTags,
+		getObjectFromFactory(factoryClassTags,
 				ParserFactoryMethodTest.FACTORY_METHOD_TAGS, TestParser.class);
 		assertTrue(factoryMessage, factoryMessage.isEmpty());
 		parser = (TestParser)

@@ -56,7 +56,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		return MAX_TIME_FOR_ANIMATION;
 	}
 	protected void createBridgeScene() {
-		bridgeScene = (TestBridgeScene) getOrCreateObject(
+		bridgeScene = (TestBridgeScene) getObjectFromFactory(
 				factoryClassTags(), 
 				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestBridgeScene.class);
@@ -135,7 +135,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	}
 	@Override
 	protected Object create() {
-		return createUsingFactoryMethod();
+		return createUsingFactoryClassAndMethodTags();
 	}
 	protected synchronized void maybeKillThreads() {
 		stopThread(childThread);

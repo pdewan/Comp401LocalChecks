@@ -72,15 +72,15 @@ public class NewPaintListenerTestCase
 	@Override
 	protected Object create() {
 		try {
-		bridgeScene = (TestBridgeScene) getOrCreateObject(
+		bridgeScene = (TestBridgeScene) getObjectFromFactory(
 				factoryClassTags(), 
 				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestBridgeScene.class);
-		observableBridgeScenePainter = (TestObservableBridgeScenePainter) getOrCreateObject(
+		observableBridgeScenePainter = (TestObservableBridgeScenePainter) getObjectFromFactory(
 				factoryClassTags(), 
 				ObservableBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestObservableBridgeScenePainter.class);
-		delegatingBridgeSceneView =  getOrCreateObject(
+		delegatingBridgeSceneView =  getObjectFromFactory(
 				factoryClassTags(), 
 				DelegatingBridgeSceneViewFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				Object.class);

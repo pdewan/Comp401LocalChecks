@@ -39,7 +39,7 @@ public class CommandInterpreterGalahadMoveLeftArmTestCase
 	}
 	@Override
 	protected Object create() {
-		return createUsingFactoryMethod();
+		return createUsingFactoryClassAndMethodTags();
 	}
 	@Override 
 	protected void setDependentObjects() {

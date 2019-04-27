@@ -27,7 +27,7 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 		Tracer.info(this,"Wating Avatarts case created:" + this);
 	}
 	protected void createClearanceManager() {
-		broadcastingClearanceManager = (BroadcastingClearanceManager) getOrCreateObject(
+		broadcastingClearanceManager = (BroadcastingClearanceManager) getObjectFromFactory(
 				factoryClassTags(), 
 				BroadcastingClearanceManagerFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				BroadcastingClearanceManager.class);

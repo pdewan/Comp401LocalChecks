@@ -152,7 +152,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 	protected void doPass() {
 		bridgeScene().pass();
 	}
-	protected void pass() {
+	protected void passKnight() {
 		Tracer.info(this,"Interacting Knight Pass");
 		doPass();
 //		bridgeScene().pass();
@@ -190,7 +190,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		say (firstAvatar(), secondSay);
 		say (guard(), thirdSay);
 		say (firstAvatar(), fourthSay);
-		pass();
+		passKnight();
 		approach (secondAvatar());
 		say (guard(), firstSay);
 		say (secondAvatar(), secondSay);

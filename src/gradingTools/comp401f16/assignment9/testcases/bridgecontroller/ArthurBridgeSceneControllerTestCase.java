@@ -49,7 +49,7 @@ public class ArthurBridgeSceneControllerTestCase
 	protected void createController() {
 		try {
 		Tracer.info(this,"Trying to get bridge scene controller");
-		bridgeSceneController = (TestBridgeSceneController) getOrCreateObject(
+		bridgeSceneController = (TestBridgeSceneController) getObjectFromFactory(
 				factoryClassTags(), 
 				BridgeSceneControllerFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestBridgeSceneController.class);
@@ -64,7 +64,7 @@ public class ArthurBridgeSceneControllerTestCase
 	protected void createView() {
 		try {
 			Tracer.info(this,"Trying to get inheriting painter");
-			inheritingBridgeScenePainter =  getOrCreateObject(
+			inheritingBridgeScenePainter =  getObjectFromFactory(
 					factoryClassTags(), 
 					InheritingBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
 					Component.class);
@@ -83,7 +83,7 @@ public class ArthurBridgeSceneControllerTestCase
 		try  {
 			Tracer.info(this,"Trying to get observable painter");
 
-		observableBridgeScenePainter = (TestObservableBridgeScenePainter) getOrCreateObject(
+		observableBridgeScenePainter = (TestObservableBridgeScenePainter) getObjectFromFactory(
 				factoryClassTags(), 
 				ObservableBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestObservableBridgeScenePainter.class);
@@ -108,7 +108,7 @@ public class ArthurBridgeSceneControllerTestCase
 	@Override
 	protected Object create() {
 		
-		bridgeScene = (TestBridgeScene) getOrCreateObject(
+		bridgeScene = (TestBridgeScene) getObjectFromFactory(
 				factoryClassTags(), 
 				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestBridgeScene.class);

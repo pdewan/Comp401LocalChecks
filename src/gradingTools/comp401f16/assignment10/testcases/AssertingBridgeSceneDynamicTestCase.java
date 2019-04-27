@@ -40,7 +40,7 @@ public class AssertingBridgeSceneDynamicTestCase
 	@Override
 	protected Object create() {
 		
-		bridgeScene = (TestBridgeScene) getOrCreateObject(
+		bridgeScene = (TestBridgeScene) getObjectFromFactory(
 				factoryClassTags(), 
 				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
 				TestBridgeScene.class);
@@ -161,7 +161,7 @@ public class AssertingBridgeSceneDynamicTestCase
 		
 		currentEvents = eventsAfterPass;
 		currentEvents.clear();
-		pass();
+		passKnight();
 		preApproachAfterPass = bridgeScene.preApproach();
 		preFailAfterPass = bridgeScene.preFail();
 		prePassAfterPass = bridgeScene.prePass();

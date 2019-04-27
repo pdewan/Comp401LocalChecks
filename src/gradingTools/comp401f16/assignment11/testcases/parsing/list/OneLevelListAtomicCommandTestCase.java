@@ -41,7 +41,7 @@ public class OneLevelListAtomicCommandTestCase extends CommandInterpreterApproac
 	}
 	@Override
 	protected Object create() {
-		return createUsingFactoryMethod();
+		return createUsingFactoryClassAndMethodTags();
 	}
 	@Override 
 	protected void setDependentObjects() {

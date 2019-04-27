@@ -76,7 +76,7 @@ public class StringTableTest extends  StringTableFactoryMethodTest{
 	}
 	@Override
 	protected Object create() {
-		return createUsingFactoryMethod();
+		return createUsingFactoryClassAndMethodTags();
 	}
 	protected boolean doTest() throws Throwable {
 		create();

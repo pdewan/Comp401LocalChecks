@@ -31,7 +31,7 @@ public class CommandInterpreterArthurMoveLeftArmTestCase extends BridgeSceneArth
 	}
 	@Override
 	protected Object create() {
-		return createUsingFactoryMethod();
+		return createUsingFactoryClassAndMethodTags();
 	}
 	@Override 
 	protected void setDependentObjects() {
