@@ -1,9 +1,11 @@
 package gradingTools.comp401f16.assignment.testInterfaces;
 
+import tags301.Comp301Tags;
 import util.annotations.Tags;
 import util.models.PropertyListenerRegisterer;
 
-@Tags({"BridgeScene"})
+//@Tags({"BridgeScene"})
+@Tags(Comp301Tags.BRIDGE_SCENE)
 public interface TestBridgeScene  extends PropertyListenerRegisterer{
 	public TestAvatar getArthur();
 	public TestAvatar getLancelot();

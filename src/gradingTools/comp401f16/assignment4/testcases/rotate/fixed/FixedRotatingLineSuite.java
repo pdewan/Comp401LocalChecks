@@ -20,7 +20,7 @@ import util.annotations.MaxValue;
 
 	
 })
-@IsExtra(true)
+//@IsExtra(true)
 @MaxValue(16)
 public class FixedRotatingLineSuite {
 

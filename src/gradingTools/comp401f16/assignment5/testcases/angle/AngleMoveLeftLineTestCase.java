@@ -22,9 +22,16 @@ public class AngleMoveLeftLineTestCase extends AngleMoveTestCase {
 	protected void setLeafProxy() {
 		//leafProxy = angle().getLeftLine();
 		leafProxy = computeLeafProxy();
+		
 	}
 	protected Object computeLeafProxy() {
-		return  angle().getLeftLine();
+		TestAngle aTestAngle = angle();
+		Object retVal =  aTestAngle.getLeftLine();
+		
+		if (retVal == null) {
+			throw new RuntimeException("getLeftLine in angle " + aTestAngle + " returned null");
+		}
+		return retVal;
 	}
 	@Override
 	protected boolean doTest() throws Throwable {
