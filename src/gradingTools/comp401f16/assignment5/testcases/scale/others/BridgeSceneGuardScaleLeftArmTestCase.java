@@ -8,9 +8,9 @@ import gradingTools.shared.testcases.shapes.MovableTest;
 import gradingTools.shared.testcases.shapes.interfaces.TestMovable;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 
-public class BridgeSceneRobinScaleLeftArmTestCase extends BridgeSceneArthurScaleLeftArmTestCase {
+public class BridgeSceneGuardScaleLeftArmTestCase extends BridgeSceneArthurScaleLeftArmTestCase {
 	protected TestAvatar avatar() {
-		return bridgeScene().getGuard();
+		return bridgeScene().getRobin();
 	}
 
 }

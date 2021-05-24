@@ -29,9 +29,9 @@ public class SS21Assignment0Suite {
 			e.printStackTrace();
 		}
 	}
-		static {
-			BasicExecutionSpecificationSelector.getBasicExecutionSpecification().
-			setCheckStyleConfiguration("unc_checks_301_A0.xml");
-		}
+	static {
+		BasicExecutionSpecificationSelector.getBasicExecutionSpecification().
+		setCheckStyleConfiguration("unc_checks_301_A0.xml");
+	}
 	
 }
