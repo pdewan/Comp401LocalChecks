@@ -28,7 +28,7 @@ import gradingTools.shared.testcases.shapes.rotate.fixed.RotatingLineZeroDegreeT
 //	A1Properties.class,
 //	A1Methods.class,
 //	AngleLeftLineProperty.class,
-	A1Source.class,
+//	A1Source.class,
 	A1Style.class,
 
 	RotatingLine.class,
@@ -37,6 +37,7 @@ import gradingTools.shared.testcases.shapes.rotate.fixed.RotatingLineZeroDegreeT
 //	AngleLeftLineProperty.class,
 //	AngleMoveSuite.class,
 	BridgeScene.class,
+	A1Main.class,
 	BridgeSceneScale.class,
 //	BridgeSceneComponentMoveSuite.class,
 //	BridgeSceneComponentScaleSuite.class,

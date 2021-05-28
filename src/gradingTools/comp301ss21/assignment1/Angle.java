@@ -3,8 +3,14 @@ package gradingTools.comp301ss21.assignment1;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import gradingTools.comp301ss21.assignment1.testcases.angle.AngleInstantiatesLine;
+import gradingTools.comp301ss21.assignment1.testcases.angle.AngleLeftLineProperty;
+import gradingTools.comp301ss21.assignment1.testcases.angle.AngleMoveDefined;
+import gradingTools.comp301ss21.assignment1.testcases.angle.AngleRightLineProperty;
 import gradingTools.comp301ss21.assignment1.testcases.angle.LeftLineMovesWithAngle;
 import gradingTools.comp301ss21.assignment1.testcases.angle.RightLineMovesWithAngle;
+import gradingTools.comp301ss21.assignment1.testcases.angle.TaggedAngle;
+import gradingTools.comp301ss21.assignment1.testcases.avatar.AvatarScaleDefined;
 import gradingTools.comp301ss21.assignment1.testcases.line.fixed.RotatingLine180Degree;
 import gradingTools.comp301ss21.assignment1.testcases.line.fixed.RotatingLineFortyFiveDegree;
 import gradingTools.comp301ss21.assignment1.testcases.line.fixed.RotatingLineNinetyDegree;
@@ -28,7 +34,12 @@ import util.annotations.MaxValue;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//	TaggedRotatingLine.class,
+	TaggedAngle.class,
+	AngleLeftLineProperty.class,
+	AngleRightLineProperty.class,
+	AngleInstantiatesLine.class,
+	AngleMoveDefined.class,
+//	AvatarScaleDefined.class,
 	LeftLineMovesWithAngle.class,	
 	RightLineMovesWithAngle.class,	
 	
@@ -39,7 +50,7 @@ import util.annotations.MaxValue;
 	
 //	GreetingCheckstyle.class
 })
-@MaxValue(20)
+@MaxValue(22)
 public class Angle {
 
 }

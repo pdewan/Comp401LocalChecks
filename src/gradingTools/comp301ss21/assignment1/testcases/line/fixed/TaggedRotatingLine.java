@@ -9,7 +9,7 @@ import grader.basics.project.Project;
 import grader.basics.testcase.PassFailJUnitTestCase;
 import gradingTools.comp301ss21.assignment0.SS21Assignment0Suite;
 import util.annotations.MaxValue;
-
+@MaxValue(2)
 public class TaggedRotatingLine extends PassFailJUnitTestCase {
 	public Class rotatingLine;
 

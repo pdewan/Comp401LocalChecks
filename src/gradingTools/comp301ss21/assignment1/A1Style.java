@@ -16,6 +16,8 @@ import gradingTools.comp301ss21.assignment1.testcases.line.fixed.TaggedRotatingL
 import gradingTools.comp301ss21.assignment1.testcases.line.moving.LineMoveDefined;
 import gradingTools.comp301ss21.assignment1.testcases.style.A1InterfaceAsType;
 import gradingTools.comp301ss21.assignment1.testcases.style.A1NamedConstants;
+import gradingTools.comp301ss21.assignment1.testcases.style.A1NoStarImports;
+import gradingTools.comp301ss21.assignment1.testcases.style.A1PublicMethodsOverride;
 import gradingTools.comp401f16.assignment4.testcases.rotate.fixed.FixedRotatingLineSuite;
 import gradingTools.comp401f16.assignment4.testcases.rotate.moving.MovingRotatingLineSuite;
 import gradingTools.comp401f16.assignment5.testcases.angle.AngleMoveSuite;
@@ -30,7 +32,9 @@ import util.annotations.MaxValue;
 //	A1Methods.class,
 //	A1Tags.class,
 	A1NamedConstants.class,
-	A1InterfaceAsType.class
+	A1InterfaceAsType.class,
+	A1PublicMethodsOverride.class,
+	A1NoStarImports.class
 
 })
 public class A1Style {

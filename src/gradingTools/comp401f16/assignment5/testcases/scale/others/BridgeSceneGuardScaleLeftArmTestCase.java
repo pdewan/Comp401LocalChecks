@@ -10,7 +10,7 @@ import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 
 public class BridgeSceneGuardScaleLeftArmTestCase extends BridgeSceneArthurScaleLeftArmTestCase {
 	protected TestAvatar avatar() {
-		return bridgeScene().getRobin();
+		return bridgeScene().getGuard();
 	}
 
 }

@@ -3,6 +3,7 @@ package gradingTools.comp301ss21.assignment1;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import gradingTools.comp301ss21.assignment1.testcases.angle.AngleInstantiatesLine;
 import gradingTools.comp301ss21.assignment1.testcases.angle.AngleLeftLineProperty;
 import gradingTools.comp301ss21.assignment1.testcases.angle.AngleMoveDefined;
 import gradingTools.comp301ss21.assignment1.testcases.angle.AngleRightLineProperty;
@@ -10,6 +11,7 @@ import gradingTools.comp301ss21.assignment1.testcases.angle.TaggedAngle;
 import gradingTools.comp301ss21.assignment1.testcases.avatar.AvatarArmsProperty;
 import gradingTools.comp301ss21.assignment1.testcases.avatar.AvatarHeadProperty;
 import gradingTools.comp301ss21.assignment1.testcases.avatar.AvatarLegsProperty;
+import gradingTools.comp301ss21.assignment1.testcases.avatar.AvatarScaleDefined;
 import gradingTools.comp301ss21.assignment1.testcases.avatar.AvatarStringShapeProperty;
 import gradingTools.comp301ss21.assignment1.testcases.avatar.TaggedAvatar;
 import gradingTools.comp301ss21.assignment1.testcases.bridgeScene.BridgeSceneArthurProperty;
@@ -38,27 +40,29 @@ import util.annotations.MaxValue;
 //	A1Properties.class,
 //	A1Methods.class,
 //	A1Tags.class,
-	TaggedRotatingLine.class,
-	TaggedAngle.class,
-	TaggedAvatar.class,
-	TaggedBridgeScene.class,
-	AngleLeftLineProperty.class,
-	AngleRightLineProperty.class,
-	AvatarHeadProperty.class,
-	AvatarStringShapeProperty.class,
-	AvatarArmsProperty.class,
-	AvatarLegsProperty.class,
-	BridgeSceneArthurProperty.class,
-	BridgeSceneGalahadProperty.class,
-	BridgeSceneLancelotProperty.class,
-	BridgeSceneRobinProperty.class,
-	BridgeSceneGuardProperty.class,
-	LineMoveDefined.class,
-	LineRotateDefined.class,
-	AngleMoveDefined.class
+//	TaggedRotatingLine.class,
+//	TaggedAngle.class,
+//	TaggedAvatar.class,
+//	TaggedBridgeScene.class,
+//	AngleLeftLineProperty.class,
+//	AngleRightLineProperty.class,
+//	AngleInstantiatesLine.class,
+//	AvatarHeadProperty.class,
+//	AvatarStringShapeProperty.class,
+//	AvatarArmsProperty.class,
+//	AvatarLegsProperty.class,
+//	BridgeSceneArthurProperty.class,
+//	BridgeSceneGalahadProperty.class,
+//	BridgeSceneLancelotProperty.class,
+//	BridgeSceneRobinProperty.class,
+//	BridgeSceneGuardProperty.class,
+//	LineMoveDefined.class,
+//	LineRotateDefined.class,
+//	AngleMoveDefined.class,
+//	AvatarScaleDefined.class,
 
 })
-@MaxValue(14)
+@MaxValue(20)
 public class A1Source {
 
 }

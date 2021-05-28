@@ -3,6 +3,7 @@ package gradingTools.comp301ss21.assignment1;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import gradingTools.comp301ss21.assignment1.testcases.avatar.AvatarScaleDefined;
 import gradingTools.comp301ss21.assignment1.testcases.bridgeScene.BridgeSceneArthurLeftArmMovesWithAvatar;
 import gradingTools.comp301ss21.assignment1.testcases.bridgeScene.BridgeSceneGalahadLeftArmMovesWithAvatar;
 import gradingTools.comp301ss21.assignment1.testcases.bridgeScene.BridgeSceneGuardLeftArmMovesWithAvatar;
@@ -39,6 +40,8 @@ import util.annotations.MaxValue;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	AvatarScaleDefined.class,
+
 	BridgeSceneArthurHeadScales.class,
 	BridgeSceneArthurLeftArmScales.class,
 	BridgeSceneGalahadLeftArmScales.class,
@@ -61,7 +64,7 @@ import util.annotations.MaxValue;
 	
 //	GreetingCheckstyle.class
 })
-@MaxValue(20)
+@MaxValue(22)
 
 public class BridgeSceneScale {
 

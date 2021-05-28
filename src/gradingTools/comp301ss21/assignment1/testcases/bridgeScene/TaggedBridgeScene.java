@@ -11,7 +11,7 @@ import gradingTools.comp301ss21.assignment0.SS21Assignment0Suite;
 import gradingTools.comp301ss21.assignment1.testcases.avatar.TaggedAvatar;
 import gradingTools.comp301ss21.assignment1.testcases.line.fixed.TaggedRotatingLine;
 import util.annotations.MaxValue;
-//@MaxValue(2)
+@MaxValue(2)
 public class TaggedBridgeScene extends PassFailJUnitTestCase {
 	public Class bridgeScene;
 

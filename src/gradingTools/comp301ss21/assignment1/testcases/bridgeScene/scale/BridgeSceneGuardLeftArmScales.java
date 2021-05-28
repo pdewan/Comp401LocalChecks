@@ -1,5 +1,6 @@
 package gradingTools.comp301ss21.assignment1.testcases.bridgeScene.scale;
 
+import gradingTools.comp301ss21.assignment1.testcases.avatar.AvatarScaleDefined;
 import gradingTools.comp301ss21.assignment1.testcases.bridgeScene.BridgeSceneArthurProperty;
 import gradingTools.comp301ss21.assignment1.testcases.bridgeScene.BridgeSceneGalahadProperty;
 import gradingTools.comp301ss21.assignment1.testcases.bridgeScene.BridgeSceneGuardProperty;
@@ -15,6 +16,6 @@ import util.annotations.IsExtra;
 public class BridgeSceneGuardLeftArmScales extends BridgeSceneGuardScaleLeftArmTestCase {
 	@Override
 	protected Class precedingTest() {
-		return BridgeSceneGuardProperty.class;
+		return AvatarScaleDefined.class;
 	}
 }
