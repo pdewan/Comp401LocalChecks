@@ -34,7 +34,7 @@ public class ConsoleSceneViewFactoryMethodTest extends  BridgeSceneMoveTestCase{
 	protected Class proxyClass() {
 		return PropertyChangeListener.class;
 	}
-	protected PropertyChangeListener consoleView() {
+	public PropertyChangeListener consoleView() {
 		return (PropertyChangeListener) rootProxy;
 	}
 	

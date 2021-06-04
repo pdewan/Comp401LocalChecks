@@ -29,13 +29,23 @@ public abstract class BridgeSceneMoveTestCase extends MovableTest {
 		bridgeScene = (TestBridgeScene) rootProxy;
 		return retVal;
 	}
-	protected void setBridgeSceneFromFactoryMethod() {
+	protected TestBridgeScene getBridgeSceneFromFactory() {
 		Object retVal = 
 		getObjectFromFactory(factoryClassTags,
 				bridgeSceneFactoryMethodTags, TestBridgeScene.class);
 		assertTrue(factoryMessage, factoryMessage.isEmpty());
-		bridgeScene = (TestBridgeScene)
+		return (TestBridgeScene)
 				retVal;
+//		return bridgeScene;
+	}
+	protected void setBridgeSceneFromFactoryMethod() {
+//		Object retVal = 
+//		getObjectFromFactory(factoryClassTags,
+//				bridgeSceneFactoryMethodTags, TestBridgeScene.class);
+//		assertTrue(factoryMessage, factoryMessage.isEmpty());
+//		bridgeScene = (TestBridgeScene)
+//				retVal;
+		bridgeScene = getBridgeSceneFromFactory();
 		setLeafProxy();
 	}
 	@Override

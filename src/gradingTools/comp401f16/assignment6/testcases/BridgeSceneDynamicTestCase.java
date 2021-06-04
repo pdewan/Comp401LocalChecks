@@ -112,11 +112,15 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		bridgeScene().say(aSaying);
 	}
 	protected void say (TestAvatar anAvatar, String aSaying, double aCredit) {
-		Tracer.info(this,"Say:\"" + aSaying + "\"");
+		String anAvatarString = toString(anAvatar);
+
+		Tracer.info(this, anAvatarString + " Say:\"" + aSaying + "\"");
 		say(aSaying);
 		String aText = anAvatar.getStringShape().getText();
-		assertTrue(toString(anAvatar) + " said  \"" + aText + "\" instead of \"" + aSaying + "\"",
-			aSaying.equals(aText));
+//		assertTrue(toString(anAvatar) + " said  \"" + aText + "\" instead of \"" + aSaying + "\"",
+//			aSaying.equals(aText));
+		assertTrue(anAvatarString + " said  \"" + aText + "\" instead of \"" + aSaying + "\"",
+				aSaying.equals(aText));
 		fractionComplete += aCredit;
 		printFractionComplete();
 
@@ -133,6 +137,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		Tracer.info(this,toString(anAvatar) + " Approaches");
 		doApproach(anAvatar);
 //		bridgeScene().approach(anAvatar);
+//		Tracer.info(this, "Checking if bridge scene is occupied and it is not knight turn");
 		assertTrue(correctApproachErrorMessage(), 
 				bridgeScene().getOccupied() &&
 				!bridgeScene().getKnightTurn());
@@ -198,7 +203,7 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		say (secondAvatar(), fourthSay);
 		fail();
 		approach(thirdAvatar());
-		Tracer.info(this,"The next approach should fail");
+		Tracer.info(this,"The next approach should not displace the current knight");
 		approach(fourthAvatar());
 		say (guard(), firstSay);
 		say (thirdAvatar(), secondSay, lastSayCredit());

@@ -42,17 +42,28 @@ public class ConsoleSceneViewOutputTestCase extends BridgeSceneDynamicTestCase {
 	protected String fullMessage() {
 		return minPartsMessage() + somePropertiesMessage() + oldValueCorrespondsToNewValueMessage();
 	}
+	protected PropertyChangeListener getConsoleViewFromFactory() {
+		PropertyChangeListener retVal = 
+				(PropertyChangeListener) getObjectFromFactory(
+						factoryClassTags(), 
+						ConsoleSceneViewFactoryMethodTest.FACTORY_METHOD_TAGS, 
+						PropertyChangeListener.class);
+		return retVal;
+//		return bridgeScene;
+	}
 	@Override
 	protected Object create() {
 		
-		bridgeScene = (TestBridgeScene) getObjectFromFactory(
-				factoryClassTags(), 
-				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
-				TestBridgeScene.class);
-		consoleView = (PropertyChangeListener) getObjectFromFactory(
-				factoryClassTags(), 
-				ConsoleSceneViewFactoryMethodTest.FACTORY_METHOD_TAGS, 
-				PropertyChangeListener.class);
+//		bridgeScene = (TestBridgeScene) getObjectFromFactory(
+//				factoryClassTags(), 
+//				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
+//				TestBridgeScene.class);
+		bridgeScene = getBridgeSceneFromFactory();
+//		consoleView = (PropertyChangeListener) getObjectFromFactory(
+//				factoryClassTags(), 
+//				ConsoleSceneViewFactoryMethodTest.FACTORY_METHOD_TAGS, 
+//				PropertyChangeListener.class);
+		consoleView = getConsoleViewFromFactory();
 		return bridgeScene;
 	}
 	

@@ -10,35 +10,47 @@ import grader.basics.testcase.PassFailJUnitTestCase;
 import gradingTools.comp301ss21.assignment0.SS21Assignment0Suite;
 import gradingTools.comp301ss21.assignment1.testcases.avatar.TaggedAvatar;
 import gradingTools.comp301ss21.assignment1.testcases.line.fixed.TaggedRotatingLine;
+import gradingTools.shared.testcases.TaggedTypeTest;
 import util.annotations.MaxValue;
 @MaxValue(2)
-public class TaggedBridgeScene extends PassFailJUnitTestCase {
-	public Class bridgeScene;
+public class TaggedBridgeScene extends TaggedTypeTest {
 
-	public Class getObjectClass() {
-		return bridgeScene;
+	@Override
+	protected String tag() {
+		return tags301.Comp301Tags.BRIDGE_SCENE;
 	}
 	protected Class precedingTest() {
 		return TaggedAvatar.class;
 	}
-	
-	@Override
+
 	public TestCaseResult test(Project project, boolean autoGrade)
-			throws NotAutomatableException, NotGradableException {	
-		 
-		 try {
-			 bridgeScene = BasicProjectIntrospection.findClassByTags(tags301.Comp301Tags.BRIDGE_SCENE);
-			
-		    if (bridgeScene == null) {	
-		    	return fail ("No class in project matching tag:" + tags301.Comp301Tags.BRIDGE_SCENE);
-		    }	
-		    
-			return pass();		
-		 } 		 catch (Exception e) {
-			 return fail (e.getMessage());
-		 } catch (Throwable e) {
-			 	return fail(e.getMessage());
-		}
+			throws NotAutomatableException, NotGradableException {
+		return super.test(project, autoGrade);
 	}
+//	public Class bridgeScene;
+//
+//	public Class getObjectClass() {
+//		return bridgeScene;
+//	}
+	
+	
+//	@Override
+//	public TestCaseResult test(Project project, boolean autoGrade)
+//			throws NotAutomatableException, NotGradableException {	
+//		 
+//		 try {
+//			 bridgeScene = BasicProjectIntrospection.findClassByTags(tags301.Comp301Tags.BRIDGE_SCENE);
+//			
+//		    if (bridgeScene == null) {	
+//		    	return fail ("No class in project matching tag:" + tags301.Comp301Tags.BRIDGE_SCENE);
+//		    }	
+//		    
+//			return pass();		
+//		 } 		 catch (Exception e) {
+//			 return fail (e.getMessage());
+//		 } catch (Throwable e) {
+//			 	return fail(e.getMessage());
+//		}
+//	}
 
 }
