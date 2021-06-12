@@ -20,6 +20,18 @@ public class Comp301Tags extends ShapeTags {
 	public static final String MINUS = "Minus";
 	public static final String START = "Start";
 	public static final String END = "End";
+	public static final String INHERITING_BRIDGE_SCENE_PAINTER = "InheritingBridgeScenePainter";
+	public static final String PAINT_LISTENER = "Paint Listener";
+	public static final String OBSERVABLE_BRIDGE_SCENE_PAINTER = "ObservableBridgeScenePainter";
+	public static final String DELEGATING_BRIDGE_SCENE_VIEW = "DelegatingBridgeSceneView";
+	public static final String BRIDGE_SCENE_CONTROLLER = "BridgeSceneController";
+	public static final String TABLE = "Table";
+	public static final String PROGRESS_BAR_CREATOR = "ProgressBarCreator";
+
+
+	
+
+	
 	
 
 	

@@ -16,7 +16,7 @@ import gradingTools.comp301ss21.assignment1.BridgeScene;
 import gradingTools.comp301ss21.assignment1.BridgeSceneScale;
 import gradingTools.comp301ss21.assignment1.RotatingLine;
 import gradingTools.comp301ss21.assignment1.SS21Assignment1Suite;
-import gradingTools.comp301ss21.assignment2.testcases.ConsoleSceneView;
+import gradingTools.comp301ss21.assignment2.testcases.console_view.ConsoleSceneView;
 import gradingTools.comp301ss21.assignment2.testcases.factory.A2MainCallsBridgeSceneFactoryMethod;
 import gradingTools.comp301ss21.assignment2.testcases.factory.AvatarCallsLegFactoryMethod;
 import gradingTools.comp301ss21.assignment2.testcases.factory.BridgeSceneFactoryMethodDefined;
@@ -56,19 +56,6 @@ import gradingTools.comp401f16.assignment8.testcases.factory.ConsoleSceneViewFac
 })
 public class A2Factory {
 
-	public static void main (String[] args) {
-		try {
-			
-			BasicJUnitUtils.interactiveTest(A2Factory.class);
-
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	static {
-		BasicExecutionSpecificationSelector.getBasicExecutionSpecification().
-		setCheckStyleConfiguration("unc_checks_301_A2.xml");
-	}
+	
 
 }

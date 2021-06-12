@@ -47,7 +47,7 @@ public class NewPaintListenerTestCase
 	public static final int MIN_APPROACH_EVENTS = 1;
 	public static final int MIN_Fail_EVENTS = 1;
 	public static final int MIN_EVENTS = 1;
-	public static final double LISTENER_CREDIT =0.3;
+	public static final double LISTENER_CREDIT =0.2;
 	public static final double APPROACH_EVENTS_CREDIT = 0.5;
 	public static final double Fail_EVENTS_CREDIT = 0.2;
 	protected boolean failCalled = false;
@@ -161,16 +161,27 @@ public class NewPaintListenerTestCase
 		fractionComplete += Fail_EVENTS_CREDIT + APPROACH_EVENTS_CREDIT;
 	}
 	protected static String[] emptyStringargs = new String[]{};
-
+	protected String mainClassName() {
+		return Assignment9Suite.MAIN_CLASS_NAME;
+	}
 	protected void executeMethods() throws Throwable {
 		Tracer.info(this, "Calling main to allow UI to be created");
+//		ResultingOutErr anError = BasicProjectExecution.invokeMainOnceAsynchronously(
+//				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, "");
+		String aMainClassName = mainClassName();
 		ResultingOutErr anError = BasicProjectExecution.invokeMainOnceAsynchronously(
-				Assignment9Suite.MAIN_CLASS_NAME, emptyStringargs, "");
+				aMainClassName, emptyStringargs, "");
+		if (anError == null) {
+			assertTrue("No main class:" + aMainClassName, false	);
+
+		}
+		
 		Tracer.info(this, "Waiting for predefined animation to finish");
 		ThreadSupport.sleep(ESTMATE_TIME_FOR_ANIMATION);
 		Tracer.info(this, "Finished waiting for predefined animation to finish");
 		run();
-		anError.getFuture().cancel(true); // This does not do anything for this program
+//		if (anError.getFuture() != null) {
+//		anError.getFuture().cancel(true); // This does not do anything for this program
 		if (anError != null && anError.getFuture() != null) {
 			
 				anError.getFuture().cancel(true); // This does not do anything for this program

@@ -6,7 +6,7 @@ import util.annotations.MaxValue;
 public class AvatarCallsLegFactoryMethod extends CheckstyleMethodCalledTestCase {
 
 	public AvatarCallsLegFactoryMethod() {
-		super("@Comp301Tags\\.AVATAR", "@Comp301Tags\\.FACTORY_CLASS!legsFactoryMethod:\\*->@Comp301Tags\\.ANGLE"); 
+		super("@Comp301Tags\\.AVATAR", "@Comp301Tags\\.FACTORY_CLASS!@legsFactoryMethod:\\*->@Comp301Tags\\.ANGLE"); 
 				
 		// TODO Auto-generated constructor stub
 	}

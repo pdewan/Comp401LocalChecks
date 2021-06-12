@@ -10,7 +10,7 @@ import grader.basics.testcase.PassFailJUnitTestCase;
 import gradingTools.comp301ss21.assignment0.SS21Assignment0Suite;
 import gradingTools.shared.testcases.TaggedTypeTest;
 import util.annotations.MaxValue;
-@MaxValue(2)
+@MaxValue(0)
 public class TaggedLocatable extends TaggedTypeTest {
 
 	@Override

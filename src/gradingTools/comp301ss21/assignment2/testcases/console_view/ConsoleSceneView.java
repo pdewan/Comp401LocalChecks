@@ -1,4 +1,4 @@
-package gradingTools.comp301ss21.assignment2.testcases;
+package gradingTools.comp301ss21.assignment2.testcases.console_view;
 
 import java.beans.PropertyChangeListener;
 
@@ -7,7 +7,8 @@ import gradingTools.comp301ss21.assignment2.testcases.factory.ConsoleSceneViewSi
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment8.testcases.ConsoleSceneViewOutputTestCase;
 import gradingTools.comp401f16.assignment8.testcases.factory.ConsoleSceneViewFactoryMethodTest;
-
+import util.annotations.MaxValue;
+@MaxValue(50)
 public class ConsoleSceneView extends ConsoleSceneViewOutputTestCase{
 	protected final Class[] PRECEDING_TESTS = {
 			BridgeSceneSingletonFromFactory.class,

@@ -19,6 +19,8 @@ public interface TestBridgeScene  extends PropertyListenerRegisterer{
 	@Tags({"approach"})
 	public void approach(TestAvatar knight);
 	
+	public void approach (String aKnightName);
+	
 	@Tags({"say"})
 	public void say(String string);
 	

@@ -16,7 +16,7 @@ import gradingTools.comp301ss21.assignment1.BridgeScene;
 import gradingTools.comp301ss21.assignment1.BridgeSceneScale;
 import gradingTools.comp301ss21.assignment1.RotatingLine;
 import gradingTools.comp301ss21.assignment1.SS21Assignment1Suite;
-import gradingTools.comp301ss21.assignment2.testcases.ConsoleSceneView;
+import gradingTools.comp301ss21.assignment2.testcases.console_view.ConsoleSceneView;
 import gradingTools.comp301ss21.assignment2.testcases.factory.BridgeSceneSingletonFromFactory;
 import gradingTools.comp301ss21.assignment2.testcases.factory.ConsoleSceneViewSingletonFromFactory;
 import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
@@ -40,7 +40,8 @@ A2Factory.class,
 
 //BridgeSceneSingletonFromFactory.class,
 //ConsoleSceneViewSingletonFromFactory.class,
-ConsoleSceneView.class,
+A2Observables.class,
+A2ConsoleSceneView.class,
 BridgeSceneScroll.class
 
 

@@ -1,6 +1,7 @@
 package gradingTools.comp401f16.assignment9.testcases.bridgecontroller;
 
 import grader.basics.project.BasicProjectIntrospection;
+import grader.basics.testcase.PassFailJUnitTestCase;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
 import gradingTools.comp401f16.assignment8.testcases.ConsoleSceneViewOutputTestCase;
@@ -48,7 +49,7 @@ public class ArthurBridgeSceneControllerTestCase
 	protected Component component;
 	protected void createController() {
 		try {
-		Tracer.info(this,"Trying to get bridge scene controller");
+		Tracer.info(PassFailJUnitTestCase.class,"Trying to get bridge scene controller");
 		bridgeSceneController = (TestBridgeSceneController) getObjectFromFactory(
 				factoryClassTags(), 
 				BridgeSceneControllerFactoryMethodTest.FACTORY_METHOD_TAGS, 
@@ -63,7 +64,7 @@ public class ArthurBridgeSceneControllerTestCase
 	}
 	protected void createView() {
 		try {
-			Tracer.info(this,"Trying to get inheriting painter");
+			Tracer.info(PassFailJUnitTestCase.class,"Trying to get inheriting painter");
 			inheritingBridgeScenePainter =  getObjectFromFactory(
 					factoryClassTags(), 
 					InheritingBridgeScenePainterFactoryMethodTest.FACTORY_METHOD_TAGS, 
@@ -71,17 +72,17 @@ public class ArthurBridgeSceneControllerTestCase
 			Object realObject = BasicProjectIntrospection.getRealObject(inheritingBridgeScenePainter);
 			component = (Component) realObject;
 			if (realObject == null) {
-				Tracer.info(this,"Null inheriting painter");
+				Tracer.info(PassFailJUnitTestCase.class,"Null inheriting painter");
 			} else {
 			return;
 			}
 			
 			} catch (Error e) {
-				Tracer.info(this,"Could not find inheriting painter");
+				Tracer.info(PassFailJUnitTestCase.class,"Could not find inheriting painter");
 
 			}
 		try  {
-			Tracer.info(this,"Trying to get observable painter");
+			Tracer.info(PassFailJUnitTestCase.class,"Trying to get observable painter");
 
 		observableBridgeScenePainter = (TestObservableBridgeScenePainter) getObjectFromFactory(
 				factoryClassTags(), 
@@ -91,7 +92,7 @@ public class ArthurBridgeSceneControllerTestCase
 		Object realObject = BasicProjectIntrospection.getRealObject(observableBridgeScenePainter);
 		component = (Component) realObject; // code duplication yuk
 		if (realObject == null) {
-			Tracer.info(this,"Null observable painter");
+			Tracer.info(PassFailJUnitTestCase.class,"Null observable painter");
 			assertTrue("Could not find non null inheriting or observable painter", false);
 
 		}
@@ -100,7 +101,7 @@ public class ArthurBridgeSceneControllerTestCase
 		
 		} catch (Error e) {
 			fractionComplete = 0;
-			Tracer.info(this,"Could not find observable painter");
+			Tracer.info(PassFailJUnitTestCase.class,"Could not find observable painter");
 			assertTrue("Could not find inheriting or observable painter", false);
 		}
 		return;

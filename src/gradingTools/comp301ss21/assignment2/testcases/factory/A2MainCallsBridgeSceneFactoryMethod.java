@@ -6,7 +6,7 @@ import util.annotations.MaxValue;
 public class A2MainCallsBridgeSceneFactoryMethod extends CheckstyleMethodCalledTestCase {
 
 	public A2MainCallsBridgeSceneFactoryMethod() {
-		super("main.Assignment2", "@Comp301Tags.FACTORY_CLASS!bridgeSceneFactoryMethod:->@Comp301Tags\\.BRIDGE_SCENE"); 
+		super("main.Assignment2", "@Comp301Tags.FACTORY_CLASS!@bridgeSceneFactoryMethod:->@Comp301Tags\\.BRIDGE_SCENE"); 
 				
 		// TODO Auto-generated constructor stub
 	}
