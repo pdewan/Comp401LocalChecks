@@ -1,5 +1,6 @@
 package gradingTools.comp301ss21.assignment4.coordination;
 
+import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment12.waitnotify.testcases.WaitingAvatarsAnimationTestCase;
 import tags301.Comp301Tags;
 import util.annotations.MaxValue;
@@ -15,6 +16,13 @@ public class WaitingAvatars extends WaitingAvatarsAnimationTestCase {
 	protected final Class[] PRECEDING_TESTS = { BroadcastingClearanceManagerSingletonFromFactory.class,
 
 	};
+	public WaitingAvatars() {
+		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
+	}
+	@Override
+	protected Class proxyClass() {
+		return TestBridgeScene.class;
+	}
 
 	@Override
 	protected Class[] precedingTests() {

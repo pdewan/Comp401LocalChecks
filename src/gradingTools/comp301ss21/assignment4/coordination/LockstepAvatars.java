@@ -1,5 +1,6 @@
 package gradingTools.comp301ss21.assignment4.coordination;
 
+import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment12.waitnotify.testcases.LockstepAvatarsAnimationTestCase;
 import gradingTools.comp401f16.assignment12.waitnotify.testcases.WaitingAvatarsAnimationTestCase;
 import tags301.Comp301Tags;
@@ -16,6 +17,13 @@ public class LockstepAvatars extends LockstepAvatarsAnimationTestCase {
 	protected final Class[] PRECEDING_TESTS = { BroadcastingClearanceManagerSingletonFromFactory.class,
 
 	};
+	public LockstepAvatars() {
+		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
+	}
+	@Override
+	protected Class proxyClass() {
+		return TestBridgeScene.class;
+	}
 
 	@Override
 	protected Class[] precedingTests() {
