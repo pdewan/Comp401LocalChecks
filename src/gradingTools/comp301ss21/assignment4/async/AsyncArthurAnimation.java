@@ -11,4 +11,7 @@ public class AsyncArthurAnimation extends AsyncArthurAnimationTestCase{
 	public AsyncArthurAnimation() {
 		
 	}
+	protected boolean doTest() throws Throwable {
+		return super.doTest();
+	}
 }
