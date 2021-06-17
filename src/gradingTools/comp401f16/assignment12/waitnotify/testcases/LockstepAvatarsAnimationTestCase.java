@@ -128,13 +128,24 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 ////			e.printStackTrace();
 ////		}
 //	}
+	
+	protected void doLockstepGuard() {
+		commandInterpreter().lockstepGuard();
+	}
+
+	protected void doLockstepArthur() {
+		commandInterpreter().lockstepArthur();
+	}
+	protected void doLockstepLancelot() {
+		commandInterpreter().lockstepLancelot();
+	}
 	protected void doLockSteps (int aNumSteps) {
 		for (int i = 0; i  < aNumSteps; i++) {
 			recordPreviousThreads();
 			freezeNotifications = true;
 			Tracer.info(this,"Executing animating lockstep Guard ");
-			;
-			commandInterpreter().lockstepGuard();
+			doLockstepGuard();
+//			commandInterpreter().lockstepGuard();
 			recordCurrentThreads();
 			assertNewThreadCreated();
 			guardThread = newThreads.get(0);
@@ -143,16 +154,19 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //			waitForLockstepAnimation();
 		}		
 	}
+	
 	protected void executeOperations(Object aProxy) {
 			fractionComplete = 0;
 			recordPreviousThreads();
 			Tracer.info(this,"Animating lockstep Arthur");
-			commandInterpreter().lockstepArthur();
+			doLockstepArthur();
+//			commandInterpreter().lockstepArthur();
 			recordCurrentThreads();
 			assertNewThreadCreated();
 			recordPreviousThreads();
 			Tracer.info(this,"Animating lockstep Lancelot");
-			commandInterpreter().lockstepLancelot();
+//			commandInterpreter().lockstepLancelot();
+			doLockstepLancelot();
 			recordCurrentThreads();
 			assertNewThreadCreated();
 //			Tracer.info(this,"Animating lockstep Galahad");

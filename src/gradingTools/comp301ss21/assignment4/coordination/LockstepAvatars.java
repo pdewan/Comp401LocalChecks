@@ -21,4 +21,14 @@ public class LockstepAvatars extends LockstepAvatarsAnimationTestCase {
 	protected Class[] precedingTests() {
 		return PRECEDING_TESTS;
 	}
+	protected void doLockstepGuard() {
+		bridgeScene.lockstepGuard();
+	}
+
+	protected void doLockstepArthur() {
+		bridgeScene.lockstepArthur();
+	}
+	protected void doLockstepLancelot() {
+		bridgeScene.lockstepLancelot();
+	}
 }

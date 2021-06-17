@@ -20,4 +20,16 @@ public class WaitingAvatars extends WaitingAvatarsAnimationTestCase {
 	protected Class[] precedingTests() {
 		return PRECEDING_TESTS;
 	}
+	protected void doWaitingArthur() {
+		bridgeScene.waitingArthur();
+	}
+	protected void doWaitingLancelot() {
+		bridgeScene.waitingLancelot();
+	}
+	protected void doWaitingGalahad() {
+		bridgeScene.waitingGalahad();
+	}
+	protected void doWaitingRobin() {
+		bridgeScene.waitingRobin();
+	}
 }

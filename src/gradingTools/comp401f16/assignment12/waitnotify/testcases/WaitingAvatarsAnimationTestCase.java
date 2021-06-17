@@ -59,16 +59,32 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 		Tracer.info(this,"Executing proceedAll on broadcasting clearance manager at time:" + System.currentTimeMillis());
 		broadcastingClearanceManager.proceedAll();
 	}
+	protected void doWaitingArthur() {
+		commandInterpreter().waitingArthur();
+	}
+	protected void doWaitingLancelot() {
+		commandInterpreter().waitingLancelot();
+	}
+	protected void doWaitingGalahad() {
+		commandInterpreter().waitingGalahad();
+	}
+	protected void doWaitingRobin() {
+		commandInterpreter().waitingRobin();
+	}
 	protected synchronized void executeOperations(Object aProxy) throws Exception {
 			fractionComplete = 0;
 			Tracer.info(this,"Animating waiting Arthur at time:" + System.currentTimeMillis());
-			commandInterpreter().waitingArthur();
+			doWaitingArthur();
+//			commandInterpreter().waitingArthur();
 			Tracer.info(this,"Animating waiting Lancelot"+ System.currentTimeMillis());
-			commandInterpreter().waitingLancelot();
+			doWaitingGalahad();
+//			commandInterpreter().waitingLancelot();
 			Tracer.info(this,"Animating waiting Galahad"+ System.currentTimeMillis());
-			commandInterpreter().waitingGalahad();
+			doWaitingGalahad();
+//			commandInterpreter().waitingGalahad();
 			Tracer.info(this,"Animating waiting Robin"+ System.currentTimeMillis());
-			commandInterpreter().waitingRobin();
+//			commandInterpreter().waitingRobin();
+			doWaitingArthur();
 			waitForThreadsToStart();
 			if (currentNotifyingThreads.size() > 1) {				
 				assertTrue("At least one thread created before proceedAll", false);				
