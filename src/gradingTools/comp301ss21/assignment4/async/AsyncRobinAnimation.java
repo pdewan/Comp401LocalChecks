@@ -1,5 +1,6 @@
 package gradingTools.comp301ss21.assignment4.async;
 
+import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncArthurAnimationTestCase;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncGalahadAnimationTestCase;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncRobinAnimationTestCase;
@@ -11,6 +12,16 @@ public class AsyncRobinAnimation extends AsyncRobinAnimationTestCase{
 		return factoryClassTags;
 	}
 	public AsyncRobinAnimation() {
-		
+		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
+
+	}
+	@Override
+	protected Class proxyClass() {
+		return TestBridgeScene.class;
+	}
+	@Override
+	protected void doAsynchronousRobin() {
+		bridgeScene.asynchronousRobin();
+//		doAsynchronousArthur();
 	}
 }

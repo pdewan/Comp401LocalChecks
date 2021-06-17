@@ -15,10 +15,14 @@ import util.trace.Tracer;
 
 public class AsyncRobinAnimationTestCase extends AsyncArthurAnimationTestCase implements PropertyChangeListener {
 	
+	protected void doAsynchronousRobin() {
+		commandInterpreter().asynchronousRobin();
+	}
 	protected void executeOperations(Object aProxy) {
 		recordPreviousThreads();
 		Tracer.info(this,"Animating Robin");
-		commandInterpreter().asynchronousRobin();
+//		commandInterpreter().asynchronousRobin();
+		doAsynchronousRobin();
 		recordCurrentThreads();
 		assertNewThreadCreated();
 	}

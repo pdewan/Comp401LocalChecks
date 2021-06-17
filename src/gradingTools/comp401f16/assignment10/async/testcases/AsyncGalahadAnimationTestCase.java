@@ -15,10 +15,14 @@ import util.trace.Tracer;
 
 public class AsyncGalahadAnimationTestCase extends AsyncArthurAnimationTestCase implements PropertyChangeListener {
 	
+	protected void doAsynchronousGalahad() {
+		commandInterpreter().asynchronousGalahad();
+	}
 	protected void executeOperations(Object aProxy) {
 		recordPreviousThreads();
 		Tracer.info(this,"Animating Galahad");
-		commandInterpreter().asynchronousGalahad();
+		doAsynchronousGalahad();
+//		commandInterpreter().asynchronousGalahad();
 		recordCurrentThreads();
 		assertNewThreadCreated();
 	}

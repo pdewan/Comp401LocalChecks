@@ -141,10 +141,15 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		stopThread(childThread);
 //		testing = false;
 	}
+	protected void doAsynchronousArthur() {
+		commandInterpreter().asynchronousArthur();
+//		doAsynchronousArthur();
+	}
 	protected void executeOperations(Object aProxy) throws Exception {
 		recordPreviousThreads();
 		Tracer.info(this,"Animating arthur");
-		commandInterpreter().asynchronousArthur();
+		doAsynchronousArthur();
+//		commandInterpreter().asynchronousArthur();
 		recordCurrentThreads();
 		assertNewThreadCreated();
 //		waitForStartedChildThreads();

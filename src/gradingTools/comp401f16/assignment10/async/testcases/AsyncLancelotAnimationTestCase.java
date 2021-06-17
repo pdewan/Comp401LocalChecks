@@ -15,10 +15,15 @@ import util.trace.Tracer;
 
 public class AsyncLancelotAnimationTestCase extends AsyncArthurAnimationTestCase implements PropertyChangeListener {
 	
+	protected void doAsynchronousLancelot() {
+		commandInterpreter().asynchronousLancelot();
+
+	}
 	protected void executeOperations(Object aProxy) {
 		recordPreviousThreads();
 		Tracer.info(this,"Animating Lancelot");
-		commandInterpreter().asynchronousLancelot();
+//		commandInterpreter().asynchronousLancelot();
+		doAsynchronousLancelot();
 		recordCurrentThreads();
 		assertNewThreadCreated();
 	}
