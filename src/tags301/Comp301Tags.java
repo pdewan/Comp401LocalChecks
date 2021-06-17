@@ -31,6 +31,7 @@ public class Comp301Tags extends ShapeTags {
 	public static final String ANIMATING_COMMAND = "AnimatingCommand";
 	public static final String LEGS = "Legs";
 	public static final String RESTRICTED_LINE = "RestrictedLine";
+	public static final String IMPOSSIBLE_ANGLE = "ImpossibleAngle";
 	public static final String COORDINATED_ANIMATING_COMMAND = "CoordinatedAnimatingCommand";
 	public static final String COORDINATED_ANIMATOR = "Coordinated Animator";
 	public static final String COORDINATING_ANIMATING_COMMAND = "CoordinatingAnimatingCommand";

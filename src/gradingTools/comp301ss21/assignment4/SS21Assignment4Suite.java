@@ -26,6 +26,7 @@ import gradingTools.comp301ss21.assignment3.delegating_view.NewPaintListener;
 import gradingTools.comp301ss21.assignment3.inheriting_view.A3MainCallsInheritingPainterFactoryMethod;
 import gradingTools.comp301ss21.assignment3.inheriting_view.InheritingPainterFactoryMethodDefined;
 import gradingTools.comp301ss21.assignment4.assertions.AssertingBridgeSceneDynamics;
+import gradingTools.comp301ss21.assignment4.async.AsyncArthurAnimation;
 import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
 import gradingTools.comp401f16.assignment6.testcases.scroll.BridgeSceneComponentScrollSuite;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
@@ -37,11 +38,17 @@ import gradingTools.comp401f16.assignment9.testcases.factory.ExtraCreditFactoryM
 import gradingTools.comp401f16.assignment9.testcases.factory.FactoryMethodSuiteA9;
 import gradingTools.comp401f16.assignment9.testcases.observablepainter.NewPaintListenerTestCase;
 import gradingTools.comp401f16.assignment9.testcases.observablepainter.ObservablePainterSuite;
+import util.annotations.MaxValue;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	AbstractClasses.class,
 	AssertingBridgeSceneDynamics.class,
-
-
+	SceneControllerButtons.class,
+	Exceptions.class,
+	AsyncAnimation.class,
+	SyncAnimation.class,
+	CoordinatedAnimation.class,
+	A4Style.class
 
 })
 
@@ -57,7 +64,7 @@ public class SS21Assignment4Suite {
 		
 	}
 
-	public static final String MAIN_CLASS_NAME = "main.Assignment3";
+	public static final String MAIN_CLASS_NAME = "main.Assignment4";
 
 	public static void main (String[] args) {
 		try {

@@ -24,7 +24,7 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 	public static final double PROCEED_CREDIT = 0.5;
 	BroadcastingClearanceManager broadcastingClearanceManager;
 	public WaitingAvatarsAnimationTestCase() {
-		Tracer.info(this,"Wating Avatarts case created:" + this);
+		Tracer.info(this,"Wating Avatars case created:" + this);
 	}
 	protected void createClearanceManager() {
 		broadcastingClearanceManager = (BroadcastingClearanceManager) getObjectFromFactory(

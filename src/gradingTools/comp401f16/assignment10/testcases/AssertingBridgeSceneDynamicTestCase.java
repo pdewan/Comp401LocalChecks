@@ -217,6 +217,8 @@ public class AssertingBridgeSceneDynamicTestCase
 				anEvent.getPropertyName().equalsIgnoreCase(aPropertyName);
 	}
     protected final static int NUM_APPROACH_EVENTS = 4;
+//    protected final static int NUM_APPROACH_EVENTS = 3;
+
     protected void checkEventsAfterApproach() {
     	Tracer.info (this, "Checking events after approach");
     	if (find(eventsAfterApproach, "this", "approach", false)) {
@@ -232,7 +234,8 @@ public class AssertingBridgeSceneDynamicTestCase
     		numCorrectPreconditions++;
     	}
     }
-    protected final static int NUM_SAY1_EVENTS = 2;
+//    protected final static int NUM_SAY1_EVENTS = 2;
+    protected final static int NUM_SAY1_EVENTS = 1;
 
     protected void checkEventsAfterSay1() {
     	Tracer.info  (this, "Checking events after Guard Say");
@@ -240,11 +243,12 @@ public class AssertingBridgeSceneDynamicTestCase
     	if (find(eventsAfterApproach, "this", "pass", false)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterApproach, "this", "fail", false)) {
-    		numCorrectPreconditions++;
-    	}
+//    	if (find(eventsAfterApproach, "this", "fail", false)) {
+//    		numCorrectPreconditions++;
+//    	}
     }
-    protected final static int NUM_SAY2_EVENTS = 2;
+//    protected final static int NUM_SAY2_EVENTS = 2;
+    protected final static int NUM_SAY2_EVENTS = 1;
 
     protected void checkEventsAfterSay2() {
     	Tracer.info (this, "Checking events after Avatar Say");
@@ -252,11 +256,12 @@ public class AssertingBridgeSceneDynamicTestCase
     	if (find(eventsAfterApproach, "this", "pass", true)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterApproach, "this", "fail", true)) {
-    		numCorrectPreconditions++;
-    	}
+//    	if (find(eventsAfterApproach, "this", "fail", true)) {
+//    		numCorrectPreconditions++;
+//    	}
     }
     protected final static int NUM_Pass_EVENTS = 4;
+//    protected final static int NUM_Pass_EVENTS = 3;
 
     protected void checkEventsAfterFail() {
     	Tracer.info (this, "Checking events after fail");
@@ -274,6 +279,7 @@ public class AssertingBridgeSceneDynamicTestCase
     	}
     }
     protected final static int NUM_Fail_EVENTS = 4;
+//    protected final static int NUM_Fail_EVENTS = 3;
 
     protected void checkEventsAfterPass() {
     	Tracer.info (this, "Checking events after pass");
@@ -291,6 +297,7 @@ public class AssertingBridgeSceneDynamicTestCase
     	}
     }
 	protected static final int  NUM_PRE_APPROACH_CHECKS = 5;
+	
 
 	protected void checkPreApproach() {
 		if (!preApproachBeforeApproach) {
@@ -389,7 +396,9 @@ public class AssertingBridgeSceneDynamicTestCase
 			numCorrectPreconditions++;
 		}		
 	}
-	protected static final int  NUM_PRE_Fail_CHECKS = 6;
+//	protected static final int  NUM_PRE_Fail_CHECKS = 6;
+	protected static final int  NUM_PRE_Fail_CHECKS = 4;
+
 	protected void checkPreFail() {
 		if (preFailBeforeApproach) {
 			Tracer.error("preFail before Approach should be false");
@@ -401,16 +410,16 @@ public class AssertingBridgeSceneDynamicTestCase
 		} else {
 			numCorrectPreconditions++;
 		}
-		if (!preFailAfterSay1) {
-			Tracer.error("preFail after Say1 (Guard Say) should be true");
-		} else {
-			numCorrectPreconditions++;
-		}
-		if (!preFailAfterSay2) {
-			Tracer.error("preFail after Say2 should be true");
-		} else {
-			numCorrectPreconditions++;
-		}
+//		if (!preFailAfterSay1) {
+//			Tracer.error("preFail after Say1 (Guard Say) should be true");
+//		} else {
+//			numCorrectPreconditions++;
+//		}
+//		if (!preFailAfterSay2) {
+//			Tracer.error("preFail after Say2 should be true");
+//		} else {
+//			numCorrectPreconditions++;
+//		}
 		if (preFailAfterFail) {
 			Tracer.error("preFail after Fail should be false");
 		} else {

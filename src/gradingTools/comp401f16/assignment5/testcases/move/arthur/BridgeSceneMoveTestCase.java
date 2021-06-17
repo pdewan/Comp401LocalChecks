@@ -31,7 +31,7 @@ public abstract class BridgeSceneMoveTestCase extends MovableTest {
 	}
 	protected TestBridgeScene getBridgeSceneFromFactory() {
 		Object retVal = 
-		getObjectFromFactory(factoryClassTags,
+		getObjectFromFactory(factoryClassTags(),
 				bridgeSceneFactoryMethodTags, TestBridgeScene.class);
 		assertTrue(factoryMessage, factoryMessage.isEmpty());
 		return (TestBridgeScene)
