@@ -17,11 +17,18 @@ import util.trace.Tracer;
 
 public class SyncGalahadAnimationTestCase extends SyncArthurAnimationTestCase {
 	
+	protected void doAsynchronousGalahad() {
+		commandInterpreter().asynchronousGalahad();
+//		bridgeScene.asynchronousGalahad();
+//		doAsynchronousArthur();
+	}
 	protected void executeOperations(Object aProxy) {
 		Tracer.info(this,"Animating Galahad");
-		commandInterpreter().asynchronousGalahad();
+		doAsynchronousGalahad();
+//		commandInterpreter().asynchronousGalahad();
 		Tracer.info(this,"Animating Galahad");
-		commandInterpreter().asynchronousGalahad();
+		doAsynchronousGalahad();
+//		commandInterpreter().asynchronousGalahad();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getGalahad();

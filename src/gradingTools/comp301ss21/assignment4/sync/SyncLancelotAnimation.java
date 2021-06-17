@@ -1,5 +1,6 @@
 package gradingTools.comp301ss21.assignment4.sync;
 
+import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncArthurAnimationTestCase;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncGalahadAnimationTestCase;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncLancelotAnimationTestCase;
@@ -12,6 +13,20 @@ public class SyncLancelotAnimation extends SyncLancelotAnimationTestCase{
 		return factoryClassTags;
 	}
 	public SyncLancelotAnimation() {
-		
+		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
+
+	}
+//	public AsyncLancelotAnimation() {
+//		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
+//
+//	}
+	@Override
+	protected Class proxyClass() {
+		return TestBridgeScene.class;
+	}
+	@Override
+	protected void doAsynchronousLancelot() {
+		bridgeScene.asynchronousLancelot();
+//		doAsynchronousArthur();
 	}
 }

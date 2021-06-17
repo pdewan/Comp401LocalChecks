@@ -16,14 +16,20 @@ import util.models.PropertyListenerRegisterer;
 import util.trace.Tracer;
 
 public class SyncRobinAnimationTestCase extends SyncArthurAnimationTestCase {
-	
+	protected void doAsynchronousRobin() {
+		bridgeScene.asynchronousRobin();
+//		doAsynchronousArthur();
+	}
 	protected void executeOperations(Object aProxy) {
 		Tracer.info(this,"Animating Robin");
-		commandInterpreter().asynchronousRobin();
+		doAsynchronousRobin();
+//		commandInterpreter().asynchronousRobin();
 		Tracer.info(this,"Animating Robin");
-		commandInterpreter().asynchronousRobin();
+//		commandInterpreter().asynchronousRobin();
+		doAsynchronousRobin();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getRobin();
 	}
+	
 }

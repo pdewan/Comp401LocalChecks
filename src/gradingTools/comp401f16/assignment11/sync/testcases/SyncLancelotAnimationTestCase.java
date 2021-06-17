@@ -17,11 +17,18 @@ import util.trace.Tracer;
 
 public class SyncLancelotAnimationTestCase extends SyncArthurAnimationTestCase {
 	
+	protected void doAsynchronousLancelot() {
+		commandInterpreter().asynchronousLancelot();
+//		bridgeScene.asynchronousLancelot();
+//		doAsynchronousArthur();
+	}
 	protected void executeOperations(Object aProxy) {
 		System.out.println ("Animating Lancelot");
-		commandInterpreter().asynchronousLancelot();
+		doAsynchronousLancelot();
+//		commandInterpreter().asynchronousLancelot();
 		Tracer.info(this,"Animating Lancelot");
-		commandInterpreter().asynchronousLancelot();
+//		commandInterpreter().asynchronousLancelot();
+		doAsynchronousLancelot();
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getLancelot();

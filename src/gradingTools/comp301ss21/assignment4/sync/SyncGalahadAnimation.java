@@ -1,5 +1,6 @@
 package gradingTools.comp301ss21.assignment4.sync;
 
+import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncArthurAnimationTestCase;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncGalahadAnimationTestCase;
 import gradingTools.comp401f16.assignment11.sync.testcases.SyncGalahadAnimationTestCase;
@@ -11,6 +12,17 @@ public class SyncGalahadAnimation extends SyncGalahadAnimationTestCase{
 		return factoryClassTags;
 	}
 	public SyncGalahadAnimation() {
-		
+		factoryMethodTags = new String[] {"bridgeSceneFactoryMethod"};
+
+	}
+	
+	@Override
+	protected Class proxyClass() {
+		return TestBridgeScene.class;
+	}
+	@Override
+	protected void doAsynchronousGalahad() {
+		bridgeScene.asynchronousGalahad();
+//		doAsynchronousArthur();
 	}
 }
