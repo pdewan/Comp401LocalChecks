@@ -9,6 +9,7 @@ import java.util.Set;
 import util.annotations.IsExtra;
 import util.annotations.MaxValue;
 import util.trace.Tracer;
+import grader.basics.execution.BasicProjectExecution;
 import grader.basics.junit.NotAutomatableException;
 import grader.basics.junit.TestCaseResult;
 import grader.basics.project.BasicProjectIntrospection;
@@ -29,7 +30,7 @@ import gradingTools.comp401f16.assignment7.testcases.TestScanner;
 import gradingTools.comp401f16.assignment7.testcases.factory.ScannerFactoryMethodTest;
 import gradingTools.shared.testcases.shapes.interfaces.TestLine;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
-@MaxValue(10)
+@MaxValue(30)
 @IsExtra(true)
 public class ArthurIsNotAContortionist extends PassFailJUnitTestCase {
 	protected final Class[] PRECEDING_TESTS = {
@@ -44,6 +45,28 @@ public class ArthurIsNotAContortionist extends PassFailJUnitTestCase {
 				(BridgeSceneSingletonFromFactory) precedingTestInstances.get(0);
 		 return aSingleton.bridgeScene();
 	}
+	protected void doSetAngle(TestRotatingLine aTestLine, double anAngle, boolean anException) {
+		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);;
+		BasicProjectExecution.setCatchException(false);
+		try {
+			aTestLine.setAngle(anAngle);
+			if (anException) {
+				assertTrue("angle " + anAngle + " did not throw  expected exception", false);
+			} else {
+				Tracer.info(this, "angle " + anAngle + " did not throw  exception as expected" );
+			}
+		} catch (Exception e) {
+			if (!anException) {
+				assertTrue("angle " + anAngle + " threw unncessary exception", false);
+			} else {
+				Tracer.info(this, "angle " + anAngle + " threw expected exception" );
+			}
+		} finally {
+			BasicProjectExecution.setUseMethodAndConstructorTimeOut(true);;
+			BasicProjectExecution.setCatchException(true);
+
+		}
+	}
 	@Override
 	public TestCaseResult test(Project project, boolean autoGrade)
 			throws NotAutomatableException, NotGradableException {
@@ -54,15 +77,33 @@ public class ArthurIsNotAContortionist extends PassFailJUnitTestCase {
 		Tracer.info(this, "Getting legs from arthur");
 		TestAngle aTestAngle = aTestAvatar.getLegs();
 		Tracer.info(this, "Getting  left line from legs");
-		TestRotatingLine aTestLine = aTestAngle.getLeftLine();
-		aTestLine.setAngle(0);
+		TestRotatingLine aTestLeftLine = aTestAngle.getLeftLine();
+		Tracer.info(this, "Getting  left line from legs");
+		TestRotatingLine aTestRightLine = aTestAngle.getRightLine();
+//		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);;
+//		BasicProjectExecution.setCatchException(false);
+//		aTestLine.setAngle(0);
+		Tracer.info(this, "left line <- PI/2");
+		doSetAngle(aTestLeftLine, Math.PI/2, false);
+		Tracer.info(this, "right line <- PI/2");
+
+		doSetAngle(aTestRightLine, Math.PI/2, false);
+		Tracer.info(this, "left line <- 0");
+
+		doSetAngle(aTestLeftLine, 0, true);	
+		Tracer.info(this, "right line <- Mat.PI");
+
+		doSetAngle(aTestRightLine, Math.PI, true);
 		
-		
+//		BasicProjectExecution.setUseMethodAndConstructorTimeOut(true);;
+//		BasicProjectExecution.setCatchException(false);
 
 		// TODO Auto-generated method stub
 		return pass();
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			BasicProjectExecution.setUseMethodAndConstructorTimeOut(true);;
+			BasicProjectExecution.setCatchException(false);
 //			assertTrue ("Exception in tested code:", false);
 			return fail("Exception in tested code:" + e.getMessage());
 		}
