@@ -16,15 +16,15 @@ import util.annotations.MaxValue;
 
 @MaxValue(5)
 public class A4MnemonicNames extends MnemonicNameRatioTestCase {
-	static final Class[] PRECEDING_TESTS = {
-			AssertingBridgeSceneDynamics.class,
-			AsyncArthurAnimation.class, 
-			SyncArthurAnimation.class,
-			WaitingAvatars.class,
-			LockstepAvatars.class,
-	};
+//	static final Class[] PRECEDING_TESTS = {
+//			AssertingBridgeSceneDynamics.class,
+//			AsyncArthurAnimation.class, 
+//			SyncArthurAnimation.class,
+//			WaitingAvatars.class,
+//			LockstepAvatars.class,
+//	};
 @Override
 protected Class[] precedingTests() {
-	return PRECEDING_TESTS;
+	return A4CommonPropertiesAreInherited.PRECEDING_TESTS;
 }
 }

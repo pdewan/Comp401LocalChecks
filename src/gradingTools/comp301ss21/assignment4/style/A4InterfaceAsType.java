@@ -14,15 +14,15 @@ import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
 import util.annotations.MaxValue;
 @MaxValue(7)
 public class A4InterfaceAsType extends VariableHasClassTypeRatioCheck{
-	static final Class[] PRECEDING_TESTS = {
-			AssertingBridgeSceneDynamics.class,
-			AsyncArthurAnimation.class, 
-			SyncArthurAnimation.class,
-			WaitingAvatars.class,
-			LockstepAvatars.class,
-	};
+//	static final Class[] PRECEDING_TESTS = {
+//			AssertingBridgeSceneDynamics.class,
+//			AsyncArthurAnimation.class, 
+//			SyncArthurAnimation.class,
+//			WaitingAvatars.class,
+//			LockstepAvatars.class,
+//	};
 	@Override
 	protected Class[] precedingTests() {
-		return PRECEDING_TESTS;
+		return A4CommonPropertiesAreInherited.PRECEDING_TESTS;
 	}
 }
