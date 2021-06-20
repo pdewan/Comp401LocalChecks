@@ -181,11 +181,11 @@ public class AssertingBridgeSceneDynamicTestCase
 		preFailAfterPass = bridgeScene.preFail();
 		prePassAfterPass = bridgeScene.prePass();
 		preSayAfterPass = bridgeScene.preSay();
-		Tracer.info(this,"preSay Pass:" + preApproachAfterSay2 );
-		Tracer.info(this,"preSay Pass:" + preSayAfterSay2 );
-		Tracer.info(this,"preFail After Pass):" + preFailAfterSay2 );
-		Tracer.info(this,"prePass After Pass:" + prePassAfterSay2 );			
-		Tracer.info(this,"Events after Pass:\n" + toString(currentEvents));
+		Tracer.info(this,"preSay Passed:" + preApproachAfterSay2 );
+		Tracer.info(this,"preSay Passed:" + preSayAfterSay2 );
+		Tracer.info(this,"preFail After Passed:" + preFailAfterSay2 );
+		Tracer.info(this,"prePass After Passed:" + prePassAfterSay2 );			
+		Tracer.info(this,"Events after Passed:\n" + toString(currentEvents));
 
 //		approach (secondAvatar());	
 		doSecondApproach();

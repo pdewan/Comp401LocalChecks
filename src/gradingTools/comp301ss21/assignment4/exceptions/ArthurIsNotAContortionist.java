@@ -31,10 +31,10 @@ import gradingTools.comp401f16.assignment7.testcases.factory.ScannerFactoryMetho
 import gradingTools.shared.testcases.shapes.interfaces.TestLine;
 import gradingTools.shared.testcases.shapes.interfaces.TestRotatingLine;
 @MaxValue(30)
-@IsExtra(true)
 public class ArthurIsNotAContortionist extends PassFailJUnitTestCase {
 	protected final Class[] PRECEDING_TESTS = {
 			BridgeSceneSingletonFromFactory.class,
+			CheckedImpossibleAngle.class
 	};
 	@Override
 	protected Class[] precedingTests() {

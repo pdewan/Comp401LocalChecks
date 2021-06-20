@@ -20,6 +20,7 @@ public class SceneControllerButtonDynamics extends AssertingBridgeSceneDynamics 
 	protected final Class[] PRECEDING_TESTS = {
 			BridgeSceneSingletonFromFactory.class,
 			SceneControllerSingletonFromFactory.class,
+			AssertingBridgeSceneDynamics.class,
 	};
 	@Override
 	protected Class[] precedingTests() {
