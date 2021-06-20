@@ -243,10 +243,10 @@ public class AssertingBridgeSceneDynamicTestCase
     	if (find(eventsAfterApproach, "this", "say", true)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterApproach, "this", "pass", true)) {
+    	if (find(eventsAfterApproach, "this", "passed", true)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterApproach, "this", "fail", true)) {
+    	if (find(eventsAfterApproach, "this", "failed", true)) {
     		numCorrectPreconditions++;
     	}
     }
@@ -256,10 +256,10 @@ public class AssertingBridgeSceneDynamicTestCase
     protected void checkEventsAfterSay1() {
     	Tracer.info  (this, "Checking events after Guard Say");
     	
-    	if (find(eventsAfterApproach, "this", "pass", false)) {
+    	if (find(eventsAfterApproach, "this", "passed", false)) {
     		numCorrectPreconditions++;
     	}
-//    	if (find(eventsAfterApproach, "this", "fail", false)) {
+//    	if (find(eventsAfterApproach, "this", "failed", false)) {
 //    		numCorrectPreconditions++;
 //    	}
     }
@@ -269,10 +269,10 @@ public class AssertingBridgeSceneDynamicTestCase
     protected void checkEventsAfterSay2() {
     	Tracer.info (this, "Checking events after Avatar Say");
     	
-    	if (find(eventsAfterApproach, "this", "pass", true)) {
+    	if (find(eventsAfterApproach, "this", "passed", true)) {
     		numCorrectPreconditions++;
     	}
-//    	if (find(eventsAfterApproach, "this", "fail", true)) {
+//    	if (find(eventsAfterApproach, "this", "failed", true)) {
 //    		numCorrectPreconditions++;
 //    	}
     }
@@ -287,10 +287,10 @@ public class AssertingBridgeSceneDynamicTestCase
     	if (find(eventsAfterFail, "this", "say", false)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterFail, "this", "pass", false)) {
+    	if (find(eventsAfterFail, "this", "passed", false)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterFail, "this", "fail", false)) {
+    	if (find(eventsAfterFail, "this", "failed", false)) {
     		numCorrectPreconditions++;
     	}
     }
@@ -305,10 +305,10 @@ public class AssertingBridgeSceneDynamicTestCase
     	if (find(eventsAfterPass, "this", "say", false)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterPass, "this", "pass", false)) {
+    	if (find(eventsAfterPass, "this", "passed", false)) {
     		numCorrectPreconditions++;
     	}
-    	if (find(eventsAfterPass, "this", "fail", false)) {
+    	if (find(eventsAfterPass, "this", "failed", false)) {
     		numCorrectPreconditions++;
     	}
     }
