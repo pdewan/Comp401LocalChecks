@@ -9,7 +9,7 @@ public class SceneControllerCallsSetEnabled extends CheckstyleMethodCalledTestCa
 //	[INFO] D:\dewan_backup\Java\grail13\.\src\greeting\Cls.java:6: Expected signature main:String[]->void in type greeting.Cls:[@Comp301Tags.GREETING_MAIN]. Good! [ExpectedSignatures]
 //	[WARN] D:\dewan_backup\Java\grail13\.\src\greeting\Cls.java:6: Missing signature main:String[]->void in type greeting.Cls:[@Comp301Tags.GREETING_MAIN]. [ExpectedSignatures]
 	public SceneControllerCallsSetEnabled() {
-		super("@Comp301Tags.BRIDGE_SCENE_CONTROLLER", "(.*)!setEnabled:boolean:-> void");
+		super("@Comp301Tags.BRIDGE_SCENE_CONTROLLER", "(.*)!setEnabled:boolean-> void");
 		// TODO Auto-generated constructor stub
 	}
 	
