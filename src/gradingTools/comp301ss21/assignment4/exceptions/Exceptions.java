@@ -1,4 +1,4 @@
-package gradingTools.comp301ss21.assignment4;
+package gradingTools.comp301ss21.assignment4.exceptions;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -50,16 +50,18 @@ import gradingTools.comp401f16.assignment8.testcases.ConsoleSceneViewOutputTestC
 import gradingTools.comp401f16.assignment8.testcases.factory.ConsoleSceneViewFactoryMethodTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	TaggedLocatable.class,
-	TaggedBoundedShape.class,
-	AbstractLocatable.class,
-	AbstractBoundedShape.class,
+	TaggedImpossibleAngle.class,
+	CheckedImpossibleAngle.class,
+	TaggedLegs.class,
+	TaggedRestrictedLine.class,
+	ArthurIsNotAContortionist.class,
+
 //ConsoleSceneView.class
 
 
 
 })
-public class AbstractClasses {
+public class Exceptions {
 
 	
 

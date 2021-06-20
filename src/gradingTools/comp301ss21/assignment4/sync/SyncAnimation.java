@@ -1,4 +1,4 @@
-package gradingTools.comp301ss21.assignment4;
+package gradingTools.comp301ss21.assignment4.sync;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -11,10 +11,6 @@ import gradingTools.comp301ss21.assignment4.async.AsyncArthurAnimation;
 import gradingTools.comp301ss21.assignment4.async.AsyncGalahadAnimation;
 import gradingTools.comp301ss21.assignment4.async.AsyncLancelotAnimation;
 import gradingTools.comp301ss21.assignment4.async.AsyncRobinAnimation;
-import gradingTools.comp301ss21.assignment4.sync.SyncArthurAnimation;
-import gradingTools.comp301ss21.assignment4.sync.SyncGalahadAnimation;
-import gradingTools.comp301ss21.assignment4.sync.SyncLancelotAnimation;
-import gradingTools.comp301ss21.assignment4.sync.SyncRobinAnimation;
 import util.annotations.MaxValue;
 
 @RunWith(Suite.class)

@@ -1,4 +1,4 @@
-package gradingTools.comp301ss21.assignment4;
+package gradingTools.comp301ss21.assignment4.abstractclasses;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -40,13 +40,6 @@ import gradingTools.comp301ss21.assignment2.testcases.inheritance.LocatableYEdit
 import gradingTools.comp301ss21.assignment2.testcases.inheritance.LocatableYProperty;
 import gradingTools.comp301ss21.assignment2.testcases.inheritance.TaggedBoundedShape;
 import gradingTools.comp301ss21.assignment2.testcases.inheritance.TaggedLocatable;
-import gradingTools.comp301ss21.assignment4.abstractclasses.AbstractBoundedShape;
-import gradingTools.comp301ss21.assignment4.abstractclasses.AbstractLocatable;
-import gradingTools.comp301ss21.assignment4.exceptions.ArthurIsNotAContortionist;
-import gradingTools.comp301ss21.assignment4.exceptions.CheckedImpossibleAngle;
-import gradingTools.comp301ss21.assignment4.exceptions.TaggedImpossibleAngle;
-import gradingTools.comp301ss21.assignment4.exceptions.TaggedLegs;
-import gradingTools.comp301ss21.assignment4.exceptions.TaggedRestrictedLine;
 import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
 import gradingTools.comp401f16.assignment6.testcases.scroll.BridgeSceneComponentScrollSuite;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
@@ -55,18 +48,16 @@ import gradingTools.comp401f16.assignment8.testcases.ConsoleSceneViewOutputTestC
 import gradingTools.comp401f16.assignment8.testcases.factory.ConsoleSceneViewFactoryMethodTest;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	TaggedImpossibleAngle.class,
-	CheckedImpossibleAngle.class,
-	TaggedLegs.class,
-	TaggedRestrictedLine.class,
-	ArthurIsNotAContortionist.class,
-
+	TaggedLocatable.class,
+	TaggedBoundedShape.class,
+	AbstractLocatable.class,
+	AbstractBoundedShape.class,
 //ConsoleSceneView.class
 
 
 
 })
-public class Exceptions {
+public class AbstractClasses {
 
 	
 
