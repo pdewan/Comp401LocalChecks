@@ -27,6 +27,7 @@ import gradingTools.comp301ss21.assignment3.inheriting_view.A3MainCallsInheritin
 import gradingTools.comp301ss21.assignment3.inheriting_view.InheritingPainterFactoryMethodDefined;
 import gradingTools.comp301ss21.assignment4.assertions.AssertingBridgeSceneDynamics;
 import gradingTools.comp301ss21.assignment4.async.AsyncArthurAnimation;
+import gradingTools.comp301ss21.assignment4.controller.SceneControllerButtons;
 import gradingTools.comp401f16.assignment6.testcases.BridgeSceneDynamicTestCase;
 import gradingTools.comp401f16.assignment6.testcases.scroll.BridgeSceneComponentScrollSuite;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;

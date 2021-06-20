@@ -5,6 +5,7 @@ import java.beans.PropertyChangeListener;
 import gradingTools.comp401f16.assignment5.testcases.move.arthur.BridgeSceneMoveTestCase;
 import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
 import gradingTools.comp401f16.assignment8.testcases.factory.ConsoleSceneViewFactoryMethodTest;
+import gradingTools.comp401f16.assignment9.testcases.interfaces.TestBridgeSceneController;
 import tags301.Comp301Tags;
 import util.annotations.MaxValue;
 @MaxValue(2)
@@ -23,7 +24,10 @@ public class SceneControllerSingletonFromFactory  extends BridgeSceneMoveTestCas
 	}
 	@Override
 	protected Class proxyClass() {
-		return Object.class;
+		return TestBridgeSceneController.class;
+	}
+	public TestBridgeSceneController sceneController() {
+		return (TestBridgeSceneController) rootProxy;
 	}
 	
 	

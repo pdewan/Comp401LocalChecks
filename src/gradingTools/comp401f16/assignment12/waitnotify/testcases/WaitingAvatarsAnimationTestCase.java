@@ -77,14 +77,14 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			doWaitingArthur();
 //			commandInterpreter().waitingArthur();
 			Tracer.info(this,"Animating waiting Lancelot"+ System.currentTimeMillis());
-			doWaitingGalahad();
+			doWaitingLancelot();
 //			commandInterpreter().waitingLancelot();
 			Tracer.info(this,"Animating waiting Galahad"+ System.currentTimeMillis());
 			doWaitingGalahad();
 //			commandInterpreter().waitingGalahad();
 			Tracer.info(this,"Animating waiting Robin"+ System.currentTimeMillis());
 //			commandInterpreter().waitingRobin();
-			doWaitingArthur();
+			doWaitingRobin();
 			waitForThreadsToStart();
 			if (currentNotifyingThreads.size() > 1) {				
 				assertTrue("At least one thread created before proceedAll", false);				

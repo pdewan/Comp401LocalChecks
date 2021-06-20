@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import grader.basics.testcase.PassFailJUnitTestCase;
 import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
 import util.trace.Tracer;
@@ -257,7 +258,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		if (!currentNotifyingThreads.contains(aChildThread)) {			
 			Tracer.info(this,"New notifying child thread:" + aChildThread);
 			if (previousThreads.contains(aChildThread)) {
-				Tracer.info(this,"Is previously created thread");
+				Tracer.info(PassFailJUnitTestCase.class,"Is previously created thread");
 			}
 			currentNotifyingThreads.add(aChildThread);
 			threadToSleeps.put(aChildThread, 1);

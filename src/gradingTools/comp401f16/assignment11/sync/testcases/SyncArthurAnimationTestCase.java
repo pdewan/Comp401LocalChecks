@@ -11,6 +11,7 @@ import gradingTools.shared.testcases.FactoryMethodTest;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
+import grader.basics.testcase.PassFailJUnitTestCase;
 import util.models.PropertyListenerRegisterer;
 import util.trace.Tracer;
 

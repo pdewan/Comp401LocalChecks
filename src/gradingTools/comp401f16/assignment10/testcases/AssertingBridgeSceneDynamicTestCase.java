@@ -104,7 +104,19 @@ public class AssertingBridgeSceneDynamicTestCase
 	protected void printFractionComplete() {
 //		System.out.println ("Fraction complete:" + fractionComplete);
 	}
-
+	
+	protected void doFirstApproach() {
+		approach(firstAvatar());
+	}
+	protected void doFirstSay() {
+		say (guard(), firstSay);
+	}
+	protected void doSecondSay() {
+		say (firstAvatar(), secondSay);
+	}
+	protected void doSecondApproach() {
+		approach (secondAvatar());
+	}
 	@Override
 	protected void executeOperations(Object aLocatable) {
 		preApproachBeforeApproach = bridgeScene.preApproach();
@@ -118,7 +130,8 @@ public class AssertingBridgeSceneDynamicTestCase
 		
 		currentEvents = eventsAfterApproach;
 		currentEvents.clear();
-		approach(firstAvatar());
+//		approach(firstAvatar());
+		doFirstApproach();
 		preApproachAfterApproach = bridgeScene.preApproach();
 		preFailAfterApproach = bridgeScene.preFail();
 		prePassAfterApproach = bridgeScene.prePass();
@@ -131,7 +144,8 @@ public class AssertingBridgeSceneDynamicTestCase
 		
 		currentEvents = eventsAfterSay1;
 		currentEvents.clear();
-		say (guard(), firstSay);		
+		doFirstSay();
+//		say (guard(), firstSay);		
 		preApproachAfterSay1 = bridgeScene.preApproach();
 		preFailAfterSay1 = bridgeScene.preFail();
 		prePassAfterSay1 = bridgeScene.prePass();
@@ -147,7 +161,8 @@ public class AssertingBridgeSceneDynamicTestCase
 
 		currentEvents = eventsAfterSay2;
 		currentEvents.clear();
-		say (firstAvatar(), secondSay);
+		doSecondSay();
+//		say (firstAvatar(), secondSay);
 		preApproachAfterSay2 = bridgeScene.preApproach();
 		preFailAfterSay2 = bridgeScene.preFail();
 		prePassAfterSay2 = bridgeScene.prePass();
@@ -172,7 +187,8 @@ public class AssertingBridgeSceneDynamicTestCase
 		Tracer.info(this,"prePass After Pass:" + prePassAfterSay2 );			
 		Tracer.info(this,"Events after Pass:\n" + toString(currentEvents));
 
-		approach (secondAvatar());	
+//		approach (secondAvatar());	
+		doSecondApproach();
 		currentEvents = eventsAfterFail;
 		currentEvents.clear();
 		fail();

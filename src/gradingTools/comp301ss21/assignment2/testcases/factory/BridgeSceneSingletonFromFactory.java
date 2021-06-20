@@ -15,8 +15,8 @@ public class BridgeSceneSingletonFromFactory  extends BridgeSceneFactoryMethodTe
 	protected String[] factoryClassTags() {
 		return factoryClassTags;
 	}
-	@Override
-	protected Class precedingTest() {
-		return BridgeSceneFactoryMethodDefined.class;
-	}
+//	@Override
+//	protected Class precedingTest() {
+//		return BridgeSceneFactoryMethodDefined.class;
+//	}
 }

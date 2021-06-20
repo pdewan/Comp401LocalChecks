@@ -50,7 +50,7 @@ public class PassCommandObjectTestCase extends FailCommandObjectTestCase  {
 	}
 	@Override
 	protected void doPass () {
-		super.doPassOrFail();
+		super.doFail();
 //		fractionComplete = 0;
 //		 try {
 //			

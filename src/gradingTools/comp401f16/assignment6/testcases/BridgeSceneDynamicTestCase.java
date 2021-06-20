@@ -155,10 +155,12 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 //		printFractionComplete();
 //	}
 	protected void doPass() {
+		Tracer.info(this,"Interacting Knight Pass");
+
 		bridgeScene().pass();
 	}
 	protected void passKnight() {
-		Tracer.info(this,"Interacting Knight Pass");
+//		Tracer.info(this,"Interacting Knight Pass");
 		doPass();
 //		bridgeScene().pass();
 		assertTrue(passErrorMessage(), 
@@ -167,7 +169,8 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		fractionComplete += passCredit();
 		printFractionComplete();
 	}
-	protected void doPassOrFail() {
+	protected void doFail() {
+		Tracer.info(this,"Interacting Knight Fail");
 		bridgeScene().fail();
 	}
 	protected void checkFail() {
@@ -178,8 +181,8 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		printFractionComplete();
 	}
 	protected void fail() {
-		Tracer.info(this,"Interacting Knight Fail");
-		doPassOrFail();
+//		Tracer.info(this,"Interacting Knight Fail");
+		doFail();
 		checkFail();
 //		bridgeScene().fail();
 //		assertTrue("After fail occupied should be false and knight turn false", 

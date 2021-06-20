@@ -42,6 +42,7 @@ import gradingTools.comp301ss21.assignment2.testcases.inheritance.TaggedBoundedS
 import gradingTools.comp301ss21.assignment2.testcases.inheritance.TaggedLocatable;
 import gradingTools.comp301ss21.assignment4.abstractclasses.AbstractBoundedShape;
 import gradingTools.comp301ss21.assignment4.abstractclasses.AbstractLocatable;
+import gradingTools.comp301ss21.assignment4.exceptions.ArthurIsNotAContortionist;
 import gradingTools.comp301ss21.assignment4.exceptions.CheckedImpossibleAngle;
 import gradingTools.comp301ss21.assignment4.exceptions.TaggedImpossibleAngle;
 import gradingTools.comp301ss21.assignment4.exceptions.TaggedLegs;
@@ -58,6 +59,7 @@ import gradingTools.comp401f16.assignment8.testcases.factory.ConsoleSceneViewFac
 	CheckedImpossibleAngle.class,
 	TaggedLegs.class,
 	TaggedRestrictedLine.class,
+	ArthurIsNotAContortionist.class,
 
 //ConsoleSceneView.class
 

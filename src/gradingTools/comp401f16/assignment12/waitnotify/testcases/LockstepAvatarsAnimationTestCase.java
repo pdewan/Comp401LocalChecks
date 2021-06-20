@@ -16,6 +16,7 @@ import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import grader.basics.testcase.PassFailJUnitTestCase;
 //import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap;
 import util.annotations.IsExtra;
 import util.annotations.MaxValue;
@@ -73,9 +74,13 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		Tracer.info(this,"num coordinated threads found:" + threadToSleeps.size());
 		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
 			 resultCorrect = false;
-			 failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
+			 failureMessage = "Number of coordinated threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
+
+//			 failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
 			 notify();
-			 assertTrue ("Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS, false);
+			 assertTrue (failureMessage, false);
+
+//			 assertTrue ("Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS, false);
 		} else {
 			failureMessage = "";
 			resultCorrect = true;
@@ -86,18 +91,27 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		for (Thread aThread:threadToSleeps.keySet()) {
 			 Integer aNumSleeps = threadToSleeps.get(aThread);
 			 result = Math.max(result, aNumSleeps );
-			 Tracer.info(this,"Number of sleeps by thread : " + aThread + " " + aNumSleeps);
+			 Tracer.info(this,"Number of waits by thread : " + aThread + " " + aNumSleeps);
+
+//			 Tracer.info(this,"Number of sleeps by thread : " + aThread + " " + aNumSleeps);
 			 
 		}
-		Tracer.info(this,"Maximum sleeps:" + result);
+//		Tracer.info(this,"Maximum sleeps:" + result);
+		Tracer.info(this,"Maximum waits:" + result);
+
 		return result;
 	}
 	protected synchronized void checkNumThreadsWithNumSleeps(int aLimit) {
 		for (Thread aThread:threadToSleeps.keySet()) {
 			 Integer aNumSleeps = threadToSleeps.get(aThread);
-			 Tracer.info(this,"Number of sleeps by thread : " + aThread + " " + aNumSleeps);
+//			 Tracer.info(this,"Number of sleeps by thread : " + aThread + " " + aNumSleeps);
+			 Tracer.info(this,"Number of waits by thread : " + aThread + " " + aNumSleeps);
+
+			 
 			 if (Math.abs(aLimit - aNumSleeps) > 2) {
-				 failureMessage = "Number of sleeps by thread:" + 
+//				 failureMessage = "Number of sleeps by thread:" + 
+//						 aThread + " " + aNumSleeps + " instead of " + aLimit;
+				 failureMessage = "Number of waits by thread:" + 
 						 aThread + " " + aNumSleeps + " instead of " + aLimit;
 				 resultCorrect = false;
 				 notify();
@@ -208,9 +222,13 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	protected synchronized boolean checkOutput(Object aProxy) {
 		checkNumThreads();
 		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
-			failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
-			 resultCorrect = false;
-			assertTrue ("Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS, false);
+//			failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
+			failureMessage = "Number of coordinated threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
+
+			resultCorrect = false;
+			assertTrue (failureMessage, false);
+
+//			assertTrue ("Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS, false);
 		} else {
 			resultCorrect = true;
 		}

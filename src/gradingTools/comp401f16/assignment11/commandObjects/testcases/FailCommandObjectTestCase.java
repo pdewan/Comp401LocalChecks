@@ -46,7 +46,7 @@ public class FailCommandObjectTestCase extends BridgeSceneDynamicTestCase  {
 //				 bridgeSceneInterface);
 	}
 	@Override
-	protected void doPassOrFail () {
+	protected void doFail () {
 		fractionComplete = 0;
 		 try {
 			
