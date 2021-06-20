@@ -33,7 +33,7 @@ public class ScanningIteratorTest extends ScanStringTest{
 //	}
 	protected void traceProcessReturnValue() {
 		Tracer.info(this,
-				"Comparing actial return value: " + 
+				"Comparing actual return value: " + 
 						Arrays.toString((Object[]) getReturnValue()) +
 				" with expected return value: " + 
 						Arrays.toString((Object[]) getExpectedReturnValue()));

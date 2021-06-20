@@ -46,6 +46,7 @@ public class ArthurIsNotAContortionist extends PassFailJUnitTestCase {
 		 return aSingleton.bridgeScene();
 	}
 	protected void doSetAngle(TestRotatingLine aTestLine, double anAngle, boolean anException) {
+		Tracer.info(this, "Disabling asynchronous execution of code and transparent exceptions");
 		BasicProjectExecution.setUseMethodAndConstructorTimeOut(false);;
 		BasicProjectExecution.setCatchException(false);
 		try {
@@ -55,7 +56,7 @@ public class ArthurIsNotAContortionist extends PassFailJUnitTestCase {
 			} else {
 				Tracer.info(this, "angle " + anAngle + " did not throw  exception as expected" );
 			}
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			if (!anException) {
 				assertTrue("angle " + anAngle + " threw unncessary exception", false);
 			} else {
@@ -64,6 +65,8 @@ public class ArthurIsNotAContortionist extends PassFailJUnitTestCase {
 		} finally {
 			BasicProjectExecution.setUseMethodAndConstructorTimeOut(true);;
 			BasicProjectExecution.setCatchException(true);
+			Tracer.info(this, "Enabling asynchronous execution of code and transparent exceptions");
+
 
 		}
 	}
