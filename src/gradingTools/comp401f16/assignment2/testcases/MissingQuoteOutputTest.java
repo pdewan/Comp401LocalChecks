@@ -16,7 +16,7 @@ import gradingTools.comp401f16.assignment1.testcases.Assignment1Suite;
 import gradingTools.comp401f16.assignment1.testcases.MultipleTokensOutputTest;
 import gradingTools.comp401f16.assignment3.testcases.Assignment3Suite;
 @Explanation("Missing Quote Output")
-@MaxValue(5)
+@MaxValue(10)
 @IsExtra(true)
 public class MissingQuoteOutputTest extends MultipleTokensOutputTest {
 	public static final String QUOTE_PREFIX = toRegex("uot");

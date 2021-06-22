@@ -1,4 +1,4 @@
-package gradingTools.comp301ss21.assignment1_1.numbers;
+package gradingTools.comp301ss21.assignment1_1.numbers.run;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -20,6 +20,7 @@ import gradingTools.comp301ss21.assignment1.testcases.line.moving.DetachedRotati
 import gradingTools.comp301ss21.assignment1.testcases.line.moving.DetachedRotatingLineMinusFortyFiveDegree;
 import gradingTools.comp301ss21.assignment1.testcases.line.moving.MovingRotatingLineFortyFiveDegree;
 import gradingTools.comp301ss21.assignment1.testcases.line.moving.MovingRotatingLineMinusFortyFiveDegree;
+import gradingTools.comp301ss21.assignment1_1.numbers.run.SingleTokenNumbers;
 import gradingTools.comp401f16.assignment4.testcases.rotate.fixed.FixedRotatingLineSuite;
 import gradingTools.comp401f16.assignment4.testcases.rotate.moving.MovingRotatingLineSuite;
 import gradingTools.comp401f16.assignment5.testcases.angle.AngleMoveSuite;
@@ -35,10 +36,31 @@ import util.annotations.MaxValue;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	Main1ProcessInputDefined.class,
-	NoIllegalCall.class,
-	ScanningIterator.class,
-	HasNextSideEffect.class
+	SingleTokenNumbers.class,
+	SingleTokenSum.class,
+	SingleTokenProduct.class,
+	MultipleTokenNumbers.class,
+	MultipleTokensSum.class,
+	MultipleTokensProduct.class,
+	InvalidCharacterNumbers.class,
+	InvalidCharacterSum.class,
+	InvalidCharacterProduct.class,
+	VariableSpaceNumbers.class,
+	VariableSpaceSum.class,
+	VariableSpaceProduct.class,
+	TerminatesWithPeriodLineNumbers.class,
+	TerminatesWithPeriodLineSum.class,
+	TerminatesWithPeriodLineProduct.class,
+	IndexOf.class,
+	IndexOfCharacterNotFound.class,
+	IndexOfFirstSpace.class,
+	IndexOfNotSpaceAtEnd.class,
+	IndexOfNotSpaceAtStart.class,
+	IndexOfSecondSpace.class,
+	IndexOfSpaceSameIndex.class,
+	ScanString.class
+	
+	
 
 //	TagChecks.class,
 //	SourceChecks.class,
@@ -46,6 +68,6 @@ import util.annotations.MaxValue;
 	
 //	GreetingCheckstyle.class
 })
-public class Numbers {
+public class NumbersRun {
 
 }

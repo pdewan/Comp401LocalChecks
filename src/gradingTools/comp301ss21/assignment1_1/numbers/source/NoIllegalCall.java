@@ -1,4 +1,4 @@
-package gradingTools.comp301ss21.assignment1_1.numbers;
+package gradingTools.comp301ss21.assignment1_1.numbers.source;
 
 import gradingTools.basics.sharedTestCase.checkstyle.CheckStyleIllegalCallTestCase;
 import util.annotations.MaxValue;

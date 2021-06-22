@@ -3,7 +3,7 @@ package gradingTools.comp301ss21.assignment1_1.scannerBean;
 import gradingTools.basics.sharedTestCase.checkstyle.CheckstyleMethodCalledTestCase;
 import gradingTools.basics.sharedTestCase.checkstyle.CheckstyleMethodDefinedTestCase;
 import gradingTools.comp301ss21.assignment1.testcases.line.fixed.TaggedRotatingLine;
-import gradingTools.comp301ss21.assignment1_1.numbers.NoIllegalCall;
+import gradingTools.comp301ss21.assignment1_1.numbers.source.NoIllegalCall;
 import util.annotations.MaxValue;
 @MaxValue(2)
 public class BeanIndexOfDefined extends CheckstyleMethodDefinedTestCase {

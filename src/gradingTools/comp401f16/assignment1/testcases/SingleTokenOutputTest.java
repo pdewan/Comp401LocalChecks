@@ -6,9 +6,13 @@ import util.annotations.Explanation;
 public class SingleTokenOutputTest extends AbstractNumberScanningTest{
 	protected String[][] tokenLines = {{"0202"}};
 	protected String[][] graderTokenLines = {{"0010010"}};
+	protected String mainClassName() {
+		return Assignment1Suite.MAIN_CLASS_NAME;
+	}
 	protected String[] getClassNames(){
 		return new String[] {
-				Assignment1Suite.MAIN_CLASS_NAME, 
+				mainClassName(),
+//				Assignment1Suite.MAIN_CLASS_NAME, 
 				"ssignment", 
 				"NumberScanner",
 				"numscan"};

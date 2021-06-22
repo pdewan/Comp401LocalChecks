@@ -1,5 +1,6 @@
 package gradingTools.comp401f16.assignment1.testcases;
 
+import tags301.Comp301Tags;
 import util.annotations.Explanation;
 
 @Explanation("Scan String Test")
@@ -32,14 +33,19 @@ public class ScanStringTest extends MultipleTokensOutputTest {
 //	protected String getClassName() {
 //		return "main.Assignment1";
 //	}
+	protected String mainClassName() {
+		return Assignment1Suite.MAIN_CLASS_NAME;
+	}
 	@Override
 	protected String[] getClassNames(){
 		return new String[] {
-				Assignment1Suite.MAIN_CLASS_NAME, 
+				mainClassName(),
+			//	Assignment1Suite.MAIN_CLASS_NAME, 
 				toRegex("Assignment"),
 				"ScanningIterator",
 				toRegex("ScanningIterator"),
-				"ScannerBean",
+				Comp301Tags.SCANNER_BEAN,
+//				"ScannerBean",
 				toRegex("Bean")};
 	}
 	@Override
