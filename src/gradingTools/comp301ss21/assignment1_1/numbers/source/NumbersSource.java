@@ -3,6 +3,8 @@ package gradingTools.comp301ss21.assignment1_1.numbers.source;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import gradingTools.basics.sharedTestCase.checkstyle.NoIllegalCall;
+import gradingTools.basics.sharedTestCase.checkstyle.NoIllegalImport;
 import gradingTools.comp301ss21.assignment1.testcases.angle.AngleInstantiatesLine;
 import gradingTools.comp301ss21.assignment1.testcases.angle.AngleLeftLineProperty;
 import gradingTools.comp301ss21.assignment1.testcases.angle.AngleMoveDefined;
@@ -42,6 +44,7 @@ import util.annotations.MaxValue;
 	Main1ProcessInputDefined.class,
 	Main1CallsProcessInput.class,
 	NoIllegalCall.class,
+	NoIllegalImport.class,
 	ScanningIterator.class,
 	HasNextSideEffect.class,
 	ScanningIteratorIndexOfDefined.class,

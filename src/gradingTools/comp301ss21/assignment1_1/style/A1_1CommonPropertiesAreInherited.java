@@ -7,6 +7,7 @@ import gradingTools.basics.sharedTestCase.checkstyle.SimplifyBooleanReturnTestCa
 import gradingTools.comp301ss21.assignment1_1.numbers.run.IndexOf;
 import gradingTools.comp301ss21.assignment1_1.numbers.run.IndexOfNotSpaceAtEnd;
 import gradingTools.comp301ss21.assignment1_1.numbers.run.MultipleTokenNumbers;
+import gradingTools.comp301ss21.assignment1_1.numbers.run.ScanString;
 import gradingTools.comp301ss21.assignment1_1.numbers.run.ScanningIterator;
 import gradingTools.comp301ss21.assignment1_1.scannerBean.ScannerBean;
 import gradingTools.comp301ss21.assignment1_1.tokenObjects.run.MultipleQuoteTokenObjects;
@@ -39,7 +40,7 @@ static final Class[] PRECEDING_TESTS = {
 		ScanningIterator.class,
 		MultipleQuoteTokenObjects.class,
 		WordBean.class,
-		ScannerBean.class
+		ScanString.class
 		
 		
 };

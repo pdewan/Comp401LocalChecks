@@ -20,6 +20,30 @@ public class Comp301Tags extends ShapeTags {
 	public static final String MINUS = "Minus";
 	public static final String START = "Start";
 	public static final String END = "End";
+	public static final String PASSED = "Passed";
+	public static final String FAILED = "Failed";
+	public static final String SAY = "Say";
+	public static final String REPEAT = "Repeat";
+	public static final String MOVE = "Move";
+	public static final String APPROACH = "Approach";
+	/*
+	 * @Comp301Tags.MOVE,
+				@Comp301Tags.PASSED,
+				@Comp301Tags.FAILED,
+				@Comp301Tags.SAY,
+				@Comp301Tags.ROTATE_LEFT_ARM,
+				@Comp301Tags.ROTATE_RIGHT_ARM,
+				@Comp301Tags.REPEAT,
+				@Comp301Tag.DEFINE,
+				@Comp301Tags.CALL,
+				@Comp301Tags.THREAD,
+				@Comp301Tags.WAIT,
+				@Comp301Tags.PROCEED_ALL,
+				@Comp301Tags.SLEEP,
+				@Comp301Tags.UNDO,
+				@Comp301Tags.REDO,
+				@Comp301Tags.TOKEN,
+	 */
 	public static final String INHERITING_BRIDGE_SCENE_PAINTER = "InheritingBridgeScenePainter";
 	public static final String PAINT_LISTENER = "Paint Listener";
 	public static final String OBSERVABLE_BRIDGE_SCENE_PAINTER = "ObservableBridgeScenePainter";

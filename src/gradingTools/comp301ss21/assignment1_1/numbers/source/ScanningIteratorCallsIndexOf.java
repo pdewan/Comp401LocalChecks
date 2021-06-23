@@ -2,6 +2,8 @@ package gradingTools.comp301ss21.assignment1_1.numbers.source;
 
 import gradingTools.basics.sharedTestCase.checkstyle.CheckstyleClassInstantiatedTestCase;
 import gradingTools.basics.sharedTestCase.checkstyle.CheckstyleMethodCalledTestCase;
+import gradingTools.basics.sharedTestCase.checkstyle.NoIllegalCall;
+import gradingTools.basics.sharedTestCase.checkstyle.NoIllegalImport;
 import gradingTools.comp301ss21.assignment2.testcases.inheritance.TaggedLocatable;
 import util.annotations.MaxValue;
 @MaxValue(2)
@@ -14,7 +16,8 @@ public class ScanningIteratorCallsIndexOf extends CheckstyleMethodCalledTestCase
 	}
 	Class[] PRECEDING_TESTS = {
 //			TaggedScannerBean.class,
-			NoIllegalCall.class
+			NoIllegalCall.class,
+			NoIllegalImport.class,
 	};
 	@Override
 	protected Class[] precedingTests() {

@@ -2,8 +2,9 @@ package gradingTools.comp301ss21.assignment1_1.scannerBean;
 
 import gradingTools.basics.sharedTestCase.checkstyle.CheckstyleMethodCalledTestCase;
 import gradingTools.basics.sharedTestCase.checkstyle.CheckstyleMethodDefinedTestCase;
+import gradingTools.basics.sharedTestCase.checkstyle.NoIllegalCall;
+import gradingTools.basics.sharedTestCase.checkstyle.NoIllegalImport;
 import gradingTools.comp301ss21.assignment1.testcases.line.fixed.TaggedRotatingLine;
-import gradingTools.comp301ss21.assignment1_1.numbers.source.NoIllegalCall;
 import util.annotations.MaxValue;
 @MaxValue(2)
 public class BeanIndexOfNotDefined extends CheckstyleMethodDefinedTestCase {
@@ -16,7 +17,9 @@ public class BeanIndexOfNotDefined extends CheckstyleMethodDefinedTestCase {
 	
 	Class[] PRECEDING_TESTS = {
 			TaggedScannerBean.class,
-			NoIllegalCall.class
+			NoIllegalCall.class,
+			NoIllegalImport.class,
+
 	};
 	@Override
 	protected Class[] precedingTests() {
