@@ -8,7 +8,9 @@ import org.junit.runners.Suite;
 	BroadcastingClearanceManagerFactoryMethodDefined.class,
 	BroadcastingClearanceManagerSingletonFromFactory.class,
 	WaitingAvatars.class,
+	AbstractionWaitingAvatars.class,
 	LockstepAvatars.class,
+	AbstractionLockstepAvatars.class
 //ConsoleSceneView.class
 
 

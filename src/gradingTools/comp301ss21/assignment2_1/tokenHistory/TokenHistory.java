@@ -65,7 +65,7 @@ import util.annotations.MaxValue;
 
 
 })
-@MaxValue(15)
+@MaxValue(40)
 public class TokenHistory {
 
 	

@@ -12,6 +12,7 @@ import util.annotations.MaxValue;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	AsyncArthurAnimation.class,
+	AbstractionAsyncArthurAnimation.class,
 	AsyncGalahadAnimation.class,
 	AsyncLancelotAnimation.class,
 	AsyncRobinAnimation.class,

@@ -1,5 +1,6 @@
-package gradingTools.comp401f16.assignment12.waitnotify.testcases;
+package gradingTools.comp301ss21.assignment4.coordination;
 
+import gradingTools.comp301ss21.assignment4.async.AbstractionAsyncArthurAnimationTestCase;
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncArthurAnimationTestCase;
@@ -10,20 +11,23 @@ import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryM
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
 import gradingTools.shared.testcases.FactoryMethodTest;
+import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentEventUtility;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Arrays;
+import java.util.Set;
 
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
 import util.trace.Tracer;
 @MaxValue(20)
-public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCase {
+public class AbstractionWaitingAvatarsAnimationTestCase extends AbstractionAsyncArthurAnimationTestCase {
 	public static final int NUM_CHILD_THREADS = 4; // including parent thread
 	public static final double PROCEED_CREDIT = 0.5;
 	BroadcastingClearanceManager broadcastingClearanceManager;
-	public WaitingAvatarsAnimationTestCase() {
+	public AbstractionWaitingAvatarsAnimationTestCase() {
 		Tracer.info(this,"Wating Avatars case created:" + this);
 	}
 	protected void createClearanceManager() {
@@ -50,11 +54,12 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 		createClearanceManager();		
 	}
 	public void addPropertyChangeListeners() {
-		addPropertyChangeListener(bridgeScene.getArthur(), this);
-		addPropertyChangeListener(bridgeScene.getLancelot(), this);
-		addPropertyChangeListener(bridgeScene.getGalahad(), this);
-		addPropertyChangeListener(bridgeScene.getRobin(), this);
+		addPropertyChangeListener(bridgeScene.getArthur(), concurrentPropertyChangeSupport);
+		addPropertyChangeListener(bridgeScene.getLancelot(), concurrentPropertyChangeSupport);
+		addPropertyChangeListener(bridgeScene.getGalahad(), concurrentPropertyChangeSupport);
+		addPropertyChangeListener(bridgeScene.getRobin(), concurrentPropertyChangeSupport);
 	}
+	
 	protected void doProceedAll() throws Exception {
 		Tracer.info(this,"Executing proceedAll on broadcasting clearance manager at time:" + System.currentTimeMillis());
 		broadcastingClearanceManager.proceedAll();
@@ -71,7 +76,9 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 	protected void doWaitingRobin() {
 		commandInterpreter().waitingRobin();
 	}
+	
 	protected synchronized void executeOperations(Object aProxy) throws Exception {
+			Set<Thread> aCurrentThreads = ConcurrentEventUtility.getCurrentThreads();
 			fractionComplete = 0;
 			Tracer.info(this,"Animating waiting Arthur at time:" + System.currentTimeMillis());
 			doWaitingArthur();
@@ -85,9 +92,20 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			Tracer.info(this,"Animating waiting Robin"+ System.currentTimeMillis());
 //			commandInterpreter().waitingRobin();
 			doWaitingRobin();
-			waitForThreadsToStart();
-			if (currentNotifyingThreads.size() > 1) {				
-				assertTrue("At least one thread notified before proceedAll was executed", false);				
+//			long aDelay = maxDelayToCreateChildThread() * NUM_CHILD_THREADS;
+			waitForChildrenThreadsToBeCreated(NUM_CHILD_THREADS);
+//			Tracer.info(this, "waiting for children to be created:" + aDelay);
+//			Thread.sleep(aDelay);
+//			Set<Thread> aNewThreads = ConcurrentEventUtility.newThreads(aCurrentThreads);
+//			if (aNewThreads.size() != NUM_CHILD_THREADS) {
+//				assertTrue("Only " + aNewThreads.size() + "  new threads not created on calling waitng animation on arthur, lancelot, galahad and robin. Expecting 4 threads", false);				
+//
+//			}
+			assertNewThreadsCreated(aCurrentThreads, NUM_CHILD_THREADS);
+			Thread[] aNotifyingThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads();
+			if (aNotifyingThreads.length > 0) {	
+				
+				assertTrue("Threads " + Arrays.toString(aNotifyingThreads) + "  notified before proceedAll was executed", false);				
 			}
 			doProceedAll();
 //			Tracer.info(this,"Executing proceedAll on broadcasting clearance manager");
@@ -96,6 +114,13 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 //			waitForThreads();
 			
 		}
+	protected long selectorBasedWaitDelay() {
+		
+		return  maxTimeForAnimatingThread();
+	}
+	protected int minThreads() {
+		return NUM_CHILD_THREADS;
+	}
 	protected synchronized void waitForThreads( ){
 		super.waitForThreads();
 //		waitForThreadsToStart(); // this is what the superclass does
@@ -106,17 +131,21 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			stopThread(aThread);
 		}
 	}
-	protected synchronized boolean checkOutput(Object aProxy) {
-		int aNumThreads = currentNotifyingThreads.size() - 1;
+	@Override
+	protected synchronized boolean checkConcurrentPropertyChanges() {
+		Thread[] aNotifyingThreads = concurrentPropertyChangeSupport.getNotifyingThreads();
+		int aNumThreads = aNotifyingThreads.length;
 		Tracer.info(this,"Number of notifying threads after proceedAll " + 
 		aNumThreads);
-		if (aNumThreads == 1 ) {
+		if (aNumThreads == 0 ) {
 			assertTrue("No thread notified after proceedAll", false);	
-		} else if (currentNotifyingThreads.size() < NUM_CHILD_THREADS) {
+		} else if (aNotifyingThreads.length < NUM_CHILD_THREADS) {
 			assertTrue("Threads notified after proceedAll;" + aNumThreads + " " +
-					currentNotifyingThreads.size() + " expected threads:" + NUM_CHILD_THREADS, false);
+					aNotifyingThreads.length + " expected threads:" + NUM_CHILD_THREADS, false);
 
 		}
+		checkSelectorSuccessful();
+
 		return true;
 	}
 	// overriding parent class method

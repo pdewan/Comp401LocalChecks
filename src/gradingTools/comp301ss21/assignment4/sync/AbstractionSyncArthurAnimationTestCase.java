@@ -1,21 +1,15 @@
-package gradingTools.comp401f16.assignment11.sync.testcases;
-
-import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
-import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
-import gradingTools.comp401f16.assignment10.async.testcases.AsyncArthurAnimationTestCase;
-import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryMethodTest;
-import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
-import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
-import gradingTools.shared.testcases.FactoryMethodTest;
+package gradingTools.comp301ss21.assignment4.sync;
 
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
-import grader.basics.testcase.PassFailJUnitTestCase;
-import util.models.PropertyListenerRegisterer;
+import gradingTools.comp301ss21.assignment4.async.AbstractionAsyncArthurAnimationTestCase;
+import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentEventUtility;
+import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeSupport;
+import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeThreadMatchesSelector;
+import gradingTools.shared.testcases.concurrency.propertyChanges.Selector;
 import util.trace.Tracer;
 
-public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
+public class AbstractionSyncArthurAnimationTestCase extends AbstractionAsyncArthurAnimationTestCase {
 	
 	protected Thread child2Thread;
 	protected boolean thread2Created;
@@ -32,13 +26,17 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		child2StartTime = null;
 		child2ExecutedForMinimumTime = false;
 	}
+	protected long selectorBasedWaitDelay() {
+		
+		return maxDelayToCreateChildThread() + maxTimeForAnimatingThread();
+	}
 //	protected long maxTimeForAnimatingThread() {
 //		return MAX_TIME_FOR_ANIMATION;
 //	}
 	@Override
 	protected synchronized void waitForThreads( ){
 		super.waitForThreads();
-		waitForThreadsToExecute();
+//		waitForThreadsToExecute();
 //		stopThread(child2Thread);
 	}
 //	protected synchronized void waitForThreadsToExecute( ){
@@ -56,13 +54,19 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		super.maybeKillThreads();
 		stopThread(child2Thread);
 	}
-	
+	protected int minThreads() {
+		return 2;
+	}
+	protected Selector<ConcurrentPropertyChangeSupport> waitSelector() {
+		return new ConcurrentPropertyChangeThreadMatchesSelector(null, minThreads(), minEvents(), null, minEventDelay());
+	}
 	protected double threadCredit() {
 		return 0;
 	}
 	protected boolean checkChildrenOrder() {
-		if (child1AfterChild2) {
-			assertTrue("Child 1 " + childThread + " and Child 2 " + child2Thread + " are not synchronized as their property change events are interleaved ", false);
+		boolean aSomeIntervealing = ConcurrentEventUtility.someInterleaving(concurrentPropertyChanges, null, null);
+		if (aSomeIntervealing) {
+			assertTrue("The two animating threads interleaved their execution and  not synchronized as their property change events are interleaved ", false);
 		}
 		return true;
 	}
@@ -74,22 +78,42 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 //			assertTrue("No delayed events (missing sleep call?):", false);
 //		}
 	}
-	protected boolean checkOutput(Object aProxy) {
-		fractionComplete = 0;
-		if (!threadCreated) {
-			assertTrue("Child thread 1 not found:", false);
+	protected boolean checkConcurrentPropertyChanges() {
+		int aNumThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads().length;
+		
+		if (aNumThreads == 0) {
+			assertTrue("Two invocations of synchronized animations created no thread:", false);
 		}
-		if (!thread2Created) {
-			assertTrue("Child thread 2 not found:", false);
+		if (aNumThreads == 1) {
+			assertTrue("\"Two invocations of synchronized animations created one thread::", false);
 		}
-		maybeCheckDelay();
+		checkSelectorSuccessful();
+//		maybeCheckDelay();
 //		if (!foundDelay) {
 //			assertTrue("No delayed events (missing sleep call?):", false);
 //		}
+		
 		checkChildrenOrder();
 		
 		return true;
 	}
+//	protected boolean checkOutput(Object aProxy) {
+//		
+//		fractionComplete = 0;
+//		if (!threadCreated) {
+//			assertTrue("Child thread 1 not found:", false);
+//		}
+//		if (!thread2Created) {
+//			assertTrue("Child thread 2 not found:", false);
+//		}
+//		maybeCheckDelay();
+////		if (!foundDelay) {
+////			assertTrue("No delayed events (missing sleep call?):", false);
+////		}
+//		checkChildrenOrder();
+//		
+//		return true;
+//	}
 	protected void delayFound() {
 //		Tracer.info(this,"delay found");
 
@@ -101,7 +125,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	}
 	protected void child2ExecutedForMinimumTime() {
 		if (child2ExecutedForMinimumTime) return;
-		Tracer.info(this,"Notifying child2 thread executed for minimun time");
+		Tracer.info(this,"Notifying child2 thread executed for minimum time");
 		child2ExecutedForMinimumTime = true;
 		notify();
 	}

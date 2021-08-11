@@ -94,28 +94,52 @@ public class BridgeSceneDynamicTestCase extends BridgeSceneMoveTestCase {
 		
 	}
 	protected TestAvatar firstAvatar() {
-		return bridgeScene().getArthur();
+		TestAvatar retVal = bridgeScene().getArthur();
+		if (retVal == null) {
+			Tracer.info(this, "getArthur()  returned null");
+		}
+		return retVal;
 	}
 	protected TestAvatar secondAvatar() {
-		return bridgeScene().getLancelot();
+		TestAvatar retVal = bridgeScene().getLancelot();
+		if (retVal == null) {
+			Tracer.info(this, "getLancelot()  returned null");
+		}
+		return retVal;
 	}
 	protected TestAvatar thirdAvatar() {
-		return bridgeScene().getGalahad();
+		TestAvatar retVal = bridgeScene().getGalahad();
+		if (retVal == null) {
+			Tracer.info(this, "getGalahad()  returned null");
+		}
+		return retVal;
+
 	}
 	protected TestAvatar fourthAvatar() {
-		return bridgeScene().getRobin();
+		TestAvatar retVal = bridgeScene().getRobin();
+		if (retVal == null) {
+			Tracer.info(this, "getRobin()  returned null");
+		}
+		return retVal;
 	}
 	protected TestAvatar guard() {
-		return bridgeScene().getGuard();
+		TestAvatar retVal = bridgeScene().getGuard();
+		if (retVal == null) {
+			Tracer.info(this, "getGuard  returned null");
+		}
+		return retVal;
 	}
 	protected void say (String aSaying) {
 		bridgeScene().say(aSaying);
 	}
 	protected void say (TestAvatar anAvatar, String aSaying, double aCredit) {
+		assertTrue("Last returned avatar is null", anAvatar != null );
 		String anAvatarString = toString(anAvatar);
 
 		Tracer.info(this, anAvatarString + " Say:\"" + aSaying + "\"");
 		say(aSaying);
+		assertTrue("String shape of last returned avatar is null", anAvatar.getStringShape() != null );
+
 		String aText = anAvatar.getStringShape().getText();
 //		assertTrue(toString(anAvatar) + " said  \"" + aText + "\" instead of \"" + aSaying + "\"",
 //			aSaying.equals(aText));
