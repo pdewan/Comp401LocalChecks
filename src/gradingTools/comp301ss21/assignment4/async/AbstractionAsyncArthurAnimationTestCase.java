@@ -1,5 +1,4 @@
 package gradingTools.comp301ss21.assignment4.async;
-
 import gradingTools.comp401f16.assignment.testInterfaces.TestAvatar;
 import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment11.sync.testcases.SyncArthurAnimationTestCase;
@@ -30,33 +29,16 @@ import grader.basics.testcase.PassFailJUnitTestCase;
 import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;
 import util.trace.Tracer;
-// extending OneLevelList so we can inherit from it in subclasses
-public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTestCase implements PropertyChangeListener {
 
+// extending OneLevelList so we can inherit from it in subclasses
+public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTestCase {
 	protected ConcurrentPropertyChangeSupport concurrentPropertyChangeSupport = new BasicConcurrentPropertyChangeSupport();
-	protected List<Thread> currentNotifyingThreads = new ArrayList();
-	protected Set<Thread> previousNotifyingThreads = new HashSet();
-	protected Map <Thread, Integer> threadToSleeps = new HashMap<>();
-	protected Map <Thread, Long> lastEventTimes = new HashMap();
-	protected Thread parentThread;
-	protected Thread childThread;
-	protected boolean threadCreated;
-	protected int numEventsReceived;
-	protected long lastEventTime;
-	protected boolean foundDelay;
 	protected long MIN_EVENT_DELAY = 10;
 	protected static long MAX_DELAY_TO_CREATE_CHILD_THREAD = 1000;
 	public static long MAX_TIME_FOR_ANIMATION = 5000;
-	protected boolean freezeNotifications = false;
-	protected boolean threadsInitialized = false;
-
-
-	
-
 	public AbstractionAsyncArthurAnimationTestCase() {
-		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
+		factoryMethodTags = new String[] { "commandInterpreterFactoryMethod" };
 	}
-	
 	protected long maxDelayToCreateChildThread() {
 		return MAX_DELAY_TO_CREATE_CHILD_THREAD;
 	}
@@ -64,63 +46,11 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 		return MAX_TIME_FOR_ANIMATION;
 	}
 	protected void createBridgeScene() {
-		bridgeScene = (TestBridgeScene) getObjectFromFactory(
-				factoryClassTags(), 
-				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, 
-				TestBridgeScene.class);
+		bridgeScene = (TestBridgeScene) getObjectFromFactory(factoryClassTags(),
+				BridgeSceneFactoryMethodTest.FACTORY_METHOD_TAGS, TestBridgeScene.class);
 		if (bridgeScene == null) {
 			assertTrue("Could not create bridge scene", false);
 		}
-	}
-
-	public boolean isThreadsInitialized() {
-		return threadsInitialized;
-	}
-
-	public void setThreadsInitialized(boolean threadsInitialized) {
-		this.threadsInitialized = threadsInitialized;
-	}
-	/*
-	 * This should be renamed to initThreads
-	 */
-	protected void initData() {
-		Tracer.info(this,"Initializing thread data");
-		currentNotifyingThreads.clear();
-//		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
-		parentThread = Thread.currentThread();
-		previousNotifyingThreads.clear();
-		previousNotifyingThreads.add(parentThread);
-		threadToSleeps.clear();
-		lastEventTimes.clear();
-		currentNotifyingThreads.add(parentThread);
-		childThread = null;
-		threadCreated = false;
-		lastEventTime = 0;
-		foundDelay = false;
-		setThreadsInitialized(true);
-
-	}
-//	protected void initTargetObjects() {
-////		testing = true;
-////		Tracer.info(this,"Iniializing thread data");
-////		currentNotifyingThreads.clear();
-//////		previousNotifyingThreads = new HashSet (Thread.getAllStackTraces().keySet());
-////		parentThread = Thread.currentThread();
-////		previousNotifyingThreads.clear();
-////		previousNotifyingThreads.add(parentThread);
-////		threadToSleeps.clear();
-////		lastEventTimes.clear();
-////		currentNotifyingThreads.add(parentThread);
-////		childThread = null;
-////		threadCreated = false;
-////		lastEventTime = 0;
-////		foundDelay = false;
-//		
-//		
-////		initThreads();
-//	}
-	protected boolean isPreviousThread() {
-		return previousNotifyingThreads.contains(Thread.currentThread());
 	}
 	protected synchronized void stopThread(Thread aThread) {
 		if (aThread == null) {
@@ -136,7 +66,6 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 	protected Class proxyClass() {
 		return TestCommandInterpreter.class;
 	}
-	
 	protected TestCommandInterpreter commandInterpreter() {
 		return (TestCommandInterpreter) rootProxy;
 	}
@@ -144,33 +73,20 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 	protected Object create() {
 		return createUsingFactoryClassAndMethodTags();
 	}
-	protected synchronized void maybeKillThreads() {
-		stopThread(childThread);
-	}
 	protected void doAsynchronousArthur() {
 		commandInterpreter().asynchronousArthur();
 	}
-	protected void assertNewThreadsCreated(Set<Thread> aCurrentThreads, int aNumNewThreads ) {
+	protected void assertNewThreadsCreated(Set<Thread> aCurrentThreads, int aNumNewThreads) {
 		Set<Thread> aNewThreads = ConcurrentEventUtility.newThreads(aCurrentThreads);
-
-		if (aNewThreads.size() != aNumNewThreads) {
-			assertTrue("Only " + aNewThreads.size() + "  new threads created. Expecting " + aNumNewThreads + " new threads", false);				
-
+		if (aNewThreads.size() < aNumNewThreads) {
+			assertTrue("Only " + aNewThreads.size() + "  new threads created. Expecting " + aNumNewThreads
+					+ " new threads", false);
 		}
 	}
 	public void waitForChildrenThreadsToBeCreated(int aNumThreads) {
-		long aDelay = maxDelayToCreateChildThread()*aNumThreads;
+		long aDelay = maxDelayToCreateChildThread() * aNumThreads;
 		Tracer.info(this, "waiting for children to be created:" + aDelay);
 		ThreadSupport.sleep(aDelay);
-	}
-	protected void assertNewThreadCreated() {
-		
-		Thread[] aNotifyingNewThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads();
-//		Set<Thread> aNewThreads =
-	
-		assertTrue("No thread created by previous operation:", aNotifyingNewThreads.length > 0);
-		Tracer.info (this, "New threads:" + aNotifyingNewThreads);
-		threadCreated = true; // do not need this here
 	}
 	protected int minEvents() {
 		return 2;
@@ -179,72 +95,48 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 		return 1;
 	}
 	protected Selector<ConcurrentPropertyChangeSupport> waitSelector() {
-//		return new ConcurrentPropertyChangeMatchesSelector(null, minEvents(), minEventDelay(), minThreads());
-		return new ConcurrentPropertyChangeThreadMatchesSelector(null, minThreads(), minEvents(), null, minEventDelay());
-
+		return new ConcurrentPropertyChangeThreadMatchesSelector(null, minThreads(), minEvents(), null,
+				minEventDelay());
 	}
-	
+	protected void assertNewThreadCreated() {
+		Thread[] aNotifyingNewThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads();
+		assertTrue("No thread created by previous operation:", aNotifyingNewThreads.length > 0);
+		Tracer.info(this, "New threads:" + aNotifyingNewThreads);
+	}
 	protected void checkSelectorSuccessful() {
 		if (!concurrentPropertyChangeSupport.isWaitSelectorSuccessful()) {
 			Tracer.info(this, "received property changes");
 			ConcurrentEventUtility.trace(concurrentPropertyChanges);
-			assertTrue("Did not receive " + minEvents() + " events with min delay " + minEventDelay() + " from min threads" + minThreads(), false);
-			
+			assertTrue("Did not receive " + minEvents() + " events with min delay " + minEventDelay()
+					+ " from min threads" + minThreads(), false);
 		}
 	}
 	protected void maybeSetWaitSelector() {
-		concurrentPropertyChangeSupport.setWaitSelector(
-				waitSelector());
+		concurrentPropertyChangeSupport.addtWaitSelector(waitSelector());
 	}
 	protected void maybeSetMinimumEventDelay() {
 		concurrentPropertyChangeSupport.setMinimumEventDelayPerThread(minEventDelay());
 	}
 	protected void executeOperations(Object aProxy) throws Exception {
-//		recordPreviousThreads();
-//		ConcurrentEventUtility.recordThreads();
-//		concurrentPropertyChangeSupport.setWaitSelector(
-//				new ConcurrentPropertyChangeMatchesSelector(null, 2, minEventDelay(), 1));
-//		maybeSetWaitSelector();
-		Tracer.info(this,"Animating arthur");
+		Tracer.info(this, "Animating arthur");
 		doAsynchronousArthur();
-//		commandInterpreter().asynchronousArthur();
-//		recordCurrentThreads();
-//		assertNewThreadCreated();
-//		waitForStartedChildThreads();
-//		stopThread(childThread);
-
 	}
 	protected long selectorBasedWaitDelay() {
 		return maxDelayToCreateChildThread();
 	}
-//	protected synchronized void waitForThreadsToStart( ){
-//		try {
-//			long aDelay = selectorBasedWaitDelay();
-//			Tracer.info(this,"Waiting for child threads to be created/to notify within time (ms):" + aDelay + " at time:" +  System.currentTimeMillis());
-//			concurrentPropertyChangeSupport.selectorBasedWait(aDelay);
-//			
-////			wait(aDelay); // why not sleep?
-//			Tracer.info(this,"Finished waiting for child threads to be created/to notify within time (ms):" + aDelay + " at time " +  System.currentTimeMillis());
-//
-////			stopThread(childThread);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
-	protected synchronized void waitForThreads( ){
-//		waitForThreadsToStart();
+	protected synchronized void maybeKillThreads() {
+//		stopThread(childThread);
+	}
+	protected synchronized void waitForThreads() {
 		try {
 			long aDelay = selectorBasedWaitDelay();
-			Tracer.info(this,"Waiting for child threads to be created/to notify within time (ms):" + aDelay + " at time:" +  System.currentTimeMillis());
+			Tracer.info(this, "Waiting for child threads to be created/to notify within time (ms):" + aDelay
+					+ " at time:" + System.currentTimeMillis());
 			concurrentPropertyChangeSupport.selectorBasedWait(aDelay);
-			
-//			wait(aDelay); // why not sleep?
-			Tracer.info(this,"Finished waiting for child threads to be created/to notify within time (ms):" + aDelay + " at time " +  System.currentTimeMillis());
+			Tracer.info(this, "Finished waiting for child threads to be created/to notify within time (ms):" + aDelay
+					+ " at time " + System.currentTimeMillis());
 
-//			stopThread(childThread);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -253,202 +145,169 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 	protected double threadCredit() {
 		return THREAD_CREDIT;
 	}
-	// why maybe, the delay is definitely checked
-	protected void maybeCheckDelay() {
-		if (!concurrentPropertyChangeSupport.isWaitSelectorSuccessful()) {
-//			testing = false;
-//			assertTrue("No delayed events (missing sleep call?):", false);
-			assertTrue("Property change events announced during the animation do not have a single delay of at least:" + minEventDelay() + " is your amimation loop missing a sleep call?", false);
-
-		}
-	}
 	protected void setConcurrentPropertyChanges() {
 		concurrentPropertyChanges = concurrentPropertyChangeSupport.getConcurrentPropertyChanges();
-
 	}
 	protected ConcurrentPropertyChange[] concurrentPropertyChanges;
 	protected boolean checkConcurrentPropertyChanges() {
 		fractionComplete = 0;
 		assertNewThreadCreated();
-
-//		if (!threadCreated) {
-////			testing = false;
-//
-//			assertTrue("Child thread not found:", false); // should not be reached
-//		}
 		fractionComplete += threadCredit();
-//		if (!foundDelay) {
-//			assertTrue("No delayed events (missing sleep call?):", false);
-//		}
-//		maybeCheckDelay();
 		checkSelectorSuccessful();
 		return true;
 	}
+
 	protected boolean checkOutput(Object aProxy) {
 		setConcurrentPropertyChanges();
 		return checkConcurrentPropertyChanges();
-////		concurrentPropertyChanges = concurrentPropertyChangeSupport.getConcurrentPropertyChanges();
-//		fractionComplete = 0;
-//		assertNewThreadCreated();
-//
-////		if (!threadCreated) {
-//////			testing = false;
-////
-////			assertTrue("Child thread not found:", false); // should not be reached
-////		}
-//		fractionComplete += threadCredit();
-////		if (!foundDelay) {
-////			assertTrue("No delayed events (missing sleep call?):", false);
-////		}
-//		maybeCheckDelay();
-//		return true;
 	}
 	protected TestAvatar avatar() {
 		return bridgeScene.getArthur();
 	}
 	protected void setDependentObjects() {
 		super.setDependentObjects();
-//		createBridgeScene();
-		
 	}
-	public  void addPropertyChangeListener(TestAvatar anAvatar, PropertyChangeListener aListener) {
+	public void addPropertyChangeListener(TestAvatar anAvatar, PropertyChangeListener aListener) {
 		anAvatar.getArms().getLeftLine().addPropertyChangeListener(aListener);
 		anAvatar.getArms().getRightLine().addPropertyChangeListener(aListener);
 		anAvatar.getLegs().getLeftLine().addPropertyChangeListener(aListener);
 		anAvatar.getLegs().getRightLine().addPropertyChangeListener(aListener);
 		anAvatar.getHead().addPropertyChangeListener(aListener);
-
 	}
 	public void addPropertyChangeListeners() {
 		addPropertyChangeListener(avatar(), concurrentPropertyChangeSupport);
-
 	}
-	
-
 	@Override
 	protected boolean doTest() throws Throwable {
-//		initData();
-//		setThreadsInitialized(false);
 		create();
 		setDependentObjects();
 		addPropertyChangeListeners();
-		initData(); // ignore events sent by addPropertyChangeListeners
-
-//		addPropertyChangeListener(avatar(), this);
 		maybeSetMinimumEventDelay();
-
 		maybeSetWaitSelector();
 		executeOperations(rootProxy);
 		waitForThreads();
 		maybeKillThreads();
-//		testing = false;
-
 		checkOutput(rootProxy);
 		return true;
-	}
-	protected void delayFound() {
-		notify(); // so that checking thread can unblock from wait call
 	}
 	protected long minEventDelay() {
 		return MIN_EVENT_DELAY;
 	}
-	
-	protected void maybeAddThread() {
-		Thread aChildThread = Thread.currentThread();
-		if (!currentNotifyingThreads.contains(aChildThread)) {			
-			Tracer.info(this,"New notifying child thread:" + aChildThread);
-			if (previousThreads.contains(aChildThread)) {
-				Tracer.info(PassFailJUnitTestCase.class,"Is previously created thread");
-			}
-			currentNotifyingThreads.add(aChildThread);
-			threadToSleeps.put(aChildThread, 1);
-			lastEventTimes.put(aChildThread, (long) 0);
-			threadCreated = true;
-			childThread = aChildThread;
-		}
-		Long aLastEventTime = lastEventTimes.get(aChildThread) ;
-		long aCurrentEventTime = System.currentTimeMillis();
-		if (aLastEventTime != 0) {
-//			Tracer.info(this,"current event time " + aChildThread + " " + aCurrentEventTime);
-
-			boolean aFoundDelay = aCurrentEventTime - aLastEventTime > minEventDelay();
-			if (aFoundDelay) {
-				Integer aNumSleeps = threadToSleeps.get(aChildThread);
-				if (aNumSleeps == null) {
-					aNumSleeps = 0;
-				}
-				aNumSleeps++;
-				threadToSleeps.put(aChildThread, aNumSleeps );
-//				Tracer.info(this,"num sleeps by thread: " + aChildThread + "  " + aNumSleeps);
-
-				foundDelay = true;
-				delayFound();
-			}
-			 
-		}
-//		Tracer.info(this,"Storing acurrentEventTime for " + aChildThread);
-		lastEventTimes.put(aChildThread, aCurrentEventTime);
-
-	}
-	public static void waitForAnimation() {
-		Tracer.info(AbstractionAsyncArthurAnimationTestCase.class,"Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-		Tracer.info(AbstractionAsyncArthurAnimationTestCase.class,"Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-
-	}
-	protected synchronized void waitForThreadsToExecute( ){
-		try {
-			long aDelay = maxTimeForAnimatingThread();
-			Tracer.info(this,"Waiting for child thread to finish amimation in(ms):" + aDelay);
-			wait(aDelay);
-			Tracer.info(this,"Finished waiting for child thread to finish amimation in(ms):" + aDelay);
-
-//			stopThread(childThread);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	@Override
-	public synchronized void propertyChange(PropertyChangeEvent evt) {
-		if (!isThreadsInitialized()) {
-			return;
-		}
-		if (!testing)
-			return;
-		if (isPreviousThread()) {
-			Tracer.info(this,"Previous thread nofified, returning at time:" +System.currentTimeMillis());
-			return;
-		}
-
-		maybeAddThread();
-//		if (foundDelay) {
-//			delayFound();
-//		}
-		
+//	protected List<Thread> currentNotifyingThreads = new ArrayList();
+//	protected Set<Thread> previousNotifyingThreads = new HashSet();
+//	protected Map <Thread, Integer> threadToSleeps = new HashMap<>();
+//	protected Map <Thread, Long> lastEventTimes = new HashMap();
+//	protected Thread parentThread;
+//	protected Thread childThread;
+//	protected boolean threadCreated;
+//	protected int numEventsReceived;
+//	protected long lastEventTime;
+//	protected boolean foundDelay;
+//	protected long MIN_EVENT_DELAY = 10;
+//	protected static long MAX_DELAY_TO_CREATE_CHILD_THREAD = 1000;
+//	public static long MAX_TIME_FOR_ANIMATION = 5000;
+//	protected boolean freezeNotifications = false;
+//	protected boolean threadsInitialized = false;
+//	
+//	protected void delayFound() {
+//		notify(); // so that checking thread can unblock from wait call
+//	}
+//	protected void maybeAddThread() {
 //		Thread aChildThread = Thread.currentThread();
-//		if (aChildThread != parentThread && childThread == null) {
+//		if (!currentNotifyingThreads.contains(aChildThread)) {			
+//			Tracer.info(this,"New notifying child thread:" + aChildThread);
+//			if (previousThreads.contains(aChildThread)) {
+//				Tracer.info(PassFailJUnitTestCase.class,"Is previously created thread");
+//			}
+//			currentNotifyingThreads.add(aChildThread);
+//			threadToSleeps.put(aChildThread, 1);
+//			lastEventTimes.put(aChildThread, (long) 0);
 //			threadCreated = true;
 //			childThread = aChildThread;
-//			currentThreads.add(aChildThread);
-//			Tracer.info(this,"child 1:" + childThread);
 //		}
-////		threadCreated = childThread != parentThread;
-//		if (foundDelay) {
+//		Long aLastEventTime = lastEventTimes.get(aChildThread) ;
+//		long aCurrentEventTime = System.currentTimeMillis();
+//		if (aLastEventTime != 0) {
+//			Tracer.info(this,"current event time " + aChildThread + " " + aCurrentEventTime);
+//
+//			boolean aFoundDelay = aCurrentEventTime - aLastEventTime > minEventDelay();
+//			if (aFoundDelay) {
+//				Integer aNumSleeps = threadToSleeps.get(aChildThread);
+//				if (aNumSleeps == null) {
+//					aNumSleeps = 0;
+//				}
+//				aNumSleeps++;
+//				threadToSleeps.put(aChildThread, aNumSleeps );
+//				Tracer.info(this,"num sleeps by thread: " + aChildThread + "  " + aNumSleeps);
+//
+//				foundDelay = true;
+//				delayFound();
+//			}
+//			 
+//		}
+//		Tracer.info(this,"Storing acurrentEventTime for " + aChildThread);
+//		lastEventTimes.put(aChildThread, aCurrentEventTime);
+//	}
+//	public static void waitForAnimation() {
+//		Tracer.info(AbstractionAsyncArthurAnimationTestCase.class,"Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//		Tracer.info(AbstractionAsyncArthurAnimationTestCase.class,"Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//	}
+//	protected synchronized void waitForThreadsToExecute( ){
+//		try {
+//			long aDelay = maxTimeForAnimatingThread();
+//			Tracer.info(this,"Waiting for child thread to finish amimation in(ms):" + aDelay);
+//			wait(aDelay);
+//			Tracer.info(this,"Finished waiting for child thread to finish amimation in(ms):" + aDelay);
+//
+////			stopThread(childThread);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
+//	@Override
+//	public synchronized void propertyChange(PropertyChangeEvent evt) {
+//		if (!isThreadsInitialized()) {
 //			return;
 //		}
-//		if (lastEventTime != 0) {
-//		foundDelay = System.currentTimeMillis() - lastEventTime > MIN_EVENT_DELAY;
-//		if (foundDelay) {
-//			Tracer.info(this,"Found delay between events");
-////			notify();
-//			delayFound();
+//		if (!testing)
+//			return;
+//		if (isPreviousThread()) {
+//			Tracer.info(this,"Previous thread nofified, returning at time:" +System.currentTimeMillis());
 //			return;
 //		}
-//		}
-//		lastEventTime = System.currentTimeMillis();
-		 
-		
-	}
+//		maybeAddThread();		
+//	}
+//	public boolean isThreadsInitialized() {
+//		return threadsInitialized;
+//	}
+//
+//	public void setThreadsInitialized(boolean threadsInitialized) {
+//		this.threadsInitialized = threadsInitialized;
+//	}
+	/*
+	 * This should be renamed to initThreads
+	 */
+//	protected void initData() {
+//		Tracer.info(this,"Initializing thread data");
+//		currentNotifyingThreads.clear();
+//		parentThread = Thread.currentThread();
+//		previousNotifyingThreads.clear();
+//		previousNotifyingThreads.add(parentThread);
+//		threadToSleeps.clear();
+//		lastEventTimes.clear();
+//		currentNotifyingThreads.add(parentThread);
+//		childThread = null;
+//		threadCreated = false;
+//		lastEventTime = 0;
+//		foundDelay = false;
+//		setThreadsInitialized(true);
+//
+//	}
+//
+//	protected boolean isPreviousThread() {
+//		return previousNotifyingThreads.contains(Thread.currentThread());
+//	}
 
 }

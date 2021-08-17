@@ -37,16 +37,14 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	protected long minEventDelay() {
 		return 200;
 	}
-	public LockstepAvatarsAnimationTestCase() {
-		
+	public LockstepAvatarsAnimationTestCase() {		
 	}
 	@Override
 	protected void initData() {		
 		super.initData();
 		resultCorrect = false;
 		failureMessage = "No delayed event";
-		lockstepThreadStarted = false;
-		
+		lockstepThreadStarted = false;		
 	}
 	protected void setDependentObjects() {
 		super.setDependentObjects();
@@ -67,20 +65,14 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //		addPropertyChangeListener(bridgeScene.getGalahad(), this);
 //		addPropertyChangeListener(bridgeScene.getRobin(), this);
 		addPropertyChangeListener(bridgeScene.getGuard(), this);
-	}
-	
-	
+	}	
 	protected void checkNumThreads() {
 		Tracer.info(this,"num coordinated threads found:" + threadToSleeps.size());
 		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
 			 resultCorrect = false;
 			 failureMessage = "Number of coordinated threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
-
-//			 failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
 			 notify(); // why notify?
 			 assertTrue (failureMessage, false);
-
-//			 assertTrue ("Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS, false);
 		} else {
 			failureMessage = "";
 			resultCorrect = true;
@@ -92,57 +84,24 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 			 Integer aNumSleeps = threadToSleeps.get(aThread);
 			 result = Math.max(result, aNumSleeps );
 			 Tracer.info(this,"Number of waits by thread : " + aThread + " " + aNumSleeps);
-
-//			 Tracer.info(this,"Number of sleeps by thread : " + aThread + " " + aNumSleeps);
-			 
 		}
-//		Tracer.info(this,"Maximum sleeps:" + result);
 		Tracer.info(this,"Maximum waits:" + result);
-
 		return result;
 	}
 	protected synchronized void checkNumThreadsWithNumSleeps(int aLimit) {
 		for (Thread aThread:threadToSleeps.keySet()) {
 			 Integer aNumSleeps = threadToSleeps.get(aThread);
-//			 Tracer.info(this,"Number of sleeps by thread : " + aThread + " " + aNumSleeps);
 			 Tracer.info(this,"Number of waits by thread : " + aThread + " " + aNumSleeps);
-
-			 
 			 if (Math.abs(aLimit - aNumSleeps) > 2) {
-//				 failureMessage = "Number of sleeps by thread:" + 
-//						 aThread + " " + aNumSleeps + " instead of " + aLimit;
 				 failureMessage = "Number of waits by thread:" + 
 						 aThread + " " + aNumSleeps + " instead of " + aLimit;
 				 resultCorrect = false;
 				 notify();
 				 break;
-//				 assertTrue("Number of sleeps by thread:" + 
-//						 aThread + " " + aNumSleeps + " instead of " + aLimit, false);
 			 }
-		}
-//		Tracer.info(this,"Num threads that slept:" + threadToSleeps.size());
-//		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
-//			failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
-//			 resultCorrect = false;
-////			assertTrue ("Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS, false);
-//		} else {
-//			resultCorrect = true;
-//		}
-		
+		}		
 	}
-//	protected synchronized void waitForThreads( ){
-//		waitForLockstepAnimation();
-////		try {
-////			long aDelay = maxDelayToCreateChildThread();
-////			Tracer.info(this,"Waiting for child threads to be created within time (ms):" + aDelay);
-////			wait(aDelay);
-//////			stopThread(childThread);
-////		} catch (InterruptedException e) {
-////			// TODO Auto-generated catch block
-////			e.printStackTrace();
-////		}
-//	}
-	
+
 	protected void doLockstepGuard() {
 		commandInterpreter().lockstepGuard();
 	}
@@ -168,90 +127,47 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 			freezeNotifications = false;
 //			waitForLockstepAnimation();
 		}		
-	}
-	
+	}	
 	protected void executeOperations(Object aProxy) {
 			fractionComplete = 0;
 			recordPreviousThreads();
 			Tracer.info(this,"Animating lockstep Arthur");
 			doLockstepArthur();
-//			commandInterpreter().lockstepArthur();
 			recordCurrentThreads();
 			assertNewThreadCreated();
 			recordPreviousThreads();
 			Tracer.info(this,"Animating lockstep Lancelot");
-//			commandInterpreter().lockstepLancelot();
 			doLockstepLancelot();
 			recordCurrentThreads();
 			assertNewThreadCreated();
-//			Tracer.info(this,"Animating lockstep Galahad");
-//			commandInterpreter().lockstepGalahad();
-//			Tracer.info(this,"Animating lockstep Robin");
-//			commandInterpreter().lockstepRobin();
-//			waitForThreadsToStart();
-			doLockSteps(NUM_LOCK_STEPS);
-//			checkOutput(rootPro)
-			
-//			threadToSleeps.clear();
-//			Tracer.info(this,"Executing animating lockstep Guard ");
-
-//			commandInterpreter().lockstepGuard();
-//			waitForThreadsToSleep();
-//			Tracer.info(this,"Executing animating lockstep Guard ");
-//
-//			commandInterpreter().lockstepGuard();
-//			Tracer.info(this,"Checking sleeps");
-
-//			checkNumThreadsWithNumSleeps(NUM_LOCK_STEPS);
-
-			
-			
-//			waitForThreads();
-			
+			doLockSteps(NUM_LOCK_STEPS);			
 		}
 	protected synchronized void waitForThreads( ){
 		waitForLockstepAnimation();
-//		waitForThreadsToStart();
-//		stopThread(child2Thread);
 	}
 	protected synchronized void maybeKillThreads() {
 		for (Thread aThread:currentNotifyingThreads) {
 			stopThread(aThread);
 		}
-//		testing = false;
 	}
 	protected synchronized boolean checkOutput(Object aProxy) {
 		checkNumThreads();
 		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
-//			failureMessage = "Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
 			failureMessage = "Number of coordinated threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
-
 			resultCorrect = false;
 			assertTrue (failureMessage, false);
-
-//			assertTrue ("Number of sleping threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS, false);
 		} else {
 			resultCorrect = true;
 		}
-//		checkNumThreads();
-//		int aMax = findMaximumSleeps();
-//		checkNumThreadsWithNumSleeps(aMax);
 		return true;
 	}
 	protected void delayFound() {
-//		checkNumThreads();
 		int aMax = findMaximumSleeps();
 		checkNumThreadsWithNumSleeps(aMax);
 		if (aMax >= MAXIMUM_SLEEPS)
 			notify();
 	}
-//	protected void maybeAddThread() {
-//		Thread aChildThread = Thread.currentThread();
-//		if (!currentThreads.contains(aChildThread)) {			
-//			Tracer.info(this,"New child thread:" + aChildThread);
-//			currentThreads.add(aChildThread);
-//		}
-//	}
+
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
 //		Tracer.info(this,"Locketep Thread:" + Thread.currentThread());
@@ -259,19 +175,14 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 			return;
 		if (freezeNotifications) // do not want guard notifications
 			return;
-
 //		Tracer.info(this,"after testing");
 		if (isPreviousThread()) {
 			return;
-		}
-		
+		}		
 //		Tracer.info(this,"Lockstep Thread:" + Thread.currentThread() + " " + this);
-
 //		Tracer.info(this,"not previous  thread");
-
 //		super.propertyChange(evt);
-		maybeAddThread();
-		
+		maybeAddThread();		
 	}
 	protected boolean doTest() throws Throwable {
 		try {

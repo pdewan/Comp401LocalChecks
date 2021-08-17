@@ -40,11 +40,6 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 		broadcastingClearanceManager = null; // why do this?
 		return super.create();
 	}
-//	@Override
-//	protected void initData() {		
-//		super.initData();
-//		broadcastingClearanceManager = null;
-//	}
 	protected void setDependentObjects() {
 		super.setDependentObjects();
 		createClearanceManager();		
@@ -75,32 +70,18 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			fractionComplete = 0;
 			Tracer.info(this,"Animating waiting Arthur at time:" + System.currentTimeMillis());
 			doWaitingArthur();
-//			commandInterpreter().waitingArthur();
 			Tracer.info(this,"Animating waiting Lancelot"+ System.currentTimeMillis());
 			doWaitingLancelot();
-//			commandInterpreter().waitingLancelot();
 			Tracer.info(this,"Animating waiting Galahad"+ System.currentTimeMillis());
 			doWaitingGalahad();
-//			commandInterpreter().waitingGalahad();
 			Tracer.info(this,"Animating waiting Robin"+ System.currentTimeMillis());
-//			commandInterpreter().waitingRobin();
 			doWaitingRobin();
 			waitForThreadsToStart();
 			if (currentNotifyingThreads.size() > 1) {				
 				assertTrue("At least one thread notified before proceedAll was executed", false);				
 			}
-			doProceedAll();
-//			Tracer.info(this,"Executing proceedAll on broadcasting clearance manager");
-//			broadcastingClearanceManager.proceedAll();
-			
-//			waitForThreads();
-			
-		}
-	protected synchronized void waitForThreads( ){
-		super.waitForThreads();
-//		waitForThreadsToStart(); // this is what the superclass does
-//		stopThread(child2Thread);
-	}
+			doProceedAll();			
+		}	
 	protected synchronized void maybeKillThreads() {
 		for (Thread aThread:currentNotifyingThreads) {
 			stopThread(aThread);
@@ -133,25 +114,13 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			return;
 		}
 //		super.propertyChange(evt);
-		maybeAddThread();
-		
+		maybeAddThread();		
 		Thread aChildThread = Thread.currentThread();
 //		Tracer.info(this,"Got event from:" + aChildThread);
 		if (currentNotifyingThreads.size() == NUM_CHILD_THREADS) {
 			notify();
-		}
-//		if (currentThreads.contains(aChildThread)) {
-//			return;
-//		}
-//		System.out.println("New child thread:" + aChildThread);
-//		currentThreads.add(aChildThread);		
+		}		
 	}
-//	public static void waitForAnimation() {
-//		Tracer.info(this,"Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-//		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-//		Tracer.info(this,"Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-//
-//	}
 	protected boolean doTest() throws Throwable {
 		boolean retVal =  super.doTest();
 		waitForAnimation();

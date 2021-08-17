@@ -9,11 +9,9 @@ import util.annotations.MaxValue;
 @MaxValue(30)
 public class AbstractionLockstepAvatars extends AbstractionLockstepAvatarsAnimationTestCase {
 	String[] factoryClassTags = new String[] { Comp301Tags.FACTORY_CLASS };
-
 	protected String[] factoryClassTags() {
 		return factoryClassTags;
 	}
-
 	protected final Class[] PRECEDING_TESTS = { BroadcastingClearanceManagerSingletonFromFactory.class,
 
 	};
@@ -24,7 +22,6 @@ public class AbstractionLockstepAvatars extends AbstractionLockstepAvatarsAnimat
 	protected Class proxyClass() {
 		return TestBridgeScene.class;
 	}
-
 	@Override
 	protected Class[] precedingTests() {
 		return PRECEDING_TESTS;
@@ -32,7 +29,6 @@ public class AbstractionLockstepAvatars extends AbstractionLockstepAvatarsAnimat
 	protected void doLockstepGuard() {
 		bridgeScene.lockstepGuard();
 	}
-
 	protected void doLockstepArthur() {
 		bridgeScene.lockstepArthur();
 	}
