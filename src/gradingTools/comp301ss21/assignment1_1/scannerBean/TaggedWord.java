@@ -15,7 +15,7 @@ import util.annotations.MaxValue;
 public class TaggedWord extends TaggedTypeTest {
 
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		return tags301.Comp301Tags.WORD;
 	}
 //	@Override

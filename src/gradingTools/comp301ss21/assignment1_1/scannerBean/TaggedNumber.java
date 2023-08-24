@@ -15,7 +15,7 @@ import util.annotations.MaxValue;
 public class TaggedNumber extends TaggedTypeTest {
 
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		return tags301.Comp301Tags.NUMBER;
 	}
 	protected boolean checkForInterface() {

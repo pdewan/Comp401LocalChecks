@@ -15,7 +15,7 @@ import util.annotations.MaxValue;
 public class TaggedScannerBean extends TaggedTypeTest {
 
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		return tags301.Comp301Tags.SCANNER_BEAN;
 	}
 //	@Override

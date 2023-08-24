@@ -11,13 +11,13 @@ import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryM
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
 import gradingTools.shared.testcases.FactoryMethodTest;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentEventUtility;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Arrays;
 import java.util.Set;
 
+import grader.basics.concurrency.propertyChanges.ConcurrentEventUtility;
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;

@@ -2,11 +2,11 @@ package gradingTools.comp301ss21.assignment4.sync;
 
 import java.beans.PropertyChangeEvent;
 
+import grader.basics.concurrency.propertyChanges.ConcurrentEventUtility;
+import grader.basics.concurrency.propertyChanges.ConcurrentPropertyChangeSupport;
+import grader.basics.concurrency.propertyChanges.ConcurrentPropertyChangeThreadMatchesSelector;
+import grader.basics.concurrency.propertyChanges.Selector;
 import gradingTools.comp301ss21.assignment4.async.AbstractionAsyncArthurAnimationTestCase;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentEventUtility;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeSupport;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeThreadMatchesSelector;
-import gradingTools.shared.testcases.concurrency.propertyChanges.Selector;
 import util.trace.Tracer;
 
 public class AbstractionSyncArthurAnimationTestCase extends AbstractionAsyncArthurAnimationTestCase {

@@ -16,7 +16,7 @@ import util.annotations.MaxValue;
 public class TaggedConsoleSceneView extends TaggedTypeTest {
 
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		return tags301.Comp301Tags.CONSOLE_SCENE_VIEW;
 	}
 	protected boolean checkForInterface() {

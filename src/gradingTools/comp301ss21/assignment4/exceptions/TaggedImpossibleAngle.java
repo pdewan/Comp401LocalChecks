@@ -18,7 +18,7 @@ public class TaggedImpossibleAngle extends TaggedTypeTest{
 //		return PRECEDING_TESTS ;
 //	}
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		// TODO Auto-generated method stub
 		return tags301.Comp301Tags.IMPOSSIBLE_ANGLE;
 	}

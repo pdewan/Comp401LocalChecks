@@ -12,7 +12,6 @@ import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryM
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
 import gradingTools.shared.testcases.FactoryMethodTest;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentEventUtility;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -21,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import grader.basics.concurrency.propertyChanges.ConcurrentEventUtility;
 import grader.basics.testcase.PassFailJUnitTestCase;
 //import sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap;
 import util.annotations.IsExtra;

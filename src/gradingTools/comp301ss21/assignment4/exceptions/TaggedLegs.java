@@ -10,7 +10,7 @@ import util.annotations.MaxValue;
 
 public class TaggedLegs extends TaggedTypeTest{
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		// TODO Auto-generated method stub
 		return tags301.Comp301Tags.LEGS;
 	}

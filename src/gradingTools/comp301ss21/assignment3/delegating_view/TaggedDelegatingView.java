@@ -14,7 +14,7 @@ import util.annotations.MaxValue;
 public class TaggedDelegatingView extends TaggedTypeTest {
 
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		// TODO Auto-generated method stub
 		return tags301.Comp301Tags.OBSERVABLE_BRIDGE_SCENE_PAINTER;
 	}

@@ -16,7 +16,7 @@ import util.annotations.MaxValue;
 public class TaggedFactory extends TaggedTypeTest {
 
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		return tags301.Comp301Tags.FACTORY_CLASS;
 	}
 	protected boolean checkForInterface() {

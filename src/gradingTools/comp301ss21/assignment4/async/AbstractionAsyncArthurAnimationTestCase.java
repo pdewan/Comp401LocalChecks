@@ -7,13 +7,6 @@ import gradingTools.comp401f16.assignment7.testcases.factory.BridgeSceneFactoryM
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestCommandInterpreter;
 import gradingTools.comp401f16.assignment7.testcases.interfaces.TestErrorResilientCommandInterpreter;
 import gradingTools.shared.testcases.FactoryMethodTest;
-import gradingTools.shared.testcases.concurrency.propertyChanges.BasicConcurrentPropertyChangeSupport;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentEventUtility;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChange;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeMatchesSelector;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeSupport;
-import gradingTools.shared.testcases.concurrency.propertyChanges.ConcurrentPropertyChangeThreadMatchesSelector;
-import gradingTools.shared.testcases.concurrency.propertyChanges.Selector;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -25,6 +18,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import grader.basics.concurrency.propertyChanges.BasicConcurrentPropertyChangeSupport;
+import grader.basics.concurrency.propertyChanges.ConcurrentEventUtility;
+import grader.basics.concurrency.propertyChanges.ConcurrentPropertyChange;
+import grader.basics.concurrency.propertyChanges.ConcurrentPropertyChangeMatchesSelector;
+import grader.basics.concurrency.propertyChanges.ConcurrentPropertyChangeSupport;
+import grader.basics.concurrency.propertyChanges.ConcurrentPropertyChangeThreadMatchesSelector;
+import grader.basics.concurrency.propertyChanges.Selector;
 import grader.basics.testcase.PassFailJUnitTestCase;
 import util.misc.ThreadSupport;
 import util.models.PropertyListenerRegisterer;

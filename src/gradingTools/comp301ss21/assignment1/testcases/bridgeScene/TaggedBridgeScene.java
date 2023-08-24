@@ -16,7 +16,7 @@ import util.annotations.MaxValue;
 public class TaggedBridgeScene extends TaggedTypeTest {
 
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		return tags301.Comp301Tags.BRIDGE_SCENE;
 	}
 	protected Class precedingTest() {

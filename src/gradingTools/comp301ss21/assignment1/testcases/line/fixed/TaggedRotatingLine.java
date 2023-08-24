@@ -14,7 +14,7 @@ import util.annotations.MaxValue;
 public class TaggedRotatingLine extends TaggedTypeTest {
 
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		// TODO Auto-generated method stub
 		return tags301.Comp301Tags.ROTATING_LINE;
 	}

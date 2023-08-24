@@ -10,7 +10,7 @@ import util.annotations.MaxValue;
 
 public class TaggedRestrictedLine extends TaggedTypeTest{
 	@Override
-	protected String tag() {
+	protected String mainClassIdentifier() {
 		// TODO Auto-generated method stub
 		return tags301.Comp301Tags.RESTRICTED_LINE;
 	}
