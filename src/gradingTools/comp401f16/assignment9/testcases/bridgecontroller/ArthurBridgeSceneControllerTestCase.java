@@ -168,7 +168,7 @@ public class ArthurBridgeSceneControllerTestCase
 		run();
 		Tracer.info(this,"Finished submiting events");
 		assertTrue (
-				"C is not the same after first and second key type event ", 
+				"The x coordinate is not the same after first and second key type event ", 
 				afterKeyType == afterSecondKeyType);
 		
 		
