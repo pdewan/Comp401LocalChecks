@@ -123,6 +123,8 @@ public class NewPaintListenerTestCase
 		try {
 		Tracer.info(this,"Adding paint listener to observable bridge scene painter");
 		Class aRealInterface = BasicProjectIntrospection.findInterface(TestPaintListener.class);
+		Tracer.info(this,"Interface matching PaintLstener is:" + aRealInterface);
+
 		if (aRealInterface == null) {
 			Assert.assertTrue("Did not find unique interface matching " + 
 					Arrays.toString(BasicProjectIntrospection.getTags(TestPaintListener.class) ) + ". See console.", false);
@@ -131,6 +133,8 @@ public class NewPaintListenerTestCase
 		Object aReverseProxy = BasicProjectIntrospection.createReverseProxy(TestPaintListener.class, aRealInterface, this);
 		TestPaintListener aForwardProxy = (TestPaintListener)
 				BasicProjectIntrospection.createProxy(TestPaintListener.class, aReverseProxy);
+		Tracer.info(this,"Trying to call method addPaintListener(" + aRealInterface.getCanonicalName()+ ")");
+
 		observableBridgeScenePainter.addPaintListener(aForwardProxy);
 		} 
 		catch (AssertionError e) {

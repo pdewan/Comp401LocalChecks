@@ -50,6 +50,7 @@ public class AssertingBridgeSceneDynamicTestCase
 	}
 	@Override
 	public void propertyChange(PropertyChangeEvent evt) {
+		Tracer.info(this, "Received property change event:" + evt);
 		if (currentEvents != null)
 		currentEvents.add(evt);
 	}
