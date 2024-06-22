@@ -3,6 +3,7 @@ package gradingTools.comp301ss21.assignment4;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import grader.basics.concurrency.propertyChanges.AbstractConcurrentEventSupport;
 import grader.basics.config.BasicExecutionSpecificationSelector;
 import grader.basics.execution.BasicProjectExecution;
 import grader.basics.junit.BasicJUnitUtils;
@@ -91,6 +92,7 @@ public class SS21Assignment4Suite {
 	static {
 		BasicExecutionSpecificationSelector.getBasicExecutionSpecification().
 		setCheckStyleConfiguration("unc_checks_301_A4.xml");
+		Tracer.setKeywordPrintStatus(AbstractConcurrentEventSupport.class, true);
 		Tracer.setKeywordPrintStatus(AbstractClasses.class, true);
 		Tracer.setKeywordPrintStatus(AssertingBridgeSceneDynamics.class, true);
 		Tracer.setKeywordPrintStatus(SceneControllerButtons.class, true);

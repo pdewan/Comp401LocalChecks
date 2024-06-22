@@ -1,6 +1,7 @@
 package gradingTools.comp301ss21.assignment4.sync;
 
 import java.beans.PropertyChangeEvent;
+import java.util.Arrays;
 
 import grader.basics.concurrency.propertyChanges.ConcurrentEventUtility;
 import grader.basics.concurrency.propertyChanges.ConcurrentPropertyChangeSupport;
@@ -30,12 +31,16 @@ public class AbstractionSyncArthurAnimationTestCase extends AbstractionAsyncArth
 		return true;
 	}
 	protected boolean checkConcurrentPropertyChanges() {
-		int aNumThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads().length;		
+		Thread[] aNotifyingThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads();
+		Tracer.info(this + "notifying new threads:" + Arrays.toString(aNotifyingThreads));
+		int aNumThreads = aNotifyingThreads.length;		
+
+//		int aNumThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads().length;		
 		if (aNumThreads == 0) {
-			assertTrue("Two invocations of synchronized animations created no thread:", false);
+			assertTrue("Two invocations of synchronized animations created no thread rather than two:", false);
 		}
 		if (aNumThreads == 1) {
-			assertTrue("\"Two invocations of synchronized animations created one thread::", false);
+			assertTrue("\"Two invocations of synchronized animations created one thread rather than two::", false);
 		}
 		checkSelectorSuccessful();		
 		checkChildrenOrder();		

@@ -56,6 +56,15 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 		if (aThread == null) {
 			return;
 		}
+		Tracer.info(this, "Joining thread:" + aThread);
+		try {
+			aThread.join(MAX_TIME_FOR_ANIMATION);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Tracer.info(this, "joined thread:" + aThread);
+
 //		testing = false;
 //		Tracer.info(this,"Stopping thread:" + aThread);
 //		aThread.interrupt();
@@ -100,8 +109,9 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 	}
 	protected void assertNewThreadCreated() {
 		Thread[] aNotifyingNewThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads();
-		assertTrue("No thread created by previous operation:", aNotifyingNewThreads.length > 0);
-		Tracer.info(this, "New threads:" + aNotifyingNewThreads);
+		Tracer.info(this, "New notifying threads:" + Arrays.toString(aNotifyingNewThreads));
+		assertTrue("No thread created by the tested operation, which should have created a new thread :", aNotifyingNewThreads.length > 0);
+		Tracer.info(this, "New threads:" + Arrays.toString(aNotifyingNewThreads));
 	}
 	protected void checkSelectorSuccessful() {
 		if (!concurrentPropertyChangeSupport.isWaitSelectorSuccessful()) {
@@ -125,7 +135,11 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 		return maxDelayToCreateChildThread();
 	}
 	protected synchronized void maybeKillThreads() {
-//		stopThread(childThread);
+		Thread[] aThreads = concurrentPropertyChangeSupport.getNotifyingNewThreads();
+		for (Thread aChildThread:aThreads) {
+			stopThread(aChildThread);
+
+		}
 	}
 	protected synchronized void waitForThreads() {
 		try {

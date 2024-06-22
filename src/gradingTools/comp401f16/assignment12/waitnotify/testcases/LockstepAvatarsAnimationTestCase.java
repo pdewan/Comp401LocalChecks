@@ -145,7 +145,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	protected synchronized void waitForThreads( ){
 		waitForLockstepAnimation();
 	}
-	protected synchronized void maybeKillThreads() {
+	protected /*synchronized*/ void maybeKillThreads() {
 		for (Thread aThread:currentNotifyingThreads) {
 			stopThread(aThread);
 		}
@@ -182,6 +182,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //		Tracer.info(this,"Lockstep Thread:" + Thread.currentThread() + " " + this);
 //		Tracer.info(this,"not previous  thread");
 //		super.propertyChange(evt);
+		notify();
 		maybeAddThread();		
 	}
 	protected boolean doTest() throws Throwable {

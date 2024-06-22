@@ -30,14 +30,16 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		child2StartTime = null;
 		child2ExecutedForMinimumTime = false;
 	}
-	@Override
-	protected synchronized void waitForThreads( ){
-		super.waitForThreads();
+//	@Override
+//	protected /*synchronized*/ void waitForThreads( ){
+//		super.waitForThreads();
+//		waitForThreadsToExecute();
+////		stopThread(child2Thread);
+//	}
+	protected /*synchronized*/ void maybeKillThreads() {
+//		super.maybeKillThreads();
+		stopThread(childThread);
 		waitForThreadsToExecute();
-//		stopThread(child2Thread);
-	}
-	protected synchronized void maybeKillThreads() {
-		super.maybeKillThreads();
 		stopThread(child2Thread);
 	}	
 	protected double threadCredit() {
@@ -49,7 +51,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		}
 		return true;
 	}	
-	protected boolean checkOutput(Object aProxy) {
+	protected synchronized boolean checkOutput(Object aProxy) {
 		fractionComplete = 0;
 		if (!threadCreated) {
 			assertTrue("Child thread 1 not found:", false);
