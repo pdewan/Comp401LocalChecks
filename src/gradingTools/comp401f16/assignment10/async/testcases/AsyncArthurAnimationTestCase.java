@@ -40,7 +40,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 	public static long MAX_TIME_FOR_ANIMATION = 10000;
 	protected boolean freezeNotifications = false;
 	protected boolean threadsInitialized = false;
-	boolean waiting = false;
+	protected boolean waiting = false;
 	public AsyncArthurAnimationTestCase() {
 		factoryMethodTags = new String[] {"commandInterpreterFactoryMethod"};
 	}	
@@ -78,7 +78,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		previousNotifyingThreads.add(parentThread);
 		threadToSleeps.clear();
 		lastEventTimes.clear();
-		currentNotifyingThreads.add(parentThread);
+		currentNotifyingThreads.add(parentThread); // why add parentTHread
 		childThread = null;
 		threadCreated = false;
 		lastEventTime = 0;

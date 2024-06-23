@@ -94,7 +94,7 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 	}
 	public void waitForChildrenThreadsToBeCreated(int aNumThreads) {
 		long aDelay = maxDelayToCreateChildThread() * aNumThreads;
-		Tracer.info(this, "waiting for children to be created:" + aDelay);
+		Tracer.info(this, "sleeping, wating for " + aNumThreads + " thread to be created in ms:" + aDelay);
 		ThreadSupport.sleep(aDelay);
 	}
 	protected int minEvents() {

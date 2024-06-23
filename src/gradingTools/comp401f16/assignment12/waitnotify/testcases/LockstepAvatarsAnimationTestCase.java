@@ -52,7 +52,10 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 	protected synchronized void waitForLockstepAnimation( ){
 		try {
 			Tracer.info(this,"Waiting for lock steps within time (ms):" + MAX_ANIMATION_TIME);
+			waiting = true;
 			wait(MAX_ANIMATION_TIME);
+			Tracer.info(this,"Resumed after waiting for lock steps within time (ms):" + MAX_ANIMATION_TIME);
+			waiting = false;
 //			stopThread(childThread);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -89,6 +92,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		return result;
 	}
 	protected synchronized void checkNumThreadsWithNumSleeps(int aLimit) {
+//		System.out.println("Entered synchronized methd checkNumThreads" + Thread.currentThread());
 		for (Thread aThread:threadToSleeps.keySet()) {
 			 Integer aNumSleeps = threadToSleeps.get(aThread);
 			 Tracer.info(this,"Number of waits by thread : " + aThread + " " + aNumSleeps);
@@ -99,7 +103,9 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 				 notify();
 				 break;
 			 }
-		}		
+		}
+//		System.out.println("Exited synchronized methd checkNumThreads" + Thread.currentThread());
+
 	}
 
 	protected void doLockstepGuard() {
@@ -142,15 +148,20 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 			assertNewThreadCreated();
 			doLockSteps(NUM_LOCK_STEPS);			
 		}
-	protected synchronized void waitForThreads( ){
+	protected  void waitForThreads( ){
 		waitForLockstepAnimation();
 	}
 	protected /*synchronized*/ void maybeKillThreads() {
 		for (Thread aThread:currentNotifyingThreads) {
+			if (aThread == parentThread) {
+				continue;
+			}
 			stopThread(aThread);
 		}
 	}
 	protected synchronized boolean checkOutput(Object aProxy) {
+//		System.out.println("Entered synchronized methd checkOutput" + Thread.currentThread());
+
 		checkNumThreads();
 		if (threadToSleeps.size() < NUM_CHILD_THREADS) {
 			failureMessage = "Number of coordinated threads: " + threadToSleeps.size() + " instead of " + NUM_CHILD_THREADS;
@@ -159,6 +170,8 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		} else {
 			resultCorrect = true;
 		}
+//		System.out.println("Exited synchronized methd checkOutput" + Thread.currentThread());
+
 		return true;
 	}
 	protected void delayFound() {
@@ -170,6 +183,8 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
+//		System.out.println("Entered synchronized methd propertyChange" + Thread.currentThread());
+
 //		Tracer.info(this,"Locketep Thread:" + Thread.currentThread());
 		if (!testing)
 			return;
@@ -182,8 +197,14 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 //		Tracer.info(this,"Lockstep Thread:" + Thread.currentThread() + " " + this);
 //		Tracer.info(this,"not previous  thread");
 //		super.propertyChange(evt);
+		if (waiting) {
+			Tracer.info(this, "Notifying waiting testing thread");
 		notify();
-		maybeAddThread();		
+		waiting = false;
+		}
+		maybeAddThread();	
+//		System.out.println("Exited synchronized method propertyChange" + Thread.currentThread());
+
 	}
 	protected boolean doTest() throws Throwable {
 		try {

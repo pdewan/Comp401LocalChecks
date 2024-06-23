@@ -90,6 +90,7 @@ public class AbstractionLockstepAvatarsAnimationTestCase extends AbstractionAsyn
 		for (int i = 0; i  < aNumSteps; i++) {
 			Set<Thread> aCurrentThreads = ConcurrentEventUtility.getCurrentThreads();
 			Tracer.info(this,"Executing animating lockstep Guard ");
+			Tracer.info(this, "only property changes  received after the guard thread is created will be processed");
 			doLockstepGuard();
 			waitForChildrenThreadsToBeCreated(1);
 			assertNewThreadsCreated(aCurrentThreads, 1);
