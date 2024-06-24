@@ -75,15 +75,22 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			Tracer.info(this,"Animating waiting Galahad"+ System.currentTimeMillis());
 			doWaitingGalahad();
 			Tracer.info(this,"Animating waiting Robin"+ System.currentTimeMillis());
-			doWaitingRobin();
-			waitForThreadsToStart();
+			doWaitingRobin();			
+//			waitForThreadsToStart();
 			if (currentNotifyingThreads.size() > 1) {				
 				assertTrue("At least one thread notified before proceedAll was executed", false);				
 			}
-			doProceedAll();			
+			doProceedAll();	
+			for (int aKnightNum = 0; aKnightNum < 4; aKnightNum++) {
+			waitForThreadsToStart(); // waiting for each knight to start notifying
+			}
+			
 		}	
-	protected synchronized void maybeKillThreads() {
+	protected  void maybeKillThreads() {
 		for (Thread aThread:currentNotifyingThreads) {
+			if (aThread == parentThread) {
+				continue;
+			}
 			stopThread(aThread);
 		}
 	}
@@ -103,27 +110,28 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 	// overriding parent class method
 	protected void delayFound() {
 	}
-	@Override
-	public synchronized void propertyChange(PropertyChangeEvent evt) {
-		if (!testing) {
-//			Tracer.info(this,"Not testing:" + this);
-			return;
-		}
-		if (isPreviousThread()) {
-			Tracer.info(this,"Previous thread, ignoring notification:"+ Thread.currentThread());
-			return;
-		}
-//		super.propertyChange(evt);
-		maybeAddThread();		
-		Thread aChildThread = Thread.currentThread();
-//		Tracer.info(this,"Got event from:" + aChildThread);
-		if (currentNotifyingThreads.size() == NUM_CHILD_THREADS) {
-			notify();
-		}		
-	}
+	// why do we need a special property change
+//	@Override
+//	public synchronized void propertyChange(PropertyChangeEvent evt) {
+//		if (!testing) {
+////			Tracer.info(this,"Not testing:" + this);
+//			return;
+//		}
+//		if (isPreviousThread()) {
+//			Tracer.info(this,"Previous thread, ignoring notification:"+ Thread.currentThread());
+//			return;
+//		}
+////		super.propertyChange(evt);
+//		maybeAddThread();		
+//		Thread aChildThread = Thread.currentThread();
+////		Tracer.info(this,"Got event from:" + aChildThread);
+//		if (currentNotifyingThreads.size() == NUM_CHILD_THREADS) {
+//			notify();
+//		}		
+//	}
 	protected boolean doTest() throws Throwable {
 		boolean retVal =  super.doTest();
-		waitForAnimation();
+//		waitForAnimation(); // we are joinin threads, do not need this
 		return retVal;
 	}
  }

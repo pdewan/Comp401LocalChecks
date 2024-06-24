@@ -69,6 +69,7 @@ public class AbstractionLockstepAvatarsAnimationTestCase extends AbstractionAsyn
 		return NUM_CHILD_THREADS;
 	}
 	public void addPropertyChangeListeners() {
+		Tracer.info(this, "Listening to events from Arthur, Lancelot, and Guard");
 		addPropertyChangeListener(bridgeScene.getArthur(), concurrentPropertyChangeSupport);
 		addPropertyChangeListener(bridgeScene.getLancelot(), concurrentPropertyChangeSupport);
 //		addPropertyChangeListener(bridgeScene.getGalahad(), this);
@@ -95,6 +96,7 @@ public class AbstractionLockstepAvatarsAnimationTestCase extends AbstractionAsyn
 			waitForChildrenThreadsToBeCreated(1);
 			assertNewThreadsCreated(aCurrentThreads, 1);
 			guardThread = ConcurrentEventUtility.getFirstNewThread(aCurrentThreads);
+			Tracer.info(this, "Guard thread is:" + guardThread);
 		}		
 	}	
 	protected void executeOperations(Object aProxy) {

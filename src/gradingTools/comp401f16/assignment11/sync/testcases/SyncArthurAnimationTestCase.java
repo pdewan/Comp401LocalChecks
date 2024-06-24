@@ -39,7 +39,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	protected /*synchronized*/ void maybeKillThreads() {
 //		super.maybeKillThreads();
 		stopThread(childThread);
-		waitForThreadsToExecute();
+//		waitForThreadsToExecute();
 		stopThread(child2Thread);
 	}	
 	protected double threadCredit() {

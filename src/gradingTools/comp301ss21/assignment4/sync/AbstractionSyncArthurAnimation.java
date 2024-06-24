@@ -4,7 +4,8 @@ import gradingTools.comp401f16.assignment.testInterfaces.TestBridgeScene;
 import gradingTools.comp401f16.assignment10.async.testcases.AsyncArthurAnimationTestCase;
 import gradingTools.comp401f16.assignment11.sync.testcases.SyncArthurAnimationTestCase;
 import tags301.Comp301Tags;
-
+import util.annotations.Explanation;
+@Explanation("Start two animations of Athur and check that two new threads send events thar are not interleaved")
 public class AbstractionSyncArthurAnimation extends AbstractionSyncArthurAnimationTestCase{
 	String[] factoryClassTags = new String[] {Comp301Tags.FACTORY_CLASS};
 	protected String[] factoryClassTags() {

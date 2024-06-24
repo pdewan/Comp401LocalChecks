@@ -214,7 +214,7 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		assertTrue(failureMessage,resultCorrect);
 		return retVal;
 		} finally {
-			WaitingAvatarsAnimationTestCase.waitForAnimation();
+//			WaitingAvatarsAnimationTestCase.waitForAnimation();
 		}
 	}
  }

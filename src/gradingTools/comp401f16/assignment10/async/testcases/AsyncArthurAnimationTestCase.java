@@ -272,26 +272,27 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 //		Tracer.info(this,"Storing acurrentEventTime for " + aChildThread);
 		lastEventTimes.put(aChildThread, aCurrentEventTime);
 	}
-	public static void waitForAnimation() {
-		Tracer.info(AsyncArthurAnimationTestCase.class,"Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-		Tracer.info(AsyncArthurAnimationTestCase.class,"Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
-	}
-	protected synchronized void waitForThreadsToExecute( ){
-		try {
-//			long aDelay = maxTimeForAnimatingThread();
-			long aDelay = maxDelayToCreateChildThread();
-
-			
-			Tracer.info(this,"Waiting for child thread to start amimation in(ms):" + aDelay);
-			wait(aDelay);
-			Tracer.info(this,"Finished waiting for child thread to start amimation in(ms):" + aDelay);
-//			stopThread(childThread);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	// commenting out this out
+//	public static void waitForAnimation() {
+//		Tracer.info(AsyncArthurAnimationTestCase.class,"Waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//		ThreadSupport.sleep(SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//		Tracer.info(AsyncArthurAnimationTestCase.class,"Finished waiting for animations to finish(ms):" + SyncArthurAnimationTestCase.MAX_TIME_FOR_ANIMATION);
+//	}
+//	protected synchronized void waitForThreadsToExecute( ){
+//		try {
+////			long aDelay = maxTimeForAnimatingThread();
+//			long aDelay = maxDelayToCreateChildThread();
+//
+//			
+//			Tracer.info(this,"Waiting for child thread to start amimation in(ms):" + aDelay);
+//			wait(aDelay);
+//			Tracer.info(this,"Finished waiting for child thread to start amimation in(ms):" + aDelay);
+////			stopThread(childThread);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	@Override
 	public synchronized void propertyChange(PropertyChangeEvent evt) {
 		if (!isThreadsInitialized()) {
