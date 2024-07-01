@@ -13,7 +13,9 @@ import gradingTools.shared.testcases.FactoryMethodTest;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import grader.basics.testcase.PassFailJUnitTestCase;
@@ -152,7 +154,8 @@ public class LockstepAvatarsAnimationTestCase extends AsyncArthurAnimationTestCa
 		waitForLockstepAnimation();
 	}
 	protected /*synchronized*/ void maybeKillThreads() {
-		for (Thread aThread:currentNotifyingThreads) {
+		List<Thread> aThreadsCopy = new ArrayList(currentNotifyingThreads); // to avoid race conditions
+		for (Thread aThread:aThreadsCopy) {
 			if (aThread == parentThread) {
 				continue;
 			}

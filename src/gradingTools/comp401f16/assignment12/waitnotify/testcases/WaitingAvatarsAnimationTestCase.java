@@ -13,6 +13,8 @@ import gradingTools.shared.testcases.FactoryMethodTest;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import util.annotations.MaxValue;
 import util.misc.ThreadSupport;
@@ -82,12 +84,14 @@ public class WaitingAvatarsAnimationTestCase extends AsyncArthurAnimationTestCas
 			}
 			doProceedAll();	
 			for (int aKnightNum = 0; aKnightNum < 4; aKnightNum++) {
+				waiting = true;
 			waitForThreadsToStart(); // waiting for each knight to start notifying
 			}
 			
 		}	
 	protected  void maybeKillThreads() {
-		for (Thread aThread:currentNotifyingThreads) {
+		List<Thread> aThreadCopy = new ArrayList(currentNotifyingThreads);
+		for (Thread aThread:aThreadCopy) {
 			if (aThread == parentThread) {
 				continue;
 			}

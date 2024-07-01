@@ -39,6 +39,8 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 	protected /*synchronized*/ void maybeKillThreads() {
 //		super.maybeKillThreads();
 		stopThread(childThread);
+		waiting = true;
+		waitForThreadsToStart(); // wait for second thread to start
 //		waitForThreadsToExecute();
 		stopThread(child2Thread);
 	}	
@@ -56,7 +58,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 		if (!threadCreated) {
 			assertTrue("Child thread 1 not found:", false);
 		}
-		if (!thread2Created) {
+		if (!thread2Created && child2Thread == null) {
 			assertTrue("Child thread 2 not found:", false);
 		}
 		maybeCheckDelay();
@@ -104,6 +106,7 @@ public class SyncArthurAnimationTestCase extends AsyncArthurAnimationTestCase {
 			child2Thread = aChildThread;
 			child2StartTime = System.currentTimeMillis();
 			Tracer.info (this, "child 2:" + child2Thread);
+			Tracer.info(this, "thread2Created" + thread2Created);
 		}		
 		long aCurrentTime = System.currentTimeMillis();
 		if (child2StartTime != null) {

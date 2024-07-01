@@ -120,6 +120,7 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 			assertTrue("Did not receive " + minEvents() + " events with min delay " + minEventDelay()
 					+ " from min threads" + minThreads(), false);
 		}
+		
 	}
 	protected void maybeSetWaitSelector() {
 		concurrentPropertyChangeSupport.addtWaitSelector(waitSelector());
@@ -191,8 +192,14 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 	public void addPropertyChangeListeners() {
 		addPropertyChangeListener(avatar(), concurrentPropertyChangeSupport);
 	}
+	public void freezeEvents() {
+		concurrentPropertyChangeSupport.setEventsFrozen(true);
+		concurrentPropertyChangeSupport.setGiveEventsFrozenWarning(false);
+
+	}
 	@Override
 	protected boolean doTest() throws Throwable {
+		try {
 		create();
 		setDependentObjects();
 		addPropertyChangeListeners();
@@ -202,7 +209,11 @@ public class AbstractionAsyncArthurAnimationTestCase extends OneLevelListMovesTe
 		waitForThreads();
 		maybeKillThreads();
 		checkOutput(rootProxy);
+//		freezeEvents();
 		return true;
+		} finally {
+			freezeEvents();
+		}
 	}
 	protected long minEventDelay() {
 		return MIN_EVENT_DELAY;

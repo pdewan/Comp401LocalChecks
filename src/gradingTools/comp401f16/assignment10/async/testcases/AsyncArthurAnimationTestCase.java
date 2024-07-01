@@ -152,7 +152,9 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 			long aDelay = maxDelayToCreateChildThread();
 			Tracer.info(this,"Waiting for a child thread to be created within time (ms):" + aDelay + " at time:" +  System.currentTimeMillis());
 			waiting = true;
+			if (waiting) {
 			wait(aDelay); // why not sleep, because when delay is found a notification is sent?
+			}
 			waiting = false;
 			Tracer.info(this,"Finished waiting for child threads to be created/to notify within time (ms):" + aDelay + " at time " +  System.currentTimeMillis());
 //			stopThread(childThread);
@@ -223,6 +225,7 @@ public class AsyncArthurAnimationTestCase extends OneLevelListMovesTestCase impl
 		addPropertyChangeListeners();
 		initData(); // ignore events sent by addPropertyChangeListeners
 //		addPropertyChangeListener(avatar(), this);
+		waiting = true;
 		executeOperations(rootProxy);
 		waitForThreads(); // we are now joining
 		maybeKillThreads();
