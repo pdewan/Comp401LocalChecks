@@ -47,6 +47,8 @@ import gradingTools.shared.testcases.shapes.rotate.fixed.RotatingLineZeroDegreeT
 //	RuntimeChecks.class
 	
 //	GreetingCheckstyle.class
+// 	1.1 to 1.7, 2.1 to 2.2, 3.1 to 3.7, 4.1 to 4.4, 5.1 to 5.11, 6.1 to 6.18
+//  7 + 2 + 7 + 4 +11 + 18 = 49	
 })
 public class SS21Assignment1Suite {
 //	public static final String GREETING_MAIN_TAG = "GreetingMain";

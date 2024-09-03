@@ -55,13 +55,14 @@ import util.trace.Tracer;
 	AssertingBridgeSceneDynamics.class,
 	SceneControllerButtons.class,
 	Exceptions.class,
-	AsyncAnimation.class,
-	SyncAnimation.class,
-	CoordinatedAnimation.class,
+	AsyncAnimation.class, // 5
+	SyncAnimation.class, // 5
+	CoordinatedAnimation.class, //6
 	A4Style.class
 
 })
-
+// 1.4, 2.4, 3.14, 4.4, 5.5, 6.1, 7.15, 8.4
+// 51
 public class SS21Assignment4Suite {
 	static boolean runNewPaintListenerTest;
 	public static void setRunNewPaintListenerTest(boolean newVal) {

@@ -41,7 +41,8 @@ import gradingTools.shared.testcases.shapes.rotate.fixed.RotatingLineZeroDegreeT
 //	TokensRun.class,
 //	TokenObjectsRun.class,
 //	A1_1Style.class
-
+// 1.9, 2.8, 3.14
+// 31
 })
 public class SS21Assignment2_1Suite {
 	public static final String A1_PART1_MAIN_CLASS_NAME = "main.Assignment1_1_Part1";

@@ -54,7 +54,8 @@ import gradingTools.comp401f16.assignment9.testcases.observablepainter.Observabl
 //	ObservablePainterSuite.class,
 //	BridgeSceneControllerSuite.class
 
-
+// 1.1, 2.5, 3.14, 4.15, 5.11, 6.10, 7.1, 8.7, 9.14
+// 78
 
 })
 

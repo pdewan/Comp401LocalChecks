@@ -111,7 +111,7 @@ public class SceneControllerButtonDynamics extends AssertingBridgeSceneDynamics 
 	protected void assertButtonEnabled (String anOperationName, boolean aBooleanNewValue, JButton aButton) {
 		boolean aButtonIsEnabled = aButton.isEnabled();
 		
-		myAssertTrue("After executing operation " + anOperationName + "new value:" + aBooleanNewValue + " in resulting poperty change notification: " + 
+		myAssertTrue("After executing operation " + anOperationName + " new value:" + aBooleanNewValue + " in resulting poperty change notification: " + 
 				 aBooleanNewValue +  " != " + aButton.getLabel()+ " enabled status of button:" + aButtonIsEnabled , aBooleanNewValue ==aButtonIsEnabled );
 	}
 	protected int numPreconditionEvents = 0;

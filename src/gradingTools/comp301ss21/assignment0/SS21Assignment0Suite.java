@@ -5,10 +5,6 @@ import org.junit.runners.Suite;
 
 import grader.basics.config.BasicExecutionSpecificationSelector;
 import grader.basics.junit.BasicJUnitUtils;
-import gradingTools.comp301ss21.assignment0.testcases.GreetingMainCallsPrint;
-import gradingTools.comp301ss21.assignment0.testcases.GreetingMainDefined;
-import gradingTools.comp301ss21.assignment0.testcases.GreetingRun;
-import gradingTools.comp301ss21.assignment0.testcases.TaggedGreetingMainProvided;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	TagChecks.class,
@@ -17,6 +13,8 @@ import gradingTools.comp301ss21.assignment0.testcases.TaggedGreetingMainProvided
 	
 //	GreetingCheckstyle.class
 })
+// 2 Runtime, 3 source
+// 
 public class SS21Assignment0Suite {
 //	public static final String GREETING_MAIN_TAG = "GreetingMain";
 		public static void main (String[] args) {
